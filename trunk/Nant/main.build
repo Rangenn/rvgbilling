@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<project name="${project.name}" default="build">
+
+  <include buildfile="main.build.props" />
+
+
+  <target name="clean">
+    <delete dir="${bin.dir}" />
+    <delete dir="${out.dir}" />
+  </target>
+
+  <target name="reloadsrc">
+    <svn-checkout 
+      if = "${not project.exists}"
+      destination = "${src.dir}" 
+      uri = "http://rvgbilling.googlecode.com/svn/trunk/" 
+      recursive = "true"    
+      revision="HEAD"
+      cache-auth="false"    
+    />
+
+
+  </target>
+
+  <target name="prepare">
+    <mkdir dir="${bin.dir}" />
+  </target>
+
+  <target name="compile" depends="prepare">
+    <csc target="winexe" debug="false"
+         output="${bin.dir}/${project.name}.exe">
+      <sources>
+        <include name="${src.dir}/**/*.cs" />
+	
+      </sources>
+    </csc>
+  </target>
+
+
+  <target name="build">
+    
+    <call target="compile" />
+	
+    <mkdir dir="${out.dir}" />
+    <copy todir="${out.dir}">
+      <fileset basedir="${bin.dir}">
+        <include name="**/*" />
+      </fileset>
+    </copy>
+    <copy todir="${out.dir}">
+      <fileset basedir="${src.dir}">
+        <exclude name="**/*.cs" />
+        <include name="**/*" />
+      </fileset>
+    </copy>
+  </target>
+
+</project>
