@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace RVGbilling.Model
@@ -17,12 +16,12 @@ namespace RVGbilling.Model
         #region IObjectCollection Members
 
 
-        public DBAbstractObject getAt(int index)
+        public override DBAbstractObject getAt(int index)
         {
             throw new NotImplementedException();
         }
 
-        public DBAbstractObject getItem(int id)
+        public override DBAbstractObject getItem(int id)
         {
             throw new NotImplementedException();
         }
@@ -33,17 +32,17 @@ namespace RVGbilling.Model
             throw new NotImplementedException();
         }
 
-        public void updateItem(DBAbstractObject item)
+        public override void updateItem(DBAbstractObject item)
         {
             throw new NotImplementedException();
         }
 
-        public void removeItem(DBAbstractObject item)
+        public override void removeItem(DBAbstractObject item)
         {
             throw new NotImplementedException();
         }
 
-        public void fillByQuery(string query)
+        public override void fillByQuery(string query)
         {
             throw new NotImplementedException();
         }
