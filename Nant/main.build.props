@@ -4,7 +4,11 @@
 
   <property name="project.name" value="RVGBilling" />
   <property name="project.dir" value="${project::get-base-directory()}" />
-  <property name="project.version_file" value="${project.dir}\src\version.txt"/>
+  <property name="src.dir" value="${project.dir}/src" />
+  <property name="bin.dir" value="${project.dir}/bin" />
+  <property name="out.dir" value="${project.dir}/out" />
+
+  <property name="project.version_file" value="${src.dir}\RVGBilling\build.number"/>
   <property name="project.exists" value="${file::exists(project.version_file)}" />
 
   <property name="nant.home" value="${environment::get-variable('NANT_HOME')}"
@@ -14,10 +18,5 @@
 
   <loadtasks assembly="${nantcontrib.home}/bin/NAnt.Contrib.Tasks.dll"
              if="${property::exists('nantcontrib.home')}" />
-
-  <property name="getsrc.dir" value="D:/Distr/MyDocuments/VSU/VStudio/RVGBilling/" />
-  <property name="src.dir" value="${project.dir}/src" />
-  <property name="bin.dir" value="${project.dir}/bin" />
-  <property name="out.dir" value="${project.dir}/out" />
 
 </project>
