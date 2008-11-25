@@ -18,3 +18,14 @@ D:\distr\MyDocuments\VSU\VSTUDIO\RVGbilling\RVGBilling\RVGbilling\obj\Debug\RVGb
 D:\distr\MyDocuments\VSU\VSTUDIO\RVGbilling\RVGBilling\RVGbilling\obj\Debug\RVGbilling.FormMain.resources
 D:\distr\MyDocuments\VSU\VSTUDIO\RVGbilling\RVGBilling\RVGbilling\obj\Debug\RVGbilling.Properties.Resources.resources
 D:\distr\MyDocuments\VSU\VSTUDIO\RVGbilling\RVGBilling\RVGbilling\obj\Debug\RVGbilling.csproj.GenerateResource.Cache
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\RVGbilling.exe
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\RVGbilling.pdb
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\bin\Debug\RVGbilling.exe.config
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\bin\Debug\RVGbilling.exe
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\bin\Debug\RVGbilling.pdb
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\ResolveAssemblyReference.cache
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\RVGbilling.AboutBox1.resources
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\RVGbilling.FormAbonent.resources
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\RVGbilling.FormMain.resources
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\RVGbilling.Properties.Resources.resources
+D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\RVGbilling.csproj.GenerateResource.Cache
