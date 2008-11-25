@@ -11,6 +11,9 @@
   </target>
 
   <target name="reloadsrc">
+   
+   <delete dir="${src.dir}" if = "${not project.exists}"/>
+   <mkdir dir="${src.dir}"  if = "${not project.exists}"/>
     <svn-checkout 
       if = "${not project.exists}"
       destination = "${src.dir}" 
@@ -31,9 +34,12 @@
     <csc target="winexe" debug="false"
          output="${bin.dir}/${project.name}.exe">
       <sources>
-        <include name="${src.dir}/**/*.cs" />
-	
+        <include name="${src.dir}/**/*.cs" />	
       </sources>
+	  <resources dynamicprefix="true" prefix="RVGbilling">
+        <include name="${src.dir}/**/*.resx" />
+    </resources>
+
     </csc>
   </target>
 
@@ -54,6 +60,10 @@
         <attribute type="AssemblyTitleAttribute" value="RVGbilling" />
         <attribute type="AssemblyDescriptionAttribute" value="o_0" />
         <attribute type="AssemblyCopyrightAttribute" value="Copyright (c) 2008, RVG, Inc." />
+		<attribute type="AssemblyConfigurationAttribute" value="" />
+		<attribute type="AssemblyCompanyAttribute" value="RVG" />
+		<attribute type="AssemblyTrademarkAttribute" value="" />
+		<attribute type="AssemblyCultureAttribute" value="" />
     </attributes>
 </asminfo>
 
