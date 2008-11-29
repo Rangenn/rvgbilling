@@ -15,8 +15,13 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisibleAttribute(false)]
 [assembly: CLSCompliantAttribute(true)]
-[assembly: AssemblyVersionAttribute("0.1.6.0")]
+[assembly: AssemblyVersionAttribute("0.1.15.0")]
 [assembly: AssemblyTitleAttribute("RVGbilling")]
 [assembly: AssemblyDescriptionAttribute("o_0")]
 [assembly: AssemblyCopyrightAttribute("Copyright (c) 2008, RVG, Inc.")]
+[assembly: AssemblyConfigurationAttribute("")]
+[assembly: AssemblyCompanyAttribute("RVG")]
+[assembly: AssemblyTrademarkAttribute("")]
+[assembly: AssemblyCultureAttribute("")]
+[assembly: AssemblyProductAttribute("RVGbilling")]
 

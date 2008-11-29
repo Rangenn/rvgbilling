@@ -20,5 +20,11 @@ namespace RVGbilling
             AboutBox1 ab = new AboutBox1();
             ab.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormAbonent fab = new FormAbonent(textBox5.Text, textBox1.Text);
+            fab.ShowDialog();
+        }
     }
 }
