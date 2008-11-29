@@ -14,5 +14,12 @@ namespace RVGbilling
         {
             InitializeComponent();
         }
+
+        public FormAbonent(string FIO, string passport)
+        {
+            InitializeComponent();
+            textBox1.Text = FIO;
+            textBox2.Text = passport;
+        }
     }
 }

@@ -36,10 +36,7 @@
       <sources>
         <include name="${src.dir}/**/*.cs" />	
       </sources>
-	  <resources dynamicprefix="true" prefix="RVGbilling">
-        <include name="${src.dir}/**/*.resx" />
-    </resources>
-
+	  
     </csc>
   </target>
 
@@ -64,6 +61,7 @@
 		<attribute type="AssemblyCompanyAttribute" value="RVG" />
 		<attribute type="AssemblyTrademarkAttribute" value="" />
 		<attribute type="AssemblyCultureAttribute" value="" />
+		<attribute type="AssemblyProductAttribute" value="RVGbilling" />
     </attributes>
 </asminfo>
 
