@@ -14,7 +14,8 @@ namespace RVGbilling
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Controller ctrl = new Controller();
+            Application.Run(ctrl.fmMain);
         }
     }
 }

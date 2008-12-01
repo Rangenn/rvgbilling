@@ -34,7 +34,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbPersonName = new System.Windows.Forms.TextBox();
-            this.tbPhone = new System.Windows.Forms.TextBox();
+            this.tbPersonPhone = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbPersonPassport = new System.Windows.Forms.TextBox();
             this.tpCorporate = new System.Windows.Forms.TabPage();
@@ -46,14 +46,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.тарифныеПланыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button3 = new System.Windows.Forms.Button();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.booksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tariffsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPayment = new System.Windows.Forms.Button();
             this.tbNomber = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gbBalance = new System.Windows.Forms.GroupBox();
@@ -67,7 +67,7 @@
             this.tcAbonent.SuspendLayout();
             this.tpPerson.SuspendLayout();
             this.tpCorporate.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.mainMenu.SuspendLayout();
             this.gbBalance.SuspendLayout();
             this.gbSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).BeginInit();
@@ -93,14 +93,14 @@
             this.tcAbonent.Name = "tcAbonent";
             this.tcAbonent.SelectedIndex = 0;
             this.tcAbonent.Size = new System.Drawing.Size(297, 121);
-            this.tcAbonent.TabIndex = 7;
+            this.tcAbonent.TabIndex = 1;
             // 
             // tpPerson
             // 
             this.tpPerson.Controls.Add(this.label6);
             this.tpPerson.Controls.Add(this.label2);
             this.tpPerson.Controls.Add(this.tbPersonName);
-            this.tpPerson.Controls.Add(this.tbPhone);
+            this.tpPerson.Controls.Add(this.tbPersonPhone);
             this.tpPerson.Controls.Add(this.label1);
             this.tpPerson.Controls.Add(this.tbPersonPassport);
             this.tpPerson.Location = new System.Drawing.Point(4, 22);
@@ -131,17 +131,17 @@
             // 
             // tbPersonName
             // 
-            this.tbPersonName.Location = new System.Drawing.Point(111, 6);
+            this.tbPersonName.Location = new System.Drawing.Point(118, 6);
             this.tbPersonName.Name = "tbPersonName";
-            this.tbPersonName.Size = new System.Drawing.Size(175, 20);
+            this.tbPersonName.Size = new System.Drawing.Size(168, 20);
             this.tbPersonName.TabIndex = 6;
             // 
-            // tbPhone
+            // tbPersonPhone
             // 
-            this.tbPhone.Location = new System.Drawing.Point(111, 58);
-            this.tbPhone.Name = "tbPhone";
-            this.tbPhone.Size = new System.Drawing.Size(175, 20);
-            this.tbPhone.TabIndex = 2;
+            this.tbPersonPhone.Location = new System.Drawing.Point(118, 58);
+            this.tbPersonPhone.Name = "tbPersonPhone";
+            this.tbPersonPhone.Size = new System.Drawing.Size(168, 20);
+            this.tbPersonPhone.TabIndex = 2;
             // 
             // label1
             // 
@@ -154,9 +154,9 @@
             // 
             // tbPersonPassport
             // 
-            this.tbPersonPassport.Location = new System.Drawing.Point(111, 32);
+            this.tbPersonPassport.Location = new System.Drawing.Point(118, 32);
             this.tbPersonPassport.Name = "tbPersonPassport";
-            this.tbPersonPassport.Size = new System.Drawing.Size(175, 20);
+            this.tbPersonPassport.Size = new System.Drawing.Size(168, 20);
             this.tbPersonPassport.TabIndex = 1;
             // 
             // tpCorporate
@@ -231,7 +231,7 @@
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.button2_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnSearch
             // 
@@ -241,70 +241,73 @@
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Найти";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // menuStrip1
+            // mainMenu
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.справочникиToolStripMenuItem,
-            this.помощьToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(641, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip";
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.booksToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.Size = new System.Drawing.Size(641, 24);
+            this.mainMenu.TabIndex = 2;
+            this.mainMenu.Text = "menuStrip";
             // 
-            // файлToolStripMenuItem
+            // fileToolStripMenuItem
             // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выходToolStripMenuItem});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.fileToolStripMenuItem.Text = "Файл";
             // 
-            // выходToolStripMenuItem
+            // exitToolStripMenuItem
             // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.выходToolStripMenuItem.Text = "Выход";
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Выход";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // справочникиToolStripMenuItem
+            // booksToolStripMenuItem
             // 
-            this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.тарифныеПланыToolStripMenuItem});
-            this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
-            this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
-            this.справочникиToolStripMenuItem.Text = "Справочники";
+            this.booksToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tariffsToolStripMenuItem});
+            this.booksToolStripMenuItem.Name = "booksToolStripMenuItem";
+            this.booksToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.booksToolStripMenuItem.Text = "Справочники";
             // 
-            // тарифныеПланыToolStripMenuItem
+            // tariffsToolStripMenuItem
             // 
-            this.тарифныеПланыToolStripMenuItem.Name = "тарифныеПланыToolStripMenuItem";
-            this.тарифныеПланыToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.тарифныеПланыToolStripMenuItem.Text = "Тарифные планы";
+            this.tariffsToolStripMenuItem.Name = "tariffsToolStripMenuItem";
+            this.tariffsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.tariffsToolStripMenuItem.Text = "Тарифные планы";
             // 
-            // помощьToolStripMenuItem
+            // helpToolStripMenuItem
             // 
-            this.помощьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.оПрограммеToolStripMenuItem});
-            this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.помощьToolStripMenuItem.Text = "Помощь";
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.helpToolStripMenuItem.Text = "Помощь";
             // 
-            // оПрограммеToolStripMenuItem
+            // aboutToolStripMenuItem
             // 
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
-            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Text = "О программе";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // button3
+            // btnPayment
             // 
-            this.button3.Location = new System.Drawing.Point(216, 74);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Пополнить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnPayment.Location = new System.Drawing.Point(216, 74);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(87, 23);
+            this.btnPayment.TabIndex = 3;
+            this.btnPayment.Text = "Пополнить";
+            this.btnPayment.UseVisualStyleBackColor = true;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
             // tbNomber
             // 
@@ -327,7 +330,7 @@
             this.gbBalance.Controls.Add(this.lbCheckName);
             this.gbBalance.Controls.Add(this.label4);
             this.gbBalance.Controls.Add(this.tbSumma);
-            this.gbBalance.Controls.Add(this.button3);
+            this.gbBalance.Controls.Add(this.btnPayment);
             this.gbBalance.Controls.Add(this.label3);
             this.gbBalance.Controls.Add(this.tbNomber);
             this.gbBalance.Location = new System.Drawing.Point(12, 217);
@@ -364,6 +367,7 @@
             // 
             // gbSearch
             // 
+            this.gbSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gbSearch.Controls.Add(this.btnSelectBody);
             this.gbSearch.Controls.Add(this.dgvSearch);
             this.gbSearch.Location = new System.Drawing.Point(328, 28);
@@ -382,6 +386,7 @@
             this.btnSelectBody.TabIndex = 1;
             this.btnSelectBody.Text = "Выбрать";
             this.btnSelectBody.UseVisualStyleBackColor = true;
+            this.btnSelectBody.Click += new System.EventHandler(this.btnSelectBody_Click);
             // 
             // dgvSearch
             // 
@@ -395,12 +400,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(641, 335);
             this.Controls.Add(this.gbSearch);
             this.Controls.Add(this.gbBalance);
             this.Controls.Add(this.gbAbonent);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.mainMenu);
+            this.MainMenuStrip = this.mainMenu;
             this.Name = "FormMain";
             this.Text = "RVG Billing";
             this.gbAbonent.ResumeLayout(false);
@@ -409,8 +416,8 @@
             this.tpPerson.PerformLayout();
             this.tpCorporate.ResumeLayout(false);
             this.tpCorporate.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
             this.gbBalance.ResumeLayout(false);
             this.gbBalance.PerformLayout();
             this.gbSearch.ResumeLayout(false);
@@ -428,15 +435,15 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbPhone;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem тарифныеПланыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox tbPersonPhone;
+        private System.Windows.Forms.MenuStrip mainMenu;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem booksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tariffsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.TextBox tbNomber;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox gbBalance;
