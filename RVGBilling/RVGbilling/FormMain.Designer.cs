@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.gbAbonent = new System.Windows.Forms.GroupBox();
+            this.tcAbonent = new System.Windows.Forms.TabControl();
+            this.tpPerson = new System.Windows.Forms.TabPage();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbPersonName = new System.Windows.Forms.TextBox();
+            this.tbPhone = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.tbPersonPassport = new System.Windows.Forms.TextBox();
+            this.tpCorporate = new System.Windows.Forms.TabPage();
+            this.tbCorpPhone = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tbCorpAdress = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tbCorpName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,62 +54,62 @@
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button3 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbNomber = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.gbBalance = new System.Windows.Forms.GroupBox();
+            this.lbCheckName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tbSumma = new System.Windows.Forms.TextBox();
+            this.gbSearch = new System.Windows.Forms.GroupBox();
+            this.btnSelectBody = new System.Windows.Forms.Button();
+            this.dgvSearch = new System.Windows.Forms.DataGridView();
+            this.gbAbonent.SuspendLayout();
+            this.tcAbonent.SuspendLayout();
+            this.tpPerson.SuspendLayout();
+            this.tpCorporate.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.gbBalance.SuspendLayout();
+            this.gbSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gbAbonent
             // 
-            this.groupBox1.Controls.Add(this.tabControl1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(309, 184);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Абонент";
+            this.gbAbonent.Controls.Add(this.tcAbonent);
+            this.gbAbonent.Controls.Add(this.btnAdd);
+            this.gbAbonent.Controls.Add(this.btnSearch);
+            this.gbAbonent.Location = new System.Drawing.Point(12, 27);
+            this.gbAbonent.Name = "gbAbonent";
+            this.gbAbonent.Size = new System.Drawing.Size(309, 184);
+            this.gbAbonent.TabIndex = 0;
+            this.gbAbonent.TabStop = false;
+            this.gbAbonent.Text = "Абонент";
             // 
-            // tabControl1
+            // tcAbonent
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(6, 19);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(297, 121);
-            this.tabControl1.TabIndex = 7;
+            this.tcAbonent.Controls.Add(this.tpPerson);
+            this.tcAbonent.Controls.Add(this.tpCorporate);
+            this.tcAbonent.Location = new System.Drawing.Point(6, 19);
+            this.tcAbonent.Name = "tcAbonent";
+            this.tcAbonent.SelectedIndex = 0;
+            this.tcAbonent.Size = new System.Drawing.Size(297, 121);
+            this.tcAbonent.TabIndex = 7;
             // 
-            // tabPage1
+            // tpPerson
             // 
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.textBox5);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(289, 95);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Физ. лицо";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpPerson.Controls.Add(this.label6);
+            this.tpPerson.Controls.Add(this.label2);
+            this.tpPerson.Controls.Add(this.tbPersonName);
+            this.tpPerson.Controls.Add(this.tbPhone);
+            this.tpPerson.Controls.Add(this.label1);
+            this.tpPerson.Controls.Add(this.tbPersonPassport);
+            this.tpPerson.Location = new System.Drawing.Point(4, 22);
+            this.tpPerson.Name = "tpPerson";
+            this.tpPerson.Padding = new System.Windows.Forms.Padding(3);
+            this.tpPerson.Size = new System.Drawing.Size(289, 95);
+            this.tpPerson.TabIndex = 0;
+            this.tpPerson.Text = "Физ. лицо";
+            this.tpPerson.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -129,19 +129,19 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Тел.";
             // 
-            // textBox5
+            // tbPersonName
             // 
-            this.textBox5.Location = new System.Drawing.Point(111, 6);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(175, 20);
-            this.textBox5.TabIndex = 6;
+            this.tbPersonName.Location = new System.Drawing.Point(111, 6);
+            this.tbPersonName.Name = "tbPersonName";
+            this.tbPersonName.Size = new System.Drawing.Size(175, 20);
+            this.tbPersonName.TabIndex = 6;
             // 
-            // textBox2
+            // tbPhone
             // 
-            this.textBox2.Location = new System.Drawing.Point(111, 58);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(175, 20);
-            this.textBox2.TabIndex = 2;
+            this.tbPhone.Location = new System.Drawing.Point(111, 58);
+            this.tbPhone.Name = "tbPhone";
+            this.tbPhone.Size = new System.Drawing.Size(175, 20);
+            this.tbPhone.TabIndex = 2;
             // 
             // label1
             // 
@@ -152,35 +152,35 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Паспортные данные";
             // 
-            // textBox1
+            // tbPersonPassport
             // 
-            this.textBox1.Location = new System.Drawing.Point(111, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(175, 20);
-            this.textBox1.TabIndex = 1;
+            this.tbPersonPassport.Location = new System.Drawing.Point(111, 32);
+            this.tbPersonPassport.Name = "tbPersonPassport";
+            this.tbPersonPassport.Size = new System.Drawing.Size(175, 20);
+            this.tbPersonPassport.TabIndex = 1;
             // 
-            // tabPage2
+            // tpCorporate
             // 
-            this.tabPage2.Controls.Add(this.textBox8);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.textBox7);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.textBox6);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(289, 95);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Юр. лицо";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tpCorporate.Controls.Add(this.tbCorpPhone);
+            this.tpCorporate.Controls.Add(this.label9);
+            this.tpCorporate.Controls.Add(this.tbCorpAdress);
+            this.tpCorporate.Controls.Add(this.label8);
+            this.tpCorporate.Controls.Add(this.tbCorpName);
+            this.tpCorporate.Controls.Add(this.label7);
+            this.tpCorporate.Location = new System.Drawing.Point(4, 22);
+            this.tpCorporate.Name = "tpCorporate";
+            this.tpCorporate.Padding = new System.Windows.Forms.Padding(3);
+            this.tpCorporate.Size = new System.Drawing.Size(289, 95);
+            this.tpCorporate.TabIndex = 1;
+            this.tpCorporate.Text = "Юр. лицо";
+            this.tpCorporate.UseVisualStyleBackColor = true;
             // 
-            // textBox8
+            // tbCorpPhone
             // 
-            this.textBox8.Location = new System.Drawing.Point(118, 58);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(165, 20);
-            this.textBox8.TabIndex = 5;
+            this.tbCorpPhone.Location = new System.Drawing.Point(118, 58);
+            this.tbCorpPhone.Name = "tbCorpPhone";
+            this.tbCorpPhone.Size = new System.Drawing.Size(165, 20);
+            this.tbCorpPhone.TabIndex = 5;
             // 
             // label9
             // 
@@ -191,12 +191,12 @@
             this.label9.TabIndex = 4;
             this.label9.Text = "Тел.";
             // 
-            // textBox7
+            // tbCorpAdress
             // 
-            this.textBox7.Location = new System.Drawing.Point(118, 32);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(165, 20);
-            this.textBox7.TabIndex = 3;
+            this.tbCorpAdress.Location = new System.Drawing.Point(118, 32);
+            this.tbCorpAdress.Name = "tbCorpAdress";
+            this.tbCorpAdress.Size = new System.Drawing.Size(165, 20);
+            this.tbCorpAdress.TabIndex = 3;
             // 
             // label8
             // 
@@ -207,12 +207,12 @@
             this.label8.TabIndex = 2;
             this.label8.Text = "Адрес";
             // 
-            // textBox6
+            // tbCorpName
             // 
-            this.textBox6.Location = new System.Drawing.Point(118, 6);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(165, 20);
-            this.textBox6.TabIndex = 1;
+            this.tbCorpName.Location = new System.Drawing.Point(118, 6);
+            this.tbCorpName.Name = "tbCorpName";
+            this.tbCorpName.Size = new System.Drawing.Size(165, 20);
+            this.tbCorpName.TabIndex = 1;
             // 
             // label7
             // 
@@ -223,24 +223,24 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Название";
             // 
-            // button2
+            // btnAdd
             // 
-            this.button2.Location = new System.Drawing.Point(123, 147);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 22);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnAdd.Location = new System.Drawing.Point(123, 147);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(82, 22);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Добавить";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.Location = new System.Drawing.Point(211, 146);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Найти";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSearch.Location = new System.Drawing.Point(211, 146);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(87, 23);
+            this.btnSearch.TabIndex = 0;
+            this.btnSearch.Text = "Найти";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
@@ -252,20 +252,20 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(641, 24);
             this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Text = "menuStrip";
             // 
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             // 
             // справочникиToolStripMenuItem
@@ -273,13 +273,13 @@
             this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.тарифныеПланыToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
-            this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
             // 
             // тарифныеПланыToolStripMenuItem
             // 
             this.тарифныеПланыToolStripMenuItem.Name = "тарифныеПланыToolStripMenuItem";
-            this.тарифныеПланыToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.тарифныеПланыToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.тарифныеПланыToolStripMenuItem.Text = "Тарифные планы";
             // 
             // помощьToolStripMenuItem
@@ -287,7 +287,7 @@
             this.помощьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.оПрограммеToolStripMenuItem});
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.помощьToolStripMenuItem.Text = "Помощь";
             // 
             // оПрограммеToolStripMenuItem
@@ -306,12 +306,12 @@
             this.button3.Text = "Пополнить";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // tbNomber
             // 
-            this.textBox3.Location = new System.Drawing.Point(128, 22);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(175, 20);
-            this.textBox3.TabIndex = 4;
+            this.tbNomber.Location = new System.Drawing.Point(128, 22);
+            this.tbNomber.Name = "tbNomber";
+            this.tbNomber.Size = new System.Drawing.Size(175, 20);
+            this.tbNomber.TabIndex = 4;
             // 
             // label3
             // 
@@ -322,29 +322,29 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Номер тел.";
             // 
-            // groupBox2
+            // gbBalance
             // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 217);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(309, 106);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Пополнение баланса";
+            this.gbBalance.Controls.Add(this.lbCheckName);
+            this.gbBalance.Controls.Add(this.label4);
+            this.gbBalance.Controls.Add(this.tbSumma);
+            this.gbBalance.Controls.Add(this.button3);
+            this.gbBalance.Controls.Add(this.label3);
+            this.gbBalance.Controls.Add(this.tbNomber);
+            this.gbBalance.Location = new System.Drawing.Point(12, 217);
+            this.gbBalance.Name = "gbBalance";
+            this.gbBalance.Size = new System.Drawing.Size(309, 106);
+            this.gbBalance.TabIndex = 6;
+            this.gbBalance.TabStop = false;
+            this.gbBalance.Text = "Пополнение баланса";
             // 
-            // label5
+            // lbCheckName
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 74);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Ф.И.О. для проверки: <...>";
+            this.lbCheckName.AutoSize = true;
+            this.lbCheckName.Location = new System.Drawing.Point(7, 74);
+            this.lbCheckName.Name = "lbCheckName";
+            this.lbCheckName.Size = new System.Drawing.Size(142, 13);
+            this.lbCheckName.TabIndex = 8;
+            this.lbCheckName.Text = "Ф.И.О. для проверки: <...>";
             // 
             // label4
             // 
@@ -355,66 +355,66 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Сумма";
             // 
-            // textBox4
+            // tbSumma
             // 
-            this.textBox4.Location = new System.Drawing.Point(128, 48);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(175, 20);
-            this.textBox4.TabIndex = 6;
+            this.tbSumma.Location = new System.Drawing.Point(128, 48);
+            this.tbSumma.Name = "tbSumma";
+            this.tbSumma.Size = new System.Drawing.Size(175, 20);
+            this.tbSumma.TabIndex = 6;
             // 
-            // groupBox3
+            // gbSearch
             // 
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.dataGridView1);
-            this.groupBox3.Location = new System.Drawing.Point(328, 28);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(301, 295);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Результаты поиска";
-            this.groupBox3.Visible = false;
+            this.gbSearch.Controls.Add(this.btnSelectBody);
+            this.gbSearch.Controls.Add(this.dgvSearch);
+            this.gbSearch.Location = new System.Drawing.Point(328, 28);
+            this.gbSearch.Name = "gbSearch";
+            this.gbSearch.Size = new System.Drawing.Size(301, 295);
+            this.gbSearch.TabIndex = 7;
+            this.gbSearch.TabStop = false;
+            this.gbSearch.Text = "Результаты поиска";
+            this.gbSearch.Visible = false;
             // 
-            // button4
+            // btnSelectBody
             // 
-            this.button4.Location = new System.Drawing.Point(7, 262);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Выбрать";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSelectBody.Location = new System.Drawing.Point(7, 262);
+            this.btnSelectBody.Name = "btnSelectBody";
+            this.btnSelectBody.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectBody.TabIndex = 1;
+            this.btnSelectBody.Text = "Выбрать";
+            this.btnSelectBody.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvSearch
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 20);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(288, 237);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSearch.Location = new System.Drawing.Point(7, 20);
+            this.dgvSearch.Name = "dgvSearch";
+            this.dgvSearch.Size = new System.Drawing.Size(288, 237);
+            this.dgvSearch.TabIndex = 0;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 335);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbSearch);
+            this.Controls.Add(this.gbBalance);
+            this.Controls.Add(this.gbAbonent);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.Text = "RVG Billing";
-            this.groupBox1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.gbAbonent.ResumeLayout(false);
+            this.tcAbonent.ResumeLayout(false);
+            this.tpPerson.ResumeLayout(false);
+            this.tpPerson.PerformLayout();
+            this.tpCorporate.ResumeLayout(false);
+            this.tpCorporate.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.gbBalance.ResumeLayout(false);
+            this.gbBalance.PerformLayout();
+            this.gbSearch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,13 +422,13 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox gbAbonent;
+        private System.Windows.Forms.TextBox tbPersonPassport;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbPhone;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
@@ -437,26 +437,26 @@
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbNomber;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbBalance;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox tbSumma;
+        private System.Windows.Forms.TabControl tcAbonent;
+        private System.Windows.Forms.TabPage tpPerson;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox tbPersonName;
+        private System.Windows.Forms.TabPage tpCorporate;
+        private System.Windows.Forms.Label lbCheckName;
+        private System.Windows.Forms.TextBox tbCorpPhone;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox tbCorpAdress;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tbCorpName;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox gbSearch;
+        private System.Windows.Forms.DataGridView dgvSearch;
+        private System.Windows.Forms.Button btnSelectBody;
     }
 }
 
