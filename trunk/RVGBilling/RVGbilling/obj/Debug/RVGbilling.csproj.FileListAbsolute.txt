@@ -29,3 +29,14 @@ D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Б
 D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\RVGbilling.FormMain.resources
 D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\RVGbilling.Properties.Resources.resources
 D:\distr\MyDocuments\VSU\тп\_Тихонов Котов Пономарева Биллинговая система\Nant\src\RVGBilling\RVGbilling\obj\Debug\RVGbilling.csproj.GenerateResource.Cache
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\bin\Debug\RVGbilling.exe.config
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\obj\Debug\RVGbilling.exe
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\obj\Debug\RVGbilling.pdb
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\obj\Debug\ResolveAssemblyReference.cache
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\obj\Debug\RVGbilling.AboutBox1.resources
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\obj\Debug\RVGbilling.FormAbonent.resources
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\obj\Debug\RVGbilling.FormMain.resources
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\obj\Debug\RVGbilling.Properties.Resources.resources
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\obj\Debug\RVGbilling.csproj.GenerateResource.Cache
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\bin\Debug\RVGbilling.exe
+H:\Галя\Программирование\RVGBilling\RVGBilling\RVGbilling\bin\Debug\RVGbilling.pdb

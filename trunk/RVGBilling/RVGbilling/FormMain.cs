@@ -23,7 +23,7 @@ namespace RVGbilling
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormAbonent fab = new FormAbonent(textBox5.Text, textBox1.Text);
+            FormAbonent fab = new FormAbonent(tbPersonName.Text, tbPersonPassport.Text);
             fab.ShowDialog();
         }
     }
