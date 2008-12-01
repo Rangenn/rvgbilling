@@ -22,6 +22,28 @@ namespace RVGbilling.Model
         /// <summary>
         /// конструктор по умолчанию
         /// </summary>
-        public DBAbstractObject(int id) { this.id = id; }
+        public DBAbstractObject(int id)
+        {
+            this.id = id;
+        }
+        public DBAbstractObject(DBAbstractObject obj)
+        {
+            this.id = obj.id;
+        }
+        /// <summary>
+        /// Сравнить с объектом
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            //return base.Equals(obj);
+            try
+            {
+                return id.Equals(((DBAbstractObject)obj).getId());
+            }
+            catch (InvalidCastException ex)
+            {
+                return false;
+            }
+        }
     }
 }

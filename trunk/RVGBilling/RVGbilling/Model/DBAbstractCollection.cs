@@ -9,8 +9,36 @@ namespace RVGbilling.Model
     /// </summary>
     public abstract class DBAbstractCollection
     {
-        IDBStrategy _Strategy;
+        #region <fields>
+
+        IDBStrategy _Strategy = null;
         List<DBAbstractObject> _Items;
+
+        #endregion
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        public DBAbstractCollection()
+        {
+            _Items = new List<DBAbstractObject>();
+        }
+        /// <summary>
+        /// Конструктор с заполнением массива элементов и выбором стратегии
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="strategy"></param>
+        public DBAbstractCollection(List<DBAbstractObject> list, IDBStrategy strategy)
+        {
+            _Items = new List<DBAbstractObject>(list);
+            setStrategy(strategy);
+        }
+        /// <summary>
+        /// заполнить по запросу
+        /// </summary>
+        public void fillByQuery(string query)
+        {
+            _Items = _Strategy.getFromDB(query);
+        }
         /// <summary>
         /// получить ссылку на стратегию
         /// </summary>
@@ -26,18 +54,17 @@ namespace RVGbilling.Model
         {
             _Strategy = strategy;
         }
-
         /// <summary>
         /// получить элемент по индексу
         /// </summary>
-        public virtual DBAbstractObject getAt(int index)
+        public DBAbstractObject getAt(int index)
         {
             return _Items[index];
         }
         /// <summary>
         /// получить элемент по ID
         /// </summary>
-        public virtual DBAbstractObject getItem(int id)
+        public DBAbstractObject getItem(int id)
         {
             //IDBObject res = null;
             foreach (DBAbstractObject i in _Items)
@@ -45,24 +72,30 @@ namespace RVGbilling.Model
                 if (i.getId() == id) return i;
             }
             return null;
-        }
+        }     
         /// <summary>
         /// добавить элемент в коллекцию
         /// </summary>
-        public virtual void addItem(DBAbstractObject item) { _Strategy.AddItemToDB(item); }
-        /// <summary>
-        /// обновить элемент
-        /// </summary>
-        public virtual void updateItem(DBAbstractObject item) { _Strategy.UpdateItemToDB(item); }
+        public void addItem(DBAbstractObject item)
+        {
+            _Strategy.AddItemToDB(item);
+            //if no exception
+            _Items.Add(item);
+        }
         /// <summary>
         /// удалить элемент
         /// </summary>
-        public virtual void removeItem(DBAbstractObject item) { _Strategy.RemoveItemFromDB(item); }
+        public void removeItem(DBAbstractObject item)
+        {
+            _Strategy.RemoveItemFromDB(item);
+            _Items.Remove(item);
+        }
         /// <summary>
-        /// заполнить по запросу
+        /// обновить элемент
         /// </summary>
-        public virtual void fillByQuery(string query) { }
-
-
+        public virtual void updateItem(DBAbstractObject item)
+        {
+            _Strategy.UpdateItemToDB(item);
+        }
     }
 }
