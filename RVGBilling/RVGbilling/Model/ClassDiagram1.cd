@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RVGbilling.Model.CallCollection">
-    <Position X="4.25" Y="3.75" Width="1.5" />
+    <Position X="4.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAQAAAAAAEAACAQAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Model\CallCollection.cs</FileName>
@@ -38,6 +38,9 @@
   </Class>
   <Class Name="RVGbilling.Model.DBAbstractCollection">
     <Position X="4.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>ABQAAAAAQDAAAAAEAACAQAAAAAABAAACAAAAAAAAAAA=</HashCode>
       <FileName>Model\DBAbstractCollection.cs</FileName>
@@ -46,7 +49,7 @@
   <Class Name="RVGbilling.Controller">
     <Position X="6.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAgAAAAAAAAAgBAAAAAAAEA=</HashCode>
       <FileName>Controller.cs</FileName>
     </TypeIdentifier>
   </Class>

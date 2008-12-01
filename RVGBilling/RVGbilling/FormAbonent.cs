@@ -10,14 +10,16 @@ namespace RVGbilling
 {
     public partial class FormAbonent : Form
     {
-        public FormAbonent()
+        Controller ctrl;
+
+        public FormAbonent(Controller ctrl)
         {
             InitializeComponent();
+            this.ctrl = ctrl;
         }
 
-        public FormAbonent(string FIO, string passport)
+        public FormAbonent(Controller ctrl, string FIO, string passport):this(ctrl)
         {
-            InitializeComponent();
             tbName.Text = FIO;
             tbPassport.Text = passport;
         }
