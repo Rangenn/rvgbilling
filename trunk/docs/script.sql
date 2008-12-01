@@ -1,6 +1,6 @@
 /*
 Created		23.09.2008
-Modified		29.11.2008
+Modified		01.12.2008
 Project		
 Model			
 Company		
@@ -38,15 +38,15 @@ Database		PostgreSQL 8.1
 
 
 /* Drop Tables */
-Drop table "private_abonents" Restrict;
-Drop table "corporate_abonents" Restrict;
-Drop table "bills" Restrict;
-Drop table "numbers" Restrict;
-Drop table "users" Restrict;
-Drop table "calls" Restrict;
-Drop table "rates" Restrict;
-Drop table "prices" Restrict;
-Drop table "abonents" Restrict;
+Drop table "private_abonents" CASCADE;
+Drop table "corporate_abonents" CASCADE;
+Drop table "bills" CASCADE;
+Drop table "numbers" CASCADE;
+Drop table "users" CASCADE;
+Drop table "calls" CASCADE;
+Drop table "rates" CASCADE;
+Drop table "prices" CASCADE;
+Drop table "abonents" CASCADE;
 
 
 
@@ -60,7 +60,6 @@ Drop table "abonents" Restrict;
 Create table "abonents"
 (
 	"abonent_id" Serial NOT NULL,
-	"abonent_type" Integer,
 	"address" Varchar(100),
 	"phone" Varchar(13),
 	"reg_time" Timestamp,
@@ -133,19 +132,14 @@ Create table "bills"
 
 Create table "corporate_abonents"
 (
-	"corporate_id" Serial NOT NULL,
-	"abonent_id" Integer NOT NULL,
-	"company_name" Varchar(100),
-	"account" Varchar(20),
-	"bank_name" Varchar(100),
- primary key ("corporate_id","abonent_id")
-) Without Oids;
+	"corporate_name" Varchar(100) NOT NULL,
+	primary key ("abonent_id")
+) Inherits ("abonents")
+ Without Oids;
 
 
 Create table "private_abonents"
 (
-	"private_id" Serial NOT NULL,
-	"abonent_id" Integer NOT NULL,
 	"surname" Varchar(30),
 	"name" Varchar(30),
 	"patronymic" Varchar(30),
@@ -153,8 +147,9 @@ Create table "private_abonents"
 	"passport_date" Timestamp,
 	"passport_department" Varchar(100),
 	"birth_date" Timestamp,
- primary key ("private_id","abonent_id")
-) Without Oids;
+	primary key ("abonent_id")
+) Inherits ("abonents")
+ Without Oids;
 
 
 
@@ -174,10 +169,6 @@ Create table "private_abonents"
 Alter table "numbers" add  foreign key ("abonent_id") references "abonents" ("abonent_id") on update restrict on delete restrict;
 
 Alter table "bills" add  foreign key ("abonent_id") references "abonents" ("abonent_id") on update restrict on delete restrict;
-
-Alter table "corporate_abonents" add  foreign key ("abonent_id") references "abonents" ("abonent_id") on update restrict on delete restrict;
-
-Alter table "private_abonents" add  foreign key ("abonent_id") references "abonents" ("abonent_id") on update restrict on delete restrict;
 
 Alter table "numbers" add  foreign key ("rate_id") references "rates" ("rate_id") on update restrict on delete restrict;
 
