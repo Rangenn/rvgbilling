@@ -6,45 +6,33 @@ namespace RVGbilling.Model
 {
     class CallCollection : DBAbstractCollection
     {
+
         /// <summary>
         /// конструктор по умолчанию
         /// </summary>
         public CallCollection()
+            : base()
         {
-            throw new System.NotImplementedException();
-        }
-        #region IObjectCollection Members
-
-
-        public override DBAbstractObject getAt(int index)
-        {
-            throw new NotImplementedException();
+            
         }
 
-        public override DBAbstractObject getItem(int id)
+        public CallCollection(List<DBAbstractObject> list, IDBStrategy strategy)
+            : base(list, strategy)
         {
-            throw new NotImplementedException();
+
         }
 
-        public override void addItem(DBAbstractObject item)
-        {
-            base.addItem(item);
-            throw new NotImplementedException();
-        }
+        #region DBAbstractCollection Members
 
         public override void updateItem(DBAbstractObject item)
         {
-            throw new NotImplementedException();
-        }
-
-        public override void removeItem(DBAbstractObject item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void fillByQuery(string query)
-        {
-            throw new NotImplementedException();
+            base.updateItem(item);
+            Call call = ((Call)getItem(item.getId()));
+            Call tmp = (Call)item;
+            call.setCost(tmp.getCost());
+            call.setDuration(tmp.getDuration());
+            call.setNumberToCall(tmp.getNumberToCall());
+            call.setStartTime(tmp.getStartTime());
         }
 
         #endregion
