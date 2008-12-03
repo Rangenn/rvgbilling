@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-using System.Data.SqlClient;
-
+using Npgsql;
 
 namespace RVGbilling.Model
 {
     public class CallStrategy : IDBStrategy
     {
-        private SqlConnection _Connection;
+        private NpgsqlConnection _Connection;
         string query = "select * from calls where ";
 
         /// <summary>
@@ -21,14 +20,29 @@ namespace RVGbilling.Model
         }
 
 
-        public void setConnection(SqlConnection conn) { }
+        public void setConnection(NpgsqlConnection conn) { }
 
         public List<DBAbstractObject> getFromDB(string query) { return null; }
 
-        public void AddItemToDB(DBAbstractObject item) { }
+        public int addItemToDB(DBAbstractObject item) { return -1; }
 
-        public void UpdateItemToDB(DBAbstractObject item) { }
+        public void updateItemToDB(DBAbstractObject item) { }
 
-        public void RemoveItemFromDB(DBAbstractObject item) { }
+        public void removeItemFromDB(DBAbstractObject item) { }
+        //Model.DBConnector dbc= new Model.DBConnector();
+        //    Npgsql.NpgsqlConnection conn = dbc.getConnection();
+        //    conn.Open();
+        //    Npgsql.NpgsqlCommand command = conn.CreateCommand();
+        //    command.CommandText = "select count(*) from customers";
+        //    Npgsql.NpgsqlDataReader dr = command.ExecuteReader();
+        //    while (dr.Read())
+        //    {
+        //        for (int i = 0; i < dr.FieldCount; i++)
+        //        {
+        //            label6.Text = dr[i].ToString(); //.Write("{0} \t", dr[i]);
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //    conn.Close();
     }
 }

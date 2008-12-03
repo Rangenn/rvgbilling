@@ -69,16 +69,28 @@ namespace RVGbilling.Model
             //IDBObject res = null;
             foreach (DBAbstractObject i in _Items)
             {
-                if (i.getId() == id) return i;
+                if (i.Id == id) return i;
             }
             return null;
-        }     
+        }
+        /// <summary>
+        /// проверить элемент на вхождение в коллекцию
+        /// </summary>
+        public bool containsItem(DBAbstractObject item)
+        {
+            foreach (DBAbstractObject i in _Items)
+            {
+                if (i.Equals(item)) return true;
+            }
+            return false;
+        }
         /// <summary>
         /// добавить элемент в коллекцию
         /// </summary>
         public void addItem(DBAbstractObject item)
         {
-            _Strategy.AddItemToDB(item);
+            if (containsItem(item)) return;
+            item.Id =_Strategy.addItemToDB(item);//получаем id, сгенерированный СУБД при добавлении записи
             //if no exception
             _Items.Add(item);
         }
@@ -87,7 +99,8 @@ namespace RVGbilling.Model
         /// </summary>
         public void removeItem(DBAbstractObject item)
         {
-            _Strategy.RemoveItemFromDB(item);
+            if (!containsItem(item)) return;
+            _Strategy.removeItemFromDB(item);
             _Items.Remove(item);
         }
         /// <summary>
@@ -95,7 +108,8 @@ namespace RVGbilling.Model
         /// </summary>
         public virtual void updateItem(DBAbstractObject item)
         {
-            _Strategy.UpdateItemToDB(item);
+            if (!containsItem(item)) return;
+            _Strategy.updateItemToDB(item);
         }
     }
 }

@@ -12,10 +12,13 @@ namespace RVGbilling
         [STAThread]
         static void Main()
         {
+            logger.log("-");
+            logger.log("Application started.");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Controller ctrl = new Controller();
             Application.Run(ctrl.fmMain);
+            logger.log("Application closed.");
         }
     }
 }

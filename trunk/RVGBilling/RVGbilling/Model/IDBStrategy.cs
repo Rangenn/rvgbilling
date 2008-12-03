@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-using System.Data.SqlClient;
+using Npgsql;
 
 namespace RVGbilling.Model
 {
@@ -15,7 +15,7 @@ namespace RVGbilling.Model
         /// Установить ссылку на подключение к БД
         /// </summary>
         /// <param name="conn">Connection</param>
-        void setConnection(SqlConnection conn);
+        void setConnection(NpgsqlConnection conn);
         /// <summary>
         /// Получить из БД массив данных
         /// </summary>
@@ -26,17 +26,17 @@ namespace RVGbilling.Model
         /// Добавить элемент в таблицу БД
         /// </summary>
         /// <param name="item">элемент</param>
-        void AddItemToDB(DBAbstractObject item);
+        int addItemToDB(DBAbstractObject item);
         /// <summary>
         /// Обновить элемент в таблице БД
         /// </summary>
         /// <param name="item">элемент</param>
-        void UpdateItemToDB(DBAbstractObject item);
+        void updateItemToDB(DBAbstractObject item);
         /// <summary>
         /// Удалить элемент из таблицы БД
         /// </summary>
         /// <param name="item">элемент</param>
-        void RemoveItemFromDB(DBAbstractObject item);
+        void removeItemFromDB(DBAbstractObject item);
         
 
     }

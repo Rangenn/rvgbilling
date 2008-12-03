@@ -10,8 +10,10 @@ namespace RVGbilling
 
         public Controller()
         {
+            logger.log("Creating Controller...");
             formMain = new FormMain(this);
             formMain.Show();
+            logger.log("Controller Created.");
         }
 
         public void AddPerson(string name, string passport, string phone)

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using RVGbilling.Model;
 
 namespace RVGbilling
 {
@@ -16,6 +17,17 @@ namespace RVGbilling
         {
             InitializeComponent();
             this.ctrl = ctrl;
+            DBConnector db = new DBConnector();
+            AbonentStrategy str = new AbonentStrategy(db.getConnection());
+            AbonentCollection col = new AbonentCollection(str.getFromDB(""), str);
+            //col.setStrategy(str);
+
+            Abonent buf = new Abonent(-1, "adding works", "qqq", "qqq", DateTime.Now, DateTime.Now, 123);
+            col.addItem(buf);
+            buf.MailAddress = "update works!";
+            col.updateItem(buf);
+            //str.removeItemFromDB(new Abonent(59));
+
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)

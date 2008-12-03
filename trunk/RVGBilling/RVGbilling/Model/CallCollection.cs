@@ -27,7 +27,7 @@ namespace RVGbilling.Model
         public override void updateItem(DBAbstractObject item)
         {
             base.updateItem(item);
-            Call call = ((Call)getItem(item.getId()));
+            Call call = ((Call)getItem(item.Id));
             Call tmp = (Call)item;
             call.setCost(tmp.getCost());
             call.setDuration(tmp.getDuration());
