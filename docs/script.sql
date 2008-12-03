@@ -1,6 +1,6 @@
 /*
 Created		23.09.2008
-Modified		01.12.2008
+Modified		03.12.2008
 Project		
 Model			
 Company		
@@ -38,15 +38,15 @@ Database		PostgreSQL 8.1
 
 
 /* Drop Tables */
-Drop table "private_abonents" CASCADE;
-Drop table "corporate_abonents" CASCADE;
-Drop table "bills" CASCADE;
-Drop table "numbers" CASCADE;
-Drop table "users" CASCADE;
-Drop table "calls" CASCADE;
-Drop table "rates" CASCADE;
-Drop table "prices" CASCADE;
-Drop table "abonents" CASCADE;
+Drop table "private_abonents" Restrict;
+Drop table "corporate_abonents" Restrict;
+Drop table "bills" Restrict;
+Drop table "numbers" Restrict;
+Drop table "users" Restrict;
+Drop table "calls" Restrict;
+Drop table "rates" Restrict;
+Drop table "prices" Restrict;
+Drop table "abonents" Restrict;
 
 
 
@@ -63,7 +63,7 @@ Create table "abonents"
 	"address" Varchar(100),
 	"phone" Varchar(13),
 	"reg_time" Timestamp,
-	"balance" Real,
+	"balance" Numeric(30,6),
 	"last_pay_date" Timestamp,
 	"mail_address" Varchar(30),
  primary key ("abonent_id")
@@ -74,7 +74,7 @@ Create table "prices"
 (
 	"price_id" Serial NOT NULL,
 	"rate_id" Integer NOT NULL,
-	"cost_per_minute" Real,
+	"cost_per_minute" Numeric(30,6) NOT NULL,
 	"mask" Varchar(10),
  primary key ("price_id")
 ) Without Oids;
@@ -83,7 +83,7 @@ Create table "prices"
 Create table "rates"
 (
 	"rate_id" Serial NOT NULL,
-	"name" Varchar(100),
+	"name" Varchar(100) NOT NULL,
  primary key ("rate_id")
 ) Without Oids;
 
@@ -91,11 +91,11 @@ Create table "rates"
 Create table "calls"
 (
 	"call_id" Serial NOT NULL,
-	"calling_number" Varchar(20),
-	"start_time" Timestamp,
-	"duration" Interval,
+	"calling_number" Varchar(20) NOT NULL,
+	"start_time" Timestamp NOT NULL,
+	"duration" Interval NOT NULL,
 	"number_id" Integer NOT NULL,
-	"cost" Real,
+	"cost" Numeric(30,6),
  primary key ("call_id")
 ) Without Oids;
 
@@ -103,8 +103,8 @@ Create table "calls"
 Create table "users"
 (
 	"user_id" Serial NOT NULL,
-	"login" Varchar(20),
-	"pass" Varchar(20),
+	"login" Varchar(20) NOT NULL,
+	"pass" Varchar(20) NOT NULL,
 	"rights" Integer,
  primary key ("user_id")
 ) Without Oids;
@@ -124,7 +124,7 @@ Create table "bills"
 (
 	"bill_id" Serial NOT NULL,
 	"abonent_id" Integer NOT NULL,
-	"money" Real,
+	"money" Numeric(30,6) NOT NULL,
 	"bill_date" Timestamp,
  primary key ("bill_id")
 ) Without Oids;
@@ -132,22 +132,20 @@ Create table "bills"
 
 Create table "corporate_abonents"
 (
-	"corporate_name" Varchar(100) NOT NULL,
-	primary key ("abonent_id")
+	"corporate_name" Varchar(100) NOT NULL
 ) Inherits ("abonents")
  Without Oids;
 
 
 Create table "private_abonents"
 (
-	"surname" Varchar(30),
-	"name" Varchar(30),
-	"patronymic" Varchar(30),
+	"surname" Varchar(30) NOT NULL,
+	"name" Varchar(30) NOT NULL,
+	"patronymic" Varchar(30) NOT NULL,
 	"passport_series" Varchar(10),
 	"passport_date" Timestamp,
 	"passport_department" Varchar(100),
-	"birth_date" Timestamp,
-	primary key ("abonent_id")
+	"birth_date" Timestamp
 ) Inherits ("abonents")
  Without Oids;
 

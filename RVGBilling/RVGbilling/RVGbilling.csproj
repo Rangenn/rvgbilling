@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.0.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Npgsql.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -64,9 +72,16 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="logger.cs" />
+    <Compile Include="Model\Abonent.cs" />
+    <Compile Include="Model\AbonentCollection.cs" />
+    <Compile Include="Model\AbonentStrategy.cs" />
     <Compile Include="Model\Call.cs" />
     <Compile Include="Model\CallCollection.cs" />
     <Compile Include="Model\CallStrategy.cs" />
+    <Compile Include="Model\CorporateAbonent.cs" />
+    <Compile Include="Model\CorporateAbonentCollection.cs" />
+    <Compile Include="Model\CorporateAbonentStrategy.cs" />
     <Compile Include="Model\DBConnector.cs" />
     <Compile Include="Model\DBAbstractObject.cs" />
     <Compile Include="Model\IDBStrategy.cs" />

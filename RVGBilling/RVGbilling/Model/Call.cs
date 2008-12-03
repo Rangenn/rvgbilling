@@ -58,10 +58,10 @@ namespace RVGbilling.Model
         public Call(Call call)
             : base(call)
         {
-            NumberToCall = call.NumberToCall;
-            StartTime = call.StartTime;
-            Duration = call.Duration;
-            Cost = call.Cost;
+            _NumberToCall = call.getNumberToCall();
+            _StartTime = call.getStartTime();
+            _Duration = call.getDuration();
+            _Cost = call.getCost();
         }
     }
 }

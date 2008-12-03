@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-using System.Data.SqlClient;
+using Npgsql;
 
 namespace RVGbilling.Model
 {
     class DBConnector
     {
-        private SqlConnection _Connection;
-
+        private NpgsqlConnection _Connection;
+        
         /// <summary>
         /// конструктор по умолчанию
         /// </summary>
@@ -22,22 +22,41 @@ namespace RVGbilling.Model
         /// </summary>
         void EstablishConnection()
         {
-            SqlConnectionStringBuilder sb = new SqlConnectionStringBuilder();
-            sb["User ID"] = "root";
-            sb["Password"] = "postgre";
-            sb["server"] = "localhost";
-            _Connection = new SqlConnection(sb.ConnectionString);
+            NpgsqlConnectionStringBuilder sb = new NpgsqlConnectionStringBuilder();
+            sb["User ID"] = "postgres";
+            sb["Password"] = "root";
+            sb["Server"] = "localhost";
+            sb["Database"] = "billing";
+            _Connection = new NpgsqlConnection(sb.ConnectionString);
         }
 
         /// <summary>
         /// получить ссылку на Connection
         /// </summary>
-        public SqlConnection getConnection()
+        public NpgsqlConnection getConnection()
         {
             if (_Connection == null)
                 EstablishConnection();// throw new Exception("Emana! кто закрыл connection???");
             return _Connection;
         }
-        
+
+        /// <summary>
+        /// ExecuteNonQuery command. not tested!
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="command"></param>
+        public void executeCommand(NpgsqlCommand command)
+        {
+            try
+            {
+                if (_Connection.State == ConnectionState.Closed) _Connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (NpgsqlException ex) { logger.log(ex.ToString()); }
+            finally
+            {
+                _Connection.Close();
+            }
+        }
     }
 }
