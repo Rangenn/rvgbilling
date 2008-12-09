@@ -9,18 +9,18 @@ namespace RVGbilling.Model
         public CorporateAbonentCollection()
             : base()
         {
-            
+            Strategy = new CorporateAbonentStrategy();
         }
 
-        public CorporateAbonentCollection(List<DBAbstractObject> list, IDBStrategy strategy)
-            : base(list, strategy)
+        public CorporateAbonentCollection(List<DBAbstractObject> list)
+            : base(list)
         {
-            CorporateAbonentStrategy test = (CorporateAbonentStrategy)strategy;//проверка типов
+            Strategy = new CorporateAbonentStrategy();
         }
 
         public override void updateItem(DBAbstractObject item)
         {
-            this.getStrategy().updateItemToDB(item);
+            this.Strategy.updateItemToDB(item);
             CorporateAbonent buf = (CorporateAbonent)this.getItem(item.Id);
             CorporateAbonent obj = (CorporateAbonent)item;
             buf.Address = obj.Address;

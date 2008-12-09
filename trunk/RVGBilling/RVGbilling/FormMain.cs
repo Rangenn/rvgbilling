@@ -17,9 +17,11 @@ namespace RVGbilling
         {
             InitializeComponent();
             this.ctrl = ctrl;
+            //-------это просто тестовые строки-----------------------------------------------
             DBConnector db = new DBConnector();
-            AbonentStrategy str = new AbonentStrategy(db.getConnection());
-            AbonentCollection col = new AbonentCollection(str.getFromDB(""), str);
+            //AbonentStrategy str = new AbonentStrategy(db.getConnection());
+            AbonentCollection col = new AbonentCollection();
+            col.Strategy.getFromDB("");
             //col.setStrategy(str);
 
             Abonent buf = new Abonent(-1, "adding works", "qqq", "qqq", DateTime.Now, DateTime.Now, 123);
@@ -27,6 +29,7 @@ namespace RVGbilling
             buf.MailAddress = "update works!";
             col.updateItem(buf);
             //str.removeItemFromDB(new Abonent(59));
+            //--------------------------------------------------------------------------------
 
         }
 

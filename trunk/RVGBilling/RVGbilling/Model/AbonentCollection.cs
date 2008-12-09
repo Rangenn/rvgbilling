@@ -11,26 +11,18 @@ namespace RVGbilling.Model
         public AbonentCollection()
             : base()
         {
-            
+            Strategy = new AbonentStrategy();
         }
 
-        public AbonentCollection(List<DBAbstractObject> list, IDBStrategy strategy)
-            : base(list, strategy)
+        public AbonentCollection(List<DBAbstractObject> list)
+            : base(list)
         {
-            //try
-            //{
-                AbonentStrategy test = (AbonentStrategy)strategy;//проверка типов
-            //}
-            //catch (InvalidCastException ex)
-            //{
-            //    logger.log(ex.ToString());
-                
-            //}
+            Strategy = new AbonentStrategy();
         }
 
         public override void updateItem(DBAbstractObject item)
         {
-            this.getStrategy().updateItemToDB(item);
+            this.Strategy.updateItemToDB(item);
             Abonent buf = (Abonent) this.getItem(item.Id);
             Abonent obj = (Abonent)item;
             buf.Address = obj.Address;

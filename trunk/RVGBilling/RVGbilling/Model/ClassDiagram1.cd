@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="RVGbilling.Model.Call">
-    <Position X="0.5" Y="3.25" Width="1.5" />
+  <Class Name="RVGbilling.Model.Call" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAEkEJAAAIAAAAAAAAAAAIAACAAACAAAAAAAAAAA=</HashCode>
       <FileName>Model\Call.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RVGbilling.Model.CallCollection">
-    <Position X="4.25" Y="3.75" Width="1.5" />
+    <Position X="6" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\CallCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RVGbilling.Model.CallStrategy" BaseTypeListCollapsed="true">
-    <Position X="2.5" Y="3.25" Width="1.5" />
+    <Position X="4" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAACAAAEgAAAAQABAAAAIAAAAAQA=</HashCode>
       <FileName>Model\CallStrategy.cs</FileName>
@@ -23,7 +23,7 @@
     <Lollipop Position="0.231" />
   </Class>
   <Class Name="RVGbilling.Model.DBConnector">
-    <Position X="8" Y="0.5" Width="1.5" />
+    <Position X="9.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAACAAAA=</HashCode>
       <FileName>Model\DBConnector.cs</FileName>
@@ -32,12 +32,12 @@
   <Class Name="RVGbilling.Model.DBAbstractObject">
     <Position X="0.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\DBAbstractObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RVGbilling.Model.DBAbstractCollection">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Position X="6.25" Y="0.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -47,23 +47,23 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RVGbilling.Controller">
-    <Position X="8" Y="2.75" Width="1.5" />
+    <Position X="9.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAgAAAAAAAEAAAAIAAAAgAAAAAAAAggBAAAAAAAEA=</HashCode>
       <FileName>Controller.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RVGbilling.Model.AbonentCollection">
-    <Position X="6" Y="3.75" Width="1.5" />
+    <Position X="6" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\AbonentCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RVGbilling.Model.AbonentStrategy">
-    <Position X="2.5" Y="6.25" Width="1.5" />
+    <Position X="4" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAACAAAEgAAAAQABAAAAAAAAAAQA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAEAAQGAAAEgAEAAQABEAAAAAAAAAQA=</HashCode>
       <FileName>Model\AbonentStrategy.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -89,22 +89,131 @@
       <FileName>Model\CorporateAbonent.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RVGbilling.Model.CorporateAbonentCollection" Collapsed="true">
-    <Position X="5.5" Y="6.25" Width="2.5" />
+  <Class Name="RVGbilling.Model.CorporateAbonentCollection">
+    <Position X="6" Y="7" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\CorporateAbonentCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RVGbilling.Model.CorporateAbonentStrategy">
-    <Position X="2.5" Y="9" Width="2.25" />
+    <Position X="3" Y="11" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAEAAQEAAAAAAEAAAAAEAAAAAAAAAAA=</HashCode>
       <FileName>Model\CorporateAbonentStrategy.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="RVGbilling.Model.PrivateAbonentStrategy">
+    <Position X="3.25" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PrivateAbonentStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGbilling.Model.PrivateAbonentCollection">
+    <Position X="6" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PrivateAbonentCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGbilling.Model.PrivateAbonent" Collapsed="true">
+    <Position X="0.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PrivateAbonent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGbilling.Model.BillStrategy">
+    <Position X="2.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAEgAAAAAABAAAAAAAAAAQA=</HashCode>
+      <FileName>Model\BillStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RVGbilling.Model.NumberStrategy">
+    <Position X="2.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAEgAAAAAABAAAAAAAAAAQA=</HashCode>
+      <FileName>Model\NumberStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RVGbilling.Model.PriceStrategy">
+    <Position X="2.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAEgAAAAAABAAAAAAAAAAQA=</HashCode>
+      <FileName>Model\PriceStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RVGbilling.Model.RateStrategy">
+    <Position X="2.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAEgAAAAAABAAAAAAAAAAQA=</HashCode>
+      <FileName>Model\RateStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RVGbilling.Model.RateCollection" Collapsed="true">
+    <Position X="7.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\RateCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGbilling.Model.BillCollection" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\BillCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGbilling.Model.NumberCollection" Collapsed="true">
+    <Position X="7.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\NumberCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGbilling.Model.PriceCollection" Collapsed="true">
+    <Position X="7.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PriceCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGbilling.Model.Rate" Collapsed="true">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Rate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGbilling.Model.Price" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Price.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGbilling.Model.Number" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Number.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGbilling.Model.Bill" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Bill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="RVGbilling.Model.IDBStrategy">
-    <Position X="2.5" Y="0.5" Width="1.5" />
+    <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAACAAAEgAAAAAABAAAAAAAAAAQA=</HashCode>
       <FileName>Model\IDBStrategy.cs</FileName>

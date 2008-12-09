@@ -13,26 +13,26 @@ namespace RVGbilling.Model
         public CallCollection()
             : base()
         {
-            
+            Strategy = new CallStrategy();
         }
 
-        public CallCollection(List<DBAbstractObject> list, IDBStrategy strategy)
-            : base(list, strategy)
+        public CallCollection(List<DBAbstractObject> list)
+            : base(list)
         {
-
+            Strategy = new CallStrategy();
         }
 
         #region DBAbstractCollection Members
 
         public override void updateItem(DBAbstractObject item)
         {
-            base.updateItem(item);
+            this.Strategy.updateItemToDB(item);
             Call call = ((Call)getItem(item.Id));
             Call tmp = (Call)item;
-            call.setCost(tmp.getCost());
-            call.setDuration(tmp.getDuration());
-            call.setNumberToCall(tmp.getNumberToCall());
-            call.setStartTime(tmp.getStartTime());
+            call.Cost = tmp.Cost;
+            call.Duration = tmp.Duration;
+            call.NumberToCall = tmp.NumberToCall;
+            call.StartTime = tmp.StartTime;
         }
 
         #endregion
