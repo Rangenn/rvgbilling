@@ -30,11 +30,58 @@ namespace RVGbilling.Model
             _Connection = conn;
         }
 
+
+        protected virtual void formCommandVals(Abonent buf, NpgsqlCommand command)
+        {
+            command.Parameters[0].Value = buf.Address;
+            command.Parameters[1].Value = buf.Phone;
+            command.Parameters[2].Value = buf.MailAddress;
+            command.Parameters[3].Value = buf.RegTime;
+            command.Parameters[4].Value = buf.LastPayDate;
+            command.Parameters[5].Value = buf.Balance;
+        }
+
+        protected virtual void formCommandParams(NpgsqlCommand command)
+        {
+            command.Parameters.Add(new NpgsqlParameter("1", NpgsqlDbType.Varchar));
+            command.Parameters.Add(new NpgsqlParameter("2", NpgsqlDbType.Varchar));
+            command.Parameters.Add(new NpgsqlParameter("3", NpgsqlDbType.Varchar));
+            command.Parameters.Add(new NpgsqlParameter("4", NpgsqlDbType.Timestamp));
+            command.Parameters.Add(new NpgsqlParameter("5", NpgsqlDbType.Timestamp));
+            command.Parameters.Add(new NpgsqlParameter("6", NpgsqlDbType.Numeric));
+        }
+
+        protected virtual string InsertQueryString
+        {
+            get
+            {
+                return "INSERT INTO abonents (address, phone, mail_address, reg_time, last_pay_date, balance) "
+                  + "VALUES (:1,:2,:3,:4,:5,:6)";
+            }
+        }
+        protected virtual string UpdateQueryString
+        {
+            get
+            {
+                return "UPDATE abonents SET address = :1, phone = :2, mail_address = :3, reg_time = :4, last_pay_date = :5, balance = :6 "
+                    + "WHERE abonent_id = :id";
+            }
+        }
+        protected virtual string DeleteQueryString
+        {
+            get
+            {
+                return "DELETE FROM abonents "
+                    + "WHERE abonent_id = :id";
+            }
+        }
+
+
         public List<DBAbstractObject> getFromDB(string query)
         {
             List<DBAbstractObject> res = new List<DBAbstractObject>();
             DBConnector dbc = new DBConnector();
-            NpgsqlConnection conn = dbc.getConnection();
+            NpgsqlConnection conn = dbc.Connection;
             try
             {                
                 conn.Open();
@@ -63,32 +110,17 @@ namespace RVGbilling.Model
 
         public int addItemToDB(DBAbstractObject item)
         {
-            Abonent buf = (Abonent)item;
+            //Abonent buf = (Abonent)item;
             DBConnector dbc = new DBConnector();
-            NpgsqlConnection conn = dbc.getConnection();
+            NpgsqlConnection conn = dbc.Connection;
             try
             {
                 conn.Open();
                 NpgsqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO abonents (address, phone, mail_address, reg_time, last_pay_date, balance) "
-                    + "VALUES (:1,:2,:3,:4,:5,:6)";
-
-                command.Parameters.Add(new NpgsqlParameter("1", NpgsqlDbType.Varchar));
-                command.Parameters.Add(new NpgsqlParameter("2", NpgsqlDbType.Varchar));
-                command.Parameters.Add(new NpgsqlParameter("3", NpgsqlDbType.Varchar));
-                command.Parameters.Add(new NpgsqlParameter("4", NpgsqlDbType.Timestamp));
-                command.Parameters.Add(new NpgsqlParameter("5", NpgsqlDbType.Timestamp));
-                command.Parameters.Add(new NpgsqlParameter("6", NpgsqlDbType.Numeric));
-
+                command.CommandText = InsertQueryString;
+                formCommandParams(command);
                 command.Prepare();
-
-                command.Parameters[0].Value = buf.Address;
-                command.Parameters[1].Value = buf.Phone;
-                command.Parameters[2].Value = buf.MailAddress;
-                command.Parameters[3].Value = buf.RegTime;
-                command.Parameters[4].Value = buf.LastPayDate;
-                command.Parameters[5].Value = buf.Balance;
-
+                formCommandVals((Abonent)item, command);
                 command.ExecuteNonQuery();
                 
                 NpgsqlCommand command2 = conn.CreateCommand();
@@ -112,33 +144,23 @@ namespace RVGbilling.Model
 
         public void updateItemToDB(DBAbstractObject item)
         {
-            Abonent buf = (Abonent)item;
+            //Abonent buf = (Abonent)item;
             DBConnector dbc = new DBConnector();
-            NpgsqlConnection conn = dbc.getConnection();
+            NpgsqlConnection conn = dbc.Connection;
             try
             {
                 conn.Open();
                 NpgsqlCommand command = conn.CreateCommand();
-                command.CommandText = "UPDATE abonents SET address = :1, phone = :2, mail_address = :3, reg_time = :4, last_pay_date = :5, balance = :6 "
-                    + "WHERE abonent_id = :7";
+                command.CommandText = UpdateQueryString;
 
-                command.Parameters.Add(new NpgsqlParameter("1", NpgsqlDbType.Varchar));
-                command.Parameters.Add(new NpgsqlParameter("2", NpgsqlDbType.Varchar));
-                command.Parameters.Add(new NpgsqlParameter("3", NpgsqlDbType.Varchar));
-                command.Parameters.Add(new NpgsqlParameter("4", NpgsqlDbType.Timestamp));
-                command.Parameters.Add(new NpgsqlParameter("5", NpgsqlDbType.Timestamp));
-                command.Parameters.Add(new NpgsqlParameter("6", NpgsqlDbType.Numeric));
-                command.Parameters.Add(new NpgsqlParameter("7", NpgsqlDbType.Integer));
+                formCommandParams(command);
+                command.Parameters.Add(new NpgsqlParameter("id", NpgsqlDbType.Integer));
 
                 command.Prepare();
 
-                command.Parameters[0].Value = buf.Address;
-                command.Parameters[1].Value = buf.Phone;
-                command.Parameters[2].Value = buf.MailAddress;
-                command.Parameters[3].Value = buf.RegTime;
-                command.Parameters[4].Value = buf.LastPayDate;
-                command.Parameters[5].Value = buf.Balance;
-                command.Parameters[6].Value = buf.Id;
+                formCommandVals((Abonent)item, command);
+                command.Parameters["id"].Value = item.Id;
+
                 command.ExecuteNonQuery();
             }
             catch (NpgsqlException ex) { logger.log(ex.ToString()); }
@@ -152,19 +174,18 @@ namespace RVGbilling.Model
         {
             Abonent buf = (Abonent)item;//проверка типов
             DBConnector dbc = new DBConnector();
-            NpgsqlConnection conn = dbc.getConnection();
+            NpgsqlConnection conn = dbc.Connection;
             try
             {
                 conn.Open();
                 NpgsqlCommand command = conn.CreateCommand();
-                command.CommandText = "DELETE FROM abonents "
-                    + "WHERE abonent_id = :1";
+                command.CommandText = DeleteQueryString;
  
-                command.Parameters.Add(new NpgsqlParameter("1", NpgsqlDbType.Integer));
+                command.Parameters.Add(new NpgsqlParameter("id", NpgsqlDbType.Integer));
 
                 command.Prepare();
 
-                command.Parameters[0].Value = item.Id;
+                command.Parameters["id"].Value = item.Id;
 
                 command.ExecuteNonQuery();
             }

@@ -27,10 +27,10 @@ namespace RVGbilling.Model
         /// </summary>
         /// <param name="list"></param>
         /// <param name="strategy"></param>
-        public DBAbstractCollection(List<DBAbstractObject> list, IDBStrategy strategy)
+        public DBAbstractCollection(List<DBAbstractObject> list)
         {
             _Items = new List<DBAbstractObject>(list);
-            setStrategy(strategy);
+            //setStrategy(strategy);
         }
         /// <summary>
         /// заполнить по запросу
@@ -40,20 +40,14 @@ namespace RVGbilling.Model
             _Items = _Strategy.getFromDB(query);
         }
         /// <summary>
-        /// получить ссылку на стратегию
+        /// Стратегия
         /// </summary>
-        public IDBStrategy getStrategy()
+        public IDBStrategy Strategy
         {
-            return _Strategy; 
+            get { return _Strategy; }
+            set { _Strategy = value; }
         }
-        /// <summary>
-        /// Установить стратегию
-        /// </summary>
-        /// <param name="strategy"></param>
-        public void setStrategy(IDBStrategy strategy) 
-        {
-            _Strategy = strategy;
-        }
+
         /// <summary>
         /// получить элемент по индексу
         /// </summary>

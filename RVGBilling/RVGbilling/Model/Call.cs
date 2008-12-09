@@ -16,38 +16,30 @@ namespace RVGbilling.Model
         #endregion
 
         #region <props>
-        public string getNumberToCall()
+        public string NumberToCall
         {
-            return _NumberToCall;
+            get { return _NumberToCall; }
+            set { _NumberToCall = value; }
         }
-        public void setNumberToCall(string value)
+        
+        public DateTime StartTime
         {
-            _NumberToCall = value; 
+            get { return _StartTime; }
+            set { _StartTime = value; }
         }
-        public DateTime getStartTime()
+
+        public TimeSpan Duration
         {
-            return _StartTime;
+            get { return _Duration; }
+            set { _Duration = value; }
         }
-        public void setStartTime(DateTime value)
+
+        public double Cost
         {
-             _StartTime = value; 
+            get { return _Cost; }
+            set { _Cost = value; }
         }
-        public TimeSpan getDuration()
-        {
-            return _Duration;
-        }
-        public void setDuration(TimeSpan value)
-        {
-            _Duration = value;
-        }
-        public double getCost()
-        {
-            return _Cost;
-        }
-        public void setCost(double value)
-        {
-            _Cost = value;
-        }
+
         #endregion
 
         public Call(int id) : base(id)
@@ -58,10 +50,10 @@ namespace RVGbilling.Model
         public Call(Call call)
             : base(call)
         {
-            _NumberToCall = call.getNumberToCall();
-            _StartTime = call.getStartTime();
-            _Duration = call.getDuration();
-            _Cost = call.getCost();
+            _NumberToCall = call.NumberToCall;
+            _StartTime = call.StartTime;
+            _Duration = call.Duration;
+            _Cost = call.Cost;
         }
     }
 }

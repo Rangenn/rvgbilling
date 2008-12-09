@@ -33,11 +33,14 @@ namespace RVGbilling.Model
         /// <summary>
         /// получить ссылку на Connection
         /// </summary>
-        public NpgsqlConnection getConnection()
+        public NpgsqlConnection Connection
         {
-            if (_Connection == null)
-                EstablishConnection();// throw new Exception("Emana! кто закрыл connection???");
-            return _Connection;
+            get
+            {
+                if (_Connection == null)
+                    EstablishConnection();// throw new Exception("Emana! кто закрыл connection???");
+                return _Connection;
+            }
         }
 
         /// <summary>
