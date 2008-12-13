@@ -58,10 +58,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Abonent.cs" />
+    <Compile Include="Domain\CorporateAbonent.cs" />
     <Compile Include="Domain\Number.cs" />
+    <Compile Include="Domain\PrivateAbonent.cs" />
     <Compile Include="Domain\Rate.cs" />
     <Compile Include="Mappings\AbonentMap.cs" />
+    <Compile Include="Mappings\CorporateAbonentMap.cs" />
     <Compile Include="Mappings\NumberMap.cs" />
+    <Compile Include="Mappings\PrivateAbonentMap.cs" />
     <Compile Include="Mappings\RateMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

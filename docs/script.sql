@@ -123,7 +123,7 @@ Create table "numbers"
 Create table "bills"
 (
 	"id" Serial NOT NULL,
-	"abonent_id" Integer NOT NULL,
+	"number_id" Integer NOT NULL,
 	"money" Numeric(30,6) NOT NULL,
 	"bill_date" Timestamp,
  primary key ("id")
@@ -166,13 +166,13 @@ Create table "private_abonents"
 
 Alter table "numbers" add  foreign key ("abonent_id") references "abonents" ("id") on update restrict on delete restrict;
 
-Alter table "bills" add  foreign key ("abonent_id") references "abonents" ("id") on update restrict on delete restrict;
-
 Alter table "numbers" add  foreign key ("rate_id") references "rates" ("id") on update restrict on delete restrict;
 
 Alter table "prices" add  foreign key ("rate_id") references "rates" ("id") on update restrict on delete restrict;
 
 Alter table "calls" add  foreign key ("number_id") references "numbers" ("id") on update restrict on delete restrict;
+
+Alter table "bills" add  foreign key ("number_id") references "numbers" ("id") on update restrict on delete restrict;
 
 
 

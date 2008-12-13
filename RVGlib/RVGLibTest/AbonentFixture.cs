@@ -46,6 +46,7 @@ namespace RVGLibTest
                 balance = bal
             };
             Session.Save(Abonent);
+
             Int64 myid = 1;
             var Number = new Number { number = "111", abonent = Abonent, rate = Session.Get<Rate>(myid) };
             Abonent.Numbers.Add(Number);
@@ -58,15 +59,6 @@ namespace RVGLibTest
             Assert.AreEqual(fromDb.Numbers.Count, 1);
 
             Assert.AreEqual(fromDb.Numbers[0].Id, Number.Id);
-        }
-
-        [Test]
-        public void Can_Add_Rate_To_Database_Revisited()
-        {
-           
-            new PersistenceSpecification<Rate>(Session)
-            .CheckProperty(x => x.name, "RateName")
-            .VerifyTheMappings();
         }
     }
 }
