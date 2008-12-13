@@ -28,6 +28,7 @@ namespace RVGbilling.Model
             sb["Server"] = "localhost";
             sb["Database"] = "billing";
             _Connection = new NpgsqlConnection(sb.ConnectionString);
+            logger.log(sb.ConnectionString);
         }
 
         /// <summary>
