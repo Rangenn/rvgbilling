@@ -8,6 +8,7 @@ namespace RVGlib.Mappings
         public RateMap()
         {
             this.TableName = "rates";
+            
             Id(x => x.Id);
             Map(x => x.name).CanNotBeNull().WithLengthOf(100);
         }

@@ -12,6 +12,7 @@ namespace RVGlib.Mappings
             Map(x => x.number);
             //Map(x => x.abonent_id);
             References(x => x.rate);
+            References(x => x.abonent);
             //this.parentIsRequired = true;
         }
     }

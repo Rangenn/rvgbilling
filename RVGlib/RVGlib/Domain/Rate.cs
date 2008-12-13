@@ -9,11 +9,12 @@ namespace RVGlib.Domain
 {
     public class Rate : Entity
     {
-        private Rate() { }
+        public Rate() { }
 
         public Rate(String name)
         {
             this.name = name;
+            
         }
 
         //public virtual int rate_id { get; set; }

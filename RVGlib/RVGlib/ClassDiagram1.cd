@@ -3,24 +3,21 @@
   <Class Name="RVGlib.Domain.Abonent">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgAAAAAEAIIIIAEAAgAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAEAIAIIAEAAgAAAAAAAAAAA=</HashCode>
       <FileName>Domain\Abonent.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RVGlib.Domain.Number">
     <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAIAAACAAAAAAAAAQAAAA=</HashCode>
+      <HashCode>AAAAAEAAAAAAQAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\Number.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="RateAssociation" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="RVGlib.Domain.Rate">
     <Position X="6.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\Rate.cs</FileName>
     </TypeIdentifier>
   </Class>

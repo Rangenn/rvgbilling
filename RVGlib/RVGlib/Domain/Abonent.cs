@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using FluentNHibernate.Framework;
-using Iesi.Collections.Generic;
+//using Iesi.Collections.Generic;
 
 namespace RVGlib.Domain
 {
@@ -17,13 +17,13 @@ namespace RVGlib.Domain
         public virtual Decimal balance { get; set; }
 
         //public Number NumbersAssociation { get; set; }
-        public virtual ISet<Number> Numbers { get; private set; }
+        public virtual IList<Number> Numbers { get; private set; }
 
         //public virtual IList<Number> NumbersAssociation { get; set; }
 
         public Abonent()
         {
-            Numbers = new HashedSet<Number>();
+            Numbers = new List<Number>();
         }
     }
     
