@@ -13,12 +13,12 @@ namespace RVGLibTest
         [Test]
         public void Can_Add_Abonent_To_Database_Revisited()
         {
-            var numbers = new[]
-                {
-                    new Number { number = "333333333"},
-                    new Number { number = "444"},
-                    new Number { number = "555555"}
-                };
+            //var numbers = new[]
+            //    {
+            //        new Number { number = "333333333"},
+            //        new Number { number = "444"},
+            //        new Number { number = "555555"}
+            //    };
             Decimal bal = 0;
             //DateTime time = DateTime.Now;
             new PersistenceSpecification<Abonent>(Session)
@@ -28,7 +28,44 @@ namespace RVGLibTest
             //.CheckProperty(x => x.reg_time, time)
             //.CheckProperty(x => x.last_pay_date, time)
             .CheckProperty(x => x.balance, bal)
-            .CheckList<Number>(x => x.Numbers, numbers)
+            //.CheckList<Number>(x => x.Numbers, numbers)
+            .VerifyTheMappings();
+        }
+
+        [Test]
+        public void Can_Add_Abonent_To_Database_WithNumbers()
+        {
+            Decimal bal = 1;
+            var Abonent = new Abonent
+            {
+                address = "a",
+                phone = "p",
+                mail_address = "m",
+                reg_time = DateTime.Today,
+                last_pay_date = DateTime.Now,
+                balance = bal
+            };
+            Session.Save(Abonent);
+            Int64 myid = 1;
+            var Number = new Number { number = "111", abonent = Abonent, rate = Session.Get<Rate>(myid) };
+            Abonent.Numbers.Add(Number);
+            Session.Update(Abonent);
+            Session.Flush();
+            Session.Clear();
+
+            var fromDb = Session.Get<Abonent>(Abonent.Id);
+
+            Assert.AreEqual(fromDb.Numbers.Count, 1);
+
+            Assert.AreEqual(fromDb.Numbers[0].Id, Number.Id);
+        }
+
+        [Test]
+        public void Can_Add_Rate_To_Database_Revisited()
+        {
+           
+            new PersistenceSpecification<Rate>(Session)
+            .CheckProperty(x => x.name, "RateName")
             .VerifyTheMappings();
         }
     }

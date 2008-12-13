@@ -17,7 +17,7 @@ namespace RVGlib.Mappings
             Map(x => x.last_pay_date);
             Map(x => x.balance);
             HasMany<Number>(x => x.Numbers)
-                .AsSet()
+                .AsList()
                 .Cascade.All();
         }
     }

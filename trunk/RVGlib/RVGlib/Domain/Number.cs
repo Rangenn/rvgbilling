@@ -9,7 +9,7 @@ namespace RVGlib.Domain
 {
     public class Number : Entity
     {
-        //private Number() { }
+        public Number() { }
 
         //public Number(String number)
         //{
@@ -19,10 +19,10 @@ namespace RVGlib.Domain
 
         //public virtual int number_id { get; set; }
         public virtual String number { get; set; }
-        public virtual int abonent_id { get; set; }
-        //public virtual int rate_id { get; set; }
 
-        public Rate rate { get; set; }
+        //public virtual int abonent_id { get; set; }
+        public virtual Abonent abonent { get; set; }
+        public virtual Rate rate { get; set; }
         //public virtual int RateId { get; set; }
     }
 }
