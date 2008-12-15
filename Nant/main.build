@@ -48,6 +48,11 @@
 			<include name="RVGlibTest.dll" />
 		</fileset>
 	</copy>
+	<copy todir="${bin.dir}">
+		<fileset basedir="${src.dir}/docs">
+			<include name="hibernate.cfg.xml" />
+		</fileset>
+	</copy>
 	
 	<!-- compiling tests' library -->
 	<!--csc target="library" debug="false"
