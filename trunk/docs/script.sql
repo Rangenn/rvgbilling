@@ -94,7 +94,7 @@ Create table "calls"
 	"id" Serial NOT NULL,
 	"calling_number" Varchar(20) NOT NULL,
 	"start_time" Timestamp NOT NULL,
-	"duration" Interval NOT NULL,
+	"duration" Integer NOT NULL,
 	"number_id" Integer NOT NULL,
 	"cost" Numeric(30,6),
 	"idx" Integer,

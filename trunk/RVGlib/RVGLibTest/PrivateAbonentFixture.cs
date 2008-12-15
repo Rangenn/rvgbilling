@@ -72,6 +72,7 @@ namespace RVGLibTest
             for (int i = 0; i < 3; i++)
             {
                 Number.Bills.Add(bills[i]);
+                Number.Calls.Add(calls[i]);
             }
 
             Abonent.Numbers.Add(Number);
