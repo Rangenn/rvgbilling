@@ -14,15 +14,13 @@ namespace RVGLibTest
         [Test]
         public void Can_Add_Abonent_To_Database_Revisited()
         {
-            Decimal bal = 0;
-            //DateTime date = DateTime.Today;
             new PersistenceSpecification<Abonent>(Session)
                 .CheckProperty(x => x.address, "addr")
                 .CheckProperty(x => x.phone, "123")
                 .CheckProperty(x => x.mail_address, "q@mail.ru")
-                .CheckProperty(x => x.reg_time, date)
-                .CheckProperty(x => x.last_pay_date, date)
-                .CheckProperty(x => x.balance, bal)               
+                .CheckProperty(x => x.reg_time, TestDateTime)
+                .CheckProperty(x => x.last_pay_date, TestDateTime)
+                .CheckProperty(x => x.balance, TestDecimal)               
                 //.CheckList<Number>(x => x.Numbers, numbers)
                 .VerifyTheMappings();
         }
@@ -30,25 +28,25 @@ namespace RVGLibTest
         [Test]
         public void Can_Add_Abonent_To_Database_WithNumbers()
         {
-            Decimal bal = 1;
-            //DateTime date = DateTime.Today;
             var Abonent = new Abonent
             {
                 address = "a",
                 phone = "p",
                 mail_address = "m",
-                reg_time = date,
-                last_pay_date = date,
-                balance = bal
+                reg_time = TestDateTime,
+                last_pay_date = TestDateTime,
+                balance = TestDecimal
             };
             Session.Save(Abonent);
 
-            Int64 rateid = 1;
-            var Number = new Number { number = "111", abonent = Abonent, rate = Session.Get<Rate>(rateid) };
+            var rate = new Rate() { name = "MyRate" };
+            Session.Save(rate);
+
+            var Number = new Number { number = "111", abonent = Abonent, rate = rate };
             Session.Save(Number);
             Abonent.Numbers.Add(Number);
 
-            Number = new Number { number = "222", abonent = Abonent, rate = Session.Get<Rate>(rateid) };
+            Number = new Number { number = "222", abonent = Abonent, rate = rate };
             Session.Save(Number);
             Abonent.Numbers.Add(Number);
 

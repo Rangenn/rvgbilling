@@ -13,7 +13,13 @@ namespace RVGlib.Mappings
             //Map(x => x.abonent_id);
             References(x => x.rate);
             References(x => x.abonent);
-            this.parentIsRequired = true;
+            HasMany<Call>(x => x.Calls)
+                .AsList()
+                .Cascade.All();
+            HasMany<Bill>(x => x.Bills)
+                .AsList()
+                .Cascade.All();
+            //this.parentIsRequired = true;
         }
     }
 }

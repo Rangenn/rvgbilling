@@ -10,7 +10,7 @@ namespace RVGlib.Domain
 
         public virtual String   calling_number { get; set; }
         public virtual DateTime start_time { get; set; }
-        public virtual Decimal  duration { get; set; }
+        public virtual int  duration { get; set; }
         public virtual Decimal  cost { get; set; }
     }
 }
