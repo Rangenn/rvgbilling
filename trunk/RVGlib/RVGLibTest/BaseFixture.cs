@@ -11,7 +11,9 @@ namespace RVGLibTest
         protected FluentNHibernate.Framework.SessionSource SessionSource { get; set; }
         protected NHibernate.ISession Session { get; private set; }
 
-        protected DateTime date = DateTime.Today;
+        protected DateTime TestDateTime = DateTime.Today;
+        protected Decimal TestDecimal = new Decimal(1.123);
+        protected Int64 TestInt64 = 1;
 
         [SetUp]
         public void SetupContext()
