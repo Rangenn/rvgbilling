@@ -11,6 +11,9 @@ namespace RVGlib.Mappings
             
             Id(x => x.Id);
             Map(x => x.name).CanNotBeNull().WithLengthOf(100);
+            HasMany<Price>(x => x.Prices)
+                .LazyLoad()
+                .Cascade.All();
         }
     }
 }

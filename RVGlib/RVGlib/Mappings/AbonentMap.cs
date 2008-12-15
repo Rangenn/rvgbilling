@@ -6,9 +6,8 @@ namespace RVGlib.Mappings
     public class AbonentMap : ClassMap<Abonent>
     {
         public AbonentMap()
-        {
-            
-            this.TableName = "abonents";
+        {         
+            this.TableName = "abonents";//!!!
             Id(x => x.Id);
             Map(x => x.address);
             Map(x => x.phone);
@@ -17,8 +16,9 @@ namespace RVGlib.Mappings
             Map(x => x.last_pay_date);
             Map(x => x.balance);
             HasMany<Number>(x => x.Numbers)
+                .WithKeyColumn("abonent_id")
                 .AsList()
-                .Cascade.All();
+                .Cascade.None();
         }
     }
 }

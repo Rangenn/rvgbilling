@@ -16,7 +16,8 @@ namespace RVGlib.Mappings
             Map(x => x.reg_time);
             Map(x => x.last_pay_date);
             Map(x => x.balance);
-            HasMany<Number>(x => x.Numbers).WithKeyColumn("abonent_id") //!!!
+            HasMany<Number>(x => x.Numbers)
+                .WithKeyColumn("abonent_id") //!!!
                 .AsList()
                 .Cascade.All();
 
