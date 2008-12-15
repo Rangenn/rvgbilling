@@ -118,6 +118,7 @@ Create table "numbers"
 	"rate_id" Integer NOT NULL,
 	"number" Varchar(10) NOT NULL,
 	"idx" Integer,
+	"abonent_id" Integer NOT NULL,
  primary key ("id")
 ) Without Oids;
 
