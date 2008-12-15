@@ -8,6 +8,9 @@
   <property name="bin.dir" value="${project.dir}/bin" />
   <property name="out.dir" value="${project.dir}/out" />
 
+  <property name="bin.doc.dir" value="${bin.dir}/doc" />
+  <property name="src.doc.dir" value="${project.dir}/doc" />
+   
   <property name="project.version_file" value="${src.dir}\rvglib\RVGBilling\build.number"/>
   <property name="project.exists" value="${file::exists(project.version_file)}" />
 
