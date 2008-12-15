@@ -22,8 +22,6 @@
       revision="HEAD"
       cache-auth="false"    
     />
-
-
   </target>
 
   <target name="prepare">
@@ -31,19 +29,60 @@
   </target>
 
   <target name="compile" depends="prepare">
-    <csc target="winexe" debug="false"
-         output="${bin.dir}/${project.name}.exe">
+	<!-- compiling mappings' library -->
+	<!--csc target="library" debug="false"
+         output="${bin.dir}/rvglib.dll"
+		 doc="${bin.dir}/rvglib.xml">
       <sources>
-        <include name="${src.dir}/**/*.cs" />	
+        <include name="${src.dir}/RVGlib/RVGlib/**/*.cs" />
       </sources>
-	  
+      <references>
+          <include name="${src.dir}/RVGlib/Shared Libs/*.dll" />
+      </references>
+    </csc-->
+	
+	<!-- coping: we still can not compile rvglib.dll using now -->
+	<copy todir="${bin.dir}">
+		<fileset basedir="${src.dir}/RVGlib/RVGlibTest/bin/debug">
+			<include name="RVGlib.dll" />
+			<include name="RVGlibTest.dll" />
+		</fileset>
+	</copy>
+	
+	<!-- compiling tests' library -->
+	<!--csc target="library" debug="false"
+         output="${bin.dir}/rvglibtest.dll"
+		 doc="${bin.dir}/rvglibtest.xml">
+      <sources>
+        <include name="${src.dir}/RVGlib/RVGLibTest/**/*.cs" />
+      </sources>
+      <references>
+          <include name="${src.dir}/RVGlib/Shared Libs/*.dll" />
+		  <include name="${bin.dir}/*.dll" />
+      </references>
+    </csc-->
+	
+	<!-- compiling main exe -->
+    <csc target="winexe" debug="false"
+         output="${bin.dir}/${project.name}.exe"
+		 doc="${bin.dir}/${project.name}.xml">
+      <sources>
+        <include name="${src.dir}/RVGlib/RVGBilling/**/*.cs" />
+      </sources>
+	  <resources>
+        <include name="${src.dir}/RVGlib/RVGBilling/**/.resx" />
+	  </resources>
+      <references>
+          <include name="${src.dir}/RVGlib/Shared Libs/*.dll" />
+		  <include name="${bin.dir}/*.dll" />
+      </references>
     </csc>
   </target>
 
   <target name = "setversion">
-  <version buildtype = "Increment" revisiontype = "Increment" path = "${src.dir}/RVGBilling/build.number">
+  <version buildtype = "Increment" revisiontype = "Increment" path = "${src.dir}/RVGLib/RVGBilling/build.number">
   </version> 
-<asminfo output="${src.dir}/RVGBilling/RVGbilling/Properties/AssemblyInfo.cs" language="CSharp">
+<asminfo output="${src.dir}/RVGLib/RVGbilling/RVGbilling/Properties/AssemblyInfo.cs" language="CSharp">
     <imports>
         <import namespace="System" />
         <import namespace="System.Reflection" />
@@ -76,17 +115,21 @@
 	
     <mkdir dir="${out.dir}" />
 
-    <copy todir="${out.dir}">
+    <zip zipfile="${out.dir}/${project.name}.zip">
       <fileset basedir="${bin.dir}">
+        <exclude name="**/*.xml" />
         <include name="**/*" />
       </fileset>
-    </copy>
-    <copy todir="${out.dir}">
       <fileset basedir="${src.dir}">
         <exclude name="**/*.cs" />
         <include name="**/*" />
       </fileset>
-    </copy>
+    </zip>
+    <checksum algorithm="MD5" fileext="md5">
+      <fileset>
+        <include name="${out.dir}/${project.name}.zip" />
+      </fileset>
+    </checksum>
   </target>
 
 </project>
