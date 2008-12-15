@@ -21,12 +21,12 @@ namespace RVGlib.Framework
             //Session = SessionSource.CreateSession();
         }
 
-        public Entity Get<T>(Int64 id) where T:Entity
+        public T Get<T>(Int64 id) where T:Entity
         {
             Session = SessionSource.CreateSession();
             Session.Flush();
             Session.Clear();
-            Entity res=Session.Get<T>(id);
+            T res=Session.Get<T>(id);
             Session.Close();
             return res;
         }

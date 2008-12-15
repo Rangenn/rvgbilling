@@ -28,7 +28,8 @@ namespace RVGBilling
         {
             switch (tcAbonent.SelectedIndex)
             {
-                case 0: 
+                case 0:
+                    ctrl.AddPerson();
                     //ctrl.AddPerson(tbPersonName.Text, tbPersonPassport.Text, tbPersonPhone.Text);
                     break;
                 case 1:
