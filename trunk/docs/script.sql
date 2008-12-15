@@ -1,6 +1,6 @@
 /*
 Created		23.09.2008
-Modified		13.12.2008
+Modified		15.12.2008
 Project		
 Model			
 Company		
@@ -76,6 +76,7 @@ Create table "prices"
 	"rate_id" Integer NOT NULL,
 	"cost_per_minute" Numeric(30,6) NOT NULL,
 	"mask" Varchar(10),
+	"idx" Integer,
  primary key ("id")
 ) Without Oids;
 
@@ -96,6 +97,7 @@ Create table "calls"
 	"duration" Interval NOT NULL,
 	"number_id" Integer NOT NULL,
 	"cost" Numeric(30,6),
+	"idx" Integer,
  primary key ("id")
 ) Without Oids;
 
@@ -113,9 +115,9 @@ Create table "users"
 Create table "numbers"
 (
 	"id" Serial NOT NULL,
-	"abonent_id" Integer NOT NULL,
 	"rate_id" Integer NOT NULL,
 	"number" Varchar(10) NOT NULL,
+	"idx" Integer,
  primary key ("id")
 ) Without Oids;
 
@@ -126,6 +128,7 @@ Create table "bills"
 	"number_id" Integer NOT NULL,
 	"money" Numeric(30,6) NOT NULL,
 	"bill_date" Timestamp,
+	"idx" Integer,
  primary key ("id")
 ) Without Oids;
 
@@ -164,15 +167,13 @@ Create table "private_abonents"
 
 /* Create Foreign Keys */
 
-Alter table "numbers" add  foreign key ("abonent_id") references "abonents" ("id") on update restrict on delete restrict;
+Alter table "numbers" add  foreign key ("rate_id") references "rates" ("id") on update cascade on delete cascade;
 
-Alter table "numbers" add  foreign key ("rate_id") references "rates" ("id") on update restrict on delete restrict;
+Alter table "prices" add  foreign key ("rate_id") references "rates" ("id") on update cascade on delete cascade;
 
-Alter table "prices" add  foreign key ("rate_id") references "rates" ("id") on update restrict on delete restrict;
+Alter table "calls" add  foreign key ("number_id") references "numbers" ("id") on update cascade on delete cascade;
 
-Alter table "calls" add  foreign key ("number_id") references "numbers" ("id") on update restrict on delete restrict;
-
-Alter table "bills" add  foreign key ("number_id") references "numbers" ("id") on update restrict on delete restrict;
+Alter table "bills" add  foreign key ("number_id") references "numbers" ("id") on update cascade on delete cascade;
 
 
 

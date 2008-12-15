@@ -43,8 +43,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Shared Libs\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Shared Libs\Mono.Security.dll</HintPath>
@@ -78,6 +76,7 @@
   <ItemGroup>
     <Compile Include="AbonentFixture.cs" />
     <Compile Include="BaseFixture.cs" />
+    <Compile Include="CorporateAbonentFixture.cs" />
     <Compile Include="PrivateAbonentFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RateFixture.cs" />

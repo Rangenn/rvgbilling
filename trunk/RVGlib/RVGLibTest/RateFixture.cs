@@ -7,7 +7,7 @@ using Iesi.Collections.Generic;
 
 namespace RVGLibTest
 {
-
+    [TestFixture]
     public class RateFixture : BaseFixture
     {
         

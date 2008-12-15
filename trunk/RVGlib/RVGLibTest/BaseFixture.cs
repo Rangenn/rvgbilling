@@ -2,6 +2,7 @@
 using FluentNHibernate.Cfg;
 using NHibernate;
 using NUnit.Framework;
+using System;
 
 namespace RVGLibTest
 {
@@ -9,6 +10,8 @@ namespace RVGLibTest
     {
         protected FluentNHibernate.Framework.SessionSource SessionSource { get; set; }
         protected NHibernate.ISession Session { get; private set; }
+
+        protected DateTime date = DateTime.Today;
 
         [SetUp]
         public void SetupContext()
