@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9600862B-F546-45F6-9DE8-E8704948C103}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -43,6 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Shared Libs\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate, Version=2.0.0.1001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Shared Libs\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -65,6 +69,8 @@
     <Compile Include="Domain\Price.cs" />
     <Compile Include="Domain\PrivateAbonent.cs" />
     <Compile Include="Domain\Rate.cs" />
+    <Compile Include="Framework\DBConnector.cs" />
+    <Compile Include="Framework\Model.cs" />
     <Compile Include="Mappings\AbonentMap.cs" />
     <Compile Include="Mappings\BillMap.cs" />
     <Compile Include="Mappings\CallMap.cs" />
