@@ -29,7 +29,7 @@ namespace RVGLibTest
 
         protected virtual void BeforeEachTest()
         {
-            //var cfg = new FluentNHibernate.Cfg.PostgreSQLConfiguration().
+            //var cfg = FluentNHibernate.Cfg.PostgreSQLConfiguration.
             //FluentNHibernate.Cfg.PostgreSQLConfiguration.Standard.ToProperties();
             //var _Connection = new NpgsqlConnection(sb.ConnectionString);
             //PostgreSQLConfiguration.PostgreSQL82.Dialect("NHibernate.Dialect.PostgreSQLDialect");
@@ -37,7 +37,8 @@ namespace RVGLibTest
             //Server=localhost;initial catalog=nhibernate;User ID=nhibernate;Password=********;
 
             //PostgreSQLConfiguration.PostgreSQL82.ConnectionString.Is("USER ID=postgres;PASSWORD=root;HOST=localhost;initial catalog=billing");
-            //PostgreSQLConfiguration.PostgreSQL82.ToProperties(), 
+            //PostgreSQLConfiguration.PostgreSQL82.ToProperties(),
+
             SessionSource = new SessionSource(new TestModel());
             Session = SessionSource.CreateSession();
             //SessionSource.BuildSchema(Session);
@@ -54,7 +55,6 @@ namespace RVGLibTest
 
         protected virtual void CreateInitialData(ISession session)
         {
-
         }
     }
 }

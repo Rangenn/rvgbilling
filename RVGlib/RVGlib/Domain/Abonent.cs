@@ -6,9 +6,12 @@ using FluentNHibernate.Framework;
 
 namespace RVGlib.Domain
 {
+    
     public class Abonent : Entity
     {
-        //public virtual int abonent_id { get; set; }
+        /// <summary>
+        /// Адрес
+        /// </summary>
         public virtual String   address { get; set; }
         public virtual String   phone { get; set; }
         public virtual String   mail_address { get; set; }
