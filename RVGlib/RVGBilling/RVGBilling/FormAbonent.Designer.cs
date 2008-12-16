@@ -79,6 +79,7 @@
             this.btnAddNumber.TabIndex = 7;
             this.btnAddNumber.Text = "Добавить номер";
             this.btnAddNumber.UseVisualStyleBackColor = true;
+            this.btnAddNumber.Click += new System.EventHandler(this.btnAddNumber_Click);
             // 
             // lbNumbers
             // 
@@ -87,6 +88,7 @@
             this.lbNumbers.Name = "lbNumbers";
             this.lbNumbers.Size = new System.Drawing.Size(176, 82);
             this.lbNumbers.TabIndex = 6;
+            this.lbNumbers.SelectedIndexChanged += new System.EventHandler(this.lbNumbers_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -205,6 +207,7 @@
             this.btnChangeTariff.TabIndex = 2;
             this.btnChangeTariff.Text = "Изменить";
             this.btnChangeTariff.UseVisualStyleBackColor = true;
+            this.btnChangeTariff.Click += new System.EventHandler(this.btnChangeTariff_Click);
             // 
             // cbTariff
             // 

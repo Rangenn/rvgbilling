@@ -6,70 +6,89 @@ using FluentNHibernate.Framework;
 using Iesi.Collections.Generic;
 using FluentNHibernate.Cfg;
 using NHibernate;
+using NHibernate.Criterion;
 
 namespace RVGlib.Framework
 {
     public class DBConnector
     {
-        protected FluentNHibernate.Framework.SessionSource SessionSource { get; set; }
-        protected NHibernate.ISession Session { get; private set; }
+        protected SessionSource SessionSource { get; set; }
+        protected ISession session;
+        public ISession Session { 
+            get 
+            {
+                if (session == null)
+                    session=SessionSource.CreateSession();
+                return session;
+            }
+            set
+            {
+                session = value;
+            }
+        }
 
-        //protected DateTime date = DateTime.Today;
         public DBConnector()
         {
             SessionSource = new SessionSource(new Model());
-            //Session = SessionSource.CreateSession();
+            Session = SessionSource.CreateSession();
         }
 
         public T Get<T>(Int64 id) where T:Entity
         {
-            Session = SessionSource.CreateSession();
-            Session.Flush();
-            Session.Clear();
+            ITransaction trans=Session.BeginTransaction();
             T res=Session.Get<T>(id);
-            Session.Close();
+            trans.Commit();
             return res;
         }
 
-        public void Save<T>(Entity en) where T:Entity
+        public void Save(Entity en)
         {
-            Session = SessionSource.CreateSession();
-            Session.Flush();
-            Session.Clear();
+            ITransaction trans = Session.BeginTransaction();
             Session.Save(en);
-            Session.Close();
+            trans.Commit();
         }
 
-        public void Delete<T>(Entity en) where T : Entity
+        public void Delete(Entity en)
         {
-            Session = SessionSource.CreateSession();
-            Session.Flush();
-            Session.Clear();
+            //Session = SessionFactory.GetCurrentSession();
+            ITransaction trans = Session.BeginTransaction();
             Session.Delete(en);
-            Session.Close();
+            trans.Commit();
         }
 
-        public void Update<T>(Entity en) where T : Entity
+        public void Update(Entity en)
         {
-            Session = SessionSource.CreateSession();
-            Session.Flush();
-            Session.Clear();
+            //Session = SessionFactory.GetCurrentSession();
+            ITransaction trans = Session.BeginTransaction();
             Session.Update(en);
-            Session.Close();
+            trans.Commit();
         }
 
         public IList<T> GetAll<T>() where T : Entity
         {
-            Session = SessionSource.CreateSession();
-            Session.Flush();
-            Session.Clear();
+            //Session = SessionFactory.GetCurrentSession();
+            ITransaction trans = Session.BeginTransaction();
             ICriteria crit = Session.CreateCriteria(typeof(T));
             //if (SortBy != null) crit.addOrder(Order.asc(SortBy));
             IList<T> res = crit.List<T>();
 
-            Session.Close();
+            trans.Commit();
             return res;
         }
+
+        /*public Abonent SearchByNumber(string Number)
+        {
+            Session = SessionSource.CreateSession();
+            Session.Flush();
+            Session.Clear();
+            ICriteria crit = Session.CreateCriteria(typeof(Abonent))
+                .CreateAlias("Numbers", "n")
+                .Add(Expression.Like("n.number", Number, MatchMode.Anywhere));
+            IList<Abonent> res = crit.List<Abonent>();
+            if (res.Count != 1) return null;
+            return res[0];
+            ISessionFactory 
+        }*/
 
     }
 }

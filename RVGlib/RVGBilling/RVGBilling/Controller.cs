@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using RVGlib.Domain;
 using RVGlib.Framework;
+using NHibernate;
 
 namespace RVGBilling
 {
@@ -17,11 +18,11 @@ namespace RVGBilling
         {
             logger.log("Creating Controller...");
             connector = new DBConnector();
-            formMain = new FormMain(this);
-            formMain.Show();
-            //Int64 id=5;
-            //formAbonent = new FormAbonent(this,id);
-            //formAbonent.Show();
+            //formMain = new FormMain(this);
+            //formMain.Show();
+            Int64 id=5;
+            formAbonent = new FormAbonent(this,id);
+            formAbonent.Show();
             logger.log("Controller Created.");
 
         }
@@ -61,7 +62,7 @@ namespace RVGBilling
                 passport_department = passportDepartament,
                 birth_date = DateTime.Today//добавить поле для ДР
             };
-            connector.Save<PrivateAbonent>(abonent);
+            connector.Save(abonent);
             return abonent;
         }
 
@@ -76,7 +77,7 @@ namespace RVGBilling
                 rate = GetDefaultRate()
             };
             Abonent.Numbers.Add(number);
-            connector.Update<PrivateAbonent>(Abonent);
+            connector.Update(Abonent);
             formAbonent = new FormAbonent(this, Abonent);
             formAbonent.Show();
             return Abonent;
