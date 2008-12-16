@@ -7,8 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using RVGlib.Domain;
 
-using RVGlib.Domain;
-
 namespace RVGBilling
 {
     public partial class FormAbonent : Form
@@ -37,6 +35,10 @@ namespace RVGBilling
  	                cbTariff.Items.Add(rates[i].name);
  	            //cbTariff.SelectedItem=ab.Numbers[lbNumbers.SelectedItem
  	        }
+
+        public FormAbonent(Controller ctrl, CorporateAbonent ab)
+        {
+        }
 
         public FormAbonent(Controller ctrl,Int64 id)
             : this(ctrl)

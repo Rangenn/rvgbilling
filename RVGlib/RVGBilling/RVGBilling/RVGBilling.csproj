@@ -101,6 +101,12 @@
     <Compile Include="AboutBox1.designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddCorporateAbonentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCorporateAbonentForm.Designer.cs">
+      <DependentUpon>AddCorporateAbonentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddPrivateAbonentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddCorporateAbonentForm.resx">
+      <DependentUpon>AddCorporateAbonentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddPrivateAbonentForm.resx">
       <DependentUpon>AddPrivateAbonentForm.cs</DependentUpon>
@@ -167,9 +176,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="hibernate.cfg.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
