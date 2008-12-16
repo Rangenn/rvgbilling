@@ -22,5 +22,10 @@ namespace RVGlib.Domain
         //public virtual int rate_id { get; set; }
         public virtual String       name { get; set; }
         public virtual IList<Price> Prices { get; private set; }
+
+        public override string ToString()
+        {
+            return this.name;
+        }
     }
 }

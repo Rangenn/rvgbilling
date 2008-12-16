@@ -48,6 +48,7 @@ namespace RVGBilling
                 case 0:
                     /*PersonCollection collect = *///ctrl.SearchPerson(tbPersonName.Text, tbPersonPassport.Text, tbPersonPhone.Text);
                     //отобразить коллекцию в DataGridView
+                    //ctrl.conn.SearchByNumber("371546");
                     break;
                 case 1:
                     /*CorporateCollection collect = *///ctrl.SearchCoporate(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
