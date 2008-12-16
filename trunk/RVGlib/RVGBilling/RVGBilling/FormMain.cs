@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using RVGlib.Domain;
 
 namespace RVGBilling
 {
@@ -33,7 +34,7 @@ namespace RVGBilling
                     //ctrl.AddPerson(tbPersonName.Text, tbPersonPassport.Text, tbPersonPhone.Text);
                     break;
                 case 1:
-                   // ctrl.AddCorporate(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
+                    ctrl.AddCorporate(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
                     break;
             }
 
@@ -46,14 +47,57 @@ namespace RVGBilling
             switch (tcAbonent.SelectedIndex)
             {
                 case 0:
-                    /*PersonCollection collect = *///ctrl.SearchPerson(tbPersonName.Text, tbPersonPassport.Text, tbPersonPhone.Text);
-                    //отобразить коллекцию в DataGridView
-                    //ctrl.conn.SearchByNumber("371546");
-                    break;
+                    {
+                        IList<PrivateAbonent> list = ctrl.SearchPerson(tbPersonName.Text, tbPersonPassport.Text, tbPersonPhone.Text);
+                        DataGridViewColumnCollection Columns = dgvSearch.Columns;
+                        Columns.Clear();
+                        Columns.Add("Name", "ФИО");
+                        Columns.Add("Passport", "Паспорт");
+                        Columns.Add("id", "id");
+                        Columns["id"].Visible = false;
+
+                        DataGridViewRowCollection Rows = dgvSearch.Rows;
+                        Rows.Clear();
+                        if (list.Count > 0)
+                        {
+                            Rows.Add(list.Count);
+                            for (int i = 0; i < list.Count; i++)
+                            {
+                                Rows[i].Cells["Name"].Value = list[i].surname + " " + list[i].name + " " + list[i].patronymic;
+                                Rows[i].Cells["Passport"].Value = list[i].passport_series;
+                                Rows[i].Cells["id"].Value = list[i].Id;
+                            }
+                        }
+                        gbSearch.Visible = true;
+                        //отобразить коллекцию в DataGridView
+                        break;
+                    }
                 case 1:
-                    /*CorporateCollection collect = *///ctrl.SearchCoporate(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
-                    //отобразить коллекцию в DataGridView
-                    break;
+                    {
+                        IList<CorporateAbonent> list = ctrl.SearchCoporate(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
+                        DataGridViewColumnCollection Columns = dgvSearch.Columns;
+                        Columns.Clear();
+                        Columns.Add("Name", "Название");
+                        Columns.Add("Address", "Адрес");
+                        Columns.Add("id", "id");
+                        Columns["id"].Visible = false;
+
+                        DataGridViewRowCollection Rows = dgvSearch.Rows;
+                        Rows.Clear();
+                        if (list.Count > 0)
+                        {
+                            Rows.Add(list.Count);
+                            for (int i = 0; i < list.Count; i++)
+                            {
+                                Rows[i].Cells["Name"].Value = list[i].corporate_name;
+                                Rows[i].Cells["Address"].Value = list[i].address;
+                                Rows[i].Cells["id"].Value = list[i].Id;
+                            }
+                        }
+                        gbSearch.Visible = true;
+                        //отобразить коллекцию в DataGridView
+                        break;
+                    }
             }
         }
 
@@ -62,23 +106,31 @@ namespace RVGBilling
             switch (tcAbonent.SelectedIndex)
             {
                 case 0:
-                  //  ctrl.SelectPerson(0/*id из dataGridView*/);
+                    ctrl.SelectPerson(Convert.ToInt32(dgvSearch.CurrentRow.Cells["id"].Value));
                     break;
                 case 1:
-                  //  ctrl.SelectCorporate(0/*id из dataGridView*/);
+                    ctrl.SelectCorporate(Convert.ToInt32(dgvSearch.CurrentRow.Cells["id"].Value));
                     break;
             }
         }
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
-          //  ctrl.Payment(tbNomber.Text, Convert.ToDecimal(tbSumma.Text));
+            //попросить подтверждение
+            ctrl.Payment(tbNumber.Text, Convert.ToDecimal(tbSumma.Text));
+            tbNumber.Text = "";
+            tbSumma.Text = "";
             //сделать обработку исключения
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gbSearch.Visible = false;
         }
     }
 }

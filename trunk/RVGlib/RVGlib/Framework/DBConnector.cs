@@ -76,19 +76,68 @@ namespace RVGlib.Framework
             return res;
         }
 
-        /*public Abonent SearchByNumber(string Number)
+
+
+        public Abonent SearchByNumber(string Number)
         {
-            Session = SessionSource.CreateSession();
-            Session.Flush();
-            Session.Clear();
+            ITransaction trans = Session.BeginTransaction();
             ICriteria crit = Session.CreateCriteria(typeof(Abonent))
                 .CreateAlias("Numbers", "n")
                 .Add(Expression.Like("n.number", Number, MatchMode.Anywhere));
             IList<Abonent> res = crit.List<Abonent>();
+            trans.Commit();
+            int i = 0;
+            while (i < res.Count)
+            {
+                if ((res[i] is PrivateAbonent) || (res[i] is CorporateAbonent))
+                {
+                    res.Remove(res[i]);
+                    i -= 1;
+                }
+                i += 1;
+            }
             if (res.Count != 1) return null;
             return res[0];
-            ISessionFactory 
-        }*/
+        }
+
+        public IList<PrivateAbonent> SearchPerson(string name, string passport, string phone)
+        {
+            ITransaction trans = Session.BeginTransaction();
+            ICriteria crit = Session.CreateCriteria(typeof(PrivateAbonent));
+
+            if (name != "")
+            {
+                ICriterion cr1 = Expression.Or(
+                Expression.Or(
+                    Expression.Like("surname", name, MatchMode.Anywhere),
+                    Expression.Like("name", name, MatchMode.Anywhere)),
+                    Expression.Like("patronymic", name, MatchMode.Anywhere));
+                crit.Add(cr1);
+            }
+            if (passport != "") crit.Add(Expression.Like("passport_series", passport, MatchMode.Anywhere));
+            if (phone != "") crit.CreateAlias("Numbers", "n").Add(Expression.Like("n.number", phone, MatchMode.Anywhere));
+
+            IList<PrivateAbonent> ab = crit.List<PrivateAbonent>();
+            trans.Commit();
+            return ab;
+        }
+
+        public IList<CorporateAbonent> SearchCorporate(string name, string address, string phone)
+        {
+            ITransaction trans = Session.BeginTransaction();
+            ICriteria crit = Session.CreateCriteria(typeof(CorporateAbonent));
+
+            if (name != "")
+            {
+                crit.Add(Expression.Like("corporate_name", name, MatchMode.Anywhere));
+            }
+            if (address != "") crit.Add(Expression.Like("address", address, MatchMode.Anywhere));
+            if (phone != "") crit.CreateAlias("Numbers", "n").Add(Expression.Like("n.number", phone, MatchMode.Anywhere));
+
+            IList<CorporateAbonent> ab = crit.List<CorporateAbonent>();
+            trans.Commit();
+            return ab;
+        }
 
     }
 }

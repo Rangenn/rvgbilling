@@ -54,7 +54,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPayment = new System.Windows.Forms.Button();
-            this.tbNomber = new System.Windows.Forms.TextBox();
+            this.tbNumber = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gbBalance = new System.Windows.Forms.GroupBox();
             this.lbCheckName = new System.Windows.Forms.Label();
@@ -63,6 +63,7 @@
             this.gbSearch = new System.Windows.Forms.GroupBox();
             this.btnSelectBody = new System.Windows.Forms.Button();
             this.dgvSearch = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.gbAbonent.SuspendLayout();
             this.tcAbonent.SuspendLayout();
             this.tpPerson.SuspendLayout();
@@ -266,7 +267,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -295,7 +296,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.aboutToolStripMenuItem.Text = "О программе";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -309,12 +310,12 @@
             this.btnPayment.UseVisualStyleBackColor = true;
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
-            // tbNomber
+            // tbNumber
             // 
-            this.tbNomber.Location = new System.Drawing.Point(128, 22);
-            this.tbNomber.Name = "tbNomber";
-            this.tbNomber.Size = new System.Drawing.Size(175, 20);
-            this.tbNomber.TabIndex = 4;
+            this.tbNumber.Location = new System.Drawing.Point(128, 22);
+            this.tbNumber.Name = "tbNumber";
+            this.tbNumber.Size = new System.Drawing.Size(175, 20);
+            this.tbNumber.TabIndex = 4;
             // 
             // label3
             // 
@@ -332,7 +333,7 @@
             this.gbBalance.Controls.Add(this.tbSumma);
             this.gbBalance.Controls.Add(this.btnPayment);
             this.gbBalance.Controls.Add(this.label3);
-            this.gbBalance.Controls.Add(this.tbNomber);
+            this.gbBalance.Controls.Add(this.tbNumber);
             this.gbBalance.Location = new System.Drawing.Point(12, 217);
             this.gbBalance.Name = "gbBalance";
             this.gbBalance.Size = new System.Drawing.Size(309, 106);
@@ -368,6 +369,7 @@
             // gbSearch
             // 
             this.gbSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbSearch.Controls.Add(this.button1);
             this.gbSearch.Controls.Add(this.btnSelectBody);
             this.gbSearch.Controls.Add(this.dgvSearch);
             this.gbSearch.Location = new System.Drawing.Point(328, 28);
@@ -380,7 +382,7 @@
             // 
             // btnSelectBody
             // 
-            this.btnSelectBody.Location = new System.Drawing.Point(7, 262);
+            this.btnSelectBody.Location = new System.Drawing.Point(220, 263);
             this.btnSelectBody.Name = "btnSelectBody";
             this.btnSelectBody.Size = new System.Drawing.Size(75, 23);
             this.btnSelectBody.TabIndex = 1;
@@ -390,11 +392,31 @@
             // 
             // dgvSearch
             // 
+            this.dgvSearch.AllowUserToAddRows = false;
+            this.dgvSearch.AllowUserToDeleteRows = false;
+            this.dgvSearch.AllowUserToOrderColumns = true;
+            this.dgvSearch.AllowUserToResizeColumns = false;
+            this.dgvSearch.AllowUserToResizeRows = false;
+            this.dgvSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSearch.Location = new System.Drawing.Point(7, 20);
+            this.dgvSearch.MultiSelect = false;
             this.dgvSearch.Name = "dgvSearch";
+            this.dgvSearch.ReadOnly = true;
+            this.dgvSearch.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSearch.Size = new System.Drawing.Size(288, 237);
             this.dgvSearch.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(7, 263);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "<<<<<<";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormMain
             // 
@@ -444,7 +466,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnPayment;
-        private System.Windows.Forms.TextBox tbNomber;
+        private System.Windows.Forms.TextBox tbNumber;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox gbBalance;
         private System.Windows.Forms.Label label4;
@@ -464,6 +486,7 @@
         private System.Windows.Forms.GroupBox gbSearch;
         private System.Windows.Forms.DataGridView dgvSearch;
         private System.Windows.Forms.Button btnSelectBody;
+        private System.Windows.Forms.Button button1;
     }
 }
 

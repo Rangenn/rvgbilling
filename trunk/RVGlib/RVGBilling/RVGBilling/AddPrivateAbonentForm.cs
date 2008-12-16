@@ -21,9 +21,10 @@ namespace RVGBilling
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             DateTime passportDate = DateTime.Parse(tbPassportDate.Text);
             ctrl.AddPrivateAbonent(tbSurname.Text, tbName.Text, tbPatronymic.Text, tbPassportSeria.Text, tbPassportNumber.Text, passportDate, tbDepartament.Text, tbNewNumber.Text);
+            this.Close();
         }
     }
 }
