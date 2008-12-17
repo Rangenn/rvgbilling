@@ -39,7 +39,7 @@ namespace RVGLibTest
             //PostgreSQLConfiguration.PostgreSQL82.ConnectionString.Is("USER ID=postgres;PASSWORD=root;HOST=localhost;initial catalog=billing");
             //PostgreSQLConfiguration.PostgreSQL82.ToProperties(),
 
-            SessionSource = new SessionSource(new TestModel());
+            SessionSource = new SessionSource(new RVGlib.Framework.Model());
             Session = SessionSource.CreateSession();
             //SessionSource.BuildSchema(Session);
             CreateInitialData(Session);

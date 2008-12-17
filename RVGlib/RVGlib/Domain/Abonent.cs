@@ -6,24 +6,44 @@ using FluentNHibernate.Framework;
 
 namespace RVGlib.Domain
 {
-    
+    /// <summary>
+    /// Абонент
+    /// </summary>
     public class Abonent : Entity
     {
         /// <summary>
         /// Адрес
         /// </summary>
         public virtual String   address { get; set; }
+        /// <summary>
+        /// Телефон
+        /// </summary>
         public virtual String   phone { get; set; }
+        /// <summary>
+        /// E-mail
+        /// </summary>
         public virtual String   mail_address { get; set; }
+        /// <summary>
+        /// Дата регистрации
+        /// </summary>
         public virtual DateTime reg_time { get; set; }
+        /// <summary>
+        /// Дата последнего платежа
+        /// </summary>
         public virtual DateTime last_pay_date { get; set; }
+        /// <summary>
+        /// Баланс счета
+        /// </summary>
         public virtual Decimal  balance { get; set; }
 
-        //public Number NumbersAssociation { get; set; }
+        /// <summary>
+        /// Номера
+        /// </summary>
         public virtual IList<Number> Numbers { get; private set; }
 
-        //public virtual IList<Number> NumbersAssociation { get; set; }
-
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public Abonent()
         {
             Numbers = new List<Number>();

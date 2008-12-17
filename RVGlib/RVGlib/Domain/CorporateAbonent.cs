@@ -5,9 +5,14 @@ using FluentNHibernate.Framework;
 
 namespace RVGlib.Domain
 {
+    /// <summary>
+    /// Абонент - юр.лицо
+    /// </summary>
     public class CorporateAbonent : Abonent
     {
+        /// <summary>
+        /// Название юр.лица
+        /// </summary>
         public virtual String corporate_name { get; set; }
-        //Abonent abonent;
     }
 }

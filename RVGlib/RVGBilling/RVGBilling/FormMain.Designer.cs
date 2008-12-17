@@ -57,13 +57,12 @@
             this.tbNumber = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gbBalance = new System.Windows.Forms.GroupBox();
-            this.lbCheckName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbSumma = new System.Windows.Forms.TextBox();
             this.gbSearch = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnSelectBody = new System.Windows.Forms.Button();
             this.dgvSearch = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.gbAbonent.SuspendLayout();
             this.tcAbonent.SuspendLayout();
             this.tpPerson.SuspendLayout();
@@ -95,6 +94,7 @@
             this.tcAbonent.SelectedIndex = 0;
             this.tcAbonent.Size = new System.Drawing.Size(297, 121);
             this.tcAbonent.TabIndex = 1;
+            this.tcAbonent.SelectedIndexChanged += new System.EventHandler(this.tcAbonent_SelectedIndexChanged);
             // 
             // tpPerson
             // 
@@ -261,13 +261,13 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.fileToolStripMenuItem.Text = "Файл";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -276,13 +276,13 @@
             this.booksToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tariffsToolStripMenuItem});
             this.booksToolStripMenuItem.Name = "booksToolStripMenuItem";
-            this.booksToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.booksToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.booksToolStripMenuItem.Text = "Справочники";
             // 
             // tariffsToolStripMenuItem
             // 
             this.tariffsToolStripMenuItem.Name = "tariffsToolStripMenuItem";
-            this.tariffsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.tariffsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.tariffsToolStripMenuItem.Text = "Тарифные планы";
             // 
             // helpToolStripMenuItem
@@ -290,7 +290,7 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.helpToolStripMenuItem.Text = "Помощь";
             // 
             // aboutToolStripMenuItem
@@ -328,7 +328,6 @@
             // 
             // gbBalance
             // 
-            this.gbBalance.Controls.Add(this.lbCheckName);
             this.gbBalance.Controls.Add(this.label4);
             this.gbBalance.Controls.Add(this.tbSumma);
             this.gbBalance.Controls.Add(this.btnPayment);
@@ -340,15 +339,6 @@
             this.gbBalance.TabIndex = 6;
             this.gbBalance.TabStop = false;
             this.gbBalance.Text = "Пополнение баланса";
-            // 
-            // lbCheckName
-            // 
-            this.lbCheckName.AutoSize = true;
-            this.lbCheckName.Location = new System.Drawing.Point(7, 74);
-            this.lbCheckName.Name = "lbCheckName";
-            this.lbCheckName.Size = new System.Drawing.Size(142, 13);
-            this.lbCheckName.TabIndex = 8;
-            this.lbCheckName.Text = "Ф.И.О. для проверки: <...>";
             // 
             // label4
             // 
@@ -380,6 +370,16 @@
             this.gbSearch.Text = "Результаты поиска";
             this.gbSearch.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(7, 263);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "<<<<<<";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnSelectBody
             // 
             this.btnSelectBody.Location = new System.Drawing.Point(220, 263);
@@ -407,16 +407,6 @@
             this.dgvSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSearch.Size = new System.Drawing.Size(288, 237);
             this.dgvSearch.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(7, 263);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "<<<<<<";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormMain
             // 
@@ -476,7 +466,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbPersonName;
         private System.Windows.Forms.TabPage tpCorporate;
-        private System.Windows.Forms.Label lbCheckName;
         private System.Windows.Forms.TextBox tbCorpPhone;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbCorpAdress;

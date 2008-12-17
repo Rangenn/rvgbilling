@@ -5,6 +5,9 @@ using RVGBilling;
 
 namespace RVGBilling
 {
+    /// <summary>
+    /// Program Startup Class
+    /// </summary>
     static class Program
     {
         /// <summary>
