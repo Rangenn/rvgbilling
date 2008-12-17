@@ -202,5 +202,11 @@ namespace RVGBilling
             formAbonent = new FormAbonent(this, abonent);
             fmAbonent.ShowDialog();
         }
+
+        public IList<Call> GetCalls(Number number,DateTime start, DateTime end)
+        {
+            IList<Call> list = connector.GetCalls(number, start, end);
+            return list;
+        }
     }
 }

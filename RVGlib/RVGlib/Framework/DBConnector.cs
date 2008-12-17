@@ -147,5 +147,20 @@ namespace RVGlib.Framework
             return ab;
         }
 
+        public IList<Call> GetCalls(Number number, DateTime start, DateTime end)
+        {
+            ITransaction trans = Session.BeginTransaction();
+            ICriteria crit = Session.CreateCriteria(typeof(Call));
+
+            ICriterion cr =
+                Expression.And(
+                Expression.Eq("number", number),
+                Expression.Between("start_time",start, end));
+            crit.Add(cr);
+            IList<Call> res = crit.List<Call>();
+            trans.Commit();
+            return res;
+        }
+
     }
 }
