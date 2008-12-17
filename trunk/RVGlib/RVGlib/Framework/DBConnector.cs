@@ -33,6 +33,14 @@ namespace RVGlib.Framework
             Session = SessionSource.CreateSession();
         }
 
+        ~DBConnector()
+        {
+            //SessionSource.
+            //Session.Flush();
+            //Session.Close();
+
+        }
+
         public T Get<T>(Int64 id) where T:Entity
         {
             ITransaction trans=Session.BeginTransaction();
@@ -89,7 +97,7 @@ namespace RVGlib.Framework
             int i = 0;
             while (i < res.Count)
             {
-                if ((res[i] is PrivateAbonent) || (res[i] is CorporateAbonent))
+                if (!((res[i] is PrivateAbonent) || (res[i] is CorporateAbonent)))
                 {
                     res.Remove(res[i]);
                     i -= 1;

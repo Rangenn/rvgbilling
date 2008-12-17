@@ -8,7 +8,8 @@ namespace RVGlib.Framework
     {
         public Model()
         {
-            addMappingsFromAssembly(typeof(RVGlib.Mappings.AbonentMap).Assembly);
+            addMappingsFromThisAssembly();
+            //addMappingsFromAssembly(typeof(RVGlib.Mappings.AbonentMap).Assembly);
 
         }
     }

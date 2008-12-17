@@ -23,7 +23,7 @@ namespace RVGBilling
         {
             this.Hide();
             DateTime passportDate = DateTime.Parse(tbPassportDate.Text);
-            ctrl.AddPrivateAbonent(tbSurname.Text, tbName.Text, tbPatronymic.Text, tbPassportSeria.Text, tbPassportNumber.Text, passportDate, tbDepartament.Text, tbNewNumber.Text);
+            ctrl.AddPrivateAbonent(tbSurname.Text, tbName.Text, tbPatronymic.Text, tbPassportSeria.Text, passportDate, tbDepartament.Text, tbNewNumber.Text);
             this.Close();
         }
     }

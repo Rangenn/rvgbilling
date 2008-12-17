@@ -60,14 +60,14 @@
             this.labelText.AutoSize = true;
             this.labelText.Location = new System.Drawing.Point(25, 42);
             this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(50, 13);
+            this.labelText.Size = new System.Drawing.Size(41, 13);
             this.labelText.TabIndex = 2;
-            this.labelText.Text = "labelText";
+            this.labelText.Text = "Номер";
             // 
             // maskedTextBox
             // 
             this.maskedTextBox.Location = new System.Drawing.Point(90, 39);
-            this.maskedTextBox.Mask = "0000000";
+            this.maskedTextBox.Mask = "0000000000";
             this.maskedTextBox.Name = "maskedTextBox";
             this.maskedTextBox.Size = new System.Drawing.Size(126, 20);
             this.maskedTextBox.TabIndex = 3;
@@ -82,7 +82,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Name = "FormAdd";
-            this.Text = "FormAdd";
+            this.Text = "Добавить";
             this.ResumeLayout(false);
             this.PerformLayout();
 

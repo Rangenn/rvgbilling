@@ -275,6 +275,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FormAbonent";
             this.Text = "Абонент";
+            this.Load += new System.EventHandler(this.FormAbonent_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

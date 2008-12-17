@@ -38,8 +38,6 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tbPatronymic = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbPassportNumber = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbPassportDate = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -59,7 +57,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 213);
+            this.label2.Location = new System.Drawing.Point(12, 186);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
             this.label2.TabIndex = 10;
@@ -71,24 +69,22 @@
             this.tbSurname.Name = "tbSurname";
             this.tbSurname.Size = new System.Drawing.Size(168, 20);
             this.tbSurname.TabIndex = 12;
-            this.tbSurname.Text = "Петров";
             // 
             // tbNewNumber
             // 
-            this.tbNewNumber.Location = new System.Drawing.Point(124, 210);
+            this.tbNewNumber.Location = new System.Drawing.Point(124, 183);
             this.tbNewNumber.Name = "tbNewNumber";
             this.tbNewNumber.Size = new System.Drawing.Size(168, 20);
             this.tbNewNumber.TabIndex = 8;
-            this.tbNewNumber.Text = "9102347634";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 99);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Серия";
+            this.label1.Text = "Паспорт";
             // 
             // tbPassportSeria
             // 
@@ -96,7 +92,6 @@
             this.tbPassportSeria.Name = "tbPassportSeria";
             this.tbPassportSeria.Size = new System.Drawing.Size(168, 20);
             this.tbPassportSeria.TabIndex = 7;
-            this.tbPassportSeria.Text = "20 03";
             // 
             // label3
             // 
@@ -113,7 +108,6 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(168, 20);
             this.tbName.TabIndex = 14;
-            this.tbName.Text = "Петр";
             // 
             // label4
             // 
@@ -130,29 +124,11 @@
             this.tbPatronymic.Name = "tbPatronymic";
             this.tbPatronymic.Size = new System.Drawing.Size(168, 20);
             this.tbPatronymic.TabIndex = 16;
-            this.tbPatronymic.Text = "Иванович";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 125);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Номер";
-            // 
-            // tbPassportNumber
-            // 
-            this.tbPassportNumber.Location = new System.Drawing.Point(124, 122);
-            this.tbPassportNumber.Name = "tbPassportNumber";
-            this.tbPassportNumber.Size = new System.Drawing.Size(168, 20);
-            this.tbPassportNumber.TabIndex = 17;
-            this.tbPassportNumber.Text = "781234";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 152);
+            this.label7.Location = new System.Drawing.Point(9, 125);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 20;
@@ -160,16 +136,15 @@
             // 
             // tbPassportDate
             // 
-            this.tbPassportDate.Location = new System.Drawing.Point(124, 149);
+            this.tbPassportDate.Location = new System.Drawing.Point(124, 122);
             this.tbPassportDate.Name = "tbPassportDate";
             this.tbPassportDate.Size = new System.Drawing.Size(168, 20);
             this.tbPassportDate.TabIndex = 19;
-            this.tbPassportDate.Text = "12.12.2003";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 178);
+            this.label8.Location = new System.Drawing.Point(9, 151);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 22;
@@ -177,15 +152,14 @@
             // 
             // tbDepartament
             // 
-            this.tbDepartament.Location = new System.Drawing.Point(124, 175);
+            this.tbDepartament.Location = new System.Drawing.Point(124, 148);
             this.tbDepartament.Name = "tbDepartament";
             this.tbDepartament.Size = new System.Drawing.Size(168, 20);
             this.tbDepartament.TabIndex = 21;
-            this.tbDepartament.Text = "РУВД";
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(215, 236);
+            this.btnOK.Location = new System.Drawing.Point(215, 209);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 23;
@@ -197,14 +171,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(302, 266);
+            this.ClientSize = new System.Drawing.Size(302, 237);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.tbDepartament);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbPassportDate);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.tbPassportNumber);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbPatronymic);
             this.Controls.Add(this.label3);
@@ -234,8 +206,6 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbPatronymic;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbPassportNumber;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbPassportDate;
         private System.Windows.Forms.Label label8;

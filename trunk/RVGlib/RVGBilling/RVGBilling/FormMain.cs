@@ -117,7 +117,20 @@ namespace RVGBilling
         private void btnPayment_Click(object sender, EventArgs e)
         {
             //попросить подтверждение
-            ctrl.Payment(tbNumber.Text, Convert.ToDecimal(tbSumma.Text));
+            Decimal sum;
+            try
+            {
+                sum = Convert.ToDecimal(tbSumma.Text);
+                if (sum <= 0)
+                    throw new FormatException();
+                
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Неверно введена сумма");
+                return;
+            }
+            ctrl.Payment(tbNumber.Text, sum);
             tbNumber.Text = "";
             tbSumma.Text = "";
             //сделать обработку исключения
@@ -129,6 +142,11 @@ namespace RVGBilling
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            gbSearch.Visible = false;
+        }
+
+        private void tcAbonent_SelectedIndexChanged(object sender, EventArgs e)
         {
             gbSearch.Visible = false;
         }
