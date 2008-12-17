@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="RVGlib.Domain.Abonent">
+  <Class Name="RVGlib.Domain.Abonent" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAEAIAIIAEAAgAAAAAAAAAAA=</HashCode>
       <FileName>Domain\Abonent.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RVGlib.Domain.Number">
+  <Class Name="RVGlib.Domain.Number" Collapsed="true">
     <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAQAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAEAAAAAAQAAAAAAABAgAAAAAAQAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\Number.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RVGlib.Domain.Rate">
-    <Position X="6.75" Y="1" Width="1.5" />
+  <Class Name="RVGlib.Domain.Rate" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAAEAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\Rate.cs</FileName>
     </TypeIdentifier>
   </Class>

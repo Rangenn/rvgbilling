@@ -1,1 +1,8 @@
-== Realization ==
+== Реализация ==
+
+= Схема базы данных =
+
+<center>[[Image:db.jpeg]]</center>
+
+= Карта приложения =
+<center>[[Image:karta.jpeg]]</center>
