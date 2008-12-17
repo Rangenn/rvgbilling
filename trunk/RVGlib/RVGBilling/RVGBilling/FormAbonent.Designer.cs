@@ -198,6 +198,7 @@
             this.btnGetDetailes.TabIndex = 3;
             this.btnGetDetailes.Text = "Детализация";
             this.btnGetDetailes.UseVisualStyleBackColor = true;
+            this.btnGetDetailes.Click += new System.EventHandler(this.btnGetDetailes_Click);
             // 
             // btnChangeTariff
             // 
@@ -264,6 +265,7 @@
             this.btnAddMoney.TabIndex = 0;
             this.btnAddMoney.Text = "Пополнить баланс";
             this.btnAddMoney.UseVisualStyleBackColor = true;
+            this.btnAddMoney.Click += new System.EventHandler(this.btnAddMoney_Click);
             // 
             // FormAbonent
             // 

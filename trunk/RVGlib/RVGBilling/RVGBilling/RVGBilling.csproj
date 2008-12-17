@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{64A16FB5-F22A-47FB-9BAA-62701332E61F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -126,6 +126,12 @@
     <Compile Include="FormAdd.Designer.cs">
       <DependentUpon>FormAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCallDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCallDetails.Designer.cs">
+      <DependentUpon>FormCallDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,10 @@
       <DependentUpon>FormAdd.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCallDetails.resx">
+      <DependentUpon>FormCallDetails.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -167,7 +177,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

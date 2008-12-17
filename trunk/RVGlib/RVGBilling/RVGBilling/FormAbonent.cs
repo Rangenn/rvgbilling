@@ -28,7 +28,7 @@ namespace RVGBilling
  	            : this(ctrl)
  	        {
                 this.abonent = ab;// = (PrivateAbonent)ctrl.conn.Get<PrivateAbonent>(id);
-                Refresh();
+                RefreshForm();
  	        }
 
         public FormAbonent(Controller ctrl, CorporateAbonent ab)
@@ -44,7 +44,7 @@ namespace RVGBilling
         {
             //Int64 id = 1;
             abonent = (PrivateAbonent)ctrl.conn.Get<PrivateAbonent>(id);
-            this.Refresh();
+            this.RefreshForm();
         }
 
         private void lbNumbers_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,13 +90,13 @@ namespace RVGBilling
                 abonent.Numbers.Add(num);
                 ctrl.conn.Update(abonent);
             }
-            Refresh();
+            RefreshForm();
         }
 
         /// <summary>
         /// Обновление компонентов формы
         /// </summary>
-        private void Refresh()
+        private void RefreshForm()
         {
             //Int64 id = 1;
             tbName.Text = abonent.name;
@@ -120,6 +120,25 @@ namespace RVGBilling
         {
             if (!supported)
                 this.Close();
+        }
+
+        private void btnAddMoney_Click(object sender, EventArgs e)
+        {
+            int index = lbNumbers.SelectedIndex;
+            if (index >= 0)
+                ctrl.Payment(lbNumbers.SelectedItem.ToString(), 100);
+        }
+
+        private void btnGetDetailes_Click(object sender, EventArgs e)
+        {
+            int index = lbNumbers.SelectedIndex;
+            if (index >= 0)
+            {
+                IList<Call> list = ctrl.GetCalls(abonent.Numbers[index], dtStartDate.Value, dtEndDate.Value);
+                FormCallDetails form = new FormCallDetails(list);
+                form.ShowDialog();
+            }
+             //   ctrl.Payment(lbNumbers.SelectedItem.ToString(), 100);
         }
 
     }
