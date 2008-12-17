@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using RVGlib.Mappings;
 
 namespace RVGlib.Framework
 {
@@ -8,8 +9,16 @@ namespace RVGlib.Framework
     {
         public Model()
         {
-            addMappingsFromThisAssembly();
-            //addMappingsFromAssembly(typeof(RVGlib.Mappings.AbonentMap).Assembly);
+            //addMapping(new AbonentMap());
+            //addMapping(new PrivateAbonentMap());
+            //addMapping(new PriceMap());
+            //addMapping(new CorporateAbonentMap());
+            //addMapping(new NumberMap());
+            //addMapping(new RateMap());
+            //addMapping(new BillMap());
+            //addMapping(new CallMap());
+
+            addMappingsFromAssembly(typeof(RVGlib.Mappings.AbonentMap).Assembly);
 
         }
     }

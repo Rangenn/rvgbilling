@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Mapping;
+﻿
+using FluentNHibernate.Mapping;
 using RVGlib.Domain;
 
 namespace RVGlib.Mappings
