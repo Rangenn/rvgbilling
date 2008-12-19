@@ -46,6 +46,16 @@ namespace RVGBilling
             get { return formMain; }
         }
 
+        public FormAbonent fmAbonent
+        {
+            get { return formAbonent; }
+        }
+
+        public DBConnector conn
+        {
+            get { return connector; }
+        }
+
         /// <summary>
         /// вызов диалога для добавления частного лица
         /// </summary>
@@ -107,16 +117,6 @@ namespace RVGBilling
             return abonent;
         }
 
-
-        public FormAbonent fmAbonent
-        {
-            get { return formAbonent; }
-        }
-
-        public DBConnector conn
-        {
-            get { return connector; }
-        }
 
         /// <summary>
         /// Добавляет юридического клиента
@@ -222,5 +222,11 @@ namespace RVGBilling
             IList<Call> list = connector.GetCalls(number, start, end);
             return list;
         }
+
+        public IList<Rate> GetRates()
+        {
+            return connector.GetRates();
+        }
+
     }
 }

@@ -264,7 +264,7 @@
             this.Controls.Add(this.tbPhone);
             this.Controls.Add(this.label1);
             this.Name = "AddPrivateAbonentForm";
-            this.Text = "AddPrivateAbbonentForm";
+            this.Text = "AddPrivateAbonentForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

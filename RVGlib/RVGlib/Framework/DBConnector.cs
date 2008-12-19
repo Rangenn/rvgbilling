@@ -162,5 +162,13 @@ namespace RVGlib.Framework
             return res;
         }
 
+        public IList<Rate> GetRates()
+        {
+            ITransaction trans = Session.BeginTransaction();
+            ICriteria crit = Session.CreateCriteria(typeof(Rate));
+            IList<Rate> res = crit.List<Rate>();
+            trans.Commit();
+            return res;
+        }
     }
 }
