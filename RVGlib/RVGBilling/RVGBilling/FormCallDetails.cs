@@ -25,7 +25,7 @@ namespace RVGBilling
             Columns.Clear();
             Columns.Add("Calling number", "Вызываемый номер");
             Columns.Add("Start time", "Начало разговора");
-            Columns.Add("Duration", "Время разговора");
+            Columns.Add("Duration", "Время разговора, сек");
             Columns.Add("id", "ID");
             Columns["id"].Visible = false;
 

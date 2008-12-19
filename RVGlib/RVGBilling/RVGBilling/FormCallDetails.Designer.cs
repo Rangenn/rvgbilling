@@ -34,17 +34,22 @@
             // 
             // dgCalls
             // 
+            this.dgCalls.AllowUserToAddRows = false;
+            this.dgCalls.AllowUserToDeleteRows = false;
+            this.dgCalls.AllowUserToOrderColumns = true;
             this.dgCalls.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCalls.Location = new System.Drawing.Point(12, 12);
+            this.dgCalls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgCalls.Location = new System.Drawing.Point(0, 0);
             this.dgCalls.Name = "dgCalls";
-            this.dgCalls.Size = new System.Drawing.Size(341, 221);
+            this.dgCalls.ReadOnly = true;
+            this.dgCalls.Size = new System.Drawing.Size(365, 243);
             this.dgCalls.TabIndex = 0;
             // 
             // FormCallDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 287);
+            this.ClientSize = new System.Drawing.Size(365, 243);
             this.Controls.Add(this.dgCalls);
             this.Name = "FormCallDetails";
             this.Text = "FormCallDetails";

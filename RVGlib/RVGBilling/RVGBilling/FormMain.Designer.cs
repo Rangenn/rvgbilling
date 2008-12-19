@@ -60,7 +60,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbSumma = new System.Windows.Forms.TextBox();
             this.gbSearch = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonHideSearchRes = new System.Windows.Forms.Button();
             this.btnSelectBody = new System.Windows.Forms.Button();
             this.dgvSearch = new System.Windows.Forms.DataGridView();
             this.gbAbonent.SuspendLayout();
@@ -267,7 +267,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -359,7 +359,7 @@
             // gbSearch
             // 
             this.gbSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gbSearch.Controls.Add(this.button1);
+            this.gbSearch.Controls.Add(this.buttonHideSearchRes);
             this.gbSearch.Controls.Add(this.btnSelectBody);
             this.gbSearch.Controls.Add(this.dgvSearch);
             this.gbSearch.Location = new System.Drawing.Point(328, 28);
@@ -370,15 +370,15 @@
             this.gbSearch.Text = "Результаты поиска";
             this.gbSearch.Visible = false;
             // 
-            // button1
+            // buttonHideSearchRes
             // 
-            this.button1.Location = new System.Drawing.Point(7, 263);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "<<<<<<";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonHideSearchRes.Location = new System.Drawing.Point(7, 263);
+            this.buttonHideSearchRes.Name = "buttonHideSearchRes";
+            this.buttonHideSearchRes.Size = new System.Drawing.Size(75, 23);
+            this.buttonHideSearchRes.TabIndex = 2;
+            this.buttonHideSearchRes.Text = "<<<<<<";
+            this.buttonHideSearchRes.UseVisualStyleBackColor = true;
+            this.buttonHideSearchRes.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSelectBody
             // 
@@ -397,6 +397,9 @@
             this.dgvSearch.AllowUserToOrderColumns = true;
             this.dgvSearch.AllowUserToResizeColumns = false;
             this.dgvSearch.AllowUserToResizeRows = false;
+            this.dgvSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSearch.Location = new System.Drawing.Point(7, 20);
@@ -475,7 +478,7 @@
         private System.Windows.Forms.GroupBox gbSearch;
         private System.Windows.Forms.DataGridView dgvSearch;
         private System.Windows.Forms.Button btnSelectBody;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonHideSearchRes;
     }
 }
 

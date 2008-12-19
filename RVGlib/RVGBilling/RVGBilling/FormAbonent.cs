@@ -21,28 +21,35 @@ namespace RVGBilling
         public FormAbonent(Controller ctrl)
         {
             InitializeComponent();
+            dtStartDate.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             this.ctrl = ctrl;
         }
 
-        public FormAbonent(Controller ctrl, PrivateAbonent ab)
+        public FormAbonent(Controller ctrl, Abonent ab)
  	            : this(ctrl)
- 	        {
-                this.abonent = ab;// = (PrivateAbonent)ctrl.conn.Get<PrivateAbonent>(id);
-                RefreshForm();
- 	        }
-
-        public FormAbonent(Controller ctrl, CorporateAbonent ab)
-            : this(ctrl)
         {
-            MessageBox.Show("Corporate abonents not supported yet!");
-            //this.Close();
-            supported = false;
+            if (ab is PrivateAbonent)
+            {
+                this.abonent = (PrivateAbonent)ab;
+                RefreshForm();
+            }
+            else if (ab is CorporateAbonent)
+            {
+                MessageBox.Show("Corporate abonents not supported yet!");
+                supported = false;
+            }
+            else
+            {
+                MessageBox.Show("Incorrect parameter type given in constructor.");
+                supported = false;
+            }
         }
 
         public FormAbonent(Controller ctrl,Int64 id)
             : this(ctrl)
         {
             //Int64 id = 1;
+            //опасно!
             abonent = (PrivateAbonent)ctrl.conn.Get<PrivateAbonent>(id);
             this.RefreshForm();
         }

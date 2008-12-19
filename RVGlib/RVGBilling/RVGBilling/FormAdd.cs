@@ -27,7 +27,6 @@ namespace RVGBilling
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.num.number = maskedTextBox.Text;
             num.number = maskedTextBox.Text;
         }
 

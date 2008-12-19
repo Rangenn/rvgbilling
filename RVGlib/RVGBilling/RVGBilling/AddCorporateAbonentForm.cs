@@ -3,26 +3,34 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+
+using RVGlib.Domain;
 
 namespace RVGBilling
 {
     public partial class AddCorporateAbonentForm : Form
     {
-        Controller ctrl;
-        public AddCorporateAbonentForm(Controller ctrl)
+        CorporateAbonent Abonent;
+
+        public AddCorporateAbonentForm(CorporateAbonent ab)
         {
+            Abonent = ab;
+            if (Abonent == null)
+                throw new NullReferenceException("Abonent is null");
             InitializeComponent();
-            this.ctrl = ctrl;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            ctrl.AddCorporateAbonent(tbName.Text, tbAddress.Text,tbPhone.Text, tbEmail.Text);
-            this.Close();
+            Abonent.corporate_name = tbName.Text;
+            Abonent.phone = tbPhone.Text;
+            Abonent.balance = 0;
+            Abonent.last_pay_date = DateTime.Today;
+            Abonent.reg_time = DateTime.Today;
+            Abonent.mail_address = tbEmail.Text;
+            Abonent.address = tbAddress.Text;
         }
     }
 }
