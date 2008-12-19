@@ -51,8 +51,12 @@ namespace RVGBilling
         /// </summary>
         public void AddPerson()
         {
-            AddPrivateAbonentForm fm = new AddPrivateAbonentForm(this);
-            fm.Show();
+            PrivateAbonent ab = new PrivateAbonent();
+            AddPrivateAbonentForm fm = new AddPrivateAbonentForm(ab);
+            if (fm.ShowDialog() == DialogResult.OK)
+            {                
+                AddAbonent(ab);               
+            }
         }
 
         /// <summary>
@@ -61,10 +65,14 @@ namespace RVGBilling
         /// <param name="Name"></param>
         /// <param name="Address"></param>
         /// <param name="Phone"></param>
-        public void AddCorporate(string Name, string Address, string Phone)
+        public void AddCorporate()
         {
-            AddCorporateAbonentForm fm = new AddCorporateAbonentForm(this);
-            fm.Show();
+            CorporateAbonent ab = new CorporateAbonent();
+            AddCorporateAbonentForm fm = new AddCorporateAbonentForm(ab);
+            if (fm.ShowDialog() == DialogResult.OK)
+            {
+                AddAbonent(ab);
+            }
         }
 
         /// <summary>
@@ -88,11 +96,17 @@ namespace RVGBilling
                 passport_department = passportDepartament,
                 birth_date = DateTime.Today//добавить поле для ДР
             };
+            return (PrivateAbonent)AddAbonent(abonent);
+        }
+
+        public Abonent AddAbonent(Abonent abonent)
+        {
             connector.Save(abonent);
             formAbonent = new FormAbonent(this, abonent);
             formAbonent.Show();
             return abonent;
         }
+
 
         public FormAbonent fmAbonent
         {

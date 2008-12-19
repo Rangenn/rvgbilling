@@ -3,28 +3,40 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+
+using RVGlib.Domain;
 
 namespace RVGBilling
 {
     public partial class AddPrivateAbonentForm : Form
     {
-        Controller ctrl; 
+        PrivateAbonent Abonent;
 
-        public AddPrivateAbonentForm(Controller ctrl)
+        public AddPrivateAbonentForm(PrivateAbonent ab)
         {
-            this.ctrl = ctrl;
+            Abonent = ab;
+            if (Abonent == null)
+                throw new NullReferenceException("Abonent is null");
             InitializeComponent();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            DateTime passportDate = DateTime.Parse(tbPassportDate.Text);
-            ctrl.AddPrivateAbonent(tbSurname.Text, tbName.Text, tbPatronymic.Text, tbPassportSeria.Text, passportDate, tbDepartament.Text, tbNewNumber.Text);
-            this.Close();
+            Abonent.surname = tbSurname.Text;
+            Abonent.name = tbName.Text;
+            Abonent.patronymic = tbPatronymic.Text;
+            Abonent.passport_series = mtbPassportSeries.Text;
+            Abonent.passport_date = dtpPassportDate.Value;
+            Abonent.passport_department = tbDepartament.Text;
+            Abonent.phone = tbPhone.Text;
+            Abonent.birth_date = dtpBirthDate.Value;
+            Abonent.balance = 0;
+            Abonent.last_pay_date = DateTime.Today;
+            Abonent.reg_time = DateTime.Today;
+            Abonent.mail_address = tbEmail.Text;
+            Abonent.address = tbAddress.Text;
         }
     }
 }

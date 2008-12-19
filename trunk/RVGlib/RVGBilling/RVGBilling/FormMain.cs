@@ -31,15 +31,11 @@ namespace RVGBilling
             {
                 case 0:
                     ctrl.AddPerson();
-                    //ctrl.AddPerson(tbPersonName.Text, tbPersonPassport.Text, tbPersonPhone.Text);
                     break;
                 case 1:
-                    ctrl.AddCorporate(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
+                    ctrl.AddCorporate();
                     break;
             }
-
-            //FormAbonent fab = new FormAbonent(tbPersonName.Text, tbPersonPassport.Text);
-            //fab.ShowDialog();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
