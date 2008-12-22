@@ -34,6 +34,7 @@ namespace RVGBilling
         {
             this.ctrl = ctrl;
             ListRates = ctrl.GetRates();
+            RefreshRates();
         }
 
         //public FormRateList(Controller ctrl, List<Rate> list) : this()
@@ -64,8 +65,19 @@ namespace RVGBilling
             }
         }
 
+        private void RefreshRates()
+        {
+            lbRates.Items.Clear();
+            // заполняем listbox с тарифами
+            lbRates.Items.AddRange(ListRates.ToArray());
+            // Осторожно! требует Linq!
+        }
+
         private void btnAddPrice_Click(object sender, EventArgs e)
         {
+            int index=lbRates.SelectedIndex;
+            if (index >=0)
+                ctrl.AddPrice(ListRates[index]);
             //выдать диалоговое окно, по завершении добавить в список и обновить грид
         }
 

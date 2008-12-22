@@ -228,5 +228,27 @@ namespace RVGBilling
             return connector.GetRates();
         }
 
+        public void ViewRates()
+        {
+            FormRateList form = new FormRateList(this);
+            form.Show();
+        }
+
+        public void AddPrice(Rate r)
+        {
+            Price p = new Price
+            {
+                rate = r,
+                mask = "<Маска>",
+                cost_per_minute = 1
+            };
+            FormPrice form = new FormPrice(p);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                r.Prices.Add(p);
+                conn.Update(r);
+            }
+        }
+
     }
 }

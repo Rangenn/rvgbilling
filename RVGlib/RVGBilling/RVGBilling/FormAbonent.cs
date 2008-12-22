@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
+
 using RVGlib.Domain;
 
 namespace RVGBilling
@@ -110,8 +112,9 @@ namespace RVGBilling
             tbPassport.Text = abonent.passport_series;
             lbNumbers.Items.Clear();
             // заполняем listbox с номерами
-            for (int i = 0; i < abonent.Numbers.Count; i++)
-                lbNumbers.Items.Add(abonent.Numbers[i].number);
+            //for (int i = 0; i < abonent.Numbers.Count; i++)
+            lbNumbers.Items.AddRange(abonent.Numbers.ToArray());
+                //lbNumbers.Items.Add(abonent.Numbers[i].number);
             // заполняем combobox с тарифами
             IList<Rate> rates = (IList<Rate>)ctrl.conn.GetAll<Rate>();
             cbTariff.Items.Clear();

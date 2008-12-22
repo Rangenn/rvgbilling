@@ -146,5 +146,10 @@ namespace RVGBilling
         {
             gbSearch.Visible = false;
         }
+
+        private void tariffsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ctrl.ViewRates();
+        }
     }
 }
