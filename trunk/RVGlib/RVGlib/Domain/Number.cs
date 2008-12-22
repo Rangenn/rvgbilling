@@ -40,5 +40,10 @@ namespace RVGlib.Domain
             Calls = new List<Call>();
             Bills = new List<Bill>();
         }
+
+        public override string ToString()
+        {
+            return number;
+        }
     }
 }
