@@ -252,7 +252,7 @@
             this.helpToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(641, 24);
+            this.mainMenu.Size = new System.Drawing.Size(935, 24);
             this.mainMenu.TabIndex = 2;
             this.mainMenu.Text = "menuStrip";
             // 
@@ -267,7 +267,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -297,7 +297,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.aboutToolStripMenuItem.Text = "О программе";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -365,7 +365,7 @@
             this.gbSearch.Controls.Add(this.dgvSearch);
             this.gbSearch.Location = new System.Drawing.Point(328, 28);
             this.gbSearch.Name = "gbSearch";
-            this.gbSearch.Size = new System.Drawing.Size(301, 295);
+            this.gbSearch.Size = new System.Drawing.Size(595, 295);
             this.gbSearch.TabIndex = 7;
             this.gbSearch.TabStop = false;
             this.gbSearch.Text = "Результаты поиска";
@@ -383,7 +383,7 @@
             // 
             // btnSelectBody
             // 
-            this.btnSelectBody.Location = new System.Drawing.Point(220, 263);
+            this.btnSelectBody.Location = new System.Drawing.Point(105, 263);
             this.btnSelectBody.Name = "btnSelectBody";
             this.btnSelectBody.Size = new System.Drawing.Size(75, 23);
             this.btnSelectBody.TabIndex = 1;
@@ -409,7 +409,7 @@
             this.dgvSearch.ReadOnly = true;
             this.dgvSearch.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSearch.Size = new System.Drawing.Size(288, 237);
+            this.dgvSearch.Size = new System.Drawing.Size(582, 237);
             this.dgvSearch.TabIndex = 0;
             // 
             // FormMain
@@ -418,7 +418,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(641, 335);
+            this.ClientSize = new System.Drawing.Size(935, 359);
             this.Controls.Add(this.gbSearch);
             this.Controls.Add(this.gbBalance);
             this.Controls.Add(this.gbAbonent);
@@ -426,6 +426,7 @@
             this.MainMenuStrip = this.mainMenu;
             this.Name = "FormMain";
             this.Text = "RVG Billing";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.gbAbonent.ResumeLayout(false);
             this.tcAbonent.ResumeLayout(false);
             this.tpPerson.ResumeLayout(false);

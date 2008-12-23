@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using FluentNHibernate.Framework;
+using System.ComponentModel;
 //using Iesi.Collections.Generic;
 
 namespace RVGlib.Domain
@@ -36,6 +37,7 @@ namespace RVGlib.Domain
         /// </summary>
         public virtual Decimal  balance { get; set; }
 
+        [Bindable(false)]
         /// <summary>
         /// Номера
         /// </summary>
