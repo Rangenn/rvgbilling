@@ -181,7 +181,7 @@
             // mtbPassportSeries
             // 
             this.mtbPassportSeries.Location = new System.Drawing.Point(124, 124);
-            this.mtbPassportSeries.Mask = "0000 000000";
+            this.mtbPassportSeries.Mask = "0000000000";
             this.mtbPassportSeries.Name = "mtbPassportSeries";
             this.mtbPassportSeries.Size = new System.Drawing.Size(168, 20);
             this.mtbPassportSeries.TabIndex = 26;

@@ -85,59 +85,8 @@ namespace RVGBilling
             }
         }
 
-        /// <summary>
-        /// Добавляет частного клиента
-        /// </summary>
-        public PrivateAbonent AddPrivateAbonent(string surname, string name, string patronymic, string passportSeria, DateTime passportDate, string passportDepartament, string phonenumber)
-        {
-            var abonent = new PrivateAbonent
-            {
-                address = "address",
-                phone = phonenumber,
-                mail_address = "e-mail",
-                reg_time = DateTime.Today,
-                last_pay_date = DateTime.Today,
-                balance = new Decimal(100),
-                name = name,
-                surname = surname,
-                patronymic = patronymic,
-                passport_series = passportSeria,
-                passport_date = passportDate,
-                passport_department = passportDepartament,
-                birth_date = DateTime.Today//добавить поле для ДР
-            };
-            return (PrivateAbonent)AddAbonent(abonent);
-        }
-
         public Abonent AddAbonent(Abonent abonent)
         {
-            connector.Save(abonent);
-            formAbonent = new FormAbonent(this, abonent);
-            formAbonent.Show();
-            return abonent;
-        }
-
-
-        /// <summary>
-        /// Добавляет юридического клиента
-        /// </summary>
-        /// <param name="Name"></param>
-        /// <param name="Address"></param>
-        /// <param name="Phone"></param>
-        /// <param name="Email"></param>
-        /// <returns></returns>
-        public CorporateAbonent AddCorporateAbonent(string Name, string Address, string Phone, string Email)
-        {
-            var abonent = new CorporateAbonent
-            {
-                address = Address,
-                balance = 100,
-                corporate_name = Name,
-                last_pay_date = DateTime.Today,
-                mail_address = Email,
-                phone = Phone,
-                reg_time = DateTime.Today
-            };
             connector.Save(abonent);
             formAbonent = new FormAbonent(this, abonent);
             formAbonent.Show();
@@ -183,6 +132,12 @@ namespace RVGBilling
             return connector.SearchPerson(name, passport, phone);
         }
 
+        public void ViewAbonent(Abonent ab)
+        {
+            formAbonent = new FormAbonent(this, ab);
+            fmAbonent.ShowDialog();
+        }
+
         /// <summary>
         /// выбор частного листа
         /// </summary>
@@ -225,7 +180,8 @@ namespace RVGBilling
 
         public IList<Rate> GetRates()
         {
-            return connector.GetRates();
+            return connector.GetAll<Rate>();
+            //return connector.GetRates();
         }
 
         public void ViewRates()
