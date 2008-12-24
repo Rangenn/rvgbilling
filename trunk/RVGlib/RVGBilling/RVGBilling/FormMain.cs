@@ -33,59 +33,6 @@ namespace RVGBilling
             this.ctrl = ctrl;
             
         }
-        
-        // Внимание! Метод устарел! Не используйте его
-        private void RefreshGrid(IList<PrivateAbonent> list)
-        {
-            
-            DataGridViewColumnCollection Columns = dgvSearch.Columns;
-            Columns.Clear();
-            Columns.Add("Name", "ФИО");
-            Columns.Add("Passport", "Паспорт");
-            Columns.Add("id", "id");
-            Columns["id"].Visible = false;
-
-            DataGridViewRowCollection Rows = dgvSearch.Rows;
-            Rows.Clear();
-            if (list.Count > 0)
-            {
-                Rows.Add(list.Count);
-                for (int i = 0; i < list.Count; i++)
-                {
-                    Rows[i].Cells["Name"].Value = list[i].surname + " " + list[i].name + " " + list[i].patronymic;
-                    Rows[i].Cells["Passport"].Value = list[i].passport_series;
-                    Rows[i].Cells["id"].Value = list[i].Id;
-                }
-            }
-            gbSearch.Visible = true;
-            //отобразить коллекцию в DataGridView
-        }
-
-        // Внимание! Метод устарел! Не используйте его
-        private void RefreshGrid(IList<CorporateAbonent> list)
-        {
-            DataGridViewColumnCollection Columns = dgvSearch.Columns;
-            Columns.Clear();
-            Columns.Add("Name", "Название");
-            Columns.Add("Address", "Адрес");
-            Columns.Add("id", "id");
-            Columns["id"].Visible = false;
-
-            DataGridViewRowCollection Rows = dgvSearch.Rows;
-            Rows.Clear();
-            if (list.Count > 0)
-            {
-                Rows.Add(list.Count);
-                for (int i = 0; i < list.Count; i++)
-                {
-                    Rows[i].Cells["Name"].Value = list[i].corporate_name;
-                    Rows[i].Cells["Address"].Value = list[i].address;
-                    Rows[i].Cells["id"].Value = list[i].Id;
-                }
-            }
-            gbSearch.Visible = true;
-            //отобразить коллекцию в DataGridView
-        }
 
         /// <summary>
         /// Обновление таблицы (прячем лишние ячейки, устанавливаем заголовки и т.п.)
@@ -142,7 +89,6 @@ namespace RVGBilling
                         abonents.AddRange(list.ToArray());
                         bs.DataSource = list;
                         //InitGridPrivate();
-                        //this.RefreshGrid(list);
                         //отобразить коллекцию в DataGridView
                         break;
                     }
@@ -151,7 +97,6 @@ namespace RVGBilling
                         IList<CorporateAbonent> list = ctrl.SearchCoporate(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
                         abonents.AddRange(list.ToArray());
                         bs.DataSource = list;
-                        //this.RefreshGrid(list);
                         //отобразить коллекцию в DataGridView
                         break;
                     }

@@ -18,6 +18,7 @@ namespace RVGBilling
     {
         Controller ctrl;
         PrivateAbonent abonent;
+        BindingSource rateBindingSource, numbersBindingSource;
         bool supported = true;
 
         public FormAbonent(Controller ctrl)
@@ -30,6 +31,12 @@ namespace RVGBilling
         public FormAbonent(Controller ctrl, Abonent ab)
  	            : this(ctrl)
         {
+            // заполняем combobox с тарифами
+            IList<Rate> rates = ctrl.GetRates();
+            rateBindingSource = new BindingSource();
+            rateBindingSource.DataSource = rates;
+            cbRate.DataSource = rateBindingSource;
+
             if (ab is PrivateAbonent)
             {
                 this.abonent = (PrivateAbonent)ab;
@@ -45,8 +52,15 @@ namespace RVGBilling
                 MessageBox.Show("Incorrect parameter type given in constructor.");
                 supported = false;
             }
+
+            // заполняем listbox с номерами
+            numbersBindingSource = new BindingSource();
+            numbersBindingSource.DataSource = abonent.Numbers;
+            lbNumbers.DataSource = numbersBindingSource;
+
         }
 
+        // не использовать! Устарело!
         public FormAbonent(Controller ctrl,Int64 id)
             : this(ctrl)
         {
@@ -60,7 +74,7 @@ namespace RVGBilling
         {
             int index = lbNumbers.SelectedIndex;
             if (index>=0)
-                cbTariff.SelectedItem = abonent.Numbers[index].rate;
+                cbRate.SelectedItem = abonent.Numbers[index].rate;
         }
 
         /// <summary>
@@ -68,15 +82,15 @@ namespace RVGBilling
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnChangeTariff_Click(object sender, EventArgs e)
+        private void btnChangeRate_Click(object sender, EventArgs e)
         {
             int index = lbNumbers.SelectedIndex;
             if (index >= 0)
             {
-                abonent.Numbers[index].rate = (Rate)cbTariff.SelectedItem;
+                abonent.Numbers[index].rate = (Rate)cbRate.SelectedItem;
                 ctrl.conn.Update(abonent);
             }
-
+            numbersBindingSource.ResetBindings(false);
         }
         /// <summary>
         /// добавление нового номера
@@ -85,21 +99,8 @@ namespace RVGBilling
         /// <param name="e"></param>
         private void btnAddNumber_Click(object sender, EventArgs e)
         {
-            
-            Number num = new Number
-            {   
-                abonent=abonent,
-                rate = (Rate)cbTariff.Items[0]
-            };
-            FormAdd form = new FormAdd(num);
-            DialogResult dr = form.ShowDialog();
-            if (dr == DialogResult.OK)
-            {
-                //ctrl.conn.Save(num);
-                abonent.Numbers.Add(num);
-                ctrl.conn.Update(abonent);
-            }
-            RefreshForm();
+            ctrl.AddNumber(abonent, rateBindingSource);
+            numbersBindingSource.ResetBindings(false);
         }
 
         /// <summary>
@@ -107,23 +108,11 @@ namespace RVGBilling
         /// </summary>
         private void RefreshForm()
         {
-            //Int64 id = 1;
             tbName.Text = abonent.name;
             tbPassport.Text = abonent.passport_series;
-            lbNumbers.Items.Clear();
-            // заполняем listbox с номерами
-            //for (int i = 0; i < abonent.Numbers.Count; i++)
-            lbNumbers.Items.AddRange(abonent.Numbers.ToArray());
-                //lbNumbers.Items.Add(abonent.Numbers[i].number);
-            // заполняем combobox с тарифами
-            IList<Rate> rates = (IList<Rate>)ctrl.conn.GetAll<Rate>();
-            cbTariff.Items.Clear();
-            for (int i = 0; i < rates.Count; i++)
-                cbTariff.Items.Add(rates[i]);
-            //int index = (lbNumbers.SelectedIndex < 0) ? 0 : lbNumbers.SelectedIndex;
             int index = lbNumbers.SelectedIndex;
             if (index >= 0)
-                cbTariff.SelectedItem = abonent.Numbers[index].rate;
+                cbRate.SelectedItem = abonent.Numbers[index].rate;
         }
 
         private void FormAbonent_Load(object sender, EventArgs e)
@@ -148,7 +137,6 @@ namespace RVGBilling
                 FormCallDetails form = new FormCallDetails(list);
                 form.ShowDialog();
             }
-             //   ctrl.Payment(lbNumbers.SelectedItem.ToString(), 100);
         }
 
     }

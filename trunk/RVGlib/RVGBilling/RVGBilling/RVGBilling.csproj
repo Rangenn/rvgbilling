@@ -144,6 +144,12 @@
     <Compile Include="FormMain.designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRate.Designer.cs">
+      <DependentUpon>FormRate.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRateList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRate.resx">
+      <DependentUpon>FormRate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRateList.resx">

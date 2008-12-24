@@ -190,6 +190,21 @@ namespace RVGBilling
             form.Show();
         }
 
+        public void AddNumber(Abonent ab, BindingSource bs)
+        {
+            Number num = new Number
+            {
+                abonent = ab,
+            };
+            FormAdd form = new FormAdd(num,bs);
+            DialogResult dr = form.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                ab.Numbers.Add(num);
+                conn.Update(ab);
+            }
+        }
+
         public void AddPrice(Rate r)
         {
             Price p = new Price
@@ -222,6 +237,29 @@ namespace RVGBilling
             MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK) 
             {
                 conn.Delete(pr);
+            }
+        }
+
+        public Rate AddRate()
+        {
+            Rate r = new Rate
+            {
+                name = "<Название>"
+            };
+            FormRate form = new FormRate(r);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                conn.Save(r);
+            }
+            return r;
+        }
+
+        public void EditRate(Rate r)
+        {
+            FormRate form = new FormRate(r);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                conn.Update(r);
             }
         }
 
