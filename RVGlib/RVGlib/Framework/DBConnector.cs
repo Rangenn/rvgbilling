@@ -75,10 +75,14 @@ namespace RVGlib.Framework
         public IList<T> GetAll<T>() where T : Entity
         {
             //Session = SessionFactory.GetCurrentSession();
+            //Session.CreateQuery("from Abonent").
             ITransaction trans = Session.BeginTransaction();
             ICriteria crit = Session.CreateCriteria(typeof(T));
+        
             //if (SortBy != null) crit.addOrder(Order.asc(SortBy));
+            //IList<T> res = crit.List<T>();
             IList<T> res = crit.List<T>();
+
 
             trans.Commit();
             return res;
@@ -158,15 +162,6 @@ namespace RVGlib.Framework
                 Expression.Between("start_time",start, end));
             crit.Add(cr);
             IList<Call> res = crit.List<Call>();
-            trans.Commit();
-            return res;
-        }
-
-        public IList<Rate> GetRates()
-        {
-            ITransaction trans = Session.BeginTransaction();
-            ICriteria crit = Session.CreateCriteria(typeof(Rate));
-            IList<Rate> res = crit.List<Rate>();
             trans.Commit();
             return res;
         }

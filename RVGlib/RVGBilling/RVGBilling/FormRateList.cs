@@ -90,6 +90,9 @@ namespace RVGBilling
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Rate r=ctrl.AddRate();
+            ListRates.Add(r);
+            lbBindingSource.ResetBindings(false);
             //добавить новый тариф в список и обновить лист
         }
 

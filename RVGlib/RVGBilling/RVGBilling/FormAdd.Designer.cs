@@ -32,12 +32,14 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.labelText = new System.Windows.Forms.Label();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.labelRate = new System.Windows.Forms.Label();
+            this.cbRate = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnOK
             // 
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(28, 90);
+            this.btnOK.Location = new System.Drawing.Point(28, 103);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
@@ -48,7 +50,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(141, 90);
+            this.btnCancel.Location = new System.Drawing.Point(141, 103);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -72,11 +74,30 @@
             this.maskedTextBox.Size = new System.Drawing.Size(126, 20);
             this.maskedTextBox.TabIndex = 3;
             // 
+            // labelRate
+            // 
+            this.labelRate.AutoSize = true;
+            this.labelRate.Location = new System.Drawing.Point(25, 73);
+            this.labelRate.Name = "labelRate";
+            this.labelRate.Size = new System.Drawing.Size(40, 13);
+            this.labelRate.TabIndex = 4;
+            this.labelRate.Text = "Тариф";
+            // 
+            // cbRate
+            // 
+            this.cbRate.FormattingEnabled = true;
+            this.cbRate.Location = new System.Drawing.Point(90, 70);
+            this.cbRate.Name = "cbRate";
+            this.cbRate.Size = new System.Drawing.Size(126, 21);
+            this.cbRate.TabIndex = 5;
+            // 
             // FormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(243, 124);
+            this.ClientSize = new System.Drawing.Size(242, 153);
+            this.Controls.Add(this.cbRate);
+            this.Controls.Add(this.labelRate);
             this.Controls.Add(this.maskedTextBox);
             this.Controls.Add(this.labelText);
             this.Controls.Add(this.btnCancel);
@@ -94,5 +115,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label labelText;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
+        private System.Windows.Forms.Label labelRate;
+        private System.Windows.Forms.ComboBox cbRate;
     }
 }

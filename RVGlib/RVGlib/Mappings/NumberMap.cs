@@ -15,10 +15,10 @@ namespace RVGlib.Mappings
             References(x => x.abonent);
             HasMany<Call>(x => x.Calls)
                 .AsList()
-                .Cascade.All();
+                .Cascade.All().LazyLoad();
             HasMany<Bill>(x => x.Bills)
                 .AsList()
-                .Cascade.All();
+                .Cascade.All().LazyLoad();
             //this.parentIsRequired = true;
         }
     }

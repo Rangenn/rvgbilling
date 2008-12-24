@@ -44,7 +44,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnGetDetailes = new System.Windows.Forms.Button();
             this.btnChangeTariff = new System.Windows.Forms.Button();
-            this.cbTariff = new System.Windows.Forms.ComboBox();
+            this.cbRate = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCloseAccount = new System.Windows.Forms.Button();
@@ -140,7 +140,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.btnGetDetailes);
             this.groupBox2.Controls.Add(this.btnChangeTariff);
-            this.groupBox2.Controls.Add(this.cbTariff);
+            this.groupBox2.Controls.Add(this.cbRate);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(12, 181);
             this.groupBox2.Name = "groupBox2";
@@ -208,15 +208,15 @@
             this.btnChangeTariff.TabIndex = 2;
             this.btnChangeTariff.Text = "Изменить";
             this.btnChangeTariff.UseVisualStyleBackColor = true;
-            this.btnChangeTariff.Click += new System.EventHandler(this.btnChangeTariff_Click);
+            this.btnChangeTariff.Click += new System.EventHandler(this.btnChangeRate_Click);
             // 
-            // cbTariff
+            // cbRate
             // 
-            this.cbTariff.FormattingEnabled = true;
-            this.cbTariff.Location = new System.Drawing.Point(126, 19);
-            this.cbTariff.Name = "cbTariff";
-            this.cbTariff.Size = new System.Drawing.Size(176, 21);
-            this.cbTariff.TabIndex = 1;
+            this.cbRate.FormattingEnabled = true;
+            this.cbRate.Location = new System.Drawing.Point(126, 19);
+            this.cbRate.Name = "cbRate";
+            this.cbRate.Size = new System.Drawing.Size(176, 21);
+            this.cbRate.TabIndex = 1;
             // 
             // label4
             // 
@@ -299,7 +299,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnGetDetailes;
         private System.Windows.Forms.Button btnChangeTariff;
-        private System.Windows.Forms.ComboBox cbTariff;
+        private System.Windows.Forms.ComboBox cbRate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtEndDate;
         private System.Windows.Forms.DateTimePicker dtStartDate;

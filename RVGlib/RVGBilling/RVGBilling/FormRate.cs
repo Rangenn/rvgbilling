@@ -11,26 +11,24 @@ using RVGlib.Domain;
 
 namespace RVGBilling
 {
-    public partial class FormAdd : Form
+    public partial class FormRate : Form
     {
-        private Number num;
+        private Rate rate;
 
-        public FormAdd()
+        public FormRate()
         {
             InitializeComponent();
         }
-        public FormAdd(Number num, BindingSource rateBindingSource) : this()
+
+        public FormRate(Rate r) : this()
         {
-            this.num = num;
-            cbRate.DataSource = rateBindingSource;
+            this.rate = r;
+            tbName.Text = r.name;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            num.number = maskedTextBox.Text;
-            num.rate = (Rate)cbRate.SelectedItem;
+            rate.name = tbName.Text;
         }
-
-        
     }
 }
