@@ -206,5 +206,24 @@ namespace RVGBilling
             }
         }
 
+        public void EditPrice(Price pr)
+        {
+            FormPrice form = new FormPrice(pr);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                conn.Update(pr);
+            }
+        }
+
+        // не работает, зараза!
+        public void DeletePrice(Price pr)
+        {
+            if (MessageBox.Show("Удалить маску " + pr.mask, "Удаление цены",
+            MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK) 
+            {
+                conn.Delete(pr);
+            }
+        }
+
     }
 }
