@@ -203,6 +203,9 @@ namespace RVGBilling
             ctrl.Payment(tbNumber.Text, sum);
             tbNumber.Text = "";
             tbSumma.Text = "";
+
+            //обновляем DataGridView
+            bs.ResetBindings(false);
             //сделать обработку исключения
         }
 

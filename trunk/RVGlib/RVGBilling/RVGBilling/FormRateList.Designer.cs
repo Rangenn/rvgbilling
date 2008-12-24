@@ -110,6 +110,7 @@
             this.dgvPrices.ReadOnly = true;
             this.dgvPrices.Size = new System.Drawing.Size(248, 183);
             this.dgvPrices.TabIndex = 0;
+            this.dgvPrices.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvPrices_DataBindingComplete);
             // 
             // menuStrip1
             // 
