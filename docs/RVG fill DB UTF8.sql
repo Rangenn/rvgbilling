@@ -1,4 +1,4 @@
-п»ї--
+--
 -- PostgreSQL database dump
 --
 
@@ -94,18 +94,18 @@ SELECT pg_catalog.setval('users_id_seq', 1, false);
 -- Data for Name: rates; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO rates (id, name) VALUES (1, 'Р­РєРѕРЅРѕРјРЅС‹Р№');
-INSERT INTO rates (id, name) VALUES (2, 'РћР±С‹С‡РЅС‹Р№');
-INSERT INTO rates (id, name) VALUES (3, 'Р’СЃРµ РІРєР»СЋС‡РµРЅРѕ');
+INSERT INTO rates (id, name) VALUES (1, 'Экономный');
+INSERT INTO rates (id, name) VALUES (2, 'Обычный');
+INSERT INTO rates (id, name) VALUES (3, 'Все включено');
 --
 -- TOC entry 1806 (class 0 OID 106646)
 -- Dependencies: 1500
 -- Data for Name: private_abonents; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO private_abonents (id, address, phone, reg_time, balance, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (1, 'Рі.Р’РѕСЂРѕРЅРµР¶', '223344', '2008-12-15 00:00:00', 0.000000, '2008-12-15 00:00:00', 'ivanov@mail.ru', 'РРІР°РЅРѕРІ', 'РРІР°РЅ', 'РРІР°РЅРѕРІРёС‡', '2004222222', '2008-12-15 00:00:00', 'РІС‹РґР°РЅ Р РћР’Р” Рі.РРІР°РЅРѕРІРѕ', '1978-10-15 00:00:00');
-INSERT INTO private_abonents (id, address, phone, reg_time, balance, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (2, 'Рі.Р’РѕСЂРѕРЅРµР¶', '556677', '2008-12-15 00:00:00', 0.000000, '2008-12-15 00:00:00', 'PupkinVasya@hotmail.com', 'РџСѓРїРєРёРЅ', 'Р’Р°СЃРёР»РёР№', 'РџРµС‚СЂРѕРІРёС‡', '2005222222', '2008-12-15 00:00:00', 'РІС‹РґР°РЅ Р РћР’Р” Рі.РЎРµРјРёР»СѓРєРё', '1980-08-15 00:00:00');
-INSERT INTO private_abonents (id, address, phone, reg_time, balance, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (3, 'Рі.Р’РѕСЂРѕРЅРµР¶', '365365', '2008-12-15 00:00:00', 0.000000, '2008-12-15 00:00:00', 'vaa@gmail.com', 'Р’Р°СЃСЃРµСЂРјР°РЅ', 'РђРЅР°С‚РѕР»РёР№', 'РђРЅР°С‚РѕР»СЊРµРІРёС‡', '2006123123', '2008-12-15 00:00:00', 'РІС‹РґР°РЅ Р РћР’Р” Рі.РњРѕСЃРєРІС‹', '1968-12-03 00:00:00');
+INSERT INTO private_abonents (id, address, phone, reg_time, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (1, 'г.Воронеж', '223344', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ivanov@mail.ru', 'Иванов', 'Иван', 'Иванович', '2004222222', '2008-12-15 00:00:00', 'выдан РОВД г.Иваново', '1978-10-15 00:00:00');
+INSERT INTO private_abonents (id, address, phone, reg_time, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (2, 'г.Воронеж', '556677', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'PupkinVasya@hotmail.com', 'Пупкин', 'Василий', 'Петрович', '2005222222', '2008-12-15 00:00:00', 'выдан РОВД г.Семилуки', '1980-08-15 00:00:00');
+INSERT INTO private_abonents (id, address, phone, reg_time, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (3, 'г.Воронеж', '365365', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'vaa@gmail.com', 'Вассерман', 'Анатолий', 'Анатольевич', '2006123123', '2008-12-15 00:00:00', 'выдан РОВД г.Москвы', '1968-12-03 00:00:00');
 
 --
 -- TOC entry 1805 (class 0 OID 106642)
@@ -113,9 +113,9 @@ INSERT INTO private_abonents (id, address, phone, reg_time, balance, last_pay_da
 -- Data for Name: corporate_abonents; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO corporate_abonents (id, address, phone, reg_time, balance, last_pay_date, mail_address, corporate_name) VALUES (4, 'Рі.Р’РѕСЂРѕРЅРµР¶', '321321', '2008-12-15 00:00:00', 0.000000, '2008-12-15 00:00:00', 'umbrella@corp.net', 'Umbrella corp.');
-INSERT INTO corporate_abonents (id, address, phone, reg_time, balance, last_pay_date, mail_address, corporate_name) VALUES (5, 'Рі.Р’РѕСЂРѕРЅРµР¶', '765765', '2008-12-15 00:00:00', 0.000000, '2008-12-15 00:00:00', 'ibm@ibm.com', 'IBM');
-INSERT INTO corporate_abonents (id, address, phone, reg_time, balance, last_pay_date, mail_address, corporate_name) VALUES (6, 'Рі.Р’РѕСЂРѕРЅРµР¶', '777777', '2008-12-15 00:00:00', 0.000000, '2008-12-15 00:00:00', 'mash@oskol.ru', 'РћРћРћ РћСЃРєРѕР»Р“РѕСЂРњР°С€');
+INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name) VALUES (4, 'г.Воронеж', '321321', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'umbrella@corp.net', 'Umbrella corp.');
+INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name) VALUES (5, 'г.Воронеж', '765765', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ibm@ibm.com', 'IBM');
+INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name) VALUES (6, 'г.Воронеж', '777777', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'mash@oskol.ru', 'ООО ОсколГорМаш');
 
 
 --
@@ -135,19 +135,6 @@ INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (8, 3, 2, '960
 INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (9, 4, 3, '9103455667', 1);
 INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (10, 1, 1, '9204122211', 2);
 
---
--- TOC entry 1801 (class 0 OID 106612)
--- Dependencies: 1492
--- Data for Name: calls; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO calls (id, calling_number, start_time, number_id, cost, idx, duration) VALUES (1, '9209209202', '2008-12-15 00:00:00', 1, 1.000000, 0, 60);
-INSERT INTO calls (id, calling_number, start_time, number_id, cost, idx, duration) VALUES (2, '9101112223', '2008-12-15 00:00:00', 2, 1.000000, 0, 60);
-INSERT INTO calls (id, calling_number, start_time, number_id, cost, idx, duration) VALUES (3, '9209209202', '2008-12-15 00:00:00', 3, 1.000000, 0, 60);
-INSERT INTO calls (id, calling_number, start_time, number_id, cost, idx, duration) VALUES (4, '9101112223', '2008-12-15 00:00:00', 4, 1.000000, 0, 60);
-INSERT INTO calls (id, calling_number, start_time, number_id, cost, idx, duration) VALUES (5, '9209209202', '2008-12-15 00:00:00', 1, 1.000000, 1, 60);
-INSERT INTO calls (id, calling_number, start_time, number_id, cost, idx, duration) VALUES (6, '9101112223', '2008-12-15 00:00:00', 5, 1.000000, 0, 60);
-
 
 
 --
@@ -163,4 +150,17 @@ INSERT INTO prices (id, rate_id, cost_per_minute, mask, idx) VALUES (1, 2, 2.000
 INSERT INTO prices (id, rate_id, cost_per_minute, mask, idx) VALUES (2, 3, 5.000000, '920', NULL);
 INSERT INTO prices (id, rate_id, cost_per_minute, mask, idx) VALUES (3, 3, 5.000000, '910', NULL);
 
+
+--
+-- TOC entry 1801 (class 0 OID 106612)
+-- Dependencies: 1492
+-- Data for Name: calls; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (1, '9209209202', '2008-12-15 00:00:00', 1, 0, 60);
+INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (2, '9101112223', '2008-12-15 00:00:00', 2, 0, 61);
+INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (3, '9209209202', '2008-12-15 00:00:00', 3, 0, 120);
+INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (4, '9101112223', '2008-12-15 00:00:00', 4, 0, 1);
+INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (5, '9209209202', '2008-12-15 00:00:00', 1, 1, 60);
+INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (6, '9031112223', '2008-12-15 00:00:00', 5, 0, 60);
 
