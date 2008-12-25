@@ -201,6 +201,7 @@ namespace RVGBilling
             if (dr == DialogResult.OK)
             {
                 ab.Numbers.Add(num);
+                conn.Save(num);
                 conn.Update(ab);
             }
         }
