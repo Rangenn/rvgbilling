@@ -21,6 +21,7 @@ namespace RVGlib.Mappings
                 .Cascade.None().LazyLoad();
 
             Map(x => x.corporate_name);
+            Map(x => x.INN);
         }
     }
 }

@@ -25,6 +25,7 @@ namespace RVGBilling
         private void btnOK_Click(object sender, EventArgs e)
         {
             Abonent.corporate_name = tbName.Text;
+            Abonent.INN = tbINN.Text;
             Abonent.phone = tbPhone.Text;
             Abonent.balance = 0;
             Abonent.last_pay_date = DateTime.Today;

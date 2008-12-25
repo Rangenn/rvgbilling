@@ -17,7 +17,7 @@ namespace RVGBilling
     public partial class FormAbonent : Form
     {
         Controller ctrl;
-        PrivateAbonent abonent;
+        Abonent abonent;
         BindingSource rateBindingSource, numbersBindingSource;
         bool supported = true;
 
@@ -39,13 +39,13 @@ namespace RVGBilling
 
             if (ab is PrivateAbonent)
             {
-                this.abonent = (PrivateAbonent)ab;
+                this.abonent = ab;
                 RefreshForm();
             }
             else if (ab is CorporateAbonent)
             {
-                MessageBox.Show("Corporate abonents not supported yet!");
-                supported = false;
+                this.abonent = ab;
+                RefreshForm();
             }
             else
             {
@@ -73,8 +73,12 @@ namespace RVGBilling
         private void lbNumbers_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = lbNumbers.SelectedIndex;
-            if (index>=0)
+            if (index >= 0)
+            {
+                groupBox2.Enabled = true;
+                groupBox3.Enabled = true;
                 cbRate.SelectedItem = abonent.Numbers[index].rate;
+            }
         }
 
         /// <summary>
@@ -108,11 +112,33 @@ namespace RVGBilling
         /// </summary>
         private void RefreshForm()
         {
-            tbName.Text = abonent.name;
-            tbPassport.Text = abonent.passport_series;
+            if (abonent is PrivateAbonent)
+            {
+                PrivateAbonent person = (PrivateAbonent)abonent;
+                tbName.Text = person.surname + ' ' + person.name + ' ' + person.patronymic;
+                labelIdentity.Text = "Паспортные данные";
+                tbIdentity.Text = person.passport_series;
+            }
+            if (abonent is CorporateAbonent)
+            {
+                CorporateAbonent corp = (CorporateAbonent)abonent;
+                tbName.Text = corp.corporate_name;
+                labelIdentity.Text = "ИНН";
+                tbIdentity.Text = corp.INN;
+            }
+            this.Text = "Абонент : " + tbName.Text;
+            tbLastPay.Text = abonent.last_pay_date.ToString();
+            tbBalance.Text = abonent.balance.ToString();
             int index = lbNumbers.SelectedIndex;
             if (index >= 0)
+            {
                 cbRate.SelectedItem = abonent.Numbers[index].rate;
+            }
+            else
+            {
+                groupBox2.Enabled = false;
+                groupBox3.Enabled = false;
+            }
         }
 
         private void FormAbonent_Load(object sender, EventArgs e)
@@ -126,6 +152,7 @@ namespace RVGBilling
             int index = lbNumbers.SelectedIndex;
             if (index >= 0)
                 ctrl.Payment(lbNumbers.SelectedItem.ToString(), 100);
+            RefreshForm();
         }
 
         private void btnGetDetailes_Click(object sender, EventArgs e)
@@ -134,7 +161,9 @@ namespace RVGBilling
             if (index >= 0)
             {
                 IList<Call> list = ctrl.GetCalls(abonent.Numbers[index], dtStartDate.Value, dtEndDate.Value);
-                FormCallDetails form = new FormCallDetails(list);
+                BindingSource bs = new BindingSource();
+                bs.DataSource = list;
+                FormCallDetails form = new FormCallDetails(bs);
                 form.ShowDialog();
             }
         }

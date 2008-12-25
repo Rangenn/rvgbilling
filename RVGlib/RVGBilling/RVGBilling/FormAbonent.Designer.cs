@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbLastPay = new System.Windows.Forms.TextBox();
+            this.tbBalance = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.btnAddNumber = new System.Windows.Forms.Button();
             this.lbNumbers = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbPassport = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.tbIdentity = new System.Windows.Forms.TextBox();
+            this.labelIdentity = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dtEndDate = new System.Windows.Forms.DateTimePicker();
@@ -57,23 +61,61 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.tbLastPay);
+            this.groupBox1.Controls.Add(this.tbBalance);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.btnAddNumber);
             this.groupBox1.Controls.Add(this.lbNumbers);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.tbPassport);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.tbIdentity);
+            this.groupBox1.Controls.Add(this.labelIdentity);
             this.groupBox1.Controls.Add(this.tbName);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.labelName);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(308, 162);
+            this.groupBox1.Size = new System.Drawing.Size(336, 295);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Информация";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 100);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(137, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Время последней оплаты";
+            // 
+            // tbLastPay
+            // 
+            this.tbLastPay.Location = new System.Drawing.Point(150, 97);
+            this.tbLastPay.Name = "tbLastPay";
+            this.tbLastPay.ReadOnly = true;
+            this.tbLastPay.Size = new System.Drawing.Size(175, 20);
+            this.tbLastPay.TabIndex = 10;
+            // 
+            // tbBalance
+            // 
+            this.tbBalance.Location = new System.Drawing.Point(149, 71);
+            this.tbBalance.Name = "tbBalance";
+            this.tbBalance.ReadOnly = true;
+            this.tbBalance.Size = new System.Drawing.Size(176, 20);
+            this.tbBalance.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 13);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Баланс";
+            // 
             // btnAddNumber
             // 
-            this.btnAddNumber.Location = new System.Drawing.Point(7, 89);
+            this.btnAddNumber.Location = new System.Drawing.Point(15, 146);
             this.btnAddNumber.Name = "btnAddNumber";
             this.btnAddNumber.Size = new System.Drawing.Size(110, 23);
             this.btnAddNumber.TabIndex = 7;
@@ -84,52 +126,54 @@
             // lbNumbers
             // 
             this.lbNumbers.FormattingEnabled = true;
-            this.lbNumbers.Location = new System.Drawing.Point(126, 72);
+            this.lbNumbers.Location = new System.Drawing.Point(149, 136);
             this.lbNumbers.Name = "lbNumbers";
-            this.lbNumbers.Size = new System.Drawing.Size(176, 82);
+            this.lbNumbers.Size = new System.Drawing.Size(176, 147);
             this.lbNumbers.TabIndex = 6;
             this.lbNumbers.SelectedIndexChanged += new System.EventHandler(this.lbNumbers_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 72);
+            this.label3.Location = new System.Drawing.Point(45, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Номера";
             // 
-            // tbPassport
+            // tbIdentity
             // 
-            this.tbPassport.Location = new System.Drawing.Point(126, 45);
-            this.tbPassport.Name = "tbPassport";
-            this.tbPassport.Size = new System.Drawing.Size(176, 20);
-            this.tbPassport.TabIndex = 3;
+            this.tbIdentity.Location = new System.Drawing.Point(149, 45);
+            this.tbIdentity.Name = "tbIdentity";
+            this.tbIdentity.ReadOnly = true;
+            this.tbIdentity.Size = new System.Drawing.Size(176, 20);
+            this.tbIdentity.TabIndex = 3;
             // 
-            // label2
+            // labelIdentity
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Паспортные данные";
+            this.labelIdentity.AutoSize = true;
+            this.labelIdentity.Location = new System.Drawing.Point(6, 48);
+            this.labelIdentity.Name = "labelIdentity";
+            this.labelIdentity.Size = new System.Drawing.Size(111, 13);
+            this.labelIdentity.TabIndex = 2;
+            this.labelIdentity.Text = "Паспортные данные";
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(126, 19);
+            this.tbName.Location = new System.Drawing.Point(149, 19);
             this.tbName.Name = "tbName";
+            this.tbName.ReadOnly = true;
             this.tbName.Size = new System.Drawing.Size(176, 20);
             this.tbName.TabIndex = 1;
             // 
-            // label1
+            // labelName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ФИО";
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(6, 22);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(34, 13);
+            this.labelName.TabIndex = 0;
+            this.labelName.Text = "ФИО";
             // 
             // groupBox2
             // 
@@ -142,9 +186,9 @@
             this.groupBox2.Controls.Add(this.btnChangeTariff);
             this.groupBox2.Controls.Add(this.cbRate);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(12, 181);
+            this.groupBox2.Location = new System.Drawing.Point(12, 314);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(409, 127);
+            this.groupBox2.Size = new System.Drawing.Size(436, 127);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Информация о номере";
@@ -192,7 +236,7 @@
             // 
             // btnGetDetailes
             // 
-            this.btnGetDetailes.Location = new System.Drawing.Point(308, 94);
+            this.btnGetDetailes.Location = new System.Drawing.Point(318, 94);
             this.btnGetDetailes.Name = "btnGetDetailes";
             this.btnGetDetailes.Size = new System.Drawing.Size(91, 23);
             this.btnGetDetailes.TabIndex = 3;
@@ -202,7 +246,7 @@
             // 
             // btnChangeTariff
             // 
-            this.btnChangeTariff.Location = new System.Drawing.Point(308, 17);
+            this.btnChangeTariff.Location = new System.Drawing.Point(318, 17);
             this.btnChangeTariff.Name = "btnChangeTariff";
             this.btnChangeTariff.Size = new System.Drawing.Size(91, 23);
             this.btnChangeTariff.TabIndex = 2;
@@ -232,9 +276,9 @@
             this.groupBox3.Controls.Add(this.btnCloseAccount);
             this.groupBox3.Controls.Add(this.btnMakeBill);
             this.groupBox3.Controls.Add(this.btnAddMoney);
-            this.groupBox3.Location = new System.Drawing.Point(328, 13);
+            this.groupBox3.Location = new System.Drawing.Point(355, 13);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(93, 162);
+            this.groupBox3.Size = new System.Drawing.Size(93, 295);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Операции";
@@ -271,7 +315,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 314);
+            this.ClientSize = new System.Drawing.Size(453, 453);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -291,10 +335,10 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbPassport;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbIdentity;
+        private System.Windows.Forms.Label labelIdentity;
         private System.Windows.Forms.ListBox lbNumbers;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnGetDetailes;
@@ -311,5 +355,9 @@
         private System.Windows.Forms.Button btnMakeBill;
         private System.Windows.Forms.Button btnAddMoney;
         private System.Windows.Forms.Button btnAddNumber;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbLastPay;
+        private System.Windows.Forms.TextBox tbBalance;
+        private System.Windows.Forms.Label label8;
     }
 }

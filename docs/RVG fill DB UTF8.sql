@@ -113,9 +113,9 @@ INSERT INTO private_abonents (id, address, phone, reg_time, last_pay_date, mail_
 -- Data for Name: corporate_abonents; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name) VALUES (4, 'г.Воронеж', '321321', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'umbrella@corp.net', 'Umbrella corp.');
-INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name) VALUES (5, 'г.Воронеж', '765765', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ibm@ibm.com', 'IBM');
-INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name) VALUES (6, 'г.Воронеж', '777777', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'mash@oskol.ru', 'ООО ОсколГорМаш');
+INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name, inn) VALUES (4, 'г.Воронеж', '321321', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'umbrella@corp.net', 'Umbrella corp.','7729425477');
+INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name, inn) VALUES (5, 'г.Воронеж', '765765', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ibm@ibm.com', 'IBM','7756230000');
+INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name, inn) VALUES (6, 'г.Воронеж', '777777', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'mash@oskol.ru', 'ООО ОсколГорМаш','7782341234');
 
 
 --

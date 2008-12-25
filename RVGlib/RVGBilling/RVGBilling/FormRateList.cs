@@ -75,17 +75,19 @@ namespace RVGBilling
 
         private void btnRemovePrice_Click(object sender, EventArgs e)
         {
-            /*int index = dgvPrices.CurrentRow.Index;
+            int index = dgvPrices.CurrentRow.Index;
             if (index >= 0)
             {
                 // вся эта байда не работает! Рома, сам пиши удаление!!!
                 Rate rate=(Rate)lbRates.SelectedItem;
                 Price price = rate.Prices[index];
                 rate.Prices.Remove(price);
+                price.rate = null;
+                ctrl.conn.Update(rate);
                 ctrl.DeletePrice(price);
             }
             gridBindingSource.ResetBindings(false);
-            //удалить из списка и обновить грид*/
+            //удалить из списка и обновить грид
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)

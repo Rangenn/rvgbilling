@@ -14,5 +14,7 @@ namespace RVGlib.Domain
         /// Название юр.лица
         /// </summary>
         public virtual String corporate_name { get; set; }
+
+        public virtual String INN { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 /*
 Created		23.09.2008
-Modified		15.12.2008
+Modified		25.12.2008
 Project		
 Model			
 Company		
@@ -76,7 +76,6 @@ Create table "prices"
 	"rate_id" Integer NOT NULL,
 	"cost_per_minute" Numeric(30,6) NOT NULL,
 	"mask" Varchar(10),
-	"idx" Integer,
  primary key ("id")
 ) Without Oids;
 
@@ -136,7 +135,8 @@ Create table "bills"
 
 Create table "corporate_abonents"
 (
-	"corporate_name" Varchar(100) NOT NULL
+	"corporate_name" Varchar(100) NOT NULL,
+	"INN" Varchar(20) NOT NULL
 ) Inherits ("abonents")
  Without Oids;
 
@@ -159,6 +159,7 @@ Create table "private_abonents"
 
 
 /* Create Alternate Keys */
+Alter Table "prices" add Constraint "mask_unique_key" UNIQUE ("rate_id","mask");
 
 
 
