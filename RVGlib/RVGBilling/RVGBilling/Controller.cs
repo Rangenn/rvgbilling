@@ -134,6 +134,9 @@ namespace RVGBilling
 
         public void ViewAbonent(Abonent ab)
         {
+            // опасно! передача id и типа абонента
+            //formAbonent = new FormAbonent(this, ab.Id, false);
+
             formAbonent = new FormAbonent(this, ab);
             fmAbonent.ShowDialog();
         }
@@ -165,7 +168,7 @@ namespace RVGBilling
         /// выбор юричического лица
         /// </summary>
         /// <param name="id"></param>
-        public void SelectCorporate(int id)
+        public void SelectCorporate(long id)
         {
             CorporateAbonent abonent = connector.Get<CorporateAbonent>(id);
             formAbonent = new FormAbonent(this, abonent);
@@ -231,7 +234,7 @@ namespace RVGBilling
             }
         }
 
-        // не работает, зараза!
+        // работает!
         public void DeletePrice(Price pr)
         {
             if (MessageBox.Show("Удалить маску " + pr.mask, "Удаление цены",
@@ -261,6 +264,16 @@ namespace RVGBilling
             if (form.ShowDialog() == DialogResult.OK)
             {
                 conn.Update(r);
+            }
+        }
+
+        // работает!
+        public void DeleteRate(Rate rate)
+        {
+            if (MessageBox.Show("Удалить тариф \"" + rate.name+ "\"?", "Удаление тарифа",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                conn.Delete(rate);
             }
         }
 

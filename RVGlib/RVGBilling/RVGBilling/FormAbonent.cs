@@ -61,13 +61,30 @@ namespace RVGBilling
         }
 
         // не использовать! Устарело!
-        public FormAbonent(Controller ctrl,Int64 id)
+        public FormAbonent(Controller ctrl,Int64 id, bool isPrivate)
             : this(ctrl)
         {
-            //Int64 id = 1;
-            //опасно!
-            abonent = (PrivateAbonent)ctrl.conn.Get<PrivateAbonent>(id);
+
+            // заполняем combobox с тарифами
+            IList<Rate> rates = ctrl.GetRates();
+            rateBindingSource = new BindingSource();
+            rateBindingSource.DataSource = rates;
+            cbRate.DataSource = rateBindingSource;
+
+            if (isPrivate)
+            {
+                abonent = (PrivateAbonent)ctrl.conn.Get<PrivateAbonent>(id);
+            }
+            else
+            {
+                abonent = (CorporateAbonent)ctrl.conn.Get<CorporateAbonent>(id);
+            }
             this.RefreshForm();
+
+            // заполняем listbox с номерами
+            numbersBindingSource = new BindingSource();
+            numbersBindingSource.DataSource = abonent.Numbers;
+            lbNumbers.DataSource = numbersBindingSource;
         }
 
         private void lbNumbers_SelectedIndexChanged(object sender, EventArgs e)

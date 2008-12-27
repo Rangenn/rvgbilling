@@ -37,7 +37,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.rateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbRateDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrices)).BeginInit();
@@ -126,7 +126,7 @@
             // 
             this.rateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
-            this.searchToolStripMenuItem,
+            this.EditToolStripMenuItem,
             this.removeSelectedToolStripMenuItem});
             this.rateToolStripMenuItem.Name = "rateToolStripMenuItem";
             this.rateToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
@@ -139,12 +139,12 @@
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
-            // searchToolStripMenuItem
+            // EditToolStripMenuItem
             // 
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.searchToolStripMenuItem.Text = "Search";
-            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
+            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.EditToolStripMenuItem.Text = "Edit";
+            this.EditToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // removeSelectedToolStripMenuItem
             // 
@@ -180,7 +180,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem rateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSelectedToolStripMenuItem;
         private System.Windows.Forms.Button btnRemovePrice;
         private System.Windows.Forms.Button btnEditPrice;

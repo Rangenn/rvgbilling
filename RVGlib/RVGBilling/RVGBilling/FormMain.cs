@@ -115,16 +115,16 @@ namespace RVGBilling
             //если отсортировали, то борода! ((((((((
             if (index >= 0)
             {
-                // все это уже устарело!
                 /*switch (tcAbonent.SelectedIndex)
                 {
                     case 0:
-                        ctrl.SelectPerson(abonents[index]);
+                        ctrl.SelectPerson(abonents[index].Id);
                         break;
                     case 1:
-                        ctrl.SelectCorporate(abonents[index]);
+                        ctrl.SelectCorporate(abonents[index].Id);
                         break;
                 }*/
+
                 ctrl.ViewAbonent(abonents[index]);
             }
         }

@@ -82,9 +82,10 @@ namespace RVGBilling
                 Rate rate=(Rate)lbRates.SelectedItem;
                 Price price = rate.Prices[index];
                 rate.Prices.Remove(price);
-                price.rate = null;
-                ctrl.conn.Update(rate);
+                //price.rate = null;
+                
                 ctrl.DeletePrice(price);
+                ctrl.conn.Update(rate);
             }
             gridBindingSource.ResetBindings(false);
             //удалить из списка и обновить грид
@@ -98,13 +99,28 @@ namespace RVGBilling
             //добавить новый тариф в список и обновить лист
         }
 
-        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //найти тариф в списке и сделать selected в листе
+            int index = lbRates.SelectedIndex;
+            if (index >= 0)
+            {
+                Rate rate = (Rate)lbRates.SelectedItem;
+                ctrl.EditRate(rate);
+                lbBindingSource.ResetBindings(false);
+            }
+            //изменить название тарифа
         }
 
         private void removeSelectedToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int index = lbRates.SelectedIndex;
+            if (index >= 0)
+            {
+                Rate rate = (Rate)lbRates.SelectedItem;
+                ListRates.Remove(rate);
+                ctrl.DeleteRate(rate);
+                lbBindingSource.ResetBindings(false);
+            }
             //удалить тариф из списка и обновить лист
         }
 

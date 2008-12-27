@@ -13,7 +13,7 @@ namespace RVGlib.Mappings
             Map(x => x.name).CanNotBeNull().WithLengthOf(100);
             HasMany<Price>(x => x.Prices)
                 .LazyLoad()
-                .Cascade.All();
+                .Cascade.All().IsInverse();
         }
     }
 }
