@@ -101,7 +101,7 @@
             this.Controls.Add(this.lCost);
             this.Controls.Add(this.lMask);
             this.Name = "FormPrice";
-            this.Text = "FormPrice";
+            this.Text = "Добавить цену";
             this.ResumeLayout(false);
             this.PerformLayout();
 

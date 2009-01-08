@@ -166,7 +166,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbName);
             this.Name = "AddCorporateAbonentForm";
-            this.Text = "AddCorporateAbonentForm";
+            this.Text = "Добавить юр.лицо";
             this.ResumeLayout(false);
             this.PerformLayout();
 

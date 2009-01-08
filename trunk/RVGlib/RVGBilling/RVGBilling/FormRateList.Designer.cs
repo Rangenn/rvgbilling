@@ -66,7 +66,7 @@
             this.gbRateDetails.Size = new System.Drawing.Size(254, 240);
             this.gbRateDetails.TabIndex = 1;
             this.gbRateDetails.TabStop = false;
-            this.gbRateDetails.Text = "Rate Details";
+            this.gbRateDetails.Text = "Маски тарифа";
             // 
             // btnRemovePrice
             // 
@@ -75,7 +75,7 @@
             this.btnRemovePrice.Name = "btnRemovePrice";
             this.btnRemovePrice.Size = new System.Drawing.Size(75, 23);
             this.btnRemovePrice.TabIndex = 3;
-            this.btnRemovePrice.Text = "Remove Price";
+            this.btnRemovePrice.Text = "Удалить";
             this.btnRemovePrice.UseVisualStyleBackColor = true;
             this.btnRemovePrice.Click += new System.EventHandler(this.btnRemovePrice_Click);
             // 
@@ -85,7 +85,7 @@
             this.btnEditPrice.Name = "btnEditPrice";
             this.btnEditPrice.Size = new System.Drawing.Size(75, 23);
             this.btnEditPrice.TabIndex = 2;
-            this.btnEditPrice.Text = "Edit Price";
+            this.btnEditPrice.Text = "Изменить";
             this.btnEditPrice.UseVisualStyleBackColor = true;
             this.btnEditPrice.Click += new System.EventHandler(this.btnEditPrice_Click);
             // 
@@ -95,7 +95,7 @@
             this.btnAddPrice.Name = "btnAddPrice";
             this.btnAddPrice.Size = new System.Drawing.Size(75, 23);
             this.btnAddPrice.TabIndex = 1;
-            this.btnAddPrice.Text = "Add Price";
+            this.btnAddPrice.Text = "Добавить";
             this.btnAddPrice.UseVisualStyleBackColor = true;
             this.btnAddPrice.Click += new System.EventHandler(this.btnAddPrice_Click);
             // 
@@ -129,28 +129,28 @@
             this.EditToolStripMenuItem,
             this.removeSelectedToolStripMenuItem});
             this.rateToolStripMenuItem.Name = "rateToolStripMenuItem";
-            this.rateToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
-            this.rateToolStripMenuItem.Text = "Rate";
+            this.rateToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.rateToolStripMenuItem.Text = "Тариф";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.addToolStripMenuItem.Text = "Создать";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.EditToolStripMenuItem.Text = "Edit";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.EditToolStripMenuItem.Text = "Переименовать";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // removeSelectedToolStripMenuItem
             // 
             this.removeSelectedToolStripMenuItem.Name = "removeSelectedToolStripMenuItem";
-            this.removeSelectedToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.removeSelectedToolStripMenuItem.Text = "Remove Selected";
+            this.removeSelectedToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.removeSelectedToolStripMenuItem.Text = "Удалить выделенный";
             this.removeSelectedToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedToolStripMenuItem_Click);
             // 
             // FormRateList
@@ -163,7 +163,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormRateList";
-            this.Text = "FormRateList";
+            this.Text = "Тарифные планы";
             this.gbRateDetails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrices)).EndInit();
             this.menuStrip1.ResumeLayout(false);

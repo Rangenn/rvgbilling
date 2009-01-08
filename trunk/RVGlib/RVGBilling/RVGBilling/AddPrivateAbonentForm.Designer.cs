@@ -264,7 +264,7 @@
             this.Controls.Add(this.tbPhone);
             this.Controls.Add(this.label1);
             this.Name = "AddPrivateAbonentForm";
-            this.Text = "AddPrivateAbonentForm";
+            this.Text = "Добавить физ.лицо";
             this.ResumeLayout(false);
             this.PerformLayout();
 

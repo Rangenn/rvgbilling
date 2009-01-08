@@ -52,7 +52,7 @@
             this.ClientSize = new System.Drawing.Size(365, 243);
             this.Controls.Add(this.dgCalls);
             this.Name = "FormCallDetails";
-            this.Text = "FormCallDetails";
+            this.Text = "Звонки";
             ((System.ComponentModel.ISupportInitialize)(this.dgCalls)).EndInit();
             this.ResumeLayout(false);
 

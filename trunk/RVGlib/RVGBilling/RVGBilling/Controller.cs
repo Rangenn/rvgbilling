@@ -234,14 +234,18 @@ namespace RVGBilling
             }
         }
 
-        // работает!
-        public void DeletePrice(Price pr)
+        //работает! 
+        public bool DeletePriceFromRate(Rate r, Price pr)
         {
-            if (MessageBox.Show("Удалить маску " + pr.mask, "Удаление цены",
-            MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK) 
+            bool res = MessageBox.Show("Удалить маску " + pr.mask + " из тарифа " + r.name + " ?", "Удаление цены",
+            MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK;
+            if (res) 
             {
+                r.Prices.Remove(pr);
+                //conn.Update(r);
                 conn.Delete(pr);
             }
+            return res;
         }
 
         public Rate AddRate()
@@ -268,13 +272,15 @@ namespace RVGBilling
         }
 
         // работает!
-        public void DeleteRate(Rate rate)
+        public bool DeleteRate(Rate rate)
         {
-            if (MessageBox.Show("Удалить тариф \"" + rate.name+ "\"?", "Удаление тарифа",
-            MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            bool res = MessageBox.Show("Удалить тариф \"" + rate.name+ "\"?", "Удаление тарифа",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+            if (res)
             {
                 conn.Delete(rate);
             }
+            return res;
         }
 
     }
