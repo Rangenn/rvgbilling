@@ -85,12 +85,10 @@ namespace RVGBilling
             }
         }
 
-        public Abonent AddAbonent(Abonent abonent)
+        public void AddAbonent(Abonent abonent)
         {
             connector.Save(abonent);
-            formAbonent = new FormAbonent(this, abonent);
-            formAbonent.Show();
-            return abonent;
+            ViewAbonent(abonent);
         }
 
         /// <summary>
@@ -134,9 +132,6 @@ namespace RVGBilling
 
         public void ViewAbonent(Abonent ab)
         {
-            // опасно! передача id и типа абонента
-            //formAbonent = new FormAbonent(this, ab.Id, false);
-
             formAbonent = new FormAbonent(this, ab);
             fmAbonent.ShowDialog();
         }
@@ -281,6 +276,13 @@ namespace RVGBilling
                 conn.Delete(rate);
             }
             return res;
+        }
+
+        public void DissolveAbonent(Abonent ab)
+        {
+            ab.dissolved = true;
+            conn.Update(ab);
+            MessageBox.Show("Баланс на момент расторжения договора: " + ab.balance.ToString());
         }
 
     }

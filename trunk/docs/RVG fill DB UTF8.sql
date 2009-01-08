@@ -104,7 +104,7 @@ INSERT INTO rates (id, name) VALUES (3, 'Все включено');
 --
 
 INSERT INTO private_abonents (id, address, phone, reg_time, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (1, 'г.Воронеж', '223344', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ivanov@mail.ru', 'Иванов', 'Иван', 'Иванович', '2004222222', '2008-12-15 00:00:00', 'выдан РОВД г.Иваново', '1978-10-15 00:00:00');
-INSERT INTO private_abonents (id, address, phone, reg_time, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (2, 'г.Воронеж', '556677', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'PupkinVasya@hotmail.com', 'Пупкин', 'Василий', 'Петрович', '2005222222', '2008-12-15 00:00:00', 'выдан РОВД г.Семилуки', '1980-08-15 00:00:00');
+INSERT INTO private_abonents (id, address, phone, reg_time, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date, dissolved) VALUES (2, 'г.Воронеж', '556677', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'PupkinVasya@hotmail.com', 'Пупкин', 'Василий', 'Петрович', '2005222222', '2008-12-15 00:00:00', 'выдан РОВД г.Семилуки', '1980-08-15 00:00:00', true);
 INSERT INTO private_abonents (id, address, phone, reg_time, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (3, 'г.Воронеж', '365365', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'vaa@gmail.com', 'Вассерман', 'Анатолий', 'Анатольевич', '2006123123', '2008-12-15 00:00:00', 'выдан РОВД г.Москвы', '1968-12-03 00:00:00');
 
 --

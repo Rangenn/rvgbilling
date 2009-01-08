@@ -70,6 +70,8 @@
             this.btnCloseAccount = new System.Windows.Forms.Button();
             this.btnMakeBill = new System.Windows.Forms.Button();
             this.btnAddMoney = new System.Windows.Forms.Button();
+            this.tbAccountNumber = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBoxAbInfo.SuspendLayout();
             this.groupBoxNumInfo.SuspendLayout();
             this.groupBoxOps.SuspendLayout();
@@ -77,6 +79,8 @@
             // 
             // groupBoxAbInfo
             // 
+            this.groupBoxAbInfo.Controls.Add(this.tbAccountNumber);
+            this.groupBoxAbInfo.Controls.Add(this.label15);
             this.groupBoxAbInfo.Controls.Add(this.label10);
             this.groupBoxAbInfo.Controls.Add(this.tbEmail);
             this.groupBoxAbInfo.Controls.Add(this.label1);
@@ -106,7 +110,7 @@
             this.groupBoxAbInfo.Controls.Add(this.labelIdentity);
             this.groupBoxAbInfo.Location = new System.Drawing.Point(13, 13);
             this.groupBoxAbInfo.Name = "groupBoxAbInfo";
-            this.groupBoxAbInfo.Size = new System.Drawing.Size(329, 520);
+            this.groupBoxAbInfo.Size = new System.Drawing.Size(329, 533);
             this.groupBoxAbInfo.TabIndex = 0;
             this.groupBoxAbInfo.TabStop = false;
             this.groupBoxAbInfo.Text = "Информация";
@@ -114,7 +118,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 236);
+            this.label10.Location = new System.Drawing.Point(6, 258);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(35, 13);
             this.label10.TabIndex = 67;
@@ -122,7 +126,7 @@
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(149, 236);
+            this.tbEmail.Location = new System.Drawing.Point(149, 258);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(168, 20);
             this.tbEmail.TabIndex = 68;
@@ -130,7 +134,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 210);
+            this.label1.Location = new System.Drawing.Point(6, 232);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 65;
@@ -138,14 +142,14 @@
             // 
             // tbAddress
             // 
-            this.tbAddress.Location = new System.Drawing.Point(149, 210);
+            this.tbAddress.Location = new System.Drawing.Point(149, 232);
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(168, 20);
             this.tbAddress.TabIndex = 66;
             // 
             // dtpBirthDate
             // 
-            this.dtpBirthDate.Location = new System.Drawing.Point(149, 179);
+            this.dtpBirthDate.Location = new System.Drawing.Point(149, 201);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(168, 20);
             this.dtpBirthDate.TabIndex = 64;
@@ -153,7 +157,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 179);
+            this.label2.Location = new System.Drawing.Point(6, 201);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 63;
@@ -161,7 +165,7 @@
             // 
             // dtpPassportDate
             // 
-            this.dtpPassportDate.Location = new System.Drawing.Point(149, 123);
+            this.dtpPassportDate.Location = new System.Drawing.Point(149, 145);
             this.dtpPassportDate.Name = "dtpPassportDate";
             this.dtpPassportDate.Size = new System.Drawing.Size(168, 20);
             this.dtpPassportDate.TabIndex = 61;
@@ -169,7 +173,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 149);
+            this.label11.Location = new System.Drawing.Point(6, 171);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(63, 13);
             this.label11.TabIndex = 60;
@@ -177,7 +181,7 @@
             // 
             // tbDepartament
             // 
-            this.tbDepartament.Location = new System.Drawing.Point(149, 149);
+            this.tbDepartament.Location = new System.Drawing.Point(149, 171);
             this.tbDepartament.Name = "tbDepartament";
             this.tbDepartament.Size = new System.Drawing.Size(168, 20);
             this.tbDepartament.TabIndex = 59;
@@ -185,7 +189,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 123);
+            this.label12.Location = new System.Drawing.Point(6, 145);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 13);
             this.label12.TabIndex = 58;
@@ -194,7 +198,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 100);
+            this.label13.Location = new System.Drawing.Point(6, 122);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 56;
@@ -202,7 +206,7 @@
             // 
             // tbPatronymic
             // 
-            this.tbPatronymic.Location = new System.Drawing.Point(149, 97);
+            this.tbPatronymic.Location = new System.Drawing.Point(149, 119);
             this.tbPatronymic.Name = "tbPatronymic";
             this.tbPatronymic.Size = new System.Drawing.Size(168, 20);
             this.tbPatronymic.TabIndex = 57;
@@ -210,7 +214,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 74);
+            this.label14.Location = new System.Drawing.Point(6, 96);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(29, 13);
             this.label14.TabIndex = 54;
@@ -218,7 +222,7 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(149, 71);
+            this.tbName.Location = new System.Drawing.Point(149, 93);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(168, 20);
             this.tbName.TabIndex = 55;
@@ -226,7 +230,7 @@
             // labelSurname
             // 
             this.labelSurname.AutoSize = true;
-            this.labelSurname.Location = new System.Drawing.Point(6, 48);
+            this.labelSurname.Location = new System.Drawing.Point(6, 70);
             this.labelSurname.Name = "labelSurname";
             this.labelSurname.Size = new System.Drawing.Size(56, 13);
             this.labelSurname.TabIndex = 52;
@@ -235,7 +239,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 262);
+            this.label16.Location = new System.Drawing.Point(6, 284);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(91, 13);
             this.label16.TabIndex = 51;
@@ -243,14 +247,14 @@
             // 
             // tbSurname
             // 
-            this.tbSurname.Location = new System.Drawing.Point(149, 45);
+            this.tbSurname.Location = new System.Drawing.Point(149, 67);
             this.tbSurname.Name = "tbSurname";
             this.tbSurname.Size = new System.Drawing.Size(168, 20);
             this.tbSurname.TabIndex = 53;
             // 
             // tbPhone
             // 
-            this.tbPhone.Location = new System.Drawing.Point(149, 262);
+            this.tbPhone.Location = new System.Drawing.Point(149, 284);
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(168, 20);
             this.tbPhone.TabIndex = 49;
@@ -258,7 +262,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 322);
+            this.label9.Location = new System.Drawing.Point(6, 344);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(137, 13);
             this.label9.TabIndex = 11;
@@ -266,7 +270,7 @@
             // 
             // tbLastPay
             // 
-            this.tbLastPay.Location = new System.Drawing.Point(150, 319);
+            this.tbLastPay.Location = new System.Drawing.Point(150, 341);
             this.tbLastPay.Name = "tbLastPay";
             this.tbLastPay.ReadOnly = true;
             this.tbLastPay.Size = new System.Drawing.Size(167, 20);
@@ -274,7 +278,7 @@
             // 
             // tbBalance
             // 
-            this.tbBalance.Location = new System.Drawing.Point(149, 293);
+            this.tbBalance.Location = new System.Drawing.Point(149, 315);
             this.tbBalance.Name = "tbBalance";
             this.tbBalance.ReadOnly = true;
             this.tbBalance.Size = new System.Drawing.Size(168, 20);
@@ -283,7 +287,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 296);
+            this.label8.Location = new System.Drawing.Point(6, 318);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 13);
             this.label8.TabIndex = 8;
@@ -291,7 +295,7 @@
             // 
             // btnAddNumber
             // 
-            this.btnAddNumber.Location = new System.Drawing.Point(15, 368);
+            this.btnAddNumber.Location = new System.Drawing.Point(9, 396);
             this.btnAddNumber.Name = "btnAddNumber";
             this.btnAddNumber.Size = new System.Drawing.Size(110, 23);
             this.btnAddNumber.TabIndex = 7;
@@ -302,7 +306,7 @@
             // lbNumbers
             // 
             this.lbNumbers.FormattingEnabled = true;
-            this.lbNumbers.Location = new System.Drawing.Point(149, 358);
+            this.lbNumbers.Location = new System.Drawing.Point(149, 380);
             this.lbNumbers.Name = "lbNumbers";
             this.lbNumbers.Size = new System.Drawing.Size(168, 147);
             this.lbNumbers.TabIndex = 6;
@@ -311,16 +315,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(45, 352);
+            this.label3.Location = new System.Drawing.Point(6, 380);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.Size = new System.Drawing.Size(97, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Номера";
+            this.label3.Text = "Номера абонента";
             // 
             // tbIdentity
             // 
             this.tbIdentity.BackColor = System.Drawing.SystemColors.Window;
-            this.tbIdentity.Location = new System.Drawing.Point(149, 18);
+            this.tbIdentity.Location = new System.Drawing.Point(149, 40);
             this.tbIdentity.Name = "tbIdentity";
             this.tbIdentity.ReadOnly = true;
             this.tbIdentity.Size = new System.Drawing.Size(168, 20);
@@ -329,7 +333,7 @@
             // labelIdentity
             // 
             this.labelIdentity.AutoSize = true;
-            this.labelIdentity.Location = new System.Drawing.Point(6, 21);
+            this.labelIdentity.Location = new System.Drawing.Point(6, 43);
             this.labelIdentity.Name = "labelIdentity";
             this.labelIdentity.Size = new System.Drawing.Size(50, 13);
             this.labelIdentity.TabIndex = 2;
@@ -438,7 +442,7 @@
             this.groupBoxOps.Controls.Add(this.btnAddMoney);
             this.groupBoxOps.Location = new System.Drawing.Point(348, 13);
             this.groupBoxOps.Name = "groupBoxOps";
-            this.groupBoxOps.Size = new System.Drawing.Size(89, 177);
+            this.groupBoxOps.Size = new System.Drawing.Size(93, 177);
             this.groupBoxOps.TabIndex = 2;
             this.groupBoxOps.TabStop = false;
             this.groupBoxOps.Text = "Операции";
@@ -447,16 +451,17 @@
             // 
             this.btnCloseAccount.Location = new System.Drawing.Point(6, 118);
             this.btnCloseAccount.Name = "btnCloseAccount";
-            this.btnCloseAccount.Size = new System.Drawing.Size(75, 36);
+            this.btnCloseAccount.Size = new System.Drawing.Size(81, 36);
             this.btnCloseAccount.TabIndex = 2;
-            this.btnCloseAccount.Text = "Закрыть счет";
+            this.btnCloseAccount.Text = "Расторгнуть договор";
             this.btnCloseAccount.UseVisualStyleBackColor = true;
+            this.btnCloseAccount.Click += new System.EventHandler(this.btnCloseAccount_Click);
             // 
             // btnMakeBill
             // 
             this.btnMakeBill.Location = new System.Drawing.Point(6, 69);
             this.btnMakeBill.Name = "btnMakeBill";
-            this.btnMakeBill.Size = new System.Drawing.Size(75, 36);
+            this.btnMakeBill.Size = new System.Drawing.Size(81, 36);
             this.btnMakeBill.TabIndex = 1;
             this.btnMakeBill.Text = "Выписать счет";
             this.btnMakeBill.UseVisualStyleBackColor = true;
@@ -465,17 +470,35 @@
             // 
             this.btnAddMoney.Location = new System.Drawing.Point(7, 20);
             this.btnAddMoney.Name = "btnAddMoney";
-            this.btnAddMoney.Size = new System.Drawing.Size(75, 36);
+            this.btnAddMoney.Size = new System.Drawing.Size(80, 36);
             this.btnAddMoney.TabIndex = 0;
             this.btnAddMoney.Text = "Пополнить баланс";
             this.btnAddMoney.UseVisualStyleBackColor = true;
             this.btnAddMoney.Click += new System.EventHandler(this.btnAddMoney_Click);
             // 
+            // tbAccountNumber
+            // 
+            this.tbAccountNumber.BackColor = System.Drawing.SystemColors.Window;
+            this.tbAccountNumber.Location = new System.Drawing.Point(149, 17);
+            this.tbAccountNumber.Name = "tbAccountNumber";
+            this.tbAccountNumber.ReadOnly = true;
+            this.tbAccountNumber.Size = new System.Drawing.Size(168, 20);
+            this.tbAccountNumber.TabIndex = 70;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 20);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(68, 13);
+            this.label15.TabIndex = 69;
+            this.label15.Text = "№ договора";
+            // 
             // FormAbonent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 538);
+            this.ClientSize = new System.Drawing.Size(597, 558);
             this.Controls.Add(this.groupBoxOps);
             this.Controls.Add(this.groupBoxNumInfo);
             this.Controls.Add(this.groupBoxAbInfo);
@@ -535,5 +558,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox tbSurname;
         private System.Windows.Forms.TextBox tbPhone;
+        private System.Windows.Forms.TextBox tbAccountNumber;
+        private System.Windows.Forms.Label label15;
     }
 }

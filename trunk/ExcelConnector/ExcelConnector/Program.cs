@@ -24,16 +24,16 @@ namespace ExcelConnector
                 _ExcelClient.OpenExcelWorkBook(filename);
                 System.Console.WriteLine("Работаю с листом №1...");
                 _ExcelClient.SelectExcelWorkSheet(1);
-                _ExcelClient.SetCellValue("B", 3, "emana!");
+                _ExcelClient.SetCellValue("B", 3, "emana!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 //_ExcelClient.CutNPasteRange("B3", "D8", "I6");
             }
-            catch (Exception ex) { System.Console.WriteLine(ex.ToString()); }
+            catch (Exception ex) { System.Console.WriteLine(ex.Message); }
             finally
             {
                 System.Console.WriteLine("Закрываю Excel application...");
                 _ExcelClient.Close();
-                System.Console.WriteLine("Программа завершила работу, нажмите любую клавишу для выхода...");
-                System.Console.ReadKey();
+                //System.Console.WriteLine("Программа завершила работу, нажмите любую клавишу для выхода...");
+                //System.Console.ReadKey();
             }
         }
     }
