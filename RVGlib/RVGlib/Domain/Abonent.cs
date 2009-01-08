@@ -37,6 +37,11 @@ namespace RVGlib.Domain
         /// </summary>
         public virtual Decimal  balance { get; set; }
 
+        /// <summary>
+        /// Договор расторгнут
+        /// </summary>
+        public virtual Boolean dissolved { get; set; }
+
         [Bindable(false)]
         /// <summary>
         /// Номера

@@ -19,21 +19,21 @@ namespace ExcelConnector
 
         public ExcelConnector(bool isVisible)
         {
-            Restart(isVisible);
+            Start(isVisible);
         }
 
         /// <summary>
         /// Запустить Excel.Application
         /// </summary>
-        public void Restart(bool isVisible)
+        public void Start(bool isVisible)
         {
-            try
-            {
-                Close();
-            }
-            catch { }
+            Close();
             _app = new Excel.Application();
             _app.Visible = isVisible;
+            _app.DisplayAlerts = true;
+            _app.SheetsInNewWorkbook = 1;
+            _app.DefaultSaveFormat = Excel.XlFileFormat.xlExcel9795;
+
         }
 
         /// <summary>
@@ -44,13 +44,20 @@ namespace ExcelConnector
         public Excel.Workbook OpenExcelWorkBook(string filename)
         {
             _WorkbookFileName = filename;
-            //Открываем книгу(файл) и получаем на нее ссылку
-            _workbook = _app.Workbooks.Open(filename,
-                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                Type.Missing, Type.Missing);
-            _sheets = _workbook.Worksheets;
+            //Открываем книгу(файл) и получаем на нее ссылку          
+
+                _workbook = _app.Workbooks.Add(Type.Missing);
+                //_workbook.Saved = true;
+                _workbook.SaveAs(filename, Excel.XlFileFormat.xlExcel9795, Type.Missing, Type.Missing, Type.Missing,
+                    Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing,
+                    Type.Missing, Type.Missing, Type.Missing);
+                
+                //_workbook = _app.Workbooks.Open(filename,
+                //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                //    Type.Missing, Type.Missing);
+                _sheets = _workbook.Worksheets;
             return _workbook;
         }
 
@@ -160,10 +167,11 @@ namespace ExcelConnector
         /// </summary>
         public void Close()
         {
-            if (_workbook != null)
-                _workbook.Close(true, Type.Missing, Type.Missing);
             if (_app != null)
+            {
+                _app.Workbooks.Close();
                 _app.Quit();
+            }
         }
     }
 }

@@ -37,27 +37,21 @@ namespace RVGBilling
             rateBindingSource.DataSource = rates;
             cbRate.DataSource = rateBindingSource;
 
-            if (ab is PrivateAbonent)
+            if (ab is PrivateAbonent || ab is CorporateAbonent)
             {
-                this.abonent = ab;
-                RefreshForm();
-            }
-            else if (ab is CorporateAbonent)
-            {
-                this.abonent = ab;
-                RefreshForm();
+                this.abonent = ab;              
             }
             else
             {
                 MessageBox.Show("Incorrect parameter type given in constructor.");
                 supported = false;
             }
-
+         
             // заполняем listbox с номерами
             numbersBindingSource = new BindingSource();
             numbersBindingSource.DataSource = abonent.Numbers;
             lbNumbers.DataSource = numbersBindingSource;
-
+            RefreshForm();
         }
 
         // не использовать! Устарело!
@@ -137,13 +131,22 @@ namespace RVGBilling
                 labelIdentity.Text = "Паспорт";
                 tbIdentity.Text = person.passport_series;
 
+                //mtbPassportSeries.Text = person.passport_series;
                 tbName.Text = person.name;
                 tbPatronymic.Text = person.patronymic;
-                dtpBirthDate.Value = person.birth_date;
-                //mtbPassportSeries.Text = person.passport_series;
+                dtpBirthDate.Value = person.birth_date;                
                 dtpPassportDate.Value = person.passport_date;
                 tbDepartament.Text = person.passport_department;
-                
+                label11.Visible =
+                label12.Visible =
+                label13.Visible =
+                label14.Visible =
+                label2.Visible = 
+                tbName.Visible = 
+                tbPatronymic.Visible = 
+                dtpBirthDate.Visible = 
+                dtpPassportDate.Visible =
+                tbDepartament.Visible = true;
 
             }
             if (abonent is CorporateAbonent)
@@ -153,8 +156,19 @@ namespace RVGBilling
                 tbSurname.Text = corp.corporate_name;
                 labelIdentity.Text = "ИНН";
                 tbIdentity.Text = corp.INN;
+                label11.Visible =
+                label12.Visible =
+                label13.Visible =
+                label14.Visible =
+                label2.Visible = 
+                tbName.Visible =
+                tbPatronymic.Visible =
+                dtpBirthDate.Visible =
+                dtpPassportDate.Visible =
+                tbDepartament.Visible = false;
             }
             this.Text = "Абонент : " + tbSurname.Text;
+            tbAccountNumber.Text = abonent.Id.ToString();
             tbAddress.Text = abonent.address;
             tbPhone.Text = abonent.phone;
             tbEmail.Text = abonent.mail_address;
@@ -168,7 +182,13 @@ namespace RVGBilling
             else
             {
                 groupBoxNumInfo.Enabled = false;
-                groupBoxOps.Enabled = false;
+            }
+            if (abonent.dissolved)
+            {
+                groupBoxNumInfo.Enabled =
+                groupBoxOps.Enabled = 
+                groupBoxAbInfo.Enabled = false;
+                this.Text += " ДОГОВОР РАСТОРГНУТ.";
             }
         }
 
@@ -197,6 +217,12 @@ namespace RVGBilling
                 FormCallDetails form = new FormCallDetails(bs);
                 form.ShowDialog();
             }
+        }
+
+        private void btnCloseAccount_Click(object sender, EventArgs e)
+        {
+            ctrl.DissolveAbonent(abonent);
+            RefreshForm();
         }
 
 

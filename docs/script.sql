@@ -1,6 +1,6 @@
 /*
 Created		23.09.2008
-Modified		25.12.2008
+Modified		08.01.2009
 Project		
 Model			
 Company		
@@ -85,6 +85,7 @@ Create table "abonents"
 	"balance" Numeric(30,6),
 	"last_pay_date" Timestamp,
 	"mail_address" Varchar(30),
+	"dissolved" Boolean Default false,
  primary key ("id")
 ) Without Oids;
 
