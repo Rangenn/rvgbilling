@@ -113,9 +113,9 @@ INSERT INTO private_abonents (id, address, phone, reg_time, last_pay_date, mail_
 -- Data for Name: corporate_abonents; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name, inn) VALUES (4, 'г.Воронеж', '321321', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'umbrella@corp.net', 'Umbrella corp.','7729425477');
-INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name, inn) VALUES (5, 'г.Воронеж', '765765', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ibm@ibm.com', 'IBM','7756230000');
-INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name, inn) VALUES (6, 'г.Воронеж', '777777', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'mash@oskol.ru', 'ООО ОсколГорМаш','7782341234');
+INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name, "inn") VALUES (4, 'г.Воронеж', '321321', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'umbrella@corp.net', 'Umbrella corp.','7729425477');
+INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name, "inn") VALUES (5, 'г.Воронеж', '765765', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ibm@ibm.com', 'IBM','7756230000');
+INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mail_address, corporate_name, "inn") VALUES (6, 'г.Воронеж', '777777', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'mash@oskol.ru', 'ООО ОсколГорМаш','7782341234');
 
 
 --
@@ -143,12 +143,12 @@ INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (10, 1, 1, '92
 -- Data for Name: prices; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO prices (id, rate_id, cost_per_minute, mask, idx) VALUES (4, 1, 1.000000, '920', NULL);
-INSERT INTO prices (id, rate_id, cost_per_minute, mask, idx) VALUES (5, 1, 1.000000, '910', NULL);
-INSERT INTO prices (id, rate_id, cost_per_minute, mask, idx) VALUES (6, 2, 2.000000, '920', NULL);
-INSERT INTO prices (id, rate_id, cost_per_minute, mask, idx) VALUES (1, 2, 2.000000, '910', NULL);
-INSERT INTO prices (id, rate_id, cost_per_minute, mask, idx) VALUES (2, 3, 5.000000, '920', NULL);
-INSERT INTO prices (id, rate_id, cost_per_minute, mask, idx) VALUES (3, 3, 5.000000, '910', NULL);
+INSERT INTO prices (id, rate_id, cost_per_minute, mask) VALUES (4, 1, 1.000000, '920');
+INSERT INTO prices (id, rate_id, cost_per_minute, mask) VALUES (5, 1, 1.000000, '910');
+INSERT INTO prices (id, rate_id, cost_per_minute, mask) VALUES (6, 2, 2.000000, '920');
+INSERT INTO prices (id, rate_id, cost_per_minute, mask) VALUES (1, 2, 2.000000, '910');
+INSERT INTO prices (id, rate_id, cost_per_minute, mask) VALUES (2, 3, 5.000000, '920');
+INSERT INTO prices (id, rate_id, cost_per_minute, mask) VALUES (3, 3, 5.000000, '910');
 
 
 --

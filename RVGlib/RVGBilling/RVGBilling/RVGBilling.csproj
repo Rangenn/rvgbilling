@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{64A16FB5-F22A-47FB-9BAA-62701332E61F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -120,11 +120,11 @@
     <Compile Include="FormAbonent.designer.cs">
       <DependentUpon>FormAbonent.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAdd.cs">
+    <Compile Include="FormAddNumber.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdd.Designer.cs">
-      <DependentUpon>FormAdd.cs</DependentUpon>
+    <Compile Include="FormAddNumber.Designer.cs">
+      <DependentUpon>FormAddNumber.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPrice.cs">
       <SubType>Form</SubType>
@@ -173,8 +173,8 @@
       <DependentUpon>FormAbonent.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAdd.resx">
-      <DependentUpon>FormAdd.cs</DependentUpon>
+    <EmbeddedResource Include="FormAddNumber.resx">
+      <DependentUpon>FormAddNumber.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrice.resx">

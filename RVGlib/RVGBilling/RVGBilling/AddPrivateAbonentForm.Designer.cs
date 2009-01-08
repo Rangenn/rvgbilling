@@ -217,7 +217,7 @@
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(168, 20);
             this.tbAddress.TabIndex = 46;
-            this.tbAddress.Text = "Адрес компании";
+            this.tbAddress.Text = "Адрес физ лица";
             // 
             // label10
             // 

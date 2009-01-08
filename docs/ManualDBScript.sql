@@ -1,5 +1,5 @@
-﻿Alter table "corporate_abonents" add  primary key ("id")
-Alter table "private_abonents" add  primary key ("id")
+Alter table "corporate_abonents" add  primary key ("id");
+Alter table "private_abonents" add  primary key ("id");
 
 
 

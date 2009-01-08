@@ -92,8 +92,8 @@ namespace RVGBilling
             int index = lbNumbers.SelectedIndex;
             if (index >= 0)
             {
-                groupBox2.Enabled = true;
-                groupBox3.Enabled = true;
+                groupBoxNumInfo.Enabled = true;
+                groupBoxOps.Enabled = true;
                 cbRate.SelectedItem = abonent.Numbers[index].rate;
             }
         }
@@ -131,19 +131,33 @@ namespace RVGBilling
         {
             if (abonent is PrivateAbonent)
             {
-                PrivateAbonent person = (PrivateAbonent)abonent;
-                tbName.Text = person.surname + ' ' + person.name + ' ' + person.patronymic;
-                labelIdentity.Text = "Паспортные данные";
+                PrivateAbonent person = (PrivateAbonent)abonent;               
+                labelSurname.Text = "Фамилия";
+                tbSurname.Text = person.surname;               
+                labelIdentity.Text = "Паспорт";
                 tbIdentity.Text = person.passport_series;
+
+                tbName.Text = person.name;
+                tbPatronymic.Text = person.patronymic;
+                dtpBirthDate.Value = person.birth_date;
+                //mtbPassportSeries.Text = person.passport_series;
+                dtpPassportDate.Value = person.passport_date;
+                tbDepartament.Text = person.passport_department;
+                
+
             }
             if (abonent is CorporateAbonent)
             {
                 CorporateAbonent corp = (CorporateAbonent)abonent;
-                tbName.Text = corp.corporate_name;
+                labelSurname.Text = "Название";
+                tbSurname.Text = corp.corporate_name;
                 labelIdentity.Text = "ИНН";
                 tbIdentity.Text = corp.INN;
             }
             this.Text = "Абонент : " + tbName.Text;
+            tbAddress.Text = abonent.address;
+            tbPhone.Text = abonent.phone;
+            tbEmail.Text = abonent.mail_address;
             tbLastPay.Text = abonent.last_pay_date.ToString();
             tbBalance.Text = abonent.balance.ToString();
             int index = lbNumbers.SelectedIndex;
@@ -153,8 +167,8 @@ namespace RVGBilling
             }
             else
             {
-                groupBox2.Enabled = false;
-                groupBox3.Enabled = false;
+                groupBoxNumInfo.Enabled = false;
+                groupBoxOps.Enabled = false;
             }
         }
 
@@ -184,6 +198,9 @@ namespace RVGBilling
                 form.ShowDialog();
             }
         }
+
+
+
 
     }
 }
