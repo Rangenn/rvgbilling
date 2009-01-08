@@ -199,7 +199,7 @@ namespace RVGBilling
             {
                 abonent = ab,
             };
-            FormAdd form = new FormAdd(num,bs);
+            FormAddNumber form = new FormAddNumber(num,bs);
             DialogResult dr = form.ShowDialog();
             if (dr == DialogResult.OK)
             {

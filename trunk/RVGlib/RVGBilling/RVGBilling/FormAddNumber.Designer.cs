@@ -1,6 +1,6 @@
 ﻿namespace RVGBilling
 {
-    partial class FormAdd
+    partial class FormAddNumber
     {
         /// <summary>
         /// Required designer variable.

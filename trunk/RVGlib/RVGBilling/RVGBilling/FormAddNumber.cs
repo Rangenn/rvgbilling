@@ -11,15 +11,15 @@ using RVGlib.Domain;
 
 namespace RVGBilling
 {
-    public partial class FormAdd : Form
+    public partial class FormAddNumber : Form
     {
         private Number num;
 
-        public FormAdd()
+        public FormAddNumber()
         {
             InitializeComponent();
         }
-        public FormAdd(Number num, BindingSource rateBindingSource) : this()
+        public FormAddNumber(Number num, BindingSource rateBindingSource) : this()
         {
             this.num = num;
             cbRate.DataSource = rateBindingSource;
