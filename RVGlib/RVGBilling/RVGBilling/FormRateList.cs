@@ -78,14 +78,12 @@ namespace RVGBilling
             int index = dgvPrices.CurrentRow.Index;
             if (index >= 0)
             {
-                // вся эта байда не работает! Рома, сам пиши удаление!!!
+                
                 Rate rate=(Rate)lbRates.SelectedItem;
                 Price price = rate.Prices[index];
-                rate.Prices.Remove(price);
-                //price.rate = null;
-                
-                ctrl.DeletePrice(price);
-                ctrl.conn.Update(rate);
+
+                ctrl.DeletePriceFromRate(rate, price);
+
             }
             gridBindingSource.ResetBindings(false);
             //удалить из списка и обновить грид
@@ -116,9 +114,9 @@ namespace RVGBilling
             int index = lbRates.SelectedIndex;
             if (index >= 0)
             {
-                Rate rate = (Rate)lbRates.SelectedItem;
-                ListRates.Remove(rate);
-                ctrl.DeleteRate(rate);
+                Rate rate = (Rate)lbRates.SelectedItem;             
+                if (ctrl.DeleteRate(rate))
+                    ListRates.Remove(rate);
                 lbBindingSource.ResetBindings(false);
             }
             //удалить тариф из списка и обновить лист

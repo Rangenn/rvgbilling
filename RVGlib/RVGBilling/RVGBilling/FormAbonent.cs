@@ -154,7 +154,7 @@ namespace RVGBilling
                 labelIdentity.Text = "ИНН";
                 tbIdentity.Text = corp.INN;
             }
-            this.Text = "Абонент : " + tbName.Text;
+            this.Text = "Абонент : " + tbSurname.Text;
             tbAddress.Text = abonent.address;
             tbPhone.Text = abonent.phone;
             tbEmail.Text = abonent.mail_address;

@@ -91,7 +91,7 @@
             this.cbRate.Size = new System.Drawing.Size(126, 21);
             this.cbRate.TabIndex = 5;
             // 
-            // FormAdd
+            // FormAddNumber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -102,8 +102,8 @@
             this.Controls.Add(this.labelText);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Name = "FormAdd";
-            this.Text = "Добавить";
+            this.Name = "FormAddNumber";
+            this.Text = "Добавить номер";
             this.ResumeLayout(false);
             this.PerformLayout();
 

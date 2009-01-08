@@ -81,7 +81,7 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.labelName);
             this.Name = "FormRate";
-            this.Text = "FormRate";
+            this.Text = "Добавить тариф";
             this.ResumeLayout(false);
             this.PerformLayout();
 
