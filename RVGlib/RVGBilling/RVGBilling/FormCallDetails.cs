@@ -1,31 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
-using RVGlib.Domain;
 
 namespace RVGBilling
 {
     public partial class FormCallDetails : Form
     {
-        public FormCallDetails()
+        Controller controller;
+
+        public FormCallDetails(Controller ctrl)
+            : base()
         {
             InitializeComponent();
-
+            controller = ctrl;
         }
 
-        public FormCallDetails(BindingSource bs): this ()
-        {
+        public FormCallDetails(Controller ctrl, BindingSource bs): this (ctrl)
+        {          
             //отобразить коллекцию в DataGridView
-            dgCalls.DataSource = bs;
-            DataGridViewColumnCollection Columns = dgCalls.Columns;
-            Columns["Id"].Visible = false;
-            Columns["Number"].Visible = false;
+            dgDetails.DataSource = bs;
+            DataGridViewColumnCollection Columns = dgDetails.Columns;
+            if (Columns.Contains("Id")) Columns["Id"].Visible = false;
+            if (Columns.Contains("Number")) Columns["Number"].Visible = false;
         }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string filename;// = @"C:\Users\е\Desktop\test.xls";
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                filename = saveFileDialog1.FileName;
+            else return;
+            controller.ExportToExcel(filename, dgDetails);                     
+        }
+
+
+        
     }
 }

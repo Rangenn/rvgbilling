@@ -19,6 +19,7 @@ namespace RVGlib.Framework
             //addMapping(new CallMap());
 
             addMappingsFromAssembly(typeof(RVGlib.Mappings.AbonentMap).Assembly);
+            
 
         }
     }

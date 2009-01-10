@@ -248,6 +248,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ExcelWorkLib\ExcelWorkLib.csproj">
+      <Project>{3E7C89C6-193F-41C1-B010-84C0B1B48421}</Project>
+      <Name>ExcelWorkLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

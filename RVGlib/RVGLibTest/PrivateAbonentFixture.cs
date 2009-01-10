@@ -17,7 +17,7 @@ namespace RVGLibTest
                 .CheckProperty(x => x.address, "addr")
                 .CheckProperty(x => x.phone, "123")
                 .CheckProperty(x => x.mail_address, "q@mail.ru")
-                .CheckProperty(x => x.reg_time, TestDateTime)
+                .CheckProperty(x => x.creation_time, TestDateTime)
                 .CheckProperty(x => x.last_pay_date, TestDateTime)
                 .CheckProperty(x => x.balance, TestDecimal)
                 //.CheckList<Number>(x => x.Numbers, numbers)
@@ -39,7 +39,7 @@ namespace RVGLibTest
                 address = "a",
                 phone = "p",
                 mail_address = "m",
-                reg_time = TestDateTime,
+                creation_time = TestDateTime,
                 last_pay_date = TestDateTime,
                 balance = TestDecimal,
                 name = "nm",
@@ -59,15 +59,15 @@ namespace RVGLibTest
             var Number = new Number { number = "111", abonent = Abonent, rate = rate };
             Bill[] bills =
                 {
-                    new Bill() { bill_date = TestDateTime, number = Number, money = TestDecimal},
-                    new Bill() { bill_date = TestDateTime, number = Number, money = TestDecimal},
-                    new Bill() { bill_date = TestDateTime, number = Number, money = TestDecimal},
+                    new Bill() { creation_time = TestDateTime, number = Number, money = TestDecimal},
+                    new Bill() { creation_time = TestDateTime, number = Number, money = TestDecimal},
+                    new Bill() { creation_time = TestDateTime, number = Number, money = TestDecimal},
                 };
             Call[] calls =
                 {
-                    new Call() { calling_number = "1", number = Number, start_time = TestDateTime, duration = 1, cost = TestDecimal},
-                    new Call() { calling_number = "1", number = Number, start_time = TestDateTime, duration = 1, cost = TestDecimal},
-                    new Call() { calling_number = "1", number = Number, start_time = TestDateTime, duration = 1, cost = TestDecimal},
+                    new Call() { calling_number = "1", number = Number, creation_time = TestDateTime, duration = 1, cost = TestDecimal},
+                    new Call() { calling_number = "1", number = Number, creation_time = TestDateTime, duration = 1, cost = TestDecimal},
+                    new Call() { calling_number = "1", number = Number, creation_time = TestDateTime, duration = 1, cost = TestDecimal},
                 };
             for (int i = 0; i < 3; i++)
             {

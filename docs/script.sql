@@ -30,8 +30,8 @@ Database		PostgreSQL 8.1
 
 
 /* Drop Procedures */
-Drop FUNCTION add_bill_money (bill_id_param integer);
-Drop FUNCTION calculate_call_cost_function (call_id_param integer);
+Drop FUNCTION add_bill_money (bill_id_param integer) cascade;
+Drop FUNCTION calculate_call_cost_function (call_id_param integer) cascade;
 
 
 
@@ -81,7 +81,7 @@ Create table "abonents"
 	"id" Serial NOT NULL,
 	"address" Varchar(100),
 	"phone" Varchar(13),
-	"reg_time" Timestamp,
+	"creation_time" Timestamp,
 	"balance" Numeric(30,6),
 	"last_pay_date" Timestamp,
 	"mail_address" Varchar(30),
@@ -143,7 +143,7 @@ Create table "calls"
 (
 	"id" Serial NOT NULL,
 	"calling_number" Varchar(20) NOT NULL,
-	"start_time" Timestamp NOT NULL,
+	"creation_time" Timestamp NOT NULL,
 	"duration" Integer NOT NULL,
 	"number_id" Integer NOT NULL,
 	"cost" Numeric(30,6),
@@ -156,7 +156,7 @@ Create table "bills"
 	"id" Serial NOT NULL,
 	"number_id" Integer NOT NULL,
 	"money" Numeric(30,6) NOT NULL,
-	"bill_date" Timestamp,
+	"creation_time" Timestamp,
  primary key ("id")
 ) Without Oids;
 
@@ -230,8 +230,9 @@ ALTER FUNCTION calculate_call_cost_function(integer) OWNER TO postgres;
 
 
 /* Create Rules */
-CREATE OR REPLACE RULE bills_on_insert_rule AS
+/*CREATE OR REPLACE RULE bills_on_insert_rule AS
     ON INSERT TO bills DO  SELECT add_bill_money(new.id) AS add_bill_money;
+*/
 
 CREATE OR REPLACE RULE calls_on_insert_rule AS
     ON INSERT TO calls DO  SELECT calculate_call_cost_function(new.id) AS calculate_call_cost_function;

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ExcelConnector")]
+[assembly: AssemblyTitle("ExcelWorkLib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ExcelConnector")]
+[assembly: AssemblyProduct("ExcelWorkLib")]
 [assembly: AssemblyCopyright("Copyright ©  2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4acfffb2-b8da-4946-a3a3-89602fa9f197")]
+[assembly: Guid("450f8d3c-9152-4c0b-af24-d8027163e434")]
 
 // Version information for an assembly consists of the following four values:
 //

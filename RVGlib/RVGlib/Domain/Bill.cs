@@ -20,6 +20,6 @@ namespace RVGlib.Domain
         /// <summary>
         /// Дата оплаты
         /// </summary>
-        public virtual DateTime bill_date { get; set; }
+        public virtual DateTime creation_time { get; set; }
     }
 }

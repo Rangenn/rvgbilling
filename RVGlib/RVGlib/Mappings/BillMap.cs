@@ -9,7 +9,7 @@ namespace RVGlib.Mappings
         {            
             this.TableName = "bills";
             Id(x => x.Id);
-            Map(x => x.bill_date);
+            Map(x => x.creation_time);
             Map(x => x.money);
             References(x => x.number);
         }

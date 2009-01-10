@@ -11,7 +11,7 @@ namespace RVGlib.Mappings
             Id(x => x.Id);
             Map(x => x.calling_number);
             References(x => x.number);
-            Map(x => x.start_time);
+            Map(x => x.creation_time);
             Map(x => x.duration);
             Map(x => x.cost);
         }
