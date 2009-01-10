@@ -20,15 +20,17 @@ namespace RVGLibTest
                 .CheckProperty(x => x.mail_address, "q@mail.ru")
                 .CheckProperty(x => x.reg_time, TestDateTime)
                 .CheckProperty(x => x.last_pay_date, TestDateTime)
-                .CheckProperty(x => x.balance, TestDecimal)               
+                .CheckProperty(x => x.balance, TestDecimal)
+                .CheckProperty(x => x.dissolved, TestBoolean)
                 //.CheckList<Number>(x => x.Numbers, numbers)
-                .VerifyTheMappings();
+                .VerifyTheMappings()
+                ;
         }
 
         [Test]
         public void Can_Add_Abonent_To_Database_WithNumbers()
         {
-            var Abonent = new Abonent
+            Abonent Abonent = new Abonent
             {
                 address = "a",
                 phone = "p",
@@ -39,22 +41,22 @@ namespace RVGLibTest
             };
             Session.Save(Abonent);
 
-            var rate = new Rate() { name = "MyRate" };
+            Rate rate = new Rate() { name = "MyRate" };
             Session.Save(rate);
 
-            var Number = new Number { number = "111", abonent = Abonent, rate = rate };
-            Session.Save(Number);
+            Number Number = new Number { number = "111", abonent = Abonent, rate = rate };
+            //Session.Save(Number);
             Abonent.Numbers.Add(Number);
+            Session.Update(Abonent);
 
             Number = new Number { number = "222", abonent = Abonent, rate = rate };
-            Session.Save(Number);
+            //Session.Save(Number);
             Abonent.Numbers.Add(Number);
-
             Session.Update(Abonent);
             Session.Flush();
             Session.Clear();
 
-            var fromDb = Session.Get<Abonent>(Abonent.Id);
+            Abonent fromDb = Session.Get<Abonent>(Abonent.Id);
 
             Assert.AreEqual(fromDb.Numbers.Count, 2);
 

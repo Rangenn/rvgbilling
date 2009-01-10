@@ -1,6 +1,7 @@
 ﻿using System;
 
 using FluentNHibernate.Framework;
+using System.Collections.Generic;
 
 namespace RVGlib.Domain
 {
@@ -22,4 +23,16 @@ namespace RVGlib.Domain
         /// </summary>
         public virtual String   mask { get; set; }
     }
+
+    public class PriceComparer : IEqualityComparer<Price>
+    {
+        public bool Equals(Price x, Price y)
+        {
+            return x.mask == y.mask;
+        }
+
+        public int GetHashCode(Price obj) { return obj.GetHashCode(); }
+
+    }
+
 }

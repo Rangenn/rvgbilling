@@ -124,16 +124,16 @@ INSERT INTO corporate_abonents (id, address, phone, reg_time, last_pay_date, mai
 -- Data for Name: numbers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (1, 1, 1, '9203334455', 0);
-INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (2, 2, 1, '9051231231', 0);
-INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (3, 3, 2, '9607867861', 0);
-INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (4, 4, 2, '9103222231', 0);
-INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (5, 5, 3, '9204133141', 0);
-INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (6, 1, 3, '9045556667', 1);
-INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (7, 2, 1, '9055099055', 1);
-INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (8, 3, 2, '9600690696', 1);
-INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (9, 4, 3, '9103455667', 1);
-INSERT INTO numbers (id, abonent_id, rate_id, number, idx) VALUES (10, 1, 1, '9204122211', 2);
+INSERT INTO numbers (id, abonent_id, rate_id, number) VALUES (1, 1, 1, '9203334455');
+INSERT INTO numbers (id, abonent_id, rate_id, number) VALUES (2, 2, 1, '9051231231');
+INSERT INTO numbers (id, abonent_id, rate_id, number) VALUES (3, 3, 2, '9607867861');
+INSERT INTO numbers (id, abonent_id, rate_id, number) VALUES (4, 4, 2, '9103222231');
+INSERT INTO numbers (id, abonent_id, rate_id, number) VALUES (5, 5, 3, '9204133141');
+INSERT INTO numbers (id, abonent_id, rate_id, number) VALUES (6, 1, 3, '9045556667');
+INSERT INTO numbers (id, abonent_id, rate_id, number) VALUES (7, 2, 1, '9055099055');
+INSERT INTO numbers (id, abonent_id, rate_id, number) VALUES (8, 3, 2, '9600690696');
+INSERT INTO numbers (id, abonent_id, rate_id, number) VALUES (9, 4, 3, '9103455667');
+INSERT INTO numbers (id, abonent_id, rate_id, number) VALUES (10, 1, 1, '9204122211');
 
 
 
@@ -157,10 +157,10 @@ INSERT INTO prices (id, rate_id, cost_per_minute, mask) VALUES (3, 3, 5.000000, 
 -- Data for Name: calls; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (1, '9209209202', '2008-12-15 00:00:00', 1, 0, 60);
-INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (2, '9101112223', '2008-12-15 00:00:00', 2, 0, 61);
-INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (3, '9209209202', '2008-12-15 00:00:00', 3, 0, 120);
-INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (4, '9101112223', '2008-12-15 00:00:00', 4, 0, 1);
-INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (5, '9209209202', '2008-12-15 00:00:00', 1, 1, 60);
-INSERT INTO calls (id, calling_number, start_time, number_id, idx, duration) VALUES (6, '9031112223', '2008-12-15 00:00:00', 5, 0, 60);
+INSERT INTO calls (id, calling_number, start_time, number_id, duration) VALUES (1, '9209209202', '2008-12-15 00:00:00', 1, 60);
+INSERT INTO calls (id, calling_number, start_time, number_id, duration) VALUES (2, '9101112223', '2008-12-15 00:00:00', 2, 61);
+INSERT INTO calls (id, calling_number, start_time, number_id, duration) VALUES (3, '9209209202', '2008-12-15 00:00:00', 3, 120);
+INSERT INTO calls (id, calling_number, start_time, number_id, duration) VALUES (4, '9101112223', '2008-12-15 00:00:00', 4, 1);
+INSERT INTO calls (id, calling_number, start_time, number_id, duration) VALUES (5, '9209209202', '2008-12-15 00:00:00', 1, 60);
+INSERT INTO calls (id, calling_number, start_time, number_id, duration) VALUES (6, '9031112223', '2008-12-15 00:00:00', 5, 60);
 

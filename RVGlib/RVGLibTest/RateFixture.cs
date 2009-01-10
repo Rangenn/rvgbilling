@@ -27,13 +27,13 @@ namespace RVGLibTest
             Session.Save(rate);
             Price[] prices =
             {
+                new Price() { rate = rate, mask = "910", cost_per_minute = TestDecimal},
                 new Price() { rate = rate, mask = "920", cost_per_minute = TestDecimal},
-                new Price() { rate = rate, mask = "920", cost_per_minute = TestDecimal},
-                new Price() { rate = rate, mask = "920", cost_per_minute = TestDecimal},
+                new Price() { rate = rate, mask = "930", cost_per_minute = TestDecimal},
             };
             for (int i = 0; i < 3; i++)
             {
-                Session.Save(prices[i]);
+                //Session.Save(prices[i]);
                 rate.Prices.Add(prices[i]);
             }
             Session.Update(rate);

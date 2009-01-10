@@ -14,11 +14,11 @@ namespace RVGlib.Mappings
             References(x => x.rate);
             References(x => x.abonent);
             HasMany<Call>(x => x.Calls)
-                .AsList()
-                .Cascade.All().LazyLoad();
+                //.AsList()
+                .Cascade.All().LazyLoad().IsInverse();
             HasMany<Bill>(x => x.Bills)
-                .AsList()
-                .Cascade.All().LazyLoad();
+                //.AsList()
+                .Cascade.All().LazyLoad().IsInverse();
             //this.parentIsRequired = true;
         }
     }

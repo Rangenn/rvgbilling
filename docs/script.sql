@@ -1,6 +1,6 @@
 /*
 Created		23.09.2008
-Modified		08.01.2009
+Modified		10.01.2009
 Project		
 Model			
 Company		
@@ -85,7 +85,7 @@ Create table "abonents"
 	"balance" Numeric(30,6),
 	"last_pay_date" Timestamp,
 	"mail_address" Varchar(30),
-	"dissolved" Boolean Default false,
+	"dissolved" Boolean NOT NULL Default false,
  primary key ("id")
 ) Without Oids;
 
@@ -116,7 +116,6 @@ Create table "numbers"
 	"id" Serial NOT NULL,
 	"rate_id" Integer NOT NULL,
 	"number" Varchar(10) NOT NULL,
-	"idx" Integer,
 	"abonent_id" Integer NOT NULL,
  primary key ("id")
 ) Without Oids;
@@ -148,7 +147,6 @@ Create table "calls"
 	"duration" Integer NOT NULL,
 	"number_id" Integer NOT NULL,
 	"cost" Numeric(30,6),
-	"idx" Integer,
  primary key ("id")
 ) Without Oids;
 
@@ -159,7 +157,6 @@ Create table "bills"
 	"number_id" Integer NOT NULL,
 	"money" Numeric(30,6) NOT NULL,
 	"bill_date" Timestamp,
-	"idx" Integer,
  primary key ("id")
 ) Without Oids;
 

@@ -21,6 +21,8 @@ namespace RVGLibTest
                 .CheckProperty(x => x.last_pay_date, TestDateTime)
                 .CheckProperty(x => x.balance, TestDecimal)
                 .CheckProperty(x =>  x.corporate_name, "corp.")
+                .CheckProperty(x => x.dissolved, TestBoolean)
+                .CheckProperty(x => x.INN, "1111111")
                 //.CheckList<Number>(x => x.Numbers, numbers)
                 .VerifyTheMappings();
         }
@@ -28,7 +30,7 @@ namespace RVGLibTest
         [Test]
         public void Can_Add_CorporateAbonent_To_Database_WithNumbers()
         {
-            var CorpAbonent = new CorporateAbonent
+            CorporateAbonent CorpAbonent = new CorporateAbonent()
             {
                 address = "a",
                 phone = "p",
@@ -36,21 +38,22 @@ namespace RVGLibTest
                 reg_time = TestDateTime,
                 last_pay_date = TestDateTime,
                 balance = TestDecimal,
-                corporate_name = "corp"
+                corporate_name = "corp",
+                INN = "123123"
             };
             Session.Save(CorpAbonent);
 
-            var rate = new Rate() { name = "MyRate" };
+            Rate rate = new Rate() { name = "MyRate" };
             Session.Save(rate);
 
-            var Number = new Number { number = "222", abonent = CorpAbonent, rate = rate };
-            Session.Save(Number);
+            Number Number = new Number { number = "222", abonent = CorpAbonent, rate = rate };
+            //Session.Save(Number);
             CorpAbonent.Numbers.Add(Number);
             Session.Update(CorpAbonent);
             Session.Flush();
             Session.Clear();
 
-            var fromDb = Session.Get<CorporateAbonent>(CorpAbonent.Id);
+            CorporateAbonent fromDb = Session.Get<CorporateAbonent>(CorpAbonent.Id);
 
             Assert.AreEqual(fromDb.Numbers.Count, 1);
 

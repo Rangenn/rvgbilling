@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
+using System.Linq;
 using System.Text;
 using RVGlib.Domain;
 using RVGlib.Framework;
@@ -25,7 +25,7 @@ namespace RVGBilling
         /// <summary>
         /// Объект для работы с базой данных
         /// </summary>
-        DBConnector connector;
+        private DBConnector _connector;
 
         /// <summary>
         /// Конструктор контроллера
@@ -33,10 +33,10 @@ namespace RVGBilling
         public Controller()
         {
             logger.log("Creating Controller...");
-            connector = new DBConnector();
+            _connector = new DBConnector();
             formMain = new FormMain(this);
             formMain.Show();
-            connector.GetAll<Abonent>();
+            _connector.GetAll<Abonent>();
             logger.log("Controller Created.");
 
         }
@@ -51,9 +51,9 @@ namespace RVGBilling
             get { return formAbonent; }
         }
 
-        public DBConnector conn
+        public DBConnector Connector
         {
-            get { return connector; }
+            get { return _connector; }
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace RVGBilling
 
         public void AddAbonent(Abonent abonent)
         {
-            connector.Save(abonent);
+            _connector.Save(abonent);
             ViewAbonent(abonent);
         }
 
@@ -98,22 +98,33 @@ namespace RVGBilling
         /// <param name="summa"></param>
         public void Payment(string number, decimal summa)
         {
-            Abonent abonent = connector.SearchByNumber(number);
-            string s = "Пополнить баланс на сумму ";          
-            if (abonent == null) 
+            Abonent abonent = null;
+            try
             {
-                MessageBox.Show("Данный номер не зарегистрирован");
-                return;
+                abonent = Connector.SearchByNumber(number);
             }
-            s += summa.ToString() + " на имя: ";
+            catch (DBConnector.SearchByNumberException ex) { MessageBox.Show(ex.Message); return; }
+            
+            string s = "Пополнить баланс на сумму " + summa.ToString() + " на имя: ";
             if (abonent is PrivateAbonent)
                 s += ((PrivateAbonent)abonent).surname + " " + ((PrivateAbonent)abonent).name + " " + ((PrivateAbonent)abonent).patronymic + '?';
             if (abonent is CorporateAbonent)
                 s += ((CorporateAbonent)abonent).corporate_name+'?';
             if (MessageBox.Show(s, "Пополнение баланса", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                abonent.balance += summa;
-                connector.Update(abonent);
+                //abonent.balance += summa;
+                Bill b = new Bill()
+                    {
+                        bill_date = DateTime.Now,
+                        money = summa,
+                        number = abonent.Numbers[0]
+                    };
+
+                abonent.Numbers[0].Bills.Add(b);
+                //Connector.Save(b);
+                Connector.Update(abonent.Numbers[0]);
+                Connector.add_bill_money(b.Id);
+                abonent = Connector.Get<Abonent>(abonent.Id);//refreshing
                 //MessageBox.Show("Вы успешно пополнили баланс.\n Номер: " + number + "\n Сумма: " + summa.ToString());
             }
         }
@@ -127,7 +138,7 @@ namespace RVGBilling
         /// <returns></returns>
         public IList<PrivateAbonent> SearchPerson(string name, string passport, string phone)
         {
-            return connector.SearchPerson(name, passport, phone);
+            return _connector.SearchPerson(name, passport, phone);
         }
 
         public void ViewAbonent(Abonent ab)
@@ -142,7 +153,7 @@ namespace RVGBilling
         /// <param name="id"></param>
         public void SelectPerson(long id)
         {
-            PrivateAbonent abonent = connector.Get<PrivateAbonent>(id);
+            PrivateAbonent abonent = _connector.Get<PrivateAbonent>(id);
             formAbonent = new FormAbonent(this, abonent);
             fmAbonent.ShowDialog();
         }
@@ -156,7 +167,7 @@ namespace RVGBilling
         /// <returns></returns>
         public IList<CorporateAbonent> SearchCoporate(string name, string address, string phone)
         {
-            return connector.SearchCorporate(name, address, phone);
+            return _connector.SearchCorporate(name, address, phone);
         }
 
         /// <summary>
@@ -165,20 +176,20 @@ namespace RVGBilling
         /// <param name="id"></param>
         public void SelectCorporate(long id)
         {
-            CorporateAbonent abonent = connector.Get<CorporateAbonent>(id);
+            CorporateAbonent abonent = _connector.Get<CorporateAbonent>(id);
             formAbonent = new FormAbonent(this, abonent);
             fmAbonent.ShowDialog();
         }
 
         public IList<Call> GetCalls(Number number,DateTime start, DateTime end)
         {
-            IList<Call> list = connector.GetCalls(number, start, end);
+            IList<Call> list = _connector.GetCalls(number, start, end);
             return list;
         }
 
         public IList<Rate> GetRates()
         {
-            return connector.GetAll<Rate>();
+            return _connector.GetAll<Rate>();
             //return connector.GetRates();
         }
 
@@ -192,20 +203,21 @@ namespace RVGBilling
         {
             Number num = new Number
             {
-                abonent = ab,
+                abonent = ab
             };
             FormAddNumber form = new FormAddNumber(num,bs);
             DialogResult dr = form.ShowDialog();
             if (dr == DialogResult.OK)
             {
                 ab.Numbers.Add(num);
-                conn.Save(num);
-                conn.Update(ab);
+                //Connector.Save(num);
+                Connector.Update(ab);
             }
         }
 
-        public void AddPrice(Rate r)
+        public bool AddPrice(Rate r)
         {
+            bool res = false;
             Price p = new Price
             {
                 rate = r,
@@ -213,11 +225,27 @@ namespace RVGBilling
                 cost_per_minute = 1
             };
             FormPrice form = new FormPrice(p);
-            if (form.ShowDialog() == DialogResult.OK)
+
+            try
             {
-                r.Prices.Add(p);
-                conn.Update(r);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+
+
+                    if (r.Prices.Contains<Price>(p, new PriceComparer()))
+                    {
+                        MessageBox.Show("Маска \"" + p.mask + "\" уже существует.");
+                    }
+                    else
+                    {
+                        r.Prices.Add(p);
+                        Connector.Update(r);
+                        res = true;
+                    }
+                }
             }
+            catch (NHibernate.Exceptions.GenericADOException ex) { MessageBox.Show(ex.Message); }
+            return res;
         }
 
         public void EditPrice(Price pr)
@@ -225,20 +253,20 @@ namespace RVGBilling
             FormPrice form = new FormPrice(pr);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                conn.Update(pr);
+                Connector.Update(pr);
             }
         }
 
         //работает! 
         public bool DeletePriceFromRate(Rate r, Price pr)
         {
-            bool res = MessageBox.Show("Удалить маску " + pr.mask + " из тарифа " + r.name + " ?", "Удаление цены",
+            bool res = MessageBox.Show("Удалить маску " + pr.mask + " из тарифа \"" + r.name + "\" ?", "Удаление цены",
             MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK;
             if (res) 
             {
                 r.Prices.Remove(pr);
                 //conn.Update(r);
-                conn.Delete(pr);
+                Connector.Delete(pr);
             }
             return res;
         }
@@ -252,7 +280,7 @@ namespace RVGBilling
             FormRate form = new FormRate(r);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                conn.Save(r);
+                Connector.Save(r);
             }
             return r;
         }
@@ -262,7 +290,7 @@ namespace RVGBilling
             FormRate form = new FormRate(r);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                conn.Update(r);
+                Connector.Update(r);
             }
         }
 
@@ -273,16 +301,22 @@ namespace RVGBilling
             MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
             if (res)
             {
-                conn.Delete(rate);
+                Connector.Delete(rate);
             }
             return res;
         }
 
         public void DissolveAbonent(Abonent ab)
         {
-            ab.dissolved = true;
-            conn.Update(ab);
-            MessageBox.Show("Баланс на момент расторжения договора: " + ab.balance.ToString());
+
+            bool res = MessageBox.Show("Расторгнуть договор № " + ab.Id + "?", "Расторжение договора",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+            if (res)
+            {
+                ab.dissolved = true;
+                Connector.Update(ab);
+                MessageBox.Show("Баланс на момент расторжения договора: " + ab.balance.ToString());
+            }
         }
 
     }

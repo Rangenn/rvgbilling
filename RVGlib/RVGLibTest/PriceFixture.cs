@@ -17,7 +17,7 @@ namespace RVGLibTest
             var rate = new Rate() { name = "MyRate" };
             Session.Save(rate);
             new PersistenceSpecification<Price>(Session)
-            .CheckProperty(x => x.rate, rate)
+            .CheckReference(x => x.rate, rate)
             .CheckProperty(x => x.mask, "920")
             .CheckProperty(x => x.cost_per_minute, TestDecimal)
             .VerifyTheMappings();
