@@ -113,6 +113,7 @@ namespace RVGBilling
         {
             int index=dgvSearch.CurrentRow.Index;
             //если отсортировали, то борода! ((((((((
+            //и ничего не борода!!!!!!!!!
             if (index >= 0)
             {
                 /*switch (tcAbonent.SelectedIndex)
@@ -146,6 +147,8 @@ namespace RVGBilling
                 return;
             }
             ctrl.Payment(tbNumber.Text, sum);
+            ctrl.UpdateList<Abonent>(abonents);
+            dgvSearch.Update();
             tbNumber.Text = "";
             tbSumma.Text = "";
 

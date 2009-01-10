@@ -7,7 +7,6 @@ using RVGlib.Framework;
 using System.Windows.Forms;
 using NHibernate;
 using FluentNHibernate.Framework;
-
 using ExcelWorkLib;
 
 namespace RVGBilling
@@ -102,6 +101,7 @@ namespace RVGBilling
         public void Payment(string number, decimal summa)
         {
             Abonent abonent = null;
+            Number num = Connector.GetNumber(number);
             try
             {
                 abonent = Connector.SearchByNumber(number);
@@ -120,15 +120,15 @@ namespace RVGBilling
                     {
                         creation_time = DateTime.Now,
                         money = summa,
-                        number = abonent.Numbers[0]
+                        number = num//abonent.Numbers[0]
                     };
 
-                abonent.Numbers[0].Bills.Add(b);
+                num.Bills.Add(b);
+                //abonent.Numbers[0].Bills.Add(b);
                 //Connector.Save(b);
-                Connector.Update(abonent.Numbers[0]);
+                Connector.Update(num);
                 Connector.add_bill_money(b.Id);
-                abonent = Connector.Get<Abonent>(abonent.Id);//refreshing
-                //MessageBox.Show("Вы успешно пополнили баланс.\n Номер: " + number + "\n Сумма: " + summa.ToString());
+                //abonent = Connector.Get<Abonent>(abonent.Id);//refreshing нет смысла обновлять абонента, который объявлен локально
             }
         }
 
@@ -370,5 +370,18 @@ namespace RVGBilling
             }
         }
 
+
+        public void UpdateList<T>(List<T> objects) where T: Entity
+        {
+            for (int i = 0; i < objects.Count; i++) 
+            {
+                objects[i] = UpdateEntity(objects[i]);
+            }
+        }
+
+        public T UpdateEntity<T>(T obj) where T : Entity
+        {
+            return Connector.Get<T>(obj.Id);
+        }
     }
 }
