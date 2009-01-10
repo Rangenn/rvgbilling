@@ -14,6 +14,7 @@ namespace RVGLibTest
         protected DateTime TestDateTime = DateTime.Today;
         protected Decimal TestDecimal = new Decimal(1.123);
         protected Int64 TestInt64 = 1;
+        protected Boolean TestBoolean = false;
 
         [SetUp]
         public void SetupContext()

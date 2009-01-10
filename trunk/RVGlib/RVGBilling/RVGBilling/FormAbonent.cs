@@ -67,11 +67,11 @@ namespace RVGBilling
 
             if (isPrivate)
             {
-                abonent = (PrivateAbonent)ctrl.conn.Get<PrivateAbonent>(id);
+                abonent = (PrivateAbonent)ctrl.Connector.Get<PrivateAbonent>(id);
             }
             else
             {
-                abonent = (CorporateAbonent)ctrl.conn.Get<CorporateAbonent>(id);
+                abonent = (CorporateAbonent)ctrl.Connector.Get<CorporateAbonent>(id);
             }
             this.RefreshForm();
 
@@ -103,7 +103,7 @@ namespace RVGBilling
             if (index >= 0)
             {
                 abonent.Numbers[index].rate = (Rate)cbRate.SelectedItem;
-                ctrl.conn.Update(abonent);
+                ctrl.Connector.Update(abonent);
             }
             numbersBindingSource.ResetBindings(false);
         }
@@ -168,7 +168,7 @@ namespace RVGBilling
                 tbDepartament.Visible = false;
             }
             this.Text = "Абонент : " + tbSurname.Text;
-            tbAccountNumber.Text = abonent.Id.ToString();
+            mtbAccountNumber.Text = abonent.Id.ToString().PadLeft(10, '0');
             tbAddress.Text = abonent.address;
             tbPhone.Text = abonent.phone;
             tbEmail.Text = abonent.mail_address;
@@ -224,6 +224,7 @@ namespace RVGBilling
             ctrl.DissolveAbonent(abonent);
             RefreshForm();
         }
+
 
 
 

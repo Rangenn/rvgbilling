@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBoxAbInfo = new System.Windows.Forms.GroupBox();
+            this.mtbAccountNumber = new System.Windows.Forms.MaskedTextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,7 +55,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnAddNumber = new System.Windows.Forms.Button();
             this.lbNumbers = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.tbIdentity = new System.Windows.Forms.TextBox();
             this.labelIdentity = new System.Windows.Forms.Label();
             this.groupBoxNumInfo = new System.Windows.Forms.GroupBox();
@@ -70,16 +71,17 @@
             this.btnCloseAccount = new System.Windows.Forms.Button();
             this.btnMakeBill = new System.Windows.Forms.Button();
             this.btnAddMoney = new System.Windows.Forms.Button();
-            this.tbAccountNumber = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.groupBoxNumbersList = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBoxAbInfo.SuspendLayout();
             this.groupBoxNumInfo.SuspendLayout();
             this.groupBoxOps.SuspendLayout();
+            this.groupBoxNumbersList.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxAbInfo
             // 
-            this.groupBoxAbInfo.Controls.Add(this.tbAccountNumber);
+            this.groupBoxAbInfo.Controls.Add(this.mtbAccountNumber);
             this.groupBoxAbInfo.Controls.Add(this.label15);
             this.groupBoxAbInfo.Controls.Add(this.label10);
             this.groupBoxAbInfo.Controls.Add(this.tbEmail);
@@ -103,17 +105,32 @@
             this.groupBoxAbInfo.Controls.Add(this.tbLastPay);
             this.groupBoxAbInfo.Controls.Add(this.tbBalance);
             this.groupBoxAbInfo.Controls.Add(this.label8);
-            this.groupBoxAbInfo.Controls.Add(this.btnAddNumber);
-            this.groupBoxAbInfo.Controls.Add(this.lbNumbers);
-            this.groupBoxAbInfo.Controls.Add(this.label3);
             this.groupBoxAbInfo.Controls.Add(this.tbIdentity);
             this.groupBoxAbInfo.Controls.Add(this.labelIdentity);
             this.groupBoxAbInfo.Location = new System.Drawing.Point(13, 13);
             this.groupBoxAbInfo.Name = "groupBoxAbInfo";
-            this.groupBoxAbInfo.Size = new System.Drawing.Size(329, 533);
+            this.groupBoxAbInfo.Size = new System.Drawing.Size(329, 389);
             this.groupBoxAbInfo.TabIndex = 0;
             this.groupBoxAbInfo.TabStop = false;
             this.groupBoxAbInfo.Text = "Информация";
+            // 
+            // mtbAccountNumber
+            // 
+            this.mtbAccountNumber.Location = new System.Drawing.Point(149, 17);
+            this.mtbAccountNumber.Mask = "0000000000";
+            this.mtbAccountNumber.Name = "mtbAccountNumber";
+            this.mtbAccountNumber.ReadOnly = true;
+            this.mtbAccountNumber.Size = new System.Drawing.Size(168, 20);
+            this.mtbAccountNumber.TabIndex = 71;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 20);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(68, 13);
+            this.label15.TabIndex = 69;
+            this.label15.Text = "№ договора";
             // 
             // label10
             // 
@@ -128,6 +145,7 @@
             // 
             this.tbEmail.Location = new System.Drawing.Point(149, 258);
             this.tbEmail.Name = "tbEmail";
+            this.tbEmail.ReadOnly = true;
             this.tbEmail.Size = new System.Drawing.Size(168, 20);
             this.tbEmail.TabIndex = 68;
             // 
@@ -144,11 +162,13 @@
             // 
             this.tbAddress.Location = new System.Drawing.Point(149, 232);
             this.tbAddress.Name = "tbAddress";
+            this.tbAddress.ReadOnly = true;
             this.tbAddress.Size = new System.Drawing.Size(168, 20);
             this.tbAddress.TabIndex = 66;
             // 
             // dtpBirthDate
             // 
+            this.dtpBirthDate.Enabled = false;
             this.dtpBirthDate.Location = new System.Drawing.Point(149, 201);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(168, 20);
@@ -165,6 +185,7 @@
             // 
             // dtpPassportDate
             // 
+            this.dtpPassportDate.Enabled = false;
             this.dtpPassportDate.Location = new System.Drawing.Point(149, 145);
             this.dtpPassportDate.Name = "dtpPassportDate";
             this.dtpPassportDate.Size = new System.Drawing.Size(168, 20);
@@ -183,6 +204,7 @@
             // 
             this.tbDepartament.Location = new System.Drawing.Point(149, 171);
             this.tbDepartament.Name = "tbDepartament";
+            this.tbDepartament.ReadOnly = true;
             this.tbDepartament.Size = new System.Drawing.Size(168, 20);
             this.tbDepartament.TabIndex = 59;
             // 
@@ -208,6 +230,7 @@
             // 
             this.tbPatronymic.Location = new System.Drawing.Point(149, 119);
             this.tbPatronymic.Name = "tbPatronymic";
+            this.tbPatronymic.ReadOnly = true;
             this.tbPatronymic.Size = new System.Drawing.Size(168, 20);
             this.tbPatronymic.TabIndex = 57;
             // 
@@ -224,6 +247,7 @@
             // 
             this.tbName.Location = new System.Drawing.Point(149, 93);
             this.tbName.Name = "tbName";
+            this.tbName.ReadOnly = true;
             this.tbName.Size = new System.Drawing.Size(168, 20);
             this.tbName.TabIndex = 55;
             // 
@@ -249,6 +273,7 @@
             // 
             this.tbSurname.Location = new System.Drawing.Point(149, 67);
             this.tbSurname.Name = "tbSurname";
+            this.tbSurname.ReadOnly = true;
             this.tbSurname.Size = new System.Drawing.Size(168, 20);
             this.tbSurname.TabIndex = 53;
             // 
@@ -256,6 +281,7 @@
             // 
             this.tbPhone.Location = new System.Drawing.Point(149, 284);
             this.tbPhone.Name = "tbPhone";
+            this.tbPhone.ReadOnly = true;
             this.tbPhone.Size = new System.Drawing.Size(168, 20);
             this.tbPhone.TabIndex = 49;
             // 
@@ -278,7 +304,7 @@
             // 
             // tbBalance
             // 
-            this.tbBalance.Location = new System.Drawing.Point(149, 315);
+            this.tbBalance.Location = new System.Drawing.Point(149, 318);
             this.tbBalance.Name = "tbBalance";
             this.tbBalance.ReadOnly = true;
             this.tbBalance.Size = new System.Drawing.Size(168, 20);
@@ -295,7 +321,7 @@
             // 
             // btnAddNumber
             // 
-            this.btnAddNumber.Location = new System.Drawing.Point(9, 396);
+            this.btnAddNumber.Location = new System.Drawing.Point(9, 172);
             this.btnAddNumber.Name = "btnAddNumber";
             this.btnAddNumber.Size = new System.Drawing.Size(110, 23);
             this.btnAddNumber.TabIndex = 7;
@@ -306,24 +332,15 @@
             // lbNumbers
             // 
             this.lbNumbers.FormattingEnabled = true;
-            this.lbNumbers.Location = new System.Drawing.Point(149, 380);
+            this.lbNumbers.Location = new System.Drawing.Point(6, 19);
             this.lbNumbers.Name = "lbNumbers";
-            this.lbNumbers.Size = new System.Drawing.Size(168, 147);
+            this.lbNumbers.Size = new System.Drawing.Size(223, 147);
             this.lbNumbers.TabIndex = 6;
             this.lbNumbers.SelectedIndexChanged += new System.EventHandler(this.lbNumbers_SelectedIndexChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 380);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Номера абонента";
-            // 
             // tbIdentity
             // 
-            this.tbIdentity.BackColor = System.Drawing.SystemColors.Window;
+            this.tbIdentity.BackColor = System.Drawing.SystemColors.Control;
             this.tbIdentity.Location = new System.Drawing.Point(149, 40);
             this.tbIdentity.Name = "tbIdentity";
             this.tbIdentity.ReadOnly = true;
@@ -350,7 +367,7 @@
             this.groupBoxNumInfo.Controls.Add(this.btnChangeTariff);
             this.groupBoxNumInfo.Controls.Add(this.cbRate);
             this.groupBoxNumInfo.Controls.Add(this.label4);
-            this.groupBoxNumInfo.Location = new System.Drawing.Point(348, 352);
+            this.groupBoxNumInfo.Location = new System.Drawing.Point(348, 221);
             this.groupBoxNumInfo.Name = "groupBoxNumInfo";
             this.groupBoxNumInfo.Size = new System.Drawing.Size(235, 181);
             this.groupBoxNumInfo.TabIndex = 1;
@@ -437,19 +454,20 @@
             // 
             // groupBoxOps
             // 
+            this.groupBoxOps.Controls.Add(this.label3);
             this.groupBoxOps.Controls.Add(this.btnCloseAccount);
             this.groupBoxOps.Controls.Add(this.btnMakeBill);
             this.groupBoxOps.Controls.Add(this.btnAddMoney);
-            this.groupBoxOps.Location = new System.Drawing.Point(348, 13);
+            this.groupBoxOps.Location = new System.Drawing.Point(12, 408);
             this.groupBoxOps.Name = "groupBoxOps";
-            this.groupBoxOps.Size = new System.Drawing.Size(93, 177);
+            this.groupBoxOps.Size = new System.Drawing.Size(571, 67);
             this.groupBoxOps.TabIndex = 2;
             this.groupBoxOps.TabStop = false;
             this.groupBoxOps.Text = "Операции";
             // 
             // btnCloseAccount
             // 
-            this.btnCloseAccount.Location = new System.Drawing.Point(6, 118);
+            this.btnCloseAccount.Location = new System.Drawing.Point(180, 20);
             this.btnCloseAccount.Name = "btnCloseAccount";
             this.btnCloseAccount.Size = new System.Drawing.Size(81, 36);
             this.btnCloseAccount.TabIndex = 2;
@@ -459,7 +477,7 @@
             // 
             // btnMakeBill
             // 
-            this.btnMakeBill.Location = new System.Drawing.Point(6, 69);
+            this.btnMakeBill.Location = new System.Drawing.Point(93, 20);
             this.btnMakeBill.Name = "btnMakeBill";
             this.btnMakeBill.Size = new System.Drawing.Size(81, 36);
             this.btnMakeBill.TabIndex = 1;
@@ -476,29 +494,33 @@
             this.btnAddMoney.UseVisualStyleBackColor = true;
             this.btnAddMoney.Click += new System.EventHandler(this.btnAddMoney_Click);
             // 
-            // tbAccountNumber
+            // groupBoxNumbersList
             // 
-            this.tbAccountNumber.BackColor = System.Drawing.SystemColors.Window;
-            this.tbAccountNumber.Location = new System.Drawing.Point(149, 17);
-            this.tbAccountNumber.Name = "tbAccountNumber";
-            this.tbAccountNumber.ReadOnly = true;
-            this.tbAccountNumber.Size = new System.Drawing.Size(168, 20);
-            this.tbAccountNumber.TabIndex = 70;
+            this.groupBoxNumbersList.Controls.Add(this.lbNumbers);
+            this.groupBoxNumbersList.Controls.Add(this.btnAddNumber);
+            this.groupBoxNumbersList.Location = new System.Drawing.Point(348, 13);
+            this.groupBoxNumbersList.Name = "groupBoxNumbersList";
+            this.groupBoxNumbersList.Size = new System.Drawing.Size(235, 202);
+            this.groupBoxNumbersList.TabIndex = 3;
+            this.groupBoxNumbersList.TabStop = false;
+            this.groupBoxNumbersList.Text = "Номера абонента";
             // 
-            // label15
+            // label3
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 20);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(68, 13);
-            this.label15.TabIndex = 69;
-            this.label15.Text = "№ договора";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(353, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Preved!!!";
+            this.label3.Visible = false;
             // 
             // FormAbonent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 558);
+            this.ClientSize = new System.Drawing.Size(597, 488);
+            this.Controls.Add(this.groupBoxNumbersList);
             this.Controls.Add(this.groupBoxOps);
             this.Controls.Add(this.groupBoxNumInfo);
             this.Controls.Add(this.groupBoxAbInfo);
@@ -510,6 +532,8 @@
             this.groupBoxNumInfo.ResumeLayout(false);
             this.groupBoxNumInfo.PerformLayout();
             this.groupBoxOps.ResumeLayout(false);
+            this.groupBoxOps.PerformLayout();
+            this.groupBoxNumbersList.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -517,7 +541,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBoxAbInfo;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbIdentity;
         private System.Windows.Forms.Label labelIdentity;
         private System.Windows.Forms.ListBox lbNumbers;
@@ -558,7 +581,9 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox tbSurname;
         private System.Windows.Forms.TextBox tbPhone;
-        private System.Windows.Forms.TextBox tbAccountNumber;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.MaskedTextBox mtbAccountNumber;
+        private System.Windows.Forms.GroupBox groupBoxNumbersList;
+        private System.Windows.Forms.Label label3;
     }
 }

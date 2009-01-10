@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using RVGlib.Domain;
 using FluentNHibernate.Framework;
 using Iesi.Collections.Generic;
@@ -23,7 +23,7 @@ namespace RVGlib.Framework
             }
             set
             {
-                session = value;
+                //session = value;
             }
         }
 
@@ -88,10 +88,14 @@ namespace RVGlib.Framework
             return res;
         }
 
-
-
+        /// <summary>
+        /// Поиск абонента по номеру. Используется для пополнения баланса
+        /// </summary>
+        /// <param name="Number"></param>
+        /// <returns></returns>
         public Abonent SearchByNumber(string Number)
         {
+            //SearchByNumberException.if (Number.Length != 10) throw new SearchByNumberException("Некорректная длина номера.");
             ITransaction trans = Session.BeginTransaction();
             ICriteria crit = Session.CreateCriteria(typeof(Abonent))
                 .CreateAlias("Numbers", "n")
@@ -108,15 +112,44 @@ namespace RVGlib.Framework
                 }
                 i += 1;
             }
-            if (res.Count != 1) return null;
+            if (res.Count == 0 || res[0] == null) throw new SearchByNumberException("Не найдено совпадений, номер незарегистрирован.");
+            if (res.Count > 1) throw new SearchByNumberException("Найдено несколько совпадений, номер задан некорректно.");
             return res[0];
+        }
+
+        /// <summary>
+        /// Исключение поиска абонента по номеру.
+        /// </summary>
+        public class SearchByNumberException : Exception
+        {
+            public String Message { get { return msg; } }
+            private string msg = "Ошибка при поиске по номеру.\n";
+
+            public SearchByNumberException()
+                : base()
+            {
+ 
+            }
+
+            public SearchByNumberException(string message)
+                : base(message)
+            {
+                this.msg += message;
+            }
+
+            public SearchByNumberException(string message, Exception InnerException)
+                : base(message, InnerException)
+            {
+                this.msg += message;
+            }
+
         }
 
         public IList<PrivateAbonent> SearchPerson(string name, string passport, string phone)
         {
             ITransaction trans = Session.BeginTransaction();
             ICriteria crit = Session.CreateCriteria(typeof(PrivateAbonent));
-
+            //crit.SetProjection(Projections.Distinct(Projections.Property("id")));
             if (name != "")
             {
                 ICriterion cr1 = Expression.Or(
@@ -128,8 +161,9 @@ namespace RVGlib.Framework
             }
             if (passport != "") crit.Add(Expression.Like("passport_series", passport, MatchMode.Anywhere));
             if (phone != "") crit.CreateAlias("Numbers", "n").Add(Expression.Like("n.number", phone, MatchMode.Anywhere));
+            //crit.SetProjection(Projections.);
 
-            IList<PrivateAbonent> ab = crit.List<PrivateAbonent>();
+            IList<PrivateAbonent> ab = crit.List<PrivateAbonent>().Distinct<PrivateAbonent>().ToList<PrivateAbonent>();
             trans.Commit();
             return ab;
         }
@@ -146,7 +180,7 @@ namespace RVGlib.Framework
             if (address != "") crit.Add(Expression.Like("address", address, MatchMode.Anywhere));
             if (phone != "") crit.CreateAlias("Numbers", "n").Add(Expression.Like("n.number", phone, MatchMode.Anywhere));
 
-            IList<CorporateAbonent> ab = crit.List<CorporateAbonent>();
+            IList<CorporateAbonent> ab = crit.List<CorporateAbonent>().Distinct<CorporateAbonent>().ToList<CorporateAbonent>();
             trans.Commit();
             return ab;
         }
@@ -164,6 +198,21 @@ namespace RVGlib.Framework
             IList<Call> res = crit.List<Call>();
             trans.Commit();
             return res;
+        }
+
+        public void calculate_call_cost(long call_id)
+        {
+            ITransaction trans = Session.BeginTransaction();
+            Session.CreateSQLQuery("SELECT calculate_call_cost_function(" + call_id.ToString() + ");");
+            trans.Commit();
+        }
+
+        public void add_bill_money(long bill_id)
+        {
+            ITransaction trans = Session.BeginTransaction();
+            //Session.cre
+            Session.CreateSQLQuery("SELECT add_bill_money(" + bill_id.ToString() + ");").ExecuteUpdate();
+            trans.Commit();
         }
     }
 }
