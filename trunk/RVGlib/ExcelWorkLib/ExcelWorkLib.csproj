@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CCA3629D-269D-433F-8AA3-D9753B18B888}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{3E7C89C6-193F-41C1-B010-84C0B1B48421}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExcelConnector</RootNamespace>
-    <AssemblyName>ExcelConnector</AssemblyName>
+    <RootNamespace>ExcelWorkLib</RootNamespace>
+    <AssemblyName>ExcelWorkLib</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExcelConnector.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

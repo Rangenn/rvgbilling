@@ -187,15 +187,35 @@ namespace RVGlib.Framework
 
         public IList<Call> GetCalls(Number number, DateTime start, DateTime end)
         {
+            return GetDetails<Call>(number, start, end);
+        }
+
+        public IList<Bill> GetBills(Number number, DateTime start, DateTime end)
+        {
+            return GetDetails<Bill>(number, start, end);
+        }
+
+        /// <summary>
+        /// Метод для детализации. Допустимые значения Т: Call, Bill.
+        /// В целях безопасности сделан приватным.
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        private IList<T> GetDetails<T>(Number number, DateTime start, DateTime end)
+        {
+            //T test = new T();
+            //if (!(test is Call || test is Bill)) throw new InvalidCastException();
             ITransaction trans = Session.BeginTransaction();
-            ICriteria crit = Session.CreateCriteria(typeof(Call));
+            ICriteria crit = Session.CreateCriteria(typeof(T));
 
             ICriterion cr =
                 Expression.And(
                 Expression.Eq("number", number),
-                Expression.Between("start_time",start, end));
+                Expression.Between("creation_time", start, end));
             crit.Add(cr);
-            IList<Call> res = crit.List<Call>();
+            IList<T> res = crit.List<T>();
             trans.Commit();
             return res;
         }

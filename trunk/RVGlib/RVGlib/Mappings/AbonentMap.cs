@@ -10,10 +10,11 @@ namespace RVGlib.Mappings
         {         
             this.TableName = "abonents";//!!!
             Id(x => x.Id);
+            
             Map(x => x.address);
             Map(x => x.phone);
             Map(x => x.mail_address);
-            Map(x => x.reg_time);
+            Map(x => x.creation_time);
             Map(x => x.last_pay_date);
             Map(x => x.balance);
             Map(x => x.dissolved);

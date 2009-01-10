@@ -20,7 +20,7 @@ namespace RVGlib.Domain
         /// <summary>
         /// Время начала соединения
         /// </summary>
-        public virtual DateTime start_time { get; set; }
+        public virtual DateTime creation_time { get; set; }
         /// <summary>
         /// Длительность, сек
         /// </summary>

@@ -55,7 +55,7 @@ namespace RVGBilling
             Columns["last_pay_date"].Visible = false;
             Columns["Numbers"].Visible = false;
             Columns["ID"].Visible = false;
-            Columns["reg_time"].Visible = false;
+            Columns["creation_time"].Visible = false;
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,10 +69,10 @@ namespace RVGBilling
             switch (tcAbonent.SelectedIndex)
             {
                 case 0:
-                    ctrl.AddPerson();
+                    ctrl.AddPrivateAbonent();
                     break;
                 case 1:
-                    ctrl.AddCorporate();
+                    ctrl.AddCorporateAbonent();
                     break;
             }
         }
@@ -85,7 +85,7 @@ namespace RVGBilling
             {
                 case 0:
                     {
-                        IList<PrivateAbonent> list = ctrl.SearchPerson(tbPersonName.Text, tbPersonPassport.Text, tbPersonPhone.Text);
+                        IList<PrivateAbonent> list = ctrl.SearchPrivateAbonent(tbPersonName.Text, tbPersonPassport.Text, tbPersonPhone.Text);
                         abonents.AddRange(list.ToArray());
                         bs.DataSource = list;
                         //InitGridPrivate();
@@ -94,7 +94,7 @@ namespace RVGBilling
                     }
                 case 1:
                     {
-                        IList<CorporateAbonent> list = ctrl.SearchCoporate(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
+                        IList<CorporateAbonent> list = ctrl.SearchCorporateAbonent(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
                         abonents.AddRange(list.ToArray());
                         bs.DataSource = list;
                         //отобразить коллекцию в DataGridView

@@ -34,7 +34,7 @@ namespace RVGBilling
             Abonent.birth_date = dtpBirthDate.Value;
             Abonent.balance = 0;
             Abonent.last_pay_date = DateTime.Today;
-            Abonent.reg_time = DateTime.Today;
+            Abonent.creation_time = DateTime.Today;
             Abonent.mail_address = tbEmail.Text;
             Abonent.address = tbAddress.Text;
         }

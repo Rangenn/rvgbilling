@@ -27,7 +27,7 @@ namespace RVGlib.Domain
         /// <summary>
         /// Дата регистрации
         /// </summary>
-        public virtual DateTime reg_time { get; set; }
+        public virtual DateTime creation_time { get; set; }
         /// <summary>
         /// Дата последнего платежа
         /// </summary>

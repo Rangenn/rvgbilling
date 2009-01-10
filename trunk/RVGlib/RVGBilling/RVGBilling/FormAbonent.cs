@@ -186,6 +186,7 @@ namespace RVGBilling
             if (abonent.dissolved)
             {
                 groupBoxNumInfo.Enabled =
+                groupBoxNumbersList.Enabled =
                 groupBoxOps.Enabled = 
                 groupBoxAbInfo.Enabled = false;
                 this.Text += " ДОГОВОР РАСТОРГНУТ.";
@@ -206,25 +207,31 @@ namespace RVGBilling
             RefreshForm();
         }
 
-        private void btnGetDetailes_Click(object sender, EventArgs e)
-        {
-            int index = lbNumbers.SelectedIndex;
-            if (index >= 0)
-            {
-                IList<Call> list = ctrl.GetCalls(abonent.Numbers[index], dtStartDate.Value, dtEndDate.Value);
-                BindingSource bs = new BindingSource();
-                bs.DataSource = list;
-                FormCallDetails form = new FormCallDetails(bs);
-                form.ShowDialog();
-            }
-        }
-
         private void btnCloseAccount_Click(object sender, EventArgs e)
         {
             ctrl.DissolveAbonent(abonent);
             RefreshForm();
         }
 
+        private void btnGetDetails_Click(object sender, EventArgs e)
+        {
+            int index = lbNumbers.SelectedIndex;
+            if (index >= 0)
+            {
+                if (rbCalls.Checked)
+                {
+                    IList<Call> list = ctrl.GetCalls(abonent.Numbers[index], dtStartDate.Value, dtEndDate.Value);
+                    ctrl.ViewDetailsForm<Call>(list);
+                }
+                else if (rbBills.Checked)
+                {
+                    IList<Bill> list = ctrl.GetBills(abonent.Numbers[index], dtStartDate.Value, dtEndDate.Value);
+                    ctrl.ViewDetailsForm<Bill>(list);
+                }
+                else MessageBox.Show("Не выбран компонент детализации.");
+            }
+            else MessageBox.Show("Не выбран номер для детализации.");
+        }
 
 
 

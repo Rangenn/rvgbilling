@@ -18,7 +18,7 @@ namespace RVGLibTest
                 .CheckProperty(x => x.address, "addr")
                 .CheckProperty(x => x.phone, "123")
                 .CheckProperty(x => x.mail_address, "q@mail.ru")
-                .CheckProperty(x => x.reg_time, TestDateTime)
+                .CheckProperty(x => x.creation_time, TestDateTime)
                 .CheckProperty(x => x.last_pay_date, TestDateTime)
                 .CheckProperty(x => x.balance, TestDecimal)
                 .CheckProperty(x => x.dissolved, TestBoolean)
@@ -35,7 +35,7 @@ namespace RVGLibTest
                 address = "a",
                 phone = "p",
                 mail_address = "m",
-                reg_time = TestDateTime,
+                creation_time = TestDateTime,
                 last_pay_date = TestDateTime,
                 balance = TestDecimal
             };

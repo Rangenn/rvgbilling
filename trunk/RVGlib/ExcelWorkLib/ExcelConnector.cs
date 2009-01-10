@@ -1,12 +1,12 @@
 ﻿using System;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace ExcelConnector
+namespace ExcelWorkLib
 {
-    class ExcelConnector
+    public class ExcelConnector
     {
         private Excel.Application _app;
-        private Excel.Workbook _workbook;
+        private Excel.Workbook _curworkbook;
         private Excel.Sheets _sheets;
         private Excel.Worksheet _CurrentWorksheet;
         private string _WorkbookFileName;
@@ -14,6 +14,12 @@ namespace ExcelConnector
         public Excel.Worksheet CurrentWorksheet
         {
             get { return _CurrentWorksheet; }
+            //set { _CurrentWorksheet = value; }
+        }
+
+        public Excel.Workbook CurrentWorkbook
+        {
+            get { return _curworkbook; }
             //set { _CurrentWorksheet = value; }
         }
 
@@ -41,24 +47,24 @@ namespace ExcelConnector
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
-        public Excel.Workbook OpenExcelWorkBook(string filename)
+        public void OpenExcelWorkBook(string filename)
         {
             _WorkbookFileName = filename;
             //Открываем книгу(файл) и получаем на нее ссылку          
 
-                _workbook = _app.Workbooks.Add(Type.Missing);
-                //_workbook.Saved = true;
-                _workbook.SaveAs(filename, Excel.XlFileFormat.xlExcel9795, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing);
-                
-                //_workbook = _app.Workbooks.Open(filename,
-                //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                //    Type.Missing, Type.Missing);
-                _sheets = _workbook.Worksheets;
-            return _workbook;
+            _curworkbook = _app.Workbooks.Add(Type.Missing);
+            //_workbook.Saved = true;
+            _curworkbook.SaveAs(filename, Excel.XlFileFormat.xlExcel9795, Type.Missing, Type.Missing, Type.Missing,
+                Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing);
+
+            //_workbook = _app.Workbooks.Open(filename,
+            //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            //    Type.Missing, Type.Missing);
+            _sheets = _curworkbook.Worksheets;
+            //return _workbook;
         }
 
         /// <summary>
@@ -66,12 +72,12 @@ namespace ExcelConnector
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
-        public Excel.Worksheet SelectExcelWorkSheet(int num)
+        public void SelectExcelWorkSheet(int num)
         {
-            if (_workbook == null) throw new NullReferenceException("Workbook is null. Select workbook!");
+            if (_curworkbook == null) throw new NullReferenceException("Workbook is null. Select workbook!");
 
             _CurrentWorksheet = (Excel.Worksheet)_sheets.get_Item(num);
-            return _CurrentWorksheet;
+            //return _CurrentWorksheet;
         }
 
         /// <summary>

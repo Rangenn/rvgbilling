@@ -53,26 +53,28 @@
             this.tbLastPay = new System.Windows.Forms.TextBox();
             this.tbBalance = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnAddNumber = new System.Windows.Forms.Button();
-            this.lbNumbers = new System.Windows.Forms.ListBox();
             this.tbIdentity = new System.Windows.Forms.TextBox();
             this.labelIdentity = new System.Windows.Forms.Label();
+            this.btnAddNumber = new System.Windows.Forms.Button();
+            this.lbNumbers = new System.Windows.Forms.ListBox();
             this.groupBoxNumInfo = new System.Windows.Forms.GroupBox();
+            this.rbBills = new System.Windows.Forms.RadioButton();
+            this.rbCalls = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
             this.dtEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnGetDetailes = new System.Windows.Forms.Button();
+            this.btnGetCallDetails = new System.Windows.Forms.Button();
             this.btnChangeTariff = new System.Windows.Forms.Button();
             this.cbRate = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBoxOps = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnCloseAccount = new System.Windows.Forms.Button();
             this.btnMakeBill = new System.Windows.Forms.Button();
             this.btnAddMoney = new System.Windows.Forms.Button();
             this.groupBoxNumbersList = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBoxAbInfo.SuspendLayout();
             this.groupBoxNumInfo.SuspendLayout();
             this.groupBoxOps.SuspendLayout();
@@ -319,6 +321,24 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Баланс";
             // 
+            // tbIdentity
+            // 
+            this.tbIdentity.BackColor = System.Drawing.SystemColors.Control;
+            this.tbIdentity.Location = new System.Drawing.Point(149, 40);
+            this.tbIdentity.Name = "tbIdentity";
+            this.tbIdentity.ReadOnly = true;
+            this.tbIdentity.Size = new System.Drawing.Size(168, 20);
+            this.tbIdentity.TabIndex = 3;
+            // 
+            // labelIdentity
+            // 
+            this.labelIdentity.AutoSize = true;
+            this.labelIdentity.Location = new System.Drawing.Point(6, 43);
+            this.labelIdentity.Name = "labelIdentity";
+            this.labelIdentity.Size = new System.Drawing.Size(50, 13);
+            this.labelIdentity.TabIndex = 2;
+            this.labelIdentity.Text = "Паспорт";
+            // 
             // btnAddNumber
             // 
             this.btnAddNumber.Location = new System.Drawing.Point(9, 172);
@@ -338,32 +358,16 @@
             this.lbNumbers.TabIndex = 6;
             this.lbNumbers.SelectedIndexChanged += new System.EventHandler(this.lbNumbers_SelectedIndexChanged);
             // 
-            // tbIdentity
-            // 
-            this.tbIdentity.BackColor = System.Drawing.SystemColors.Control;
-            this.tbIdentity.Location = new System.Drawing.Point(149, 40);
-            this.tbIdentity.Name = "tbIdentity";
-            this.tbIdentity.ReadOnly = true;
-            this.tbIdentity.Size = new System.Drawing.Size(168, 20);
-            this.tbIdentity.TabIndex = 3;
-            // 
-            // labelIdentity
-            // 
-            this.labelIdentity.AutoSize = true;
-            this.labelIdentity.Location = new System.Drawing.Point(6, 43);
-            this.labelIdentity.Name = "labelIdentity";
-            this.labelIdentity.Size = new System.Drawing.Size(50, 13);
-            this.labelIdentity.TabIndex = 2;
-            this.labelIdentity.Text = "Паспорт";
-            // 
             // groupBoxNumInfo
             // 
+            this.groupBoxNumInfo.Controls.Add(this.rbBills);
+            this.groupBoxNumInfo.Controls.Add(this.rbCalls);
             this.groupBoxNumInfo.Controls.Add(this.label7);
             this.groupBoxNumInfo.Controls.Add(this.dtEndDate);
             this.groupBoxNumInfo.Controls.Add(this.dtStartDate);
             this.groupBoxNumInfo.Controls.Add(this.label6);
             this.groupBoxNumInfo.Controls.Add(this.label5);
-            this.groupBoxNumInfo.Controls.Add(this.btnGetDetailes);
+            this.groupBoxNumInfo.Controls.Add(this.btnGetCallDetails);
             this.groupBoxNumInfo.Controls.Add(this.btnChangeTariff);
             this.groupBoxNumInfo.Controls.Add(this.cbRate);
             this.groupBoxNumInfo.Controls.Add(this.label4);
@@ -373,6 +377,28 @@
             this.groupBoxNumInfo.TabIndex = 1;
             this.groupBoxNumInfo.TabStop = false;
             this.groupBoxNumInfo.Text = "Информация о номере";
+            // 
+            // rbBills
+            // 
+            this.rbBills.AutoSize = true;
+            this.rbBills.Location = new System.Drawing.Point(77, 149);
+            this.rbBills.Name = "rbBills";
+            this.rbBills.Size = new System.Drawing.Size(54, 17);
+            this.rbBills.TabIndex = 12;
+            this.rbBills.Text = "Счета";
+            this.rbBills.UseVisualStyleBackColor = true;
+            // 
+            // rbCalls
+            // 
+            this.rbCalls.AutoSize = true;
+            this.rbCalls.Checked = true;
+            this.rbCalls.Location = new System.Drawing.Point(9, 149);
+            this.rbCalls.Name = "rbCalls";
+            this.rbCalls.Size = new System.Drawing.Size(62, 17);
+            this.rbCalls.TabIndex = 11;
+            this.rbCalls.TabStop = true;
+            this.rbCalls.Text = "Звонки";
+            this.rbCalls.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -415,15 +441,15 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Детализация за период";
             // 
-            // btnGetDetailes
+            // btnGetCallDetails
             // 
-            this.btnGetDetailes.Location = new System.Drawing.Point(138, 146);
-            this.btnGetDetailes.Name = "btnGetDetailes";
-            this.btnGetDetailes.Size = new System.Drawing.Size(91, 23);
-            this.btnGetDetailes.TabIndex = 3;
-            this.btnGetDetailes.Text = "Детализация";
-            this.btnGetDetailes.UseVisualStyleBackColor = true;
-            this.btnGetDetailes.Click += new System.EventHandler(this.btnGetDetailes_Click);
+            this.btnGetCallDetails.Location = new System.Drawing.Point(138, 146);
+            this.btnGetCallDetails.Name = "btnGetCallDetails";
+            this.btnGetCallDetails.Size = new System.Drawing.Size(91, 23);
+            this.btnGetCallDetails.TabIndex = 3;
+            this.btnGetCallDetails.Text = "Детализация";
+            this.btnGetCallDetails.UseVisualStyleBackColor = true;
+            this.btnGetCallDetails.Click += new System.EventHandler(this.btnGetDetails_Click);
             // 
             // btnChangeTariff
             // 
@@ -465,6 +491,16 @@
             this.groupBoxOps.TabStop = false;
             this.groupBoxOps.Text = "Операции";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(353, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Preved!!!";
+            this.label3.Visible = false;
+            // 
             // btnCloseAccount
             // 
             this.btnCloseAccount.Location = new System.Drawing.Point(180, 20);
@@ -505,16 +541,6 @@
             this.groupBoxNumbersList.TabStop = false;
             this.groupBoxNumbersList.Text = "Номера абонента";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(353, 32);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Preved!!!";
-            this.label3.Visible = false;
-            // 
             // FormAbonent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -545,7 +571,7 @@
         private System.Windows.Forms.Label labelIdentity;
         private System.Windows.Forms.ListBox lbNumbers;
         private System.Windows.Forms.GroupBox groupBoxNumInfo;
-        private System.Windows.Forms.Button btnGetDetailes;
+        private System.Windows.Forms.Button btnGetCallDetails;
         private System.Windows.Forms.Button btnChangeTariff;
         private System.Windows.Forms.ComboBox cbRate;
         private System.Windows.Forms.Label label4;
@@ -585,5 +611,7 @@
         private System.Windows.Forms.MaskedTextBox mtbAccountNumber;
         private System.Windows.Forms.GroupBox groupBoxNumbersList;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RadioButton rbBills;
+        private System.Windows.Forms.RadioButton rbCalls;
     }
 }

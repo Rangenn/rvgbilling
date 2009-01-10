@@ -6,6 +6,9 @@ using RVGlib.Domain;
 using RVGlib.Framework;
 using System.Windows.Forms;
 using NHibernate;
+using FluentNHibernate.Framework;
+
+using ExcelWorkLib;
 
 namespace RVGBilling
 {
@@ -59,7 +62,7 @@ namespace RVGBilling
         /// <summary>
         /// вызов диалога для добавления частного лица
         /// </summary>
-        public void AddPerson()
+        public void AddPrivateAbonent()
         {
             PrivateAbonent ab = new PrivateAbonent();
             AddPrivateAbonentForm fm = new AddPrivateAbonentForm(ab);
@@ -75,7 +78,7 @@ namespace RVGBilling
         /// <param name="Name"></param>
         /// <param name="Address"></param>
         /// <param name="Phone"></param>
-        public void AddCorporate()
+        public void AddCorporateAbonent()
         {
             CorporateAbonent ab = new CorporateAbonent();
             AddCorporateAbonentForm fm = new AddCorporateAbonentForm(ab);
@@ -115,7 +118,7 @@ namespace RVGBilling
                 //abonent.balance += summa;
                 Bill b = new Bill()
                     {
-                        bill_date = DateTime.Now,
+                        creation_time = DateTime.Now,
                         money = summa,
                         number = abonent.Numbers[0]
                     };
@@ -136,7 +139,7 @@ namespace RVGBilling
         /// <param name="passport"></param>
         /// <param name="phone"></param>
         /// <returns></returns>
-        public IList<PrivateAbonent> SearchPerson(string name, string passport, string phone)
+        public IList<PrivateAbonent> SearchPrivateAbonent(string name, string passport, string phone)
         {
             return _connector.SearchPerson(name, passport, phone);
         }
@@ -165,7 +168,7 @@ namespace RVGBilling
         /// <param name="address"></param>
         /// <param name="phone"></param>
         /// <returns></returns>
-        public IList<CorporateAbonent> SearchCoporate(string name, string address, string phone)
+        public IList<CorporateAbonent> SearchCorporateAbonent(string name, string address, string phone)
         {
             return _connector.SearchCorporate(name, address, phone);
         }
@@ -187,10 +190,15 @@ namespace RVGBilling
             return list;
         }
 
+        public IList<Bill> GetBills(Number number, DateTime start, DateTime end)
+        {
+            IList<Bill> list = _connector.GetBills(number, start, end);
+            return list;
+        }
+
         public IList<Rate> GetRates()
         {
             return _connector.GetAll<Rate>();
-            //return connector.GetRates();
         }
 
         public void ViewRates()
@@ -316,6 +324,49 @@ namespace RVGBilling
                 ab.dissolved = true;
                 Connector.Update(ab);
                 MessageBox.Show("Баланс на момент расторжения договора: " + ab.balance.ToString());
+            }
+        }
+
+        public void ViewDetailsForm<T>(IList<T> list) where T:Entity
+        {
+            if (list.Count != 0)
+            {
+                BindingSource bs = new BindingSource();
+                bs.DataSource = list;
+                FormCallDetails form = new FormCallDetails(this, bs);
+                form.ShowDialog();
+            }
+            else MessageBox.Show("Список элементов для отображения пуст.");
+        }
+
+        public void ExportToExcel(string filename, DataGridView dgv)
+        {
+            System.Console.WriteLine("Создаю Excel application...");
+            ExcelConnector _ExcelClient = new ExcelConnector(false);
+            try
+            {
+                System.Console.WriteLine("Загружаю книгу " + filename + "...");
+                _ExcelClient.OpenExcelWorkBook(filename);
+                System.Console.WriteLine("Работаю с листом №1...");
+                _ExcelClient.SelectExcelWorkSheet(1);
+                for (int i = 0, a = 'A'; i < dgv.ColumnCount; i++, a++)
+                {
+                    if (!dgv.Columns[i].Visible)
+                    {
+                        a--;
+                        continue;
+                    }
+                    _ExcelClient.SetCellValue(((char)a).ToString(), 1, dgv.Columns[i].Name);
+                    for (int j = 0; j < dgv.RowCount; j++)
+                        _ExcelClient.SetCellValue(((char)a).ToString(), j + 2, dgv[i, j].Value.ToString());
+                }
+            }
+            catch (Exception ex) { System.Console.WriteLine(ex.Message); }
+            finally
+            {
+                System.Console.WriteLine("Закрываю Excel application...");
+                _ExcelClient.Close();
+
             }
         }
 
