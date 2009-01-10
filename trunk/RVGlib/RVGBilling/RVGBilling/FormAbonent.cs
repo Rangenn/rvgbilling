@@ -125,6 +125,7 @@ namespace RVGBilling
         {
             if (abonent is PrivateAbonent)
             {
+                abonent = ctrl.UpdateEntity<PrivateAbonent>((PrivateAbonent)abonent);
                 PrivateAbonent person = (PrivateAbonent)abonent;               
                 labelSurname.Text = "Фамилия";
                 tbSurname.Text = person.surname;               
@@ -147,14 +148,14 @@ namespace RVGBilling
                 dtpBirthDate.Visible = 
                 dtpPassportDate.Visible =
                 tbDepartament.Visible = true;
-
             }
             if (abonent is CorporateAbonent)
             {
+                abonent = ctrl.UpdateEntity<CorporateAbonent>((CorporateAbonent)abonent);
                 CorporateAbonent corp = (CorporateAbonent)abonent;
                 labelSurname.Text = "Название";
                 tbSurname.Text = corp.corporate_name;
-                labelIdentity.Text = "ИНН";
+                labelIdentity.Text = "�?НН";
                 tbIdentity.Text = corp.INN;
                 label11.Visible =
                 label12.Visible =

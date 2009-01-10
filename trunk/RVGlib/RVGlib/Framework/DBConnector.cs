@@ -54,6 +54,8 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.Save(en);
             trans.Commit();
+            Session.Flush();
+            Session.Clear();
         }
 
         public void Delete(Entity en)
@@ -70,6 +72,8 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.Update(en);
             trans.Commit();
+            Session.Flush();
+            Session.Clear();
         }
 
         public IList<T> GetAll<T>() where T : Entity
@@ -88,11 +92,24 @@ namespace RVGlib.Framework
             return res;
         }
 
-        /// <summary>
-        /// Поиск абонента по номеру. Используется для пополнения баланса
-        /// </summary>
-        /// <param name="Number"></param>
-        /// <returns></returns>
+        public Number GetNumber(string phoneNumber)
+        {
+            //Session = SessionFactory.GetCurrentSession();
+            //Session.CreateQuery("from Abonent").
+            ITransaction trans = Session.BeginTransaction();
+            ICriteria crit = Session.CreateCriteria(typeof(Number)).Add(Expression.Eq("number", phoneNumber));
+
+            //if (SortBy != null) crit.addOrder(Order.asc(SortBy));
+            //IList<T> res = crit.List<T>();
+            IList<Number> res = crit.List<Number>();
+
+            trans.Commit();
+            if (res.Count == 0 || res[0] == null) throw new SearchByNumberException("Не найдено совпадений, номер незарегистрирован.");
+            if (res.Count > 1) throw new SearchByNumberException("Найдено несколько совпадений, номер задан некорректно.");
+            return res[0];
+        }
+
+
         public Abonent SearchByNumber(string Number)
         {
             //SearchByNumberException.if (Number.Length != 10) throw new SearchByNumberException("Некорректная длина номера.");
@@ -118,7 +135,7 @@ namespace RVGlib.Framework
         }
 
         /// <summary>
-        /// Исключение поиска абонента по номеру.
+        /// ?�сключение поиска абонента по номеру.
         /// </summary>
         public class SearchByNumberException : Exception
         {
