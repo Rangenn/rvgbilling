@@ -109,33 +109,33 @@ namespace RVGlib.Framework
             return res[0];
         }
 
-
-        public Abonent SearchByNumber(string Number)
-        {
-            //SearchByNumberException.if (Number.Length != 10) throw new SearchByNumberException("Некорректная длина номера.");
-            ITransaction trans = Session.BeginTransaction();
-            ICriteria crit = Session.CreateCriteria(typeof(Abonent))
-                .CreateAlias("Numbers", "n")
-                .Add(Expression.Like("n.number", Number, MatchMode.Anywhere));
-            IList<Abonent> res = crit.List<Abonent>();
-            trans.Commit();
-            int i = 0;
-            while (i < res.Count)
-            {
-                if (!((res[i] is PrivateAbonent) || (res[i] is CorporateAbonent)))
-                {
-                    res.Remove(res[i]);
-                    i -= 1;
-                }
-                i += 1;
-            }
-            if (res.Count == 0 || res[0] == null) throw new SearchByNumberException("Не найдено совпадений, номер незарегистрирован.");
-            if (res.Count > 1) throw new SearchByNumberException("Найдено несколько совпадений, номер задан некорректно.");
-            return res[0];
-        }
+        //DEPRECATED
+        //public Abonent SearchByNumber(string Number)
+        //{
+        //    //SearchByNumberException.if (Number.Length != 10) throw new SearchByNumberException("Некорректная длина номера.");
+        //    ITransaction trans = Session.BeginTransaction();
+        //    ICriteria crit = Session.CreateCriteria(typeof(Abonent))
+        //        .CreateAlias("Numbers", "n")
+        //        .Add(Expression.Like("n.number", Number, MatchMode.Anywhere));
+        //    IList<Abonent> res = crit.List<Abonent>();
+        //    trans.Commit();
+        //    int i = 0;
+        //    while (i < res.Count)
+        //    {
+        //        if (!((res[i] is PrivateAbonent) || (res[i] is CorporateAbonent)))
+        //        {
+        //            res.Remove(res[i]);
+        //            i -= 1;
+        //        }
+        //        i += 1;
+        //    }
+        //    if (res.Count == 0 || res[0] == null) throw new SearchByNumberException("Не найдено совпадений, номер незарегистрирован.");
+        //    if (res.Count > 1) throw new SearchByNumberException("Найдено несколько совпадений, номер задан некорректно.");
+        //    return res[0];
+        //}
 
         /// <summary>
-        /// ?�сключение поиска абонента по номеру.
+        /// Исключение поиска абонента по номеру.
         /// </summary>
         public class SearchByNumberException : Exception
         {

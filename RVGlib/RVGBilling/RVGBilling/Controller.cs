@@ -100,19 +100,21 @@ namespace RVGBilling
         /// <param name="summa"></param>
         public void Payment(string number, decimal summa)
         {
-            Abonent abonent = null;
             Number num = Connector.GetNumber(number);
-            try
-            {
-                abonent = Connector.SearchByNumber(number);
-            }
-            catch (DBConnector.SearchByNumberException ex) { MessageBox.Show(ex.Message); return; }
+            Abonent abonent = num.abonent;
+            //try
+            //{
+            //    abonent = Connector.SearchByNumber(number);
+            //}
+            //catch (DBConnector.SearchByNumberException ex) { MessageBox.Show(ex.Message); return; }
             
             string s = "Пополнить баланс на сумму " + summa.ToString() + " на имя: ";
             if (abonent is PrivateAbonent)
                 s += ((PrivateAbonent)abonent).surname + " " + ((PrivateAbonent)abonent).name + " " + ((PrivateAbonent)abonent).patronymic + '?';
-            if (abonent is CorporateAbonent)
-                s += ((CorporateAbonent)abonent).corporate_name+'?';
+            else if (abonent is CorporateAbonent)
+                s += ((CorporateAbonent)abonent).corporate_name + '?';
+            else return;
+
             if (MessageBox.Show(s, "Пополнение баланса", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 //abonent.balance += summa;
@@ -125,7 +127,6 @@ namespace RVGBilling
 
                 num.Bills.Add(b);
                 //abonent.Numbers[0].Bills.Add(b);
-                //Connector.Save(b);
                 Connector.Update(num);
                 Connector.add_bill_money(b.Id);
                 //abonent = Connector.Get<Abonent>(abonent.Id);//refreshing нет смысла обновлять абонента, который объявлен локально
