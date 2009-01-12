@@ -129,27 +129,27 @@
             this.EditToolStripMenuItem,
             this.removeSelectedToolStripMenuItem});
             this.rateToolStripMenuItem.Name = "rateToolStripMenuItem";
-            this.rateToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.rateToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.rateToolStripMenuItem.Text = "Тариф";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.addToolStripMenuItem.Text = "Создать";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.EditToolStripMenuItem.Text = "Переименовать";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // removeSelectedToolStripMenuItem
             // 
             this.removeSelectedToolStripMenuItem.Name = "removeSelectedToolStripMenuItem";
-            this.removeSelectedToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.removeSelectedToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.removeSelectedToolStripMenuItem.Text = "Удалить выделенный";
             this.removeSelectedToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedToolStripMenuItem_Click);
             // 

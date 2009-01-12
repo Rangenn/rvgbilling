@@ -140,34 +140,6 @@ namespace RVGlib.Framework
         //    return res[0];
         //}
 
-        /// <summary>
-        /// Исключение поиска абонента по номеру.
-        /// </summary>
-        public class SearchByNumberException : Exception
-        {
-            public String Message { get { return msg; } }
-            private string msg = "Ошибка при поиске по номеру.\n";
-
-            public SearchByNumberException()
-                : base()
-            {
- 
-            }
-
-            public SearchByNumberException(string message)
-                : base(message)
-            {
-                this.msg += message;
-            }
-
-            public SearchByNumberException(string message, Exception InnerException)
-                : base(message, InnerException)
-            {
-                this.msg += message;
-            }
-
-        }
-
         public IList<PrivateAbonent> SearchPerson(string name, string passport, string phone)
         {
             ITransaction trans = Session.BeginTransaction();
@@ -257,5 +229,33 @@ namespace RVGlib.Framework
             Session.CreateSQLQuery("SELECT add_bill_money(" + bill_id.ToString() + ");").ExecuteUpdate();
             trans.Commit();
         }
+    }
+
+    /// <summary>
+    /// Исключение поиска абонента по номеру.
+    /// </summary>
+    public class SearchByNumberException : Exception
+    {
+        public String Message { get { return msg; } }
+        private string msg = "Ошибка при поиске по номеру.\n";
+
+        public SearchByNumberException()
+            : base()
+        {
+
+        }
+
+        public SearchByNumberException(string message)
+            : base(message)
+        {
+            this.msg += message;
+        }
+
+        public SearchByNumberException(string message, Exception InnerException)
+            : base(message, InnerException)
+        {
+            this.msg += message;
+        }
+
     }
 }

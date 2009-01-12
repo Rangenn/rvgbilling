@@ -37,6 +37,14 @@ namespace RVGBilling
             controller.ExportToExcel(filename, dgDetails);                     
         }
 
+        private void exportCSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                controller.ExportToCSV(saveFileDialog1.FileName, dgDetails);
+            }
+        }
+
 
         
     }

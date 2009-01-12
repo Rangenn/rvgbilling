@@ -71,6 +71,8 @@
     <Compile Include="Domain\Rate.cs" />
     <Compile Include="Framework\DBConnector.cs" />
     <Compile Include="Framework\Model.cs" />
+    <Compile Include="Import\Importer.cs" />
+    <Compile Include="Import\TableData.cs" />
     <Compile Include="Mappings\AbonentMap.cs" />
     <Compile Include="Mappings\BillMap.cs" />
     <Compile Include="Mappings\CallMap.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Mappings\PriceMap.cs" />
     <Compile Include="Mappings\PrivateAbonentMap.cs" />
     <Compile Include="Mappings\RateMap.cs" />
+    <Compile Include="Import\CSVParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

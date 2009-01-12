@@ -7,7 +7,9 @@ using RVGlib.Framework;
 using System.Windows.Forms;
 using NHibernate;
 using FluentNHibernate.Framework;
+
 using ExcelWorkLib;
+using RVGlib.Import;
 
 namespace RVGBilling
 {
@@ -387,6 +389,42 @@ namespace RVGBilling
             }
         }
 
+        public void ImportCallsCSV(string filename)
+        {
+            Importer imp = new Importer(this.Connector);
+            string[][] data = imp.GetCSVCalls(filename);
+            imp.ImportCalls(data);
+        }
+
+        public void ExportToCSV(string filename, DataGridView dgv)
+        {
+            Importer imp = new Importer(this.Connector);
+            string[][] data=new string [0][];
+            Console.WriteLine("Rows="+dgv.RowCount+ "; Cols= "+dgv.ColumnCount);
+            for (int i=0;i<dgv.RowCount;i++)
+            {
+                string[] arr=new string[dgv.ColumnCount];
+                DataGridViewRow Row=dgv.Rows[i];
+                for (int j=0;i<dgv.ColumnCount;i++) 
+                {
+                    arr[j]=Row.Cells[j].Value.ToString();
+                }
+                Array.Resize(ref data, data.Length + 1);
+                data[data.Length - 1] = arr;
+            }
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data[i].Length; j++)
+                {
+                    Console.Write(data[i][j]);
+                    Console.Write('|');
+                }
+                Console.WriteLine();
+            }
+
+            imp.ExportCallsCSV(filename, data);
+        }
 
         public void UpdateList<T>(List<T> objects) where T: Entity
         {
