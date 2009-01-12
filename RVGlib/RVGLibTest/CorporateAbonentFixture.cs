@@ -45,7 +45,7 @@ namespace RVGLibTest
 
             Rate rate = new Rate() { name = "MyRate" };
             Session.Save(rate);
-
+            long id = rate.Id;
             Number Number = new Number { number = "222", abonent = CorpAbonent, rate = rate };
             //Session.Save(Number);
             CorpAbonent.Numbers.Add(Number);
@@ -58,6 +58,10 @@ namespace RVGLibTest
             Assert.AreEqual(fromDb.Numbers.Count, 1);
 
             Assert.AreEqual(fromDb.Numbers[0].Id, Number.Id);
+            Session.Delete(fromDb);
+            Session.Delete(Session.Get<Rate>(id));
+            Session.Flush();
+            Session.Clear();
         }
     }
 }

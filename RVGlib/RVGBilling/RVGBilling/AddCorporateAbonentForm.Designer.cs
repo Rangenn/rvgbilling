@@ -68,7 +68,6 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(168, 20);
             this.tbName.TabIndex = 29;
-            this.tbName.Text = "ООО \"Росинка\"";
             // 
             // label1
             // 
@@ -85,7 +84,6 @@
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(168, 20);
             this.tbPhone.TabIndex = 42;
-            this.tbPhone.Text = "123456";
             // 
             // label2
             // 
@@ -102,7 +100,6 @@
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(168, 20);
             this.tbAddress.TabIndex = 44;
-            this.tbAddress.Text = "Адрес компании";
             // 
             // label3
             // 
@@ -119,7 +116,6 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(168, 20);
             this.tbEmail.TabIndex = 46;
-            this.tbEmail.Text = "123456@email.ru";
             // 
             // btnCancel
             // 
@@ -146,7 +142,6 @@
             this.tbINN.Name = "tbINN";
             this.tbINN.Size = new System.Drawing.Size(168, 20);
             this.tbINN.TabIndex = 49;
-            this.tbINN.Text = "ИНН";
             // 
             // AddCorporateAbonentForm
             // 

@@ -4,6 +4,7 @@ using NUnit.Framework;
 using RVGlib.Domain;
 using FluentNHibernate.Framework;
 using Iesi.Collections.Generic;
+using System.Reflection;
 
 namespace RVGLibTest
 {
@@ -43,7 +44,7 @@ namespace RVGLibTest
 
             Rate rate = new Rate() { name = "MyRate" };
             Session.Save(rate);
-
+            long id = rate.Id;
             Number Number = new Number { number = "111", abonent = Abonent, rate = rate };
             //Session.Save(Number);
             Abonent.Numbers.Add(Number);
@@ -61,7 +62,10 @@ namespace RVGLibTest
             Assert.AreEqual(fromDb.Numbers.Count, 2);
 
             Assert.AreEqual(fromDb.Numbers[1].Id, Number.Id);
-
+            Session.Delete(fromDb);
+            Session.Delete(Session.Get<Rate>(id));
+            Session.Flush();
+            Session.Clear();
         }
     }
 }

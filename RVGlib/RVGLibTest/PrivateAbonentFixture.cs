@@ -55,7 +55,7 @@ namespace RVGLibTest
 
             var rate = new Rate() { name = "MyRate" };
             Session.Save(rate);
-
+            long id = rate.Id;
             var Number = new Number { number = "111", abonent = Abonent, rate = rate };
             Bill[] bills =
                 {
@@ -80,11 +80,15 @@ namespace RVGLibTest
             Session.Flush();
             Session.Clear();
 
-            var fromDb = Session.Get<PrivateAbonent>(Abonent.Id);
+            PrivateAbonent fromDb = Session.Get<PrivateAbonent>(Abonent.Id);
 
             Assert.AreEqual(fromDb.Numbers.Count, 1);
 
             Assert.AreEqual(fromDb.Numbers[0].Id, Number.Id);
+            Session.Delete(fromDb);
+            Session.Delete(Session.Get<Rate>(id));
+            Session.Flush();
+            Session.Clear();
         }
     }
 }

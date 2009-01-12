@@ -21,7 +21,9 @@ namespace RVGlib.Mappings
             HasMany<Number>(x => x.Numbers)
                 .WithKeyColumn("abonent_id")
                 //.AsList()
-                .Cascade.All().LazyLoad().IsInverse();
+                .Cascade.All()
+                .LazyLoad()
+                .IsInverse();
         }
     }
 }

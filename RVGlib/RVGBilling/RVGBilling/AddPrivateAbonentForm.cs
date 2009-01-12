@@ -32,7 +32,7 @@ namespace RVGBilling
             Abonent.passport_department = tbDepartament.Text;
             Abonent.phone = tbPhone.Text;
             Abonent.birth_date = dtpBirthDate.Value;
-            Abonent.balance = 0;
+            //Abonent.balance = 0;
             Abonent.last_pay_date = DateTime.Today;
             Abonent.creation_time = DateTime.Today;
             Abonent.mail_address = tbEmail.Text;
