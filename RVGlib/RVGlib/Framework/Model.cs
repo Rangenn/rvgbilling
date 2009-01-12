@@ -5,6 +5,9 @@ using RVGlib.Mappings;
 
 namespace RVGlib.Framework
 {
+    /// <summary>
+    /// Модель данных. загружает маппинг из сборки.
+    /// </summary>
     public class Model : FluentNHibernate.PersistenceModel
     {
         public Model()

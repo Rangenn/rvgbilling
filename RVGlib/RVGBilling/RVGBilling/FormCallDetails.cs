@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace RVGBilling
 {
+    /// <summary>
+    /// Форма детализации. В качестве источники информации используется bindingsource.
+    /// </summary>
     public partial class FormCallDetails : Form
     {
         Controller controller;

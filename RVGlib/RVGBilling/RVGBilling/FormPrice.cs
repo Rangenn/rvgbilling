@@ -11,6 +11,9 @@ using RVGlib.Domain;
 
 namespace RVGBilling
 {
+    /// <summary>
+    /// Форма добавления цены
+    /// </summary>
     public partial class FormPrice : Form
     {
         private Price price;

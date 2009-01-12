@@ -11,6 +11,9 @@ using RVGlib.Domain;
 
 namespace RVGBilling
 {
+    /// <summary>
+    /// Форма редактирования списка тарифов с ценами
+    /// </summary>
     public partial class FormRateList : Form
     {
         IList<Rate> ListRates;

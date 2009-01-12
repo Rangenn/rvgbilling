@@ -10,10 +10,16 @@ using NHibernate.Criterion;
 
 namespace RVGlib.Framework
 {
+    /// <summary>
+    /// Класс работы с БД
+    /// </summary>
     public class DBConnector
     {
         protected SessionSource SessionSource { get; set; }
         protected ISession session;
+        /// <summary>
+        /// Текущая сессия
+        /// </summary>
         public ISession Session { 
             get 
             {

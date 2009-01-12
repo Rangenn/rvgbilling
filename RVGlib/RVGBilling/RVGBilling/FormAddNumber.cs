@@ -11,6 +11,9 @@ using RVGlib.Domain;
 
 namespace RVGBilling
 {
+    /// <summary>
+    /// Форма добавления номера
+    /// </summary>
     public partial class FormAddNumber : Form
     {
         private Number num;

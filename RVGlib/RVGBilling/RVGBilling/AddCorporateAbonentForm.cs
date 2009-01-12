@@ -10,6 +10,9 @@ using RVGlib.Domain;
 
 namespace RVGBilling
 {
+    /// <summary>
+    /// Форма добавления абонентов - юр.лиц
+    /// </summary>
     public partial class AddCorporateAbonentForm : Form
     {
         CorporateAbonent Abonent;
