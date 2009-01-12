@@ -8,6 +8,9 @@ using RVGlib.Domain;
 
 namespace RVGlib.Import
 {
+    /// <summary>
+    /// Класс для импорта и экспорта из CSV
+    /// </summary>
     public class Importer
     {
         private DBConnector dbc;
@@ -71,6 +74,7 @@ namespace RVGlib.Import
 
                     num.Calls.Add(call);
                     dbc.Update(num);
+                    dbc.calculate_call_cost(call.Id);
                 }
                 catch (SearchByNumberException ex)
                 {

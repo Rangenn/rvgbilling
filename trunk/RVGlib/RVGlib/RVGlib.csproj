@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9600862B-F546-45F6-9DE8-E8704948C103}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -72,7 +72,6 @@
     <Compile Include="Framework\DBConnector.cs" />
     <Compile Include="Framework\Model.cs" />
     <Compile Include="Import\Importer.cs" />
-    <Compile Include="Import\TableData.cs" />
     <Compile Include="Mappings\AbonentMap.cs" />
     <Compile Include="Mappings\BillMap.cs" />
     <Compile Include="Mappings\CallMap.cs" />

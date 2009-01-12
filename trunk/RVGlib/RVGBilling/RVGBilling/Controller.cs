@@ -123,20 +123,20 @@ namespace RVGBilling
         /// <param name="summa"></param>
         public void Payment(string number, decimal summa)
         {
-            Number num = Connector.GetNumber(number);
-            Abonent abonent = num.abonent;
-            //try
-            //{
-            //    abonent = Connector.SearchByNumber(number);
-            //}
-            //catch (DBConnector.SearchByNumberException ex) { MessageBox.Show(ex.Message); return; }
+            Number num;
+            Abonent abonent;
+            try
+            {
+                num = Connector.GetNumber(number);
+                abonent = Connector.SearchByNumber(number);
+            }
+            catch (SearchByNumberException ex) { MessageBox.Show(ex.Message); return; }
             
-            string s = "Пополнить баланс на сумму " + summa.ToString() + " на имя: ";
+            string s = "Пополнить баланс на сумму " + summa.ToString();
             if (abonent is PrivateAbonent)
-                s += ((PrivateAbonent)abonent).surname + " " + ((PrivateAbonent)abonent).name + " " + ((PrivateAbonent)abonent).patronymic + '?';
+                s += " на имя: " + ((PrivateAbonent)abonent).surname + " " + ((PrivateAbonent)abonent).name + " " + ((PrivateAbonent)abonent).patronymic + '?';
             else if (abonent is CorporateAbonent)
-                s += ((CorporateAbonent)abonent).corporate_name + '?';
-            else return;
+                s += " на имя: " + ((CorporateAbonent)abonent).corporate_name + '?';
 
             if (MessageBox.Show(s, "Пополнение баланса", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
@@ -272,6 +272,8 @@ namespace RVGBilling
                 }
             }
             catch (NHibernate.Exceptions.GenericADOException ex) { MessageBox.Show(ex.Message); }
+            catch (FormatException ex) { MessageBox.Show("Неверный ввод."); }
+            
             return res;
         }
 
@@ -341,6 +343,7 @@ namespace RVGBilling
             if (res)
             {
                 ab.dissolved = true;
+                CalcBalance(ab);
                 Connector.Update(ab);
                 MessageBox.Show("Баланс на момент расторжения договора: " + ab.balance.ToString());
             }
@@ -437,6 +440,29 @@ namespace RVGBilling
         public T UpdateEntity<T>(T obj) where T : Entity
         {
             return Connector.Get<T>(obj.Id);
+        }
+
+        public Decimal CalcBalance(Abonent ab)
+        {
+            Decimal res = 0;
+            foreach (Number n in ab.Numbers)
+                foreach (Call c in n.Calls)
+                    if (c.creation_time >= ab.last_pay_date && c.cost != null)
+                    {
+                        res += c.cost;
+                        //ab.balance -= c.cost;
+                    }
+            ab.balance -= res;
+            ab.last_pay_date = DateTime.Today;
+            Connector.Update(ab);
+            return res;
+        }
+
+        public void CalcAllBalances()
+        {
+            IList<Abonent> abonents = Connector.GetAll<Abonent>();
+            foreach (Abonent ab in abonents)
+                CalcBalance(ab);
         }
     }
 }
