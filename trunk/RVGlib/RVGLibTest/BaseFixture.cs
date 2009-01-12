@@ -6,7 +6,11 @@ using System;
 
 namespace RVGLibTest
 {
-    public class BaseFixture
+    /// <summary>
+    /// Базовый класс теста взаимодействия с БД.
+    /// Используется в качестве родителя для классов - тестов взаимодействия с БД
+    /// </summary>
+    public abstract class BaseFixture
     {
         protected FluentNHibernate.Framework.SessionSource SessionSource { get; set; }
         protected NHibernate.ISession Session { get; private set; }

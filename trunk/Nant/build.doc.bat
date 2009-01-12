@@ -4,7 +4,7 @@ call "%~dp0_props.bat"
 
 
 set BASE_DIR=%~dp0.
-set DOC_DIR=%BASE_DIR%\doc
+set DOC_DIR=%BASE_DIR%\src\Nant\doc
 set BIN_DIR=%BASE_DIR%\bin
 set BIN_DOC_DIR=%BIN_DIR%\doc
 set BIN_DOC_SRC_DIR=%BIN_DIR%\doc\src
@@ -14,8 +14,10 @@ set OUT_DIR=%BASE_DIR%\out
 md %BIN_DOC_DIR% >nul 2>nul
 
 
-%NDOC3% -documenter=MSDN                               ^
-        -recurse="%BIN_DIR%"                           ^
+%NDOC3% "%BIN_DIR%\RVGBilling.exe" "%BIN_DIR%\RVGlib.dll" "%BIN_DIR%\RVGlibTest.dll" "%BIN_DIR%\ExcelWorklib.dll"^
+		-namespacesummaries="namespaces.txt"				   ^
+		-referencepath="%BIN_DIR%"					   ^
+		-documenter=MSDN                               ^
         -OutputDirectory="%BIN_DOC_SRC_DIR%"           ^
         -HtmlHelpName=RVGBilling.src                   ^
         -Title=RVGBilling                              ^
@@ -28,7 +30,7 @@ md %BIN_DOC_DIR% >nul 2>nul
         -DocumentSealedProtected=True                  ^
         -DocumentPrivates=True                         ^
         -DocumentProtectedInternalAsProtected=True     ^
-        -DocumentEmptyNamespaces=True                  ^
+        -DocumentEmptyNamespaces=False                  ^
         -AssemblyVersionInfo=AssemblyVersion           ^
         -SdkDocVersionString=VS.80                     ^
         -DocumentAttributes=True                       ^
@@ -56,7 +58,5 @@ copy /y "%DOC_DIR%\RVGBilling.*" "%BIN_DOC_DIR%"
 
 %HHC% "%BIN_DOC_DIR%\RVGBilling.hhp"
 
-copy /y "%BASE_DIR%\src\RVGlib\RVGlibTest\bin\debug\RVGlib.dll" "%BIN_DIR%"
-copy /y "%BASE_DIR%\src\RVGlib\RVGlibTest\bin\debug\RVGlibTest.dll" "%BIN_DIR%"
 copy /y "%BASE_DIR%\src\docs\hibernate.cfg.xml" "%BIN_DIR%"
 copy /y "%BIN_DOC_DIR%\*.chm" "%OUT_DIR%"

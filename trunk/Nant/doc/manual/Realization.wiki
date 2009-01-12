@@ -1,5 +1,17 @@
 == Реализация ==
 
+= Средства и технологии разработки =
+
+* TOAD Data Modeller
+* Microsoft Office Visio 2007
+* PostgreSQL 8.3, PostgreAdmin 3
+* Microsoft Visual Studio 2008
+* NAnt 0.86
+* NDoc 3
+* Wiki2XHTML
+* NHibernate, FluentHibernate
+
+
 = Схема базы данных =
 
 <center>[[Image:db.jpeg]]</center>

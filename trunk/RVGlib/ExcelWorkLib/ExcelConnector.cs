@@ -3,6 +3,9 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelWorkLib
 {
+    /// <summary>
+    /// Класс работы с Excel. бета-версия.
+    /// </summary>
     public class ExcelConnector
     {
         private Excel.Application _app;
@@ -11,18 +14,28 @@ namespace ExcelWorkLib
         private Excel.Worksheet _CurrentWorksheet;
         private string _WorkbookFileName;
 
+        /// <summary>
+        /// Текущий лист
+        /// </summary>
         public Excel.Worksheet CurrentWorksheet
         {
             get { return _CurrentWorksheet; }
             //set { _CurrentWorksheet = value; }
         }
 
+        /// <summary>
+        /// Текущая рабочая книга
+        /// </summary>
         public Excel.Workbook CurrentWorkbook
         {
             get { return _curworkbook; }
             //set { _CurrentWorksheet = value; }
         }
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="isVisible"></param>
         public ExcelConnector(bool isVisible)
         {
             Start(isVisible);
@@ -163,6 +176,11 @@ namespace ExcelWorkLib
             FromRange.Clear();
         }
 
+        /// <summary>
+        /// Удалить строки из текущего листа
+        /// </summary>
+        /// <param name="RowIndex"></param>
+        /// <param name="RowCount"></param>
         public void DeleteRows(int RowIndex, int RowCount)
         {
 

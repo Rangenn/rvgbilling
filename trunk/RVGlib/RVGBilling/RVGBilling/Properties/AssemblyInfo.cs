@@ -14,8 +14,8 @@ using System.Runtime.InteropServices;
 //------------------------------------------------------------------------------
 
 [assembly: ComVisibleAttribute(false)]
-[assembly: CLSCompliantAttribute(false)]
-[assembly: AssemblyVersionAttribute("1.1.60.0")]
+[assembly: CLSCompliantAttribute(true)]
+[assembly: AssemblyVersionAttribute("1.1.67.0")]
 [assembly: AssemblyTitleAttribute("RVGbilling")]
 [assembly: AssemblyDescriptionAttribute("o_0")]
 [assembly: AssemblyCopyrightAttribute("Copyright (c) 2008, RVG, Inc.")]

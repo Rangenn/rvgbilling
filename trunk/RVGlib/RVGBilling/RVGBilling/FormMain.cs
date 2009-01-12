@@ -10,6 +10,9 @@ using RVGlib.Domain;
 
 namespace RVGBilling
 {
+    /// <summary>
+    /// Основная форма программы
+    /// </summary>
     public partial class FormMain : Form
     {
         Controller ctrl;
