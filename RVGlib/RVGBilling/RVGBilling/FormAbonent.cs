@@ -25,6 +25,7 @@ namespace RVGBilling
         {
             InitializeComponent();
             dtStartDate.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            dtEndDate.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
             this.ctrl = ctrl;
         }
 
@@ -155,7 +156,7 @@ namespace RVGBilling
                 CorporateAbonent corp = (CorporateAbonent)abonent;
                 labelSurname.Text = "Название";
                 tbSurname.Text = corp.corporate_name;
-                labelIdentity.Text = "�?НН";
+                labelIdentity.Text = "ИНН";
                 tbIdentity.Text = corp.INN;
                 label11.Visible =
                 label12.Visible =
@@ -205,6 +206,7 @@ namespace RVGBilling
             int index = lbNumbers.SelectedIndex;
             if (index >= 0)
                 ctrl.Payment(lbNumbers.SelectedItem.ToString(), 100);
+            else MessageBox.Show("Номер не выбран");
             RefreshForm();
         }
 
@@ -232,6 +234,14 @@ namespace RVGBilling
                 else MessageBox.Show("Не выбран компонент детализации.");
             }
             else MessageBox.Show("Не выбран номер для детализации.");
+        }
+
+        private void btnMakeBill_Click(object sender, EventArgs e)
+        {
+
+            Decimal res = ctrl.CalcBalance(abonent);
+            MessageBox.Show("Списано: " + res.ToString());
+            RefreshForm();
         }
 
 

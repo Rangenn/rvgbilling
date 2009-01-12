@@ -5,6 +5,9 @@ using System.Text.RegularExpressions;
 
 namespace RVGlib.Import
 {
+    /// <summary>
+    /// Парсер для формата CSV
+    /// </summary>
     public class CSVParser
     {
         private static string separator = ",";

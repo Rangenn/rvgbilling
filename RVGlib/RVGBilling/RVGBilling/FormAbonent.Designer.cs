@@ -519,6 +519,7 @@
             this.btnMakeBill.TabIndex = 1;
             this.btnMakeBill.Text = "Выписать счет";
             this.btnMakeBill.UseVisualStyleBackColor = true;
+            this.btnMakeBill.Click += new System.EventHandler(this.btnMakeBill_Click);
             // 
             // btnAddMoney
             // 

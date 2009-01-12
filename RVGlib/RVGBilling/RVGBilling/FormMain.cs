@@ -194,5 +194,12 @@ namespace RVGBilling
                 ctrl.ImportCallsCSV(openFileDialog1.FileName);
             }
         }
+
+        private void calcBalancesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ctrl.CalcAllBalances();
+            MessageBox.Show("Действие успешно выполнено.");
+            //Здесь генерируется отчет excel. список всех звонков за месяц либо список списанных сумм.
+        }
     }
 }

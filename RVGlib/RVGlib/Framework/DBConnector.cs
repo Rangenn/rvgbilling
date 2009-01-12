@@ -61,7 +61,7 @@ namespace RVGlib.Framework
             Session.Save(en);
             trans.Commit();
             Session.Flush();
-            Session.Clear();
+            //Session.Clear();
         }
 
         public void Delete(Entity en)
@@ -70,6 +70,7 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.Delete(en);
             trans.Commit();
+            Session.Flush();
         }
 
         public void Update(Entity en)
@@ -79,7 +80,7 @@ namespace RVGlib.Framework
             Session.Update(en);
             trans.Commit();
             Session.Flush();
-            Session.Clear();
+            //Session.Clear();
         }
 
         public IList<T> GetAll<T>() where T : Entity
@@ -115,30 +116,30 @@ namespace RVGlib.Framework
             return res[0];
         }
 
-        //DEPRECATED
-        //public Abonent SearchByNumber(string Number)
-        //{
-        //    //SearchByNumberException.if (Number.Length != 10) throw new SearchByNumberException("Некорректная длина номера.");
-        //    ITransaction trans = Session.BeginTransaction();
-        //    ICriteria crit = Session.CreateCriteria(typeof(Abonent))
-        //        .CreateAlias("Numbers", "n")
-        //        .Add(Expression.Like("n.number", Number, MatchMode.Anywhere));
-        //    IList<Abonent> res = crit.List<Abonent>();
-        //    trans.Commit();
-        //    int i = 0;
-        //    while (i < res.Count)
-        //    {
-        //        if (!((res[i] is PrivateAbonent) || (res[i] is CorporateAbonent)))
-        //        {
-        //            res.Remove(res[i]);
-        //            i -= 1;
-        //        }
-        //        i += 1;
-        //    }
-        //    if (res.Count == 0 || res[0] == null) throw new SearchByNumberException("Не найдено совпадений, номер незарегистрирован.");
-        //    if (res.Count > 1) throw new SearchByNumberException("Найдено несколько совпадений, номер задан некорректно.");
-        //    return res[0];
-        //}
+        //NOT DEPRECATED
+        public Abonent SearchByNumber(string Number)
+        {
+            //SearchByNumberException.if (Number.Length != 10) throw new SearchByNumberException("Некорректная длина номера.");
+            ITransaction trans = Session.BeginTransaction();
+            ICriteria crit = Session.CreateCriteria(typeof(Abonent))
+                .CreateAlias("Numbers", "n")
+                .Add(Expression.Like("n.number", Number, MatchMode.Anywhere));
+            IList<Abonent> res = crit.List<Abonent>();
+            trans.Commit();
+            int i = 0;
+            while (i < res.Count)
+            {
+                if (!((res[i] is PrivateAbonent) || (res[i] is CorporateAbonent)))
+                {
+                    res.Remove(res[i]);
+                    i -= 1;
+                }
+                i += 1;
+            }
+            if (res.Count == 0 || res[0] == null) throw new SearchByNumberException("Не найдено совпадений, номер незарегистрирован.");
+            if (res.Count > 1) throw new SearchByNumberException("Найдено несколько совпадений, номер задан некорректно.");
+            return res[0];
+        }
 
         public IList<PrivateAbonent> SearchPerson(string name, string passport, string phone)
         {
@@ -218,16 +219,19 @@ namespace RVGlib.Framework
         public void calculate_call_cost(long call_id)
         {
             ITransaction trans = Session.BeginTransaction();
-            Session.CreateSQLQuery("SELECT calculate_call_cost_function(" + call_id.ToString() + ");");
+            Session.CreateSQLQuery("SELECT calculate_call_cost_function(" + call_id.ToString() + ");").ExecuteUpdate();
             trans.Commit();
+            Session.Flush();
+            //Session.Clear();
         }
 
         public void add_bill_money(long bill_id)
         {
             ITransaction trans = Session.BeginTransaction();
-            //Session.cre
             Session.CreateSQLQuery("SELECT add_bill_money(" + bill_id.ToString() + ");").ExecuteUpdate();
             trans.Commit();
+            Session.Flush();
+            //Session.Clear();
         }
     }
 

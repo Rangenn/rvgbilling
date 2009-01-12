@@ -163,4 +163,10 @@ INSERT INTO calls (id, calling_number, creation_time, number_id, duration) VALUE
 INSERT INTO calls (id, calling_number, creation_time, number_id, duration) VALUES (4, '9101112223', '2008-12-15 00:00:00', 4, 1);
 INSERT INTO calls (id, calling_number, creation_time, number_id, duration) VALUES (5, '9209209202', '2008-12-15 00:00:00', 1, 60);
 INSERT INTO calls (id, calling_number, creation_time, number_id, duration) VALUES (6, '9031112223', '2008-12-15 00:00:00', 5, 60);
+select calculate_call_cost_function(1);
+select calculate_call_cost_function(2);
+select calculate_call_cost_function(3);
+select calculate_call_cost_function(4);
+select calculate_call_cost_function(5);
+select calculate_call_cost_function(6);
 
