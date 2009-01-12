@@ -1,6 +1,6 @@
 /*
 Created		23.09.2008
-Modified		10.01.2009
+Modified		12.01.2009
 Project		
 Model			
 Company		
@@ -30,8 +30,8 @@ Database		PostgreSQL 8.1
 
 
 /* Drop Procedures */
-Drop FUNCTION add_bill_money (bill_id_param integer) cascade;
-Drop FUNCTION calculate_call_cost_function (call_id_param integer) cascade;
+Drop FUNCTION add_bill_money (bill_id_param integer);
+Drop FUNCTION calculate_call_cost_function (call_id_param integer);
 
 
 
@@ -82,7 +82,7 @@ Create table "abonents"
 	"address" Varchar(100),
 	"phone" Varchar(13),
 	"creation_time" Timestamp,
-	"balance" Numeric(30,6),
+	"balance" Numeric(30,6) Default 0,
 	"last_pay_date" Timestamp,
 	"mail_address" Varchar(30),
 	"dissolved" Boolean NOT NULL Default false,
@@ -95,7 +95,7 @@ Create table "private_abonents"
 	"surname" Varchar(30) NOT NULL,
 	"name" Varchar(30) NOT NULL,
 	"patronymic" Varchar(30) NOT NULL,
-	"passport_series" Varchar(10),
+	"passport_series" Varchar(10) NOT NULL UNIQUE,
 	"passport_date" Timestamp,
 	"passport_department" Varchar(100),
 	"birth_date" Timestamp
@@ -106,7 +106,7 @@ Create table "private_abonents"
 Create table "corporate_abonents"
 (
 	"corporate_name" Varchar(100) NOT NULL,
-	"inn" Varchar(20) NOT NULL
+	"inn" Varchar(20) NOT NULL UNIQUE
 ) Inherits ("abonents")
  Without Oids;
 
@@ -190,7 +190,7 @@ Alter table "calls" add  foreign key ("number_id") references "numbers" ("id") o
 
 Alter table "bills" add  foreign key ("number_id") references "numbers" ("id") on update cascade on delete cascade;
 
-Alter table "numbers" add  foreign key ("rate_id") references "rates" ("id") on update cascade on delete cascade;
+Alter table "numbers" add  foreign key ("rate_id") references "rates" ("id") on update cascade on delete restrict;
 
 Alter table "prices" add  foreign key ("rate_id") references "rates" ("id") on update cascade on delete cascade;
 
@@ -234,20 +234,24 @@ ALTER FUNCTION calculate_call_cost_function(integer) OWNER TO postgres;
     ON INSERT TO bills DO  SELECT add_bill_money(new.id) AS add_bill_money;
 */
 
-CREATE OR REPLACE RULE calls_on_insert_rule AS
+/*CREATE OR REPLACE RULE calls_on_insert_rule AS
     ON INSERT TO calls DO  SELECT calculate_call_cost_function(new.id) AS calculate_call_cost_function;
+*/
 
-CREATE OR REPLACE RULE abonents_on_insert_rule AS
+/*CREATE OR REPLACE RULE abonents_on_insert_rule AS
     ON INSERT TO abonents DO  UPDATE abonents SET balance = 0::numeric
   WHERE abonents.id = new.id;
+*/
 
-CREATE OR REPLACE RULE corporate_abonents_on_insert_rule AS
+/*CREATE OR REPLACE RULE corporate_abonents_on_insert_rule AS
     ON INSERT TO corporate_abonents DO  UPDATE abonents SET balance = 0::numeric
   WHERE abonents.id = new.id;
+*/
 
-CREATE OR REPLACE RULE private_abonents_on_insert_rule AS
+/*CREATE OR REPLACE RULE private_abonents_on_insert_rule AS
     ON INSERT TO private_abonents DO  UPDATE abonents SET balance = 0::numeric
   WHERE abonents.id = new.id;
+*/
 
 
 

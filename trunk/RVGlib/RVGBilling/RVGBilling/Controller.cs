@@ -66,8 +66,8 @@ namespace RVGBilling
             PrivateAbonent ab = new PrivateAbonent();
             AddPrivateAbonentForm fm = new AddPrivateAbonentForm(ab);
             if (fm.ShowDialog() == DialogResult.OK)
-            {                
-                AddAbonent(ab);               
+            {
+                AddAbonent(ab);              
             }
         }
 
@@ -87,12 +87,33 @@ namespace RVGBilling
             }
         }
 
-        public void AddAbonent(Abonent abonent)
+        protected void AddAbonent(Abonent ab)
         {
-            _connector.Save(abonent);
-            ViewAbonent(abonent);
+            bool err = false;
+            if (ab is PrivateAbonent)
+            {
+                PrivateAbonent buf = (PrivateAbonent)ab;
+                err = buf.name == "" || buf.surname == "" || buf.patronymic == "" ||
+                    buf.passport_series == "";
+            }
+            if (ab is CorporateAbonent)
+            {
+                CorporateAbonent buf = (CorporateAbonent)ab;
+                err = buf.corporate_name == "" || buf.INN == "";
+            }
+            if (err) MessageBox.Show("Введены некорректные данные.");
+            else
+            {
+                _connector.Save(ab);
+                ViewAbonent(ab);
+            }
         }
 
+        public void ViewAbonent(Abonent ab)
+        {
+            formAbonent = new FormAbonent(this, ab);
+            fmAbonent.ShowDialog();
+        }
         /// <summary>
         /// Функция для пополнения баланса
         /// </summary>
@@ -145,11 +166,6 @@ namespace RVGBilling
             return _connector.SearchPerson(name, passport, phone);
         }
 
-        public void ViewAbonent(Abonent ab)
-        {
-            formAbonent = new FormAbonent(this, ab);
-            fmAbonent.ShowDialog();
-        }
 
         /// <summary>
         /// выбор частного листа

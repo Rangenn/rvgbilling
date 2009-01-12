@@ -31,7 +31,7 @@ delete from users;
 -- Name: abonents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('abonents_id_seq', 7, true);
+SELECT pg_catalog.setval('abonents_id_seq', 6, true);
 
 
 --
@@ -49,7 +49,7 @@ SELECT pg_catalog.setval('bills_id_seq', 1, true);
 -- Name: calls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('calls_id_seq', 7, true);
+SELECT pg_catalog.setval('calls_id_seq', 6, true);
 
 
 --
@@ -58,7 +58,7 @@ SELECT pg_catalog.setval('calls_id_seq', 7, true);
 -- Name: numbers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('numbers_id_seq', 11, true);
+SELECT pg_catalog.setval('numbers_id_seq', 10, true);
 
 
 --
@@ -67,7 +67,7 @@ SELECT pg_catalog.setval('numbers_id_seq', 11, true);
 -- Name: prices_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('prices_id_seq', 7, true);
+SELECT pg_catalog.setval('prices_id_seq', 6, true);
 
 
 --
@@ -76,7 +76,7 @@ SELECT pg_catalog.setval('prices_id_seq', 7, true);
 -- Name: rates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('rates_id_seq', 4, true);
+SELECT pg_catalog.setval('rates_id_seq', 3, true);
 
 
 --

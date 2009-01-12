@@ -217,7 +217,6 @@
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(168, 20);
             this.tbAddress.TabIndex = 46;
-            this.tbAddress.Text = "Адрес физ лица";
             // 
             // label10
             // 
@@ -234,7 +233,6 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(168, 20);
             this.tbEmail.TabIndex = 48;
-            this.tbEmail.Text = "123456@email.ru";
             // 
             // AddPrivateAbonentForm
             // 

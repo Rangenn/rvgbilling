@@ -47,6 +47,7 @@ namespace RVGLibTest
             {
                 Assert.AreEqual(fromDb.Prices[i].Id, rate.Prices[i].Id);
             }
+            Session.Delete(fromDb);
         }
     }
 }
