@@ -6,7 +6,9 @@ using System.Linq;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+
 using RVGlib.Domain;
+using RVGlib.Import;
 
 namespace RVGBilling
 {
@@ -183,6 +185,14 @@ namespace RVGBilling
         private void FormMain_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ctrl.ImportCallsCSV(openFileDialog1.FileName);
+            }
         }
     }
 }
