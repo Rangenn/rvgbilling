@@ -61,7 +61,6 @@ namespace RVGlib.Framework
             Session.Save(en);
             trans.Commit();
             Session.Flush();
-            //Session.Clear();
         }
 
         public void Delete(Entity en)
@@ -80,7 +79,7 @@ namespace RVGlib.Framework
             Session.Update(en);
             trans.Commit();
             Session.Flush();
-            //Session.Clear();
+            Session.Clear();
         }
 
         public IList<T> GetAll<T>() where T : Entity
@@ -222,7 +221,6 @@ namespace RVGlib.Framework
             Session.CreateSQLQuery("SELECT calculate_call_cost_function(" + call_id.ToString() + ");").ExecuteUpdate();
             trans.Commit();
             Session.Flush();
-            //Session.Clear();
         }
 
         public void add_bill_money(long bill_id)
@@ -231,7 +229,6 @@ namespace RVGlib.Framework
             Session.CreateSQLQuery("SELECT add_bill_money(" + bill_id.ToString() + ");").ExecuteUpdate();
             trans.Commit();
             Session.Flush();
-            //Session.Clear();
         }
     }
 

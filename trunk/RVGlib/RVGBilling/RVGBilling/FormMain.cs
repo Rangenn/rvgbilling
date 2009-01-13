@@ -117,20 +117,8 @@ namespace RVGBilling
         private void btnSelectBody_Click(object sender, EventArgs e)
         {
             int index=dgvSearch.CurrentRow.Index;
-            //если отсортировали, то борода! ((((((((
-            //и ничего не борода!!!!!!!!!
             if (index >= 0)
             {
-                /*switch (tcAbonent.SelectedIndex)
-                {
-                    case 0:
-                        ctrl.SelectPerson(abonents[index].Id);
-                        break;
-                    case 1:
-                        ctrl.SelectCorporate(abonents[index].Id);
-                        break;
-                }*/
-
                 ctrl.ViewAbonent(abonents[index]);
             }
         }
@@ -152,7 +140,7 @@ namespace RVGBilling
                 return;
             }
             ctrl.Payment(tbNumber.Text, sum);
-            ctrl.UpdateList<Abonent>(abonents);
+            ctrl.UpdateAbonentList(abonents);
             dgvSearch.Update();
             tbNumber.Text = "";
             tbSumma.Text = "";

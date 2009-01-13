@@ -272,7 +272,7 @@ namespace RVGBilling
                 }
             }
             catch (NHibernate.Exceptions.GenericADOException ex) { MessageBox.Show(ex.Message); }
-            catch (FormatException ex) { MessageBox.Show("Неверный ввод."); }
+            catch (FormatException ex) { MessageBox.Show("Введены некорректные данные."); }
             
             return res;
         }
@@ -280,10 +280,14 @@ namespace RVGBilling
         public void EditPrice(Price pr)
         {
             FormPrice form = new FormPrice(pr);
-            if (form.ShowDialog() == DialogResult.OK)
+            try
             {
-                Connector.Update(pr);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    Connector.Update(pr);
+                }
             }
+            catch (FormatException ex) { MessageBox.Show("Введены некорректные данные."); }
         }
 
         //работает! 
@@ -436,11 +440,18 @@ namespace RVGBilling
             imp.ExportCallsCSV(filename, data);
         }
 
-        public void UpdateList<T>(List<T> objects) where T: Entity
+        public void UpdateAbonentList(List<Abonent> objects)
         {
             for (int i = 0; i < objects.Count; i++) 
             {
-                objects[i] = UpdateEntity(objects[i]);
+                if (objects[i] is PrivateAbonent)
+                {
+                    objects[i] = UpdateEntity((PrivateAbonent)objects[i]);
+                }
+                if (objects[i] is CorporateAbonent)
+                {
+                    objects[i] = UpdateEntity((CorporateAbonent)objects[i]);
+                } 
             }
         }
 
