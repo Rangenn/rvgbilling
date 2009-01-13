@@ -240,7 +240,7 @@ namespace RVGlib.Framework
     /// </summary>
     public class SearchByNumberException : Exception
     {
-        public String Message { get { return msg; } }
+        public override String Message { get { return msg; } }
         private string msg = "Ошибка при поиске по номеру.\n";
 
         public SearchByNumberException()

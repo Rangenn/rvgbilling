@@ -364,26 +364,33 @@ namespace RVGBilling
         public void ExportToExcel(string filename, DataGridView dgv)
         {
             System.Console.WriteLine("Создаю Excel application...");
-            ExcelConnector _ExcelClient = new ExcelConnector(false);
+            ExcelConnector _ExcelClient = null;
             try
             {
-                System.Console.WriteLine("Загружаю книгу " + filename + "...");
-                _ExcelClient.OpenExcelWorkBook(filename);
-                System.Console.WriteLine("Работаю с листом №1...");
-                _ExcelClient.SelectExcelWorkSheet(1);
-                for (int i = 0, a = 'A'; i < dgv.ColumnCount; i++, a++)
-                {
-                    if (!dgv.Columns[i].Visible)
-                    {
-                        a--;
-                        continue;
-                    }
-                    _ExcelClient.SetCellValue(((char)a).ToString(), 1, dgv.Columns[i].Name);
-                    for (int j = 0; j < dgv.RowCount; j++)
-                        _ExcelClient.SetCellValue(((char)a).ToString(), j + 2, dgv[i, j].Value.ToString());
-                }
+                _ExcelClient = new ExcelConnector(false, filename, 1);
+                _ExcelClient.SetCellRange(1, 1, dgv);   
             }
-            catch (Exception ex) { System.Console.WriteLine(ex.Message); }
+            catch (ExcelConnectorException ex) { System.Console.WriteLine(ex.Message); }
+            finally
+            {
+                System.Console.WriteLine("Закрываю Excel application...");
+                _ExcelClient.Close();
+
+            }
+        }
+
+        public string[][] ImportFromExcel(string filename, int ColCount, int RowCount)
+        {
+            System.Console.WriteLine("Создаю Excel application...");
+            ExcelConnector _ExcelClient = null;
+            string[][] res = null;
+            try
+            {
+                _ExcelClient = new ExcelConnector(false, filename, 1);
+                res = _ExcelClient.GetCellRange(1, 1, ColCount, RowCount);
+                return res;
+            }
+            catch (ExcelConnectorException ex) { System.Console.WriteLine(ex.Message); return res; }
             finally
             {
                 System.Console.WriteLine("Закрываю Excel application...");
@@ -447,7 +454,7 @@ namespace RVGBilling
             Decimal res = 0;
             foreach (Number n in ab.Numbers)
                 foreach (Call c in n.Calls)
-                    if (c.creation_time >= ab.last_pay_date && c.cost != null)
+                    if (c.creation_time >= ab.last_pay_date)
                     {
                         res += c.cost;
                         //ab.balance -= c.cost;
