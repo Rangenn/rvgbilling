@@ -24,7 +24,7 @@ namespace RVGBilling
             dgDetails.DataSource = bs;
             DataGridViewColumnCollection Columns = dgDetails.Columns;
             if (Columns.Contains("Id")) Columns["Id"].Visible = false;
-            if (Columns.Contains("Number")) Columns["Number"].Visible = false;
+            //if (Columns.Contains("Number")) Columns["Number"].Visible = false;
         }
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)

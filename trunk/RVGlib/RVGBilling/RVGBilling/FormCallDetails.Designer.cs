@@ -67,27 +67,27 @@
             this.экспортToolStripMenuItem,
             this.exportCSVToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // экспортToolStripMenuItem
             // 
             this.экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
-            this.экспортToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.экспортToolStripMenuItem.Text = "Экспорт в Excel...";
+            this.экспортToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.экспортToolStripMenuItem.Text = "Экспорт в Excel";
             this.экспортToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // exportCSVToolStripMenuItem
             // 
             this.exportCSVToolStripMenuItem.Name = "exportCSVToolStripMenuItem";
-            this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.exportCSVToolStripMenuItem.Text = "Экспорт в CSV";
             this.exportCSVToolStripMenuItem.Click += new System.EventHandler(this.exportCSVToolStripMenuItem_Click);
             // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "xls";
-            this.saveFileDialog1.Filter = "Excel files|*.xls|All files|*.*";
+            this.saveFileDialog1.Filter = "Excel files|*.xls|CSV files|*.csv|All files|*.*";
             this.saveFileDialog1.OverwritePrompt = false;
             // 
             // FormCallDetails
