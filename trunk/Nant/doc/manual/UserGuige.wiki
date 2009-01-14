@@ -1,3 +1,0 @@
-== Пользовательский интерфейс ==
-*<center>[[Image:gui1.jpeg]]</center>
-*<center>[[Image:gui2.jpeg]]</center>
