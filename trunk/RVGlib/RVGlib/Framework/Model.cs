@@ -20,10 +20,10 @@ namespace RVGlib.Framework
             //addMapping(new RateMap());
             //addMapping(new BillMap());
             //addMapping(new CallMap());
-
+            //this.Configure(
+            //    new NHibernate.Cfg.Configuration().AddFile("hibernate.cfg.xml")
+            //        );
             addMappingsFromAssembly(typeof(RVGlib.Mappings.AbonentMap).Assembly);
-            
-
         }
     }
 }

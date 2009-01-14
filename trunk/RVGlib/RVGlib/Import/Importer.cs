@@ -76,7 +76,7 @@ namespace RVGlib.Import
                     dbc.Update(num);
                     dbc.calculate_call_cost(call.Id);
                 }
-                catch (SearchByNumberException ex)
+                catch (EstablishConnectionException ex)
                 {
                     Console.WriteLine("Номер не найден :" + data[i][1]);
                 }

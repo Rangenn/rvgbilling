@@ -186,6 +186,8 @@ namespace RVGBilling
         private void calcBalancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ctrl.CalcAllBalances();
+            ctrl.MakeAllReports();
+
             MessageBox.Show("Действие успешно выполнено.");
             //Здесь генерируется отчет excel. список всех звонков за месяц либо список списанных сумм.
         }

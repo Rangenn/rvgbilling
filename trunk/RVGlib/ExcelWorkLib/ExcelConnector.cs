@@ -111,7 +111,7 @@ namespace ExcelWorkLib
                 _curworkbook = _app.Workbooks.Add(Type.Missing);
                 //_workbook.Saved = true;
                 _curworkbook.SaveAs(filename, Excel.XlFileFormat.xlExcel9795, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing,
+                   Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing);
 
                 //_workbook = _app.Workbooks.Open(filename,
@@ -209,7 +209,7 @@ namespace ExcelWorkLib
         /// <param name="ColName"></param>
         /// <param name="RowIndex"></param>
         /// <param name="NewValue"></param>
-        public Object GetCellValue(int ColIndex, int RowIndex)
+        public Object GetCellValue(int RowIndex, int ColIndex)
         {
             return _CurrentWorksheet.Cells[RowIndex, ColIndex];
         }
@@ -220,7 +220,7 @@ namespace ExcelWorkLib
         /// <param name="ColName"></param>
         /// <param name="RowIndex"></param>
         /// <param name="NewValue"></param>
-        public void SetCellValue(int ColIndex, int RowIndex, Object NewValue)
+        public void SetCellValue(int RowIndex, int ColIndex, Object NewValue)
         {
             //_CurrentWorksheet.get_Range(ColName + Convert.ToString(RowIndex), Type.Missing).Value2 = NewValue;
             _CurrentWorksheet.Cells[RowIndex, ColIndex] = NewValue;
@@ -230,32 +230,24 @@ namespace ExcelWorkLib
         /// </summary>
         /// <param name="ColName"></param>
         /// <param name="RowIndex"></param>
-        public void ClearCellValue(int ColIndex, int RowIndex)
+        public void ClearCellValue(int RowIndex, int ColIndex)
         {
-            SetCellValue(ColIndex, RowIndex, "");
+            SetCellValue(RowIndex, ColIndex, "");
         }
         /// <summary>
-        /// Запись содержимого DataGridView в строковом виде в диапазон ячеек.
+        /// Запись двумерного массива в диапазон ячеек.
         /// </summary>
         /// <param name="ColName"></param>
         /// <param name="RowIndex"></param>
         /// <param name="dgv"></param>
-        public void SetCellRange(int ColIndex, int RowIndex, DataGridView dgv)
+        public void SetCellRange(int RowIndex, int ColIndex, string[][] arr)
         {
-            //if (RowIndex <= 0) RowIndex = 1;
             try
             {
-                int tmp = 0;
-                for (int i = 0; i < dgv.ColumnCount; i++)
+                for (int i = 0; i < arr.Length; i++)
                 {
-                    if (!dgv.Columns[i].Visible)
-                    {
-                        tmp++;
-                        continue;
-                    }
-                    SetCellValue(i - tmp + ColIndex, RowIndex, dgv.Columns[i].Name);
-                    for (int j = 0; j < dgv.RowCount; j++)
-                        SetCellValue(i - tmp + ColIndex, j + 1 + RowIndex, dgv[i, j].Value.ToString());
+                    for (int j = 0; j < arr[i].Length; j++)
+                        SetCellValue(i + RowIndex, j + ColIndex, arr[i][j]);
                 }
             }
             catch (Exception ex) { Close(); throw new ExcelConnectorException("SetCellRange failed.\n", ex); }
@@ -270,16 +262,16 @@ namespace ExcelWorkLib
         /// <param name="ColCount"></param>
         /// <param name="RowCount"></param>
         /// <returns>string[ColNum][RowNum]</returns>
-        public string[][] GetCellRange(int ColName, int RowIndex, int ColCount, int RowCount)
+        public string[][] GetCellRange(int RowIndex, int ColIndex, int RowCount, int ColCount)
         {
-            string[][] arr = new string[ColCount][];
+            string[][] arr = new string[RowCount][];
             try
             {
-                for (int i = 0; i < ColCount; i++)
+                for (int i = 0; i < RowCount; i++)
                 {
-                    arr[i] = new string[RowCount];
-                    for (int j = 0; j < RowCount; j++)
-                        arr[i][j] = (string)GetCellValue(ColName + i, j + RowIndex);
+                    arr[i] = new string[ColCount];
+                    for (int j = 0; j < ColCount; j++)
+                        arr[i][j] = (string)GetCellValue(i + RowIndex, ColIndex + j);
                 }
                 return arr;
             }
@@ -292,11 +284,11 @@ namespace ExcelWorkLib
         /// <param name="RowIndex"></param>
         /// <param name="ColCount"></param>
         /// <param name="RowCount"></param>
-        public void ClearCellRange(int ColIndex, int RowIndex, int ColCount, int RowCount)
+        public void ClearCellRange(int RowIndex, int ColIndex, int RowCount, int ColCount)
         {
-            for (int i = 0; i < ColCount; i++)
-                for (int j = 0; j < RowCount; j++)
-                    ClearCellValue(ColIndex + i, RowIndex + j);
+            for (int i = 0; i < RowCount; i++)
+                for (int j = 0; j < ColCount; j++)
+                    ClearCellValue(RowIndex + i, ColIndex + j);
         }
         /// <summary>
         /// Копировать значения диапазона ячеек с FromRangeStartsCellName до FromRangeEndsCellName

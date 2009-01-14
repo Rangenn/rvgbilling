@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using RVGBilling;
+using RVGlib.Framework;
 
 namespace RVGBilling
 {
@@ -20,8 +21,12 @@ namespace RVGBilling
             logger.log("Application started.");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Controller ctrl = new Controller();
-            Application.Run(ctrl.fmMain);
+            try
+            {
+                Controller ctrl = new Controller();
+                Application.Run(ctrl.fmMain);
+            }
+            catch (EstablishConnectionException ex) { MessageBox.Show(ex.Message); }            
             logger.log("Application closed.");
         }
     }
