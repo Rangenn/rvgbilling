@@ -1,0 +1,31 @@
+[OPTIONS]
+Auto Index=Yes
+Compatibility=1.1 or later
+Compiled file=RVGBilling.chm
+Contents file=RVGBilling.hhc
+Default topic=manual\Index.html
+Display compile progress=No
+Enhanced decompilation=Yes
+Error log file=RVGBilling.log
+Full-text search=Yes
+Index file=RVGBilling.hhk
+Language=0x419 Русский
+Title=RVGBilling
+
+[FILES]
+*.html
+*.htm
+*.txt
+*.css
+*.js
+*.gif
+*.png
+*.jpg
+*.jpeg
+*.bmp
+
+[MERGE FILES]
+RVGBilling.src.chm
+
+[INFOTYPES]
+
