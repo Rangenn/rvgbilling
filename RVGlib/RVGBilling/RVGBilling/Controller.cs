@@ -410,23 +410,29 @@ namespace RVGBilling
             imp.ImportCalls(data);
         }
 
+        public string[][] GridToArray(DataGridView dgv)
+        {
+            string[][] data = new string[dgv.RowCount][];
+            Console.WriteLine("Rows=" + dgv.RowCount + "; Cols= " + dgv.ColumnCount);
+            for (int i = 0; i < dgv.RowCount; i++)
+            {
+                string[] arr = new string[dgv.ColumnCount];
+                DataGridViewRow Row = dgv.Rows[i];
+                for (int j = 0; j < dgv.ColumnCount; j++)
+                {
+                    arr[j] = Row.Cells[j].Value.ToString();
+                }
+                //Array.Resize(ref data, data.Length + 1);
+                data[i] = arr;
+            }
+            return data;
+        }
+
+
         public void ExportToCSV(string filename, DataGridView dgv)
         {
             Importer imp = new Importer(this.Connector);
-            string[][] data=new string [0][];
-            Console.WriteLine("Rows="+dgv.RowCount+ "; Cols= "+dgv.ColumnCount);
-            for (int i=0;i<dgv.RowCount;i++)
-            {
-                string[] arr=new string[dgv.ColumnCount];
-                DataGridViewRow Row=dgv.Rows[i];
-                for (int j=0;i<dgv.ColumnCount;i++) 
-                {
-                    arr[j]=Row.Cells[j].Value.ToString();
-                }
-                Array.Resize(ref data, data.Length + 1);
-                data[data.Length - 1] = arr;
-            }
-
+            string[][] data = GridToArray(dgv);
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data[i].Length; j++)
