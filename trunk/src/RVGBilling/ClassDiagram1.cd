@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RVGBilling.Controller" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAggAAAAAAEAAQAIAAAAgAAAQAAAAgkBAAAAAgAkA=</HashCode>
+      <FileName>Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGBilling.logger" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGBilling.FormMain" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BASgBAABgCCBCBAAAACCIQACAYnasBAgjkAAAAABAAI=</HashCode>
+      <FileName>FormMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGBilling.FormAbonent" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAmAACBMAJAEAACAAAASQEACARgAACAACAAAYAA=</HashCode>
+      <FileName>FormAbonent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGBilling.AddCorporateAbonentForm" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAACAEABAAAACEAIACAAACAEAAEAAAAAAAAAA=</HashCode>
+      <FileName>AddCorporateAbonentForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGBilling.AddPrivateAbonentForm" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABgAAgAACAEABAAAACAIIACAkACAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>AddPrivateAbonentForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RVGBilling.FormAdd" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAACAAACAAAAEAgACAAIACAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>FormAdd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
