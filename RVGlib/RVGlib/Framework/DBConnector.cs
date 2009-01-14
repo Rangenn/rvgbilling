@@ -37,6 +37,17 @@ namespace RVGlib.Framework
         {
             SessionSource = new SessionSource(new Model());
             Session = SessionSource.CreateSession();
+            try
+            {
+                Session.Connection.State.ToString();// != System.Data.ConnectionState.Open
+            }
+            catch (NHibernate.ADOException ex)
+            {
+                throw new EstablishConnectionException("", ex);
+            }
+            Session.FlushMode = FlushMode.Always;
+            Session.CacheMode = CacheMode.Put;
+            //Sess
         }
 
         ~DBConnector()
@@ -50,8 +61,9 @@ namespace RVGlib.Framework
         public T Get<T>(Int64 id) where T:Entity
         {
             ITransaction trans=Session.BeginTransaction();
-            T res=Session.Get<T>(id);
+            T res = Session.Get<T>(id);
             trans.Commit();
+            //Session.Flush();
             return res;
         }
 
@@ -60,7 +72,7 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.Save(en);
             trans.Commit();
-            Session.Flush();
+            //Session.Flush();
         }
 
         public void Delete(Entity en)
@@ -69,7 +81,7 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.Delete(en);
             trans.Commit();
-            Session.Flush();
+            //Session.Flush();
         }
 
         public void Update(Entity en)
@@ -78,8 +90,8 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.Update(en);
             trans.Commit();
-            Session.Flush();
-            Session.Clear();
+            //Session.Flush();
+            //Session.Clear();            
         }
 
         public IList<T> GetAll<T>() where T : Entity
@@ -98,20 +110,20 @@ namespace RVGlib.Framework
             return res;
         }
 
-        public Number GetNumber(string phoneNumber)
+        public Number GetNumber(string Number)
         {
             //Session = SessionFactory.GetCurrentSession();
             //Session.CreateQuery("from Abonent").
             ITransaction trans = Session.BeginTransaction();
-            ICriteria crit = Session.CreateCriteria(typeof(Number)).Add(Expression.Eq("number", phoneNumber));
+            ICriteria crit = Session.CreateCriteria(typeof(Number)).Add(Expression.Eq("number", Number));
 
             //if (SortBy != null) crit.addOrder(Order.asc(SortBy));
             //IList<T> res = crit.List<T>();
             IList<Number> res = crit.List<Number>();
 
             trans.Commit();
-            if (res.Count == 0 || res[0] == null) throw new SearchByNumberException("Не найдено совпадений, номер незарегистрирован.");
-            if (res.Count > 1) throw new SearchByNumberException("Найдено несколько совпадений, номер задан некорректно.");
+            if (res.Count == 0 || res[0] == null) throw new EstablishConnectionException("Не найдено совпадений, номер незарегистрирован.");
+            if (res.Count > 1) throw new EstablishConnectionException("Найдено несколько совпадений, номер задан некорректно.");
             return res[0];
         }
 
@@ -120,9 +132,12 @@ namespace RVGlib.Framework
         {
             //SearchByNumberException.if (Number.Length != 10) throw new SearchByNumberException("Некорректная длина номера.");
             ITransaction trans = Session.BeginTransaction();
+            //Abonent AbExample = new Abonent();
+            //AbExample.Numbers.Add(GetNumber(Number));
             ICriteria crit = Session.CreateCriteria(typeof(Abonent))
                 .CreateAlias("Numbers", "n")
                 .Add(Expression.Like("n.number", Number, MatchMode.Anywhere));
+                //.Add(Example.Create(AbExample).ExcludeNulls().ExcludeZeroes());
             IList<Abonent> res = crit.List<Abonent>();
             trans.Commit();
             int i = 0;
@@ -135,8 +150,8 @@ namespace RVGlib.Framework
                 }
                 i += 1;
             }
-            if (res.Count == 0 || res[0] == null) throw new SearchByNumberException("Не найдено совпадений, номер незарегистрирован.");
-            if (res.Count > 1) throw new SearchByNumberException("Найдено несколько совпадений, номер задан некорректно.");
+            if (res.Count == 0 || res[0] == null) throw new EstablishConnectionException("Не найдено совпадений, номер незарегистрирован.");
+            if (res.Count > 1) throw new EstablishConnectionException("Найдено несколько совпадений, номер задан некорректно.");
             return res[0];
         }
 
@@ -220,7 +235,7 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.CreateSQLQuery("SELECT calculate_call_cost_function(" + call_id.ToString() + ");").ExecuteUpdate();
             trans.Commit();
-            Session.Flush();
+            //Session.Flush();
         }
 
         public void add_bill_money(long bill_id)
@@ -228,7 +243,7 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.CreateSQLQuery("SELECT add_bill_money(" + bill_id.ToString() + ");").ExecuteUpdate();
             trans.Commit();
-            Session.Flush();
+            //Session.Flush();
         }
     }
 
@@ -253,6 +268,31 @@ namespace RVGlib.Framework
         }
 
         public SearchByNumberException(string message, Exception InnerException)
+            : base(message, InnerException)
+        {
+            this.msg += message;
+        }
+
+    }
+
+    public class EstablishConnectionException : Exception
+    {
+        public override String Message { get { return msg; } }
+        private string msg = "Ошибка при установлении соединения с БД.\n";
+
+        public EstablishConnectionException()
+            : base()
+        {
+
+        }
+
+        public EstablishConnectionException(string message)
+            : base(message)
+        {
+            this.msg += message;
+        }
+
+        public EstablishConnectionException(string message, Exception InnerException)
             : base(message, InnerException)
         {
             this.msg += message;

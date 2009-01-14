@@ -29,5 +29,10 @@ namespace RVGlib.Domain
         /// Стоимость
         /// </summary>
         public virtual Decimal  cost { get; set; }
+
+        public virtual string[] ToStringArray()
+        {
+            return new string[] { number.number, calling_number, creation_time.ToString(), duration.ToString(), cost.ToString() };
+        }
     }
 }

@@ -21,5 +21,10 @@ namespace RVGlib.Domain
         /// Дата оплаты
         /// </summary>
         public virtual DateTime creation_time { get; set; }
+
+        public virtual string[] ToStringArray()
+        {
+            return new string[] { number.number, money.ToString(), creation_time.ToString() };
+        }
     }
 }

@@ -36,13 +36,12 @@ namespace RVGBilling
         /// </summary>
         public Controller()
         {
-            logger.log("Creating Controller...");
-            _connector = new DBConnector();
-            formMain = new FormMain(this);
-            formMain.Show();
-            _connector.GetAll<Abonent>();
-            logger.log("Controller Created.");
-
+                logger.log("Creating Controller...");
+                _connector = new DBConnector();
+                formMain = new FormMain(this);
+                formMain.Show();
+                _connector.GetAll<Abonent>();//для кеширования
+                logger.log("Controller Created.");
         }
         
         public FormMain fmMain
@@ -123,12 +122,21 @@ namespace RVGBilling
         /// <param name="summa"></param>
         public void Payment(string number, decimal summa)
         {
-            Number num;
-            Abonent abonent;
+            Number num = null;
+            Abonent abonent = null;
             try
             {
-                num = Connector.GetNumber(number);
+                //num = Connector.GetNumber(number);
                 abonent = Connector.SearchByNumber(number);
+                for (int i = 0; i < abonent.Numbers.Count; i++)
+                {
+                    if (abonent.Numbers[i].number.Equals(number))
+                    {
+                        num = abonent.Numbers[i];
+                        break;
+                    }
+                }
+                if (num == null) throw new SearchByNumberException("Ошибка поиска номера." , new NullReferenceException());
             }
             catch (SearchByNumberException ex) { MessageBox.Show(ex.Message); return; }
             
@@ -367,23 +375,28 @@ namespace RVGBilling
 
         public void ExportToExcel(string filename, DataGridView dgv)
         {
+            ExportToExcel(filename, GridToArray(dgv));
+        }
+
+        public void ExportToExcel(string filename, string[][] arr)
+        {
             System.Console.WriteLine("Создаю Excel application...");
             ExcelConnector _ExcelClient = null;
             try
             {
                 _ExcelClient = new ExcelConnector(false, filename, 1);
-                _ExcelClient.SetCellRange(1, 1, dgv);   
+                _ExcelClient.SetCellRange(1, 1, arr);
             }
             catch (ExcelConnectorException ex) { System.Console.WriteLine(ex.Message); }
             finally
             {
                 System.Console.WriteLine("Закрываю Excel application...");
-                _ExcelClient.Close();
+                if (_ExcelClient != null) _ExcelClient.Close();
 
             }
         }
 
-        public string[][] ImportFromExcel(string filename, int ColCount, int RowCount)
+        public string[][] ImportFromExcel(string filename, int RowCount, int ColCount)
         {
             System.Console.WriteLine("Создаю Excel application...");
             ExcelConnector _ExcelClient = null;
@@ -391,7 +404,7 @@ namespace RVGBilling
             try
             {
                 _ExcelClient = new ExcelConnector(false, filename, 1);
-                res = _ExcelClient.GetCellRange(1, 1, ColCount, RowCount);
+                res = _ExcelClient.GetCellRange(1, 1, RowCount, ColCount);
                 return res;
             }
             catch (ExcelConnectorException ex) { System.Console.WriteLine(ex.Message); return res; }
@@ -488,5 +501,54 @@ namespace RVGBilling
             foreach (Abonent ab in abonents)
                 CalcBalance(ab);
         }
+
+        public void MakeReport(Abonent ab, DateTime dt)
+        {
+            CalcBalance(ab);
+            string[][] Arr;
+            Arr = new string[0][];
+            //BillsArr = new string[0][];
+            //int ctr = 0;
+            foreach (Number n in ab.Numbers)
+            {
+                IList<Call> buf = n.Calls;
+                for (int i = 0; i < buf.Count; i++)
+                {
+                    if (buf[i].creation_time.CompareTo(dt) >= 0)
+                    {
+                        Array.Resize(ref Arr, Arr.Length + 1);
+                        Arr[Arr.Length - 1] = buf[i].ToStringArray();
+                    }
+                }
+
+                IList<Bill> billbuf = n.Bills;
+                for (int i = 0; i < billbuf.Count; i++)
+                {
+                    if (billbuf[i].creation_time.CompareTo(dt) >= 0)
+                    {
+                        Array.Resize(ref Arr, Arr.Length + 1);
+                        Arr[Arr.Length - 1] = billbuf[i].ToStringArray();
+                    }
+                }
+            }
+            string str = ab.Id.ToString() + ' ';
+            if (ab is PrivateAbonent)
+                str += ((PrivateAbonent)ab).surname;
+            if (ab is CorporateAbonent)
+                str += ((CorporateAbonent)ab).corporate_name;
+            str = "C:\\report" + ' ' + str + ' ' + dt.ToShortDateString()+' '+DateTime.Now.ToShortDateString() + ' ' + ".xls";
+            logger.log(str);
+            ExportToExcel(str, Arr);
+        }
+
+        public void MakeAllReports()
+        {
+            DateTime dt = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, 1);
+            foreach (Abonent ab in Connector.GetAll<PrivateAbonent>())
+                MakeReport(ab, dt);
+            foreach (Abonent ab in Connector.GetAll<CorporateAbonent>())
+                MakeReport(ab, dt);
+        }
+
     }
 }
