@@ -6,54 +6,18 @@ using System.IO;
 using RVGlib.Framework;
 using RVGlib.Domain;
 
-namespace RVGlib.Import
+namespace RVGBilling.Import
 {
     /// <summary>
     /// Класс для импорта и экспорта из CSV
     /// </summary>
-    public class Importer
+    public class CsvTransmitter : ITransmitter
     {
         private DBConnector dbc;
 
-        public Importer(DBConnector dbc)
+        public CsvTransmitter(DBConnector dbc)
         {
             this.dbc = dbc;
-        }
-
-
-
-        /// <summary>
-        /// Обрабатываем CSV-файл вида "вызываемый номер, исходящий номер, время, длительность"
-        /// </summary>
-        /// <param name="file"></param>
-        public string[][] GetCSVCalls(string filename)
-        {
-            string[][] data = new string[0][];
-            try
-            {
-                StreamReader sr = new StreamReader(filename);
-                {
-                    String line;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        //String[] arr = line.Split(new char[] { ',' });
-                        String[] arr = CSVParser.Split(line);
-                        for (int i = 0; i < arr.Length; i++)
-                            arr[i] = arr[i].Trim();
-                        Array.Resize(ref data, data.Length + 1);
-                        data[data.Length - 1] = arr;
-                    }
-                }
-                sr.Close();
-                
-            }
-            catch (Exception e)
-            {
-                // Let the user know what went wrong.
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-            }
-            return data;
         }
 
         public void ImportCalls(string[][] data)
@@ -88,7 +52,41 @@ namespace RVGlib.Import
             }
         }
 
-        public void ExportCallsCSV(string filename,string[][] data)
+        /// <summary>
+        /// Обрабатываем CSV-файл вида "вызываемый номер, исходящий номер, время, длительность"
+        /// </summary>
+        /// <param name="file"></param>
+        public string[][] Import(string filename)
+        {
+            string[][] data = new string[0][];
+            try
+            {
+                StreamReader sr = new StreamReader(filename);
+                {
+                    String line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        //String[] arr = line.Split(new char[] { ',' });
+                        String[] arr = CsvParser.Split(line);
+                        for (int i = 0; i < arr.Length; i++)
+                            arr[i] = arr[i].Trim();
+                        Array.Resize(ref data, data.Length + 1);
+                        data[data.Length - 1] = arr;
+                    }
+                }
+                sr.Close();
+
+            }
+            catch (Exception e)
+            {
+                // Let the user know what went wrong.
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(e.Message);
+            }
+            return data;
+        }
+
+        public void Export(string filename,string[][] data)
         {
             try
             {

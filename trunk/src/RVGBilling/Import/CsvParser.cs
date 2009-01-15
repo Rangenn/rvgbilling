@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace RVGlib.Import
+namespace RVGBilling.Import
 {
     /// <summary>
     /// Парсер для формата CSV
     /// </summary>
-    public class CSVParser
+    public class CsvParser
     {
         private static string separator = ",";
         private static string pattern= string.Format("{0}(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))",separator);

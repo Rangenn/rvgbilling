@@ -107,7 +107,7 @@
   </target>
 
   <target name = "setversion">
-	  <version buildtype = "Increment" revisiontype = "Increment" path = "${src.dir}/RVGBilling/build.number">
+	  <version buildtype = "Increment" revisiontype = "Increment" path = "${src.dir}/build.number">
 	  </version> 
 	<asminfo output="${src.dir}/RVGbilling/Properties/AssemblyInfo.cs" language="CSharp">
 	    <imports>

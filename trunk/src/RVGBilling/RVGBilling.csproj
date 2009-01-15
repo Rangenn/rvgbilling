@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{64A16FB5-F22A-47FB-9BAA-62701332E61F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -152,6 +152,10 @@
     <Compile Include="FormRateList.Designer.cs">
       <DependentUpon>FormRateList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Import\CsvParser.cs" />
+    <Compile Include="Import\CsvTransmitter.cs" />
+    <Compile Include="Import\ExcelTransmitter.cs" />
+    <Compile Include="Import\ITransmitter.cs" />
     <Compile Include="logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
