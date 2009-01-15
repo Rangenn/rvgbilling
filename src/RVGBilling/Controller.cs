@@ -9,7 +9,7 @@ using NHibernate;
 using FluentNHibernate.Framework;
 
 using ExcelWorkLib;
-using RVGlib.Import;
+using RVGBilling.Import;
 
 namespace RVGBilling
 {
@@ -375,51 +375,22 @@ namespace RVGBilling
 
         public void ExportToExcel(string filename, DataGridView dgv)
         {
-            ExportToExcel(filename, GridToArray(dgv));
+            ExcelTransmitter etm = new ExcelTransmitter();
+            etm.Export(filename,GridToArray(dgv));
         }
 
-        public void ExportToExcel(string filename, string[][] arr)
+        //not implemented yet!
+        /*public string[][] ImportFromExcel(string filename, int RowCount, int ColCount)
         {
-            System.Console.WriteLine("Создаю Excel application...");
-            ExcelConnector _ExcelClient = null;
-            try
-            {
-                _ExcelClient = new ExcelConnector(false, filename, 1);
-                _ExcelClient.SetCellRange(1, 1, arr);
-            }
-            catch (ExcelConnectorException ex) { System.Console.WriteLine(ex.Message); }
-            finally
-            {
-                System.Console.WriteLine("Закрываю Excel application...");
-                if (_ExcelClient != null) _ExcelClient.Close();
-
-            }
-        }
-
-        public string[][] ImportFromExcel(string filename, int RowCount, int ColCount)
-        {
-            System.Console.WriteLine("Создаю Excel application...");
-            ExcelConnector _ExcelClient = null;
-            string[][] res = null;
-            try
-            {
-                _ExcelClient = new ExcelConnector(false, filename, 1);
-                res = _ExcelClient.GetCellRange(1, 1, RowCount, ColCount);
-                return res;
-            }
-            catch (ExcelConnectorException ex) { System.Console.WriteLine(ex.Message); return res; }
-            finally
-            {
-                System.Console.WriteLine("Закрываю Excel application...");
-                _ExcelClient.Close();
-
-            }
-        }
+           //Рома, please implement!
+        }*/
 
         public void ImportCallsCSV(string filename)
         {
-            Importer imp = new Importer(this.Connector);
-            string[][] data = imp.GetCSVCalls(filename);
+            CsvTransmitter imp = new CsvTransmitter(this.Connector);
+            // получаем массив строк
+            string[][] data = imp.Import(filename);
+            // запись в БД
             imp.ImportCalls(data);
         }
 
@@ -444,7 +415,7 @@ namespace RVGBilling
 
         public void ExportToCSV(string filename, DataGridView dgv)
         {
-            Importer imp = new Importer(this.Connector);
+            CsvTransmitter imp = new CsvTransmitter(this.Connector);
             string[][] data = GridToArray(dgv);
             for (int i = 0; i < data.Length; i++)
             {
@@ -456,7 +427,7 @@ namespace RVGBilling
                 Console.WriteLine();
             }
 
-            imp.ExportCallsCSV(filename, data);
+            imp.Export(filename, data);
         }
 
         public void UpdateAbonentList(List<Abonent> objects)
@@ -538,7 +509,9 @@ namespace RVGBilling
                 str += ((CorporateAbonent)ab).corporate_name;
             str = "C:\\report" + ' ' + str + ' ' + dt.ToShortDateString()+' '+DateTime.Now.ToShortDateString() + ' ' + ".xls";
             logger.log(str);
-            ExportToExcel(str, Arr);
+            ExcelTransmitter etm = new ExcelTransmitter();
+            etm.Export(str, Arr);
+            //ExportToExcel(str, Arr);
         }
 
         public void MakeAllReports()

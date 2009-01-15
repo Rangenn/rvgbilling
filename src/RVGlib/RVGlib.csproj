@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9600862B-F546-45F6-9DE8-E8704948C103}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -71,7 +71,6 @@
     <Compile Include="Domain\Rate.cs" />
     <Compile Include="Framework\DBConnector.cs" />
     <Compile Include="Framework\Model.cs" />
-    <Compile Include="Import\Importer.cs" />
     <Compile Include="Mappings\AbonentMap.cs" />
     <Compile Include="Mappings\BillMap.cs" />
     <Compile Include="Mappings\CallMap.cs" />
@@ -80,7 +79,6 @@
     <Compile Include="Mappings\PriceMap.cs" />
     <Compile Include="Mappings\PrivateAbonentMap.cs" />
     <Compile Include="Mappings\RateMap.cs" />
-    <Compile Include="Import\CSVParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
