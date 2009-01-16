@@ -18,7 +18,7 @@ namespace RVGBilling
     {
         IList<Rate> ListRates;
         BindingSource lbBindingSource, gridBindingSource;
-        Controller ctrl;
+        Controller controller;
 
         public FormRateList()
         {
@@ -29,7 +29,7 @@ namespace RVGBilling
         public FormRateList(Controller ctrl)
             : this()
         {
-            this.ctrl = ctrl;
+            this.controller = ctrl;
 
             // выбираем все тарифы и заносим в listbox
             ListRates = ctrl.GetRates();
@@ -62,7 +62,7 @@ namespace RVGBilling
         private void btnAddPrice_Click(object sender, EventArgs e)
         {
             if (lbRates.SelectedItem!=null)
-                ctrl.AddPrice((Rate)lbRates.SelectedItem);
+                controller.AddPrice((Rate)lbRates.SelectedItem);
             gridBindingSource.ResetBindings(false);
             //выдать диалоговое окно, по завершении добавить в список и обновить грид
         }
@@ -71,7 +71,7 @@ namespace RVGBilling
         {
             int index = dgvPrices.CurrentRow.Index;
             if (index >= 0)
-                ctrl.EditPrice(((Rate)lbRates.SelectedItem).Prices[index]);
+                controller.EditPrice(((Rate)lbRates.SelectedItem).Prices[index]);
             gridBindingSource.ResetBindings(false);
             //выдать диалоговое окно, по завершении сохранить изменения и обновить грид
         }
@@ -85,7 +85,7 @@ namespace RVGBilling
                 Rate rate=(Rate)lbRates.SelectedItem;
                 Price price = rate.Prices[index];
 
-                ctrl.DeletePriceFromRate(rate, price);
+                controller.DeletePriceFromRate(rate, price);
 
             }
             gridBindingSource.ResetBindings(false);
@@ -94,7 +94,7 @@ namespace RVGBilling
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Rate r=ctrl.AddRate();
+            Rate r=controller.AddRate();
             ListRates.Add(r);
             lbBindingSource.ResetBindings(false);
             //добавить новый тариф в список и обновить лист
@@ -106,7 +106,7 @@ namespace RVGBilling
             if (index >= 0)
             {
                 Rate rate = (Rate)lbRates.SelectedItem;
-                ctrl.EditRate(rate);
+                controller.EditRate(rate);
                 lbBindingSource.ResetBindings(false);
             }
             //изменить название тарифа
@@ -118,7 +118,7 @@ namespace RVGBilling
             if (index >= 0)
             {
                 Rate rate = (Rate)lbRates.SelectedItem;             
-                if (ctrl.DeleteRate(rate))
+                if (controller.DeleteRate(rate))
                     ListRates.Remove(rate);
                 lbBindingSource.ResetBindings(false);
             }
@@ -132,7 +132,19 @@ namespace RVGBilling
 
         private void excelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //controller.ExportToExcel(saveFileDialog1.FileName, controller.GridToArray(dgDetails));
+            }
+        }
 
+        private void cSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Не реализовано.");
+            //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    //controller.ExportToCSV(saveFileDialog1.FileName, controller.GridToArray(dgDetails));
+            //}
         }
     }
 }

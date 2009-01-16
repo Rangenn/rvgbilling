@@ -68,6 +68,9 @@
             this.btnSelectBody = new System.Windows.Forms.Button();
             this.dgvSearch = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.импортТарифовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.excelToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cSVToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gbAbonent.SuspendLayout();
             this.tcAbonent.SuspendLayout();
             this.tpPerson.SuspendLayout();
@@ -255,6 +258,7 @@
             this.fileToolStripMenuItem,
             this.booksToolStripMenuItem,
             this.importToolStripMenuItem,
+            this.импортТарифовToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
@@ -454,6 +458,29 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "CSV files|*.csv|Excel files|*.xls|All files|*.*";
             // 
+            // импортТарифовToolStripMenuItem
+            // 
+            this.импортТарифовToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.excelToolStripMenuItem1,
+            this.cSVToolStripMenuItem1});
+            this.импортТарифовToolStripMenuItem.Name = "импортТарифовToolStripMenuItem";
+            this.импортТарифовToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.импортТарифовToolStripMenuItem.Text = "Импорт тарифов";
+            // 
+            // excelToolStripMenuItem1
+            // 
+            this.excelToolStripMenuItem1.Name = "excelToolStripMenuItem1";
+            this.excelToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.excelToolStripMenuItem1.Text = "Excel";
+            this.excelToolStripMenuItem1.Click += new System.EventHandler(this.excelToolStripMenuItem1_Click);
+            // 
+            // cSVToolStripMenuItem1
+            // 
+            this.cSVToolStripMenuItem1.Name = "cSVToolStripMenuItem1";
+            this.cSVToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cSVToolStripMenuItem1.Text = "CSV";
+            this.cSVToolStripMenuItem1.Click += new System.EventHandler(this.cSVToolStripMenuItem1_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -527,6 +554,9 @@
         private System.Windows.Forms.ToolStripMenuItem расчетБалансаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem excelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cSVToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem импортТарифовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem excelToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cSVToolStripMenuItem1;
     }
 }
 

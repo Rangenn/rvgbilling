@@ -27,6 +27,7 @@ namespace RVGBilling.Import
             }
         }
 
+        // not tested yet
         public string[][] Import(string filename, int RowCount, int ColCount)
         {
             System.Console.WriteLine("Создаю Excel application...");
@@ -47,7 +48,7 @@ namespace RVGBilling.Import
             }
         }
 
-        // not implemented yet
+        // not tested yet
         public string[][] Import(string filename)
         {
             System.Console.WriteLine("Создаю Excel application...");

@@ -16,7 +16,7 @@ namespace RVGBilling
     /// </summary>
     public partial class FormMain : Form
     {
-        Controller ctrl;
+        Controller controller;
 
         /// <summary>
         /// BindingSource для связи таблицы и листа абонентов
@@ -34,7 +34,7 @@ namespace RVGBilling
             bs = new BindingSource();
             // присваиваем источник данных (и у нас автоматическая загрузка в таблицу!)
             dgvSearch.DataSource = bs;
-            this.ctrl = ctrl;
+            controller = ctrl;
             
         }
 
@@ -73,10 +73,10 @@ namespace RVGBilling
             switch (tcAbonent.SelectedIndex)
             {
                 case 0:
-                    ctrl.AddPrivateAbonent();
+                    controller.AddPrivateAbonent();
                     break;
                 case 1:
-                    ctrl.AddCorporateAbonent();
+                    controller.AddCorporateAbonent();
                     break;
             }
         }
@@ -89,7 +89,7 @@ namespace RVGBilling
             {
                 case 0:
                     {
-                        IList<PrivateAbonent> list = ctrl.SearchPrivateAbonent(tbPersonName.Text, tbPersonPassport.Text, tbPersonPhone.Text);
+                        IList<PrivateAbonent> list = controller.SearchPrivateAbonent(tbPersonName.Text, tbPersonPassport.Text, tbPersonPhone.Text);
                         abonents.AddRange(list.ToArray());
                         bs.DataSource = list;
                         //InitGridPrivate();
@@ -97,7 +97,7 @@ namespace RVGBilling
                     }
                 case 1:
                     {
-                        IList<CorporateAbonent> list = ctrl.SearchCorporateAbonent(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
+                        IList<CorporateAbonent> list = controller.SearchCorporateAbonent(tbCorpName.Text, tbCorpAdress.Text, tbCorpPhone.Text);
                         abonents.AddRange(list.ToArray());
                         bs.DataSource = list;
                         break;
@@ -116,7 +116,7 @@ namespace RVGBilling
             int index=dgvSearch.CurrentRow.Index;
             if (index >= 0)
             {
-                ctrl.ViewAbonent(abonents[index]);
+                controller.ViewAbonent(abonents[index]);
             }
         }
 
@@ -136,8 +136,8 @@ namespace RVGBilling
                 MessageBox.Show("Неверно введена сумма");
                 return;
             }
-            ctrl.Payment(tbNumber.Text, sum);
-            ctrl.UpdateAbonentList(abonents);
+            controller.Payment(tbNumber.Text, sum);
+            controller.UpdateAbonentList(abonents);
             dgvSearch.Update();
             tbNumber.Text = "";
             tbSumma.Text = "";
@@ -164,13 +164,13 @@ namespace RVGBilling
 
         private void tariffsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ctrl.ViewRates();
+            controller.ViewRates();
         }
 
         private void calcBalancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ctrl.CalcAllBalances();
-            ctrl.MakeAllReports();
+            controller.CalcAllBalances();
+            controller.MakeAllReports();
 
             MessageBox.Show("Действие успешно выполнено.");
             //Здесь генерируется отчет excel. список всех звонков за месяц либо список списанных сумм.
@@ -180,7 +180,7 @@ namespace RVGBilling
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ctrl.ImportCallsCSV(openFileDialog1.FileName);
+                controller.ImportCallsCSV(openFileDialog1.FileName);
             }
         }
 
@@ -188,7 +188,23 @@ namespace RVGBilling
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ctrl.ImportCallsExcel(openFileDialog1.FileName);
+                controller.ImportCallsExcel(openFileDialog1.FileName);
+            }
+        }
+
+        private void excelToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                controller.ImportRatesCSV(openFileDialog1.FileName);
+            }
+        }
+
+        private void cSVToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                controller.ImportRatesExcel(openFileDialog1.FileName);
             }
         }
     }
