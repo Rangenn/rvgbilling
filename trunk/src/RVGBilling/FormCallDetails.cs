@@ -29,19 +29,17 @@ namespace RVGBilling
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string filename;// = @"C:\Users\е\Desktop\test.xls";
-
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                filename = saveFileDialog1.FileName;
-            else return;
-            controller.ExportToExcel(filename, dgDetails);                     
+            {
+                controller.ExportToExcel(saveFileDialog1.FileName, controller.GridToArray(dgDetails));
+            }     
         }
 
         private void exportCSVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                controller.ExportToCSV(saveFileDialog1.FileName, dgDetails);
+                controller.ExportToCSV(saveFileDialog1.FileName, controller.GridToArray(dgDetails));
             }
         }
 

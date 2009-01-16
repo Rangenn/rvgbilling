@@ -115,54 +115,6 @@ namespace RVGBilling
             formAbonent = new FormAbonent(this, ab);
             fmAbonent.ShowDialog();
         }
-        /// <summary>
-        /// Функция для пополнения баланса
-        /// </summary>
-        /// <param name="number"></param>
-        /// <param name="summa"></param>
-        public void Payment(string number, decimal summa)
-        {
-            Number num = null;
-            Abonent abonent = null;
-            try
-            {
-                //num = Connector.GetNumber(number);
-                abonent = Connector.SearchByNumber(number);
-                for (int i = 0; i < abonent.Numbers.Count; i++)
-                {
-                    if (abonent.Numbers[i].number.Equals(number))
-                    {
-                        num = abonent.Numbers[i];
-                        break;
-                    }
-                }
-                if (num == null) throw new SearchByNumberException("Ошибка поиска номера." , new NullReferenceException());
-            }
-            catch (SearchByNumberException ex) { MessageBox.Show(ex.Message); return; }
-            
-            string s = "Пополнить баланс на сумму " + summa.ToString();
-            if (abonent is PrivateAbonent)
-                s += " на имя: " + ((PrivateAbonent)abonent).surname + " " + ((PrivateAbonent)abonent).name + " " + ((PrivateAbonent)abonent).patronymic + '?';
-            else if (abonent is CorporateAbonent)
-                s += " на имя: " + ((CorporateAbonent)abonent).corporate_name + '?';
-
-            if (MessageBox.Show(s, "Пополнение баланса", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                //abonent.balance += summa;
-                Bill b = new Bill()
-                    {
-                        creation_time = DateTime.Now,
-                        money = summa,
-                        number = num//abonent.Numbers[0]
-                    };
-
-                num.Bills.Add(b);
-                //abonent.Numbers[0].Bills.Add(b);
-                Connector.Update(num);
-                Connector.add_bill_money(b.Id);
-                //abonent = Connector.Get<Abonent>(abonent.Id);//refreshing нет смысла обновлять абонента, который объявлен локально
-            }
-        }
 
         /// <summary>
         /// Поиск частных лиц
@@ -176,18 +128,6 @@ namespace RVGBilling
             return _connector.SearchPerson(name, passport, phone);
         }
 
-
-        /// <summary>
-        /// выбор частного листа
-        /// </summary>
-        /// <param name="id"></param>
-        public void SelectPerson(long id)
-        {
-            PrivateAbonent abonent = _connector.Get<PrivateAbonent>(id);
-            formAbonent = new FormAbonent(this, abonent);
-            fmAbonent.ShowDialog();
-        }
-
         /// <summary>
         /// поиск юричических лиц
         /// </summary>
@@ -198,6 +138,17 @@ namespace RVGBilling
         public IList<CorporateAbonent> SearchCorporateAbonent(string name, string address, string phone)
         {
             return _connector.SearchCorporate(name, address, phone);
+        }
+
+        /// <summary>
+        /// выбор частного листа
+        /// </summary>
+        /// <param name="id"></param>
+        public void SelectPerson(long id)
+        {
+            PrivateAbonent abonent = _connector.Get<PrivateAbonent>(id);
+            formAbonent = new FormAbonent(this, abonent);
+            fmAbonent.ShowDialog();
         }
 
         /// <summary>
@@ -347,6 +298,55 @@ namespace RVGBilling
             return res;
         }
 
+        /// <summary>
+        /// Функция для пополнения баланса
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="summa"></param>
+        public void Payment(string number, decimal summa)
+        {
+            Number num = null;
+            Abonent abonent = null;
+            try
+            {
+                //num = Connector.GetNumber(number);
+                abonent = Connector.SearchByNumber(number);
+                for (int i = 0; i < abonent.Numbers.Count; i++)
+                {
+                    if (abonent.Numbers[i].number.Equals(number))
+                    {
+                        num = abonent.Numbers[i];
+                        break;
+                    }
+                }
+                if (num == null) throw new SearchByNumberException("Ошибка поиска номера.", new NullReferenceException());
+            }
+            catch (SearchByNumberException ex) { MessageBox.Show(ex.Message); return; }
+
+            string s = "Пополнить баланс на сумму " + summa.ToString();
+            if (abonent is PrivateAbonent)
+                s += " на имя: " + ((PrivateAbonent)abonent).surname + " " + ((PrivateAbonent)abonent).name + " " + ((PrivateAbonent)abonent).patronymic + '?';
+            else if (abonent is CorporateAbonent)
+                s += " на имя: " + ((CorporateAbonent)abonent).corporate_name + '?';
+
+            if (MessageBox.Show(s, "Пополнение баланса", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                //abonent.balance += summa;
+                Bill b = new Bill()
+                {
+                    creation_time = DateTime.Now,
+                    money = summa,
+                    number = num//abonent.Numbers[0]
+                };
+
+                num.Bills.Add(b);
+                //abonent.Numbers[0].Bills.Add(b);
+                Connector.Update(num);
+                Connector.add_bill_money(b.Id);
+                //abonent = Connector.Get<Abonent>(abonent.Id);//refreshing нет смысла обновлять абонента, который объявлен локально
+            }
+        }
+
         public void DissolveAbonent(Abonent ab)
         {
 
@@ -373,66 +373,9 @@ namespace RVGBilling
             else MessageBox.Show("Список элементов для отображения пуст.");
         }
 
-        public void ExportToExcel(string filename, DataGridView dgv)
-        {
-            ExcelTransmitter etm = new ExcelTransmitter();
-            etm.Export(filename,GridToArray(dgv));
-        }
-
-        //not implemented yet!
-        /*public string[][] ImportFromExcel(string filename, int RowCount, int ColCount)
-        {
-           //Рома, please implement!
-        }*/
-
-        public void ImportCallsCSV(string filename)
-        {
-            CsvTransmitter imp = new CsvTransmitter(this.Connector);
-            // получаем массив строк
-            string[][] data = imp.Import(filename);
-            // запись в БД
-            imp.ImportCalls(data);
-        }
-
-        public string[][] GridToArray(DataGridView dgv)
-        {
-            string[][] data = new string[dgv.RowCount][];
-            Console.WriteLine("Rows=" + dgv.RowCount + "; Cols= " + dgv.ColumnCount);
-            for (int i = 0; i < dgv.RowCount; i++)
-            {
-                string[] arr = new string[dgv.ColumnCount];
-                DataGridViewRow Row = dgv.Rows[i];
-                for (int j = 0; j < dgv.ColumnCount; j++)
-                {
-                    arr[j] = Row.Cells[j].Value.ToString();
-                }
-                //Array.Resize(ref data, data.Length + 1);
-                data[i] = arr;
-            }
-            return data;
-        }
-
-
-        public void ExportToCSV(string filename, DataGridView dgv)
-        {
-            CsvTransmitter imp = new CsvTransmitter(this.Connector);
-            string[][] data = GridToArray(dgv);
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data[i].Length; j++)
-                {
-                    Console.Write(data[i][j]);
-                    Console.Write('|');
-                }
-                Console.WriteLine();
-            }
-
-            imp.Export(filename, data);
-        }
-
         public void UpdateAbonentList(List<Abonent> objects)
         {
-            for (int i = 0; i < objects.Count; i++) 
+            for (int i = 0; i < objects.Count; i++)
             {
                 if (objects[i] is PrivateAbonent)
                 {
@@ -441,7 +384,7 @@ namespace RVGBilling
                 if (objects[i] is CorporateAbonent)
                 {
                     objects[i] = UpdateEntity((CorporateAbonent)objects[i]);
-                } 
+                }
             }
         }
 
@@ -507,11 +450,9 @@ namespace RVGBilling
                 str += ((PrivateAbonent)ab).surname;
             if (ab is CorporateAbonent)
                 str += ((CorporateAbonent)ab).corporate_name;
-            str = "C:\\report" + ' ' + str + ' ' + dt.ToShortDateString()+' '+DateTime.Now.ToShortDateString() + ' ' + ".xls";
+            str = "C:\\report" + ' ' + str + ' ' + dt.ToShortDateString() + ' ' + DateTime.Now.ToShortDateString() + ' ' + ".xls";
             logger.log(str);
-            ExcelTransmitter etm = new ExcelTransmitter();
-            etm.Export(str, Arr);
-            //ExportToExcel(str, Arr);
+            ExportToExcel(str, Arr);
         }
 
         public void MakeAllReports()
@@ -522,6 +463,163 @@ namespace RVGBilling
             foreach (Abonent ab in Connector.GetAll<CorporateAbonent>())
                 MakeReport(ab, dt);
         }
+
+
+
+        /// <summary>
+        /// Извлечь из datagridview двумерный массив строк
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <returns></returns>
+        public string[][] GridToArray(DataGridView dgv)
+        {
+            string[][] data = new string[dgv.RowCount][];
+            Console.WriteLine("Rows=" + dgv.RowCount + "; Cols= " + dgv.ColumnCount);
+            for (int i = 0; i < dgv.RowCount; i++)
+            {
+                string[] arr = new string[dgv.ColumnCount];
+                DataGridViewRow Row = dgv.Rows[i];
+                for (int j = 0; j < dgv.ColumnCount; j++)
+                {
+                    arr[j] = Row.Cells[j].Value.ToString();
+                }
+                //Array.Resize(ref data, data.Length + 1);
+                data[i] = arr;
+            }
+            return data;
+        }
+        /// <summary>
+        /// Вывести в консольный поток вывода двумерный строковый массив
+        /// </summary>
+        /// <param name="data"></param>
+        private static void ConsolePrint(string[][] data)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data[i].Length; j++)
+                {
+                    Console.Write(data[i][j]);
+                    Console.Write('|');
+                }
+                Console.WriteLine();
+            }
+        }
+
+        #region universal transmitting of string[][] data
+        public void ExportToCSV(string filename, string[][] data)
+        {
+            Export(filename, data, new CsvTransmitter());
+        }
+        public void ExportToExcel(string filename, string[][] data)
+        {
+            Export(filename, data, new ExcelTransmitter());
+        }
+        protected void Export(string filename, string[][] data, ITransmitter tm)
+        {
+            tm.Export(filename, data);
+        }
+        public string[][] ImportFromExcel(string filename)
+        {
+            return Import(filename, new ExcelTransmitter());
+        }
+
+        public string[][] ImportFromCSV(string filename)
+        {
+            return Import(filename, new CsvTransmitter());
+        }
+        protected string[][] Import(string filename, ITransmitter tm)
+        {
+            return tm.Import(filename);
+        }
+        #endregion
+
+        #region ImportCalls
+        public void ImportCallsExcel(string filename)
+        {
+            ImportCallsFromDataToDB(ImportFromExcel(filename));
+        }
+        public void ImportCallsCSV(string filename)
+        {
+            ImportCallsFromDataToDB(ImportFromCSV(filename));
+        }
+        public void ImportCallsFromDataToDB(string[][] data)
+        {
+            ConsolePrint(data);
+            for (int i = 0; i < data.Length; i++)
+            {
+                try
+                {
+                    Number num = Connector.GetNumber(data[i][1]);
+
+                    Call call = new Call
+                    {
+                        calling_number = data[i][0],
+                        number = num,
+                        creation_time = Convert.ToDateTime(data[i][2]),
+                        duration = Convert.ToInt32(data[i][3])
+                    };
+
+                    num.Calls.Add(call);
+                    Connector.Update(num);
+                    Connector.calculate_call_cost(call.Id);
+                }
+                catch (EstablishConnectionException ex)
+                {
+                    Console.WriteLine("Номер не найден :" + data[i][1]);
+                }
+
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Формат записи " + i + " не распознан");
+                }
+            }
+        }
+        #endregion
+
+        #region ImportRates
+        public void ImportRatesExcel(string filename)
+        {
+            ImportRatesFromDataToDB(ImportFromExcel(filename));
+        }
+        public void ImportRatesCSV(string filename)
+        {
+            ImportRatesFromDataToDB(ImportFromCSV(filename));
+        }
+        public void ImportRatesFromDataToDB(string[][] data)
+        {
+            ConsolePrint(data);
+            //не реализовано.
+
+            //for (int i = 0; i < data.Length; i++)
+            //{
+            //    try
+            //    {
+            //        Number num = Connector.GetNumber(data[i][1]);
+
+            //        Call call = new Call
+            //        {
+            //            calling_number = data[i][0],
+            //            number = num,
+            //            creation_time = Convert.ToDateTime(data[i][2]),
+            //            duration = Convert.ToInt32(data[i][3])
+            //        };
+
+            //        num.Calls.Add(call);
+            //        Connector.Update(num);
+            //        Connector.calculate_call_cost(call.Id);
+            //    }
+            //    catch (EstablishConnectionException ex)
+            //    {
+            //        Console.WriteLine("Номер не найден :" + data[i][1]);
+            //    }
+
+            //    catch (FormatException ex)
+            //    {
+            //        Console.WriteLine("Формат записи " + i + " не распознан");
+            //    }
+            //}
+        }
+        #endregion
 
     }
 }

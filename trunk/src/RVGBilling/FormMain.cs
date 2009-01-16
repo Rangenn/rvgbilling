@@ -167,14 +167,6 @@ namespace RVGBilling
             ctrl.ViewRates();
         }
 
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                ctrl.ImportCallsCSV(openFileDialog1.FileName);
-            }
-        }
-
         private void calcBalancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ctrl.CalcAllBalances();
@@ -184,9 +176,20 @@ namespace RVGBilling
             //Здесь генерируется отчет excel. список всех звонков за месяц либо список списанных сумм.
         }
 
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ctrl.ImportCallsCSV(openFileDialog1.FileName);
+            }
+        }
+
         private void excelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //not implemented.
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ctrl.ImportCallsExcel(openFileDialog1.FileName);
+            }
         }
     }
 }

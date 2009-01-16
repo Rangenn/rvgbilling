@@ -39,6 +39,9 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.импортToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbRateDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrices)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -115,7 +118,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rateToolStripMenuItem});
+            this.rateToolStripMenuItem,
+            this.импортToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(374, 24);
@@ -129,29 +133,51 @@
             this.EditToolStripMenuItem,
             this.removeSelectedToolStripMenuItem});
             this.rateToolStripMenuItem.Name = "rateToolStripMenuItem";
-            this.rateToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.rateToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.rateToolStripMenuItem.Text = "Тариф";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.addToolStripMenuItem.Text = "Создать";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.EditToolStripMenuItem.Text = "Переименовать";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // removeSelectedToolStripMenuItem
             // 
             this.removeSelectedToolStripMenuItem.Name = "removeSelectedToolStripMenuItem";
-            this.removeSelectedToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.removeSelectedToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.removeSelectedToolStripMenuItem.Text = "Удалить выделенный";
             this.removeSelectedToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedToolStripMenuItem_Click);
+            // 
+            // импортToolStripMenuItem
+            // 
+            this.импортToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.excelToolStripMenuItem,
+            this.cSVToolStripMenuItem});
+            this.импортToolStripMenuItem.Name = "импортToolStripMenuItem";
+            this.импортToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.импортToolStripMenuItem.Text = "Импорт";
+            // 
+            // excelToolStripMenuItem
+            // 
+            this.excelToolStripMenuItem.Name = "excelToolStripMenuItem";
+            this.excelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.excelToolStripMenuItem.Text = "Excel";
+            this.excelToolStripMenuItem.Click += new System.EventHandler(this.excelToolStripMenuItem_Click);
+            // 
+            // cSVToolStripMenuItem
+            // 
+            this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
+            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cSVToolStripMenuItem.Text = "CSV";
             // 
             // FormRateList
             // 
@@ -186,5 +212,8 @@
         private System.Windows.Forms.Button btnEditPrice;
         private System.Windows.Forms.Button btnAddPrice;
         private System.Windows.Forms.DataGridView dgvPrices;
+        private System.Windows.Forms.ToolStripMenuItem импортToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem excelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cSVToolStripMenuItem;
     }
 }
