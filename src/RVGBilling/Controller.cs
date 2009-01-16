@@ -576,7 +576,7 @@ namespace RVGBilling
         }
         #endregion
 
-        #region ImportRates
+        #region ImportExportRates
         public void ImportRatesExcel(string filename)
         {
             ImportRatesFromDataToDB(ImportFromExcel(filename));
@@ -618,6 +618,13 @@ namespace RVGBilling
             //        Console.WriteLine("Формат записи " + i + " не распознан");
             //    }
             //}
+        }
+        /// <summary>
+        /// Экспорт всех тарифов и цен из базы
+        /// </summary>
+        public void ExportRates()
+        {
+
         }
         #endregion
 
