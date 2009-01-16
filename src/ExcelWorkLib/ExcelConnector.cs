@@ -277,6 +277,32 @@ namespace ExcelWorkLib
             }
             catch (Exception ex) { Close(); throw new ExcelConnectorException("GetCellRange failed.\n", ex); }
         }
+        public string[][] GetNotEmptyCellRange(int RowIndex, int ColIndex)
+        {
+            string[][] arr = new string[0][];
+            try
+            {
+                for (int i = 0; ; i++)
+                {
+                    if (((string)GetCellValue(i + RowIndex, ColIndex)).Equals(""))
+                        break;
+                    Array.Resize(ref arr, arr.Length + 1);
+                    arr[i] = new string[0];
+                    for (int j = 0; ; j++)
+                    {
+                        Array.Resize(ref arr[i], arr[i].Length + 1);
+                        arr[i][j] = (string)GetCellValue(i + RowIndex, ColIndex + j);
+                        if (arr[i][j].Equals(""))
+                        {
+                            Array.Resize(ref arr[i], arr[i].Length - 1);
+                            break;
+                        }
+                    }                           
+                }
+                return arr;
+            }
+            catch (Exception ex) { Close(); throw new ExcelConnectorException("GetCellRange failed.\n", ex); }
+        }
         /// <summary>
         /// Очистка диапазона ячеек
         /// </summary>

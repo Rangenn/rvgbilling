@@ -8,7 +8,7 @@ namespace RVGBilling.Import
     /// <summary>
     /// Интерфейс для экспорта/импорта в файл
     /// </summary>
-    interface ITransmitter
+    public interface ITransmitter
     {
         /// <summary>
         /// Импортирование из файла в массив строк

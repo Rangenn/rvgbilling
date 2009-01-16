@@ -13,44 +13,6 @@ namespace RVGBilling.Import
     /// </summary>
     public class CsvTransmitter : ITransmitter
     {
-        private DBConnector dbc;
-
-        public CsvTransmitter(DBConnector dbc)
-        {
-            this.dbc = dbc;
-        }
-
-        public void ImportCalls(string[][] data)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                try
-                {
-                    Number num = dbc.GetNumber(data[i][1]);
-
-                    Call call = new Call
-                    {
-                        calling_number = data[i][0],
-                        number = num,
-                        creation_time = Convert.ToDateTime(data[i][2]),
-                        duration = Convert.ToInt32(data[i][3])
-                    };
-
-                    num.Calls.Add(call);
-                    dbc.Update(num);
-                    dbc.calculate_call_cost(call.Id);
-                }
-                catch (EstablishConnectionException ex)
-                {
-                    Console.WriteLine("Номер не найден :" + data[i][1]);
-                }
-
-                catch (FormatException ex)
-                {
-                    Console.WriteLine("Формат записи " + i+ " не распознан");
-                }
-            }
-        }
 
         /// <summary>
         /// Обрабатываем CSV-файл вида "вызываемый номер, исходящий номер, время, длительность"

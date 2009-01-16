@@ -42,7 +42,7 @@ namespace RVGBilling.Import
             finally
             {
                 System.Console.WriteLine("Закрываю Excel application...");
-                _ExcelClient.Close();
+                if (_ExcelClient != null) _ExcelClient.Close();
 
             }
         }
@@ -50,7 +50,22 @@ namespace RVGBilling.Import
         // not implemented yet
         public string[][] Import(string filename)
         {
-            return this.Import(filename, 1, 1);
+            System.Console.WriteLine("Создаю Excel application...");
+            ExcelConnector _ExcelClient = null;
+            string[][] res = null;
+            try
+            {
+                _ExcelClient = new ExcelConnector(false, filename, 1);
+                res = _ExcelClient.GetNotEmptyCellRange(1, 1);
+                return res;
+            }
+            catch (ExcelConnectorException ex) { System.Console.WriteLine(ex.Message); return res; }
+            finally
+            {
+                System.Console.WriteLine("Закрываю Excel application...");
+                if (_ExcelClient != null) _ExcelClient.Close();
+
+            }
         }
     }
 }
