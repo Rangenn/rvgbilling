@@ -37,5 +37,19 @@ namespace RVGlib.Domain
         /// Дата рождения
         /// </summary>
         public virtual DateTime birth_date { get; set; }
+
+        public override string[] ToStringArray()
+        {
+            string[] res = new string[] {  
+                surname, name, patronymic, passport_series.ToString(), passport_date.ToShortDateString(), 
+                passport_department, birth_date.ToShortDateString()};
+            string[] buf = base.ToStringArray();
+            Array.Resize(ref res, res.Length + buf.Length);
+            for (int i = 0; i < buf.Length; i++)
+            {
+                res[res.Length - i - 1] = buf[buf.Length - i - 1];
+            }
+            return res;
+        }
     }
 }

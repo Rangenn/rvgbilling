@@ -55,6 +55,11 @@ namespace RVGlib.Domain
         {
             Numbers = new List<Number>();
         }
+
+        public virtual string[] ToStringArray()
+        {
+            return new string[] { address, phone, mail_address};
+        }
     }
     
 }
