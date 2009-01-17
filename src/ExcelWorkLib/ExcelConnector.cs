@@ -53,16 +53,27 @@ namespace ExcelWorkLib
         {
             Start(isVisible);
         }
-
-        public ExcelConnector(bool isVisible, string filename)
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="isVisible"></param>
+        /// <param name="filename"></param>
+        /// <param name="CreateOrReplace">создать книгу(в т.ч. поверх существующей)</param>
+        public ExcelConnector(bool isVisible, string filename, bool CreateOrReplace)
             : this(isVisible)
         {
-            OpenExcelWorkBook(filename);
+            OpenExcelWorkBook(filename, CreateOrReplace);
             //SelectExcelWorkSheet(1);
         }
-
-        public ExcelConnector(bool isVisible, string filename, int worksheetnum)
-            :this(isVisible, filename)
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="isVisible"></param>
+        /// <param name="filename"></param>
+        /// <param name="CreateOrReplace">создать книгу(в т.ч. поверх существующей)</param>
+        /// <param name="worksheetnum"></param>
+        public ExcelConnector(bool isVisible, string filename, bool CreateOrReplace, int worksheetnum)
+            : this(isVisible, filename, CreateOrReplace)
         {
             SelectExcelWorkSheet(worksheetnum);
         }
@@ -100,27 +111,33 @@ namespace ExcelWorkLib
         /// по имени файла открыть книгу
         /// </summary>
         /// <param name="filename"></param>
+        /// <param name="CreateOrReplace">создать книгу(в т.ч. поверх существующей)</param>
         /// <returns></returns>
-        public void OpenExcelWorkBook(string filename)
+        public void OpenExcelWorkBook(string filename, bool CreateOrReplace)
         {
             try
             {
                 _WorkbookFileName = filename;
                 //Открываем книгу(файл) и получаем на нее ссылку          
-
-                _curworkbook = _app.Workbooks.Add(Type.Missing);
-                //_workbook.Saved = true;
-                _curworkbook.SaveAs(filename, Excel.XlFileFormat.xlExcel9795, Type.Missing, Type.Missing, Type.Missing,
-                   Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing);
-
-                //_workbook = _app.Workbooks.Open(filename,
-                //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                //    Type.Missing, Type.Missing);
+                OpenFileDialog o = new OpenFileDialog();
+                o.FileName = filename;
+                if (CreateOrReplace)
+                {
+                    _curworkbook = _app.Workbooks.Add(Type.Missing);
+                    _curworkbook.SaveAs(filename, Excel.XlFileFormat.xlExcel9795, Type.Missing, Type.Missing, Type.Missing,
+                       Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing,
+                        Type.Missing, Type.Missing, Type.Missing);
+                }
+                else
+                {
+                    _curworkbook = _app.Workbooks.Open(filename,
+                        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                        Type.Missing, Type.Missing);
+                }               
+                _curworkbook.Saved = true;
                 _sheets = _curworkbook.Worksheets;
-
             }
             catch (Exception ex) { Close(); throw new ExcelConnectorException("SelectExcelWorkSheet failed.\n", ex); }
         }
@@ -143,7 +160,7 @@ namespace ExcelWorkLib
         /// <summary>
         /// получить массив RowCount ячеек столбца ColName, начиная с ячейки RowIndex
         /// </summary>
-        /// <param name="col">название столбца</param>
+        /// <param name="ColIndex">название столбца</param>
         /// <param name="RowIndex">номер строки, с которой начинать копирование</param>
         /// <param name="RCount">кол-во возвращаемых ячеек, расположенных ниже RowIndex</param>
         /// <returns></returns>
@@ -163,7 +180,7 @@ namespace ExcelWorkLib
         /// получить массив RowCount ячеек столбца ColName, начиная с ячейки RowIndex.
         /// Значения ячеек преобразованы в строковый тип.
         /// </summary>
-        /// <param name="col">название столбца</param>
+        /// <param name="ColIndex">название столбца</param>
         /// <param name="RowIndex">номер строки, с которой начинать копирование</param>
         /// <param name="Count">кол-во возвращаемых ячеек, расположенных ниже RowIndex</param>
         /// <returns></returns>
@@ -206,19 +223,19 @@ namespace ExcelWorkLib
         /// <summary>
         /// Получить значение ячейки
         /// </summary>
-        /// <param name="ColName"></param>
         /// <param name="RowIndex"></param>
+        /// <param name="ColIndex"></param>
         /// <param name="NewValue"></param>
         public Object GetCellValue(int RowIndex, int ColIndex)
         {
-            return _CurrentWorksheet.Cells[RowIndex, ColIndex];
+            return ((Excel.Range)_CurrentWorksheet.Cells[RowIndex, ColIndex]).Value2;
         }
 
         /// <summary>
         /// Установить значение ячейки
         /// </summary>
-        /// <param name="ColName"></param>
         /// <param name="RowIndex"></param>
+        /// <param name="ColIndex"></param>
         /// <param name="NewValue"></param>
         public void SetCellValue(int RowIndex, int ColIndex, Object NewValue)
         {
@@ -228,11 +245,11 @@ namespace ExcelWorkLib
         /// <summary>
         /// Очистить значение ячейки
         /// </summary>
-        /// <param name="ColName"></param>
         /// <param name="RowIndex"></param>
+        /// <param name="ColIndex"></param>
         public void ClearCellValue(int RowIndex, int ColIndex)
         {
-            SetCellValue(RowIndex, ColIndex, "");
+            SetCellValue(RowIndex, ColIndex, null);
         }
         /// <summary>
         /// Запись двумерного массива в диапазон ячеек.
@@ -265,13 +282,18 @@ namespace ExcelWorkLib
         public string[][] GetCellRange(int RowIndex, int ColIndex, int RowCount, int ColCount)
         {
             string[][] arr = new string[RowCount][];
+            Object buf;
             try
             {
                 for (int i = 0; i < RowCount; i++)
                 {
                     arr[i] = new string[ColCount];
                     for (int j = 0; j < ColCount; j++)
-                        arr[i][j] = (string)GetCellValue(i + RowIndex, ColIndex + j);
+                    {
+                        buf = GetCellValue(i + RowIndex, ColIndex + j);
+                        if (buf == null) break;
+                        arr[i][j] = buf.ToString();
+                    }
                 }
                 return arr;
             }
@@ -280,23 +302,24 @@ namespace ExcelWorkLib
         public string[][] GetNotEmptyCellRange(int RowIndex, int ColIndex)
         {
             string[][] arr = new string[0][];
+            Object buf = null;
             try
             {
                 for (int i = 0; ; i++)
                 {
-                    if (((string)GetCellValue(i + RowIndex, ColIndex)).Equals(""))
+                    if ((GetCellValue(i + RowIndex, ColIndex)) == null)
                         break;
                     Array.Resize(ref arr, arr.Length + 1);
                     arr[i] = new string[0];
                     for (int j = 0; ; j++)
                     {
-                        Array.Resize(ref arr[i], arr[i].Length + 1);
-                        arr[i][j] = (string)GetCellValue(i + RowIndex, ColIndex + j);
-                        if (arr[i][j].Equals(""))
+                        buf = GetCellValue(i + RowIndex, ColIndex + j);
+                        if (buf != null)
                         {
-                            Array.Resize(ref arr[i], arr[i].Length - 1);
-                            break;
+                            Array.Resize(ref arr[i], arr[i].Length + 1);
+                            arr[i][j] = buf.ToString();
                         }
+                        else break;
                     }                           
                 }
                 return arr;

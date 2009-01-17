@@ -240,8 +240,8 @@ namespace RVGBilling
         {
 
             Decimal res = ctrl.CalcBalance(abonent);
-            MessageBox.Show("Списано: " + res.ToString());
-            ctrl.MakeReport(abonent, new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1));
+            MessageBox.Show("Итоговый баланс: " + res.ToString());
+            ctrl.MakeReport(abonent, new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1));//с начала месяца
             RefreshForm();
         }
 

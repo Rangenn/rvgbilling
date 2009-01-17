@@ -203,6 +203,7 @@ namespace RVGBilling
             openFileDialog.Filter = "CSV files|*.csv|All files|*.*";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                
                 controller.ImportRatesCSV(openFileDialog.FileName);
             }
         }
@@ -228,6 +229,24 @@ namespace RVGBilling
         private void RatesViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controller.ViewRates();
+        }
+
+        private void ExportCallsExcelToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.Filter = "Excel files|*.xls|All files|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                controller.ExportCallsExcel(saveFileDialog.FileName);
+            }
+        }
+
+        private void ExportCallsCsvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.Filter = "CSV files|*.csv|All files|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                controller.ExportCallsExcel(saveFileDialog.FileName);
+            }
         }
     }
 }

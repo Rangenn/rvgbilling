@@ -394,6 +394,11 @@ namespace RVGBilling
             return Connector.Get<T>(obj.Id);
         }
 
+        /// <summary>
+        /// вычет стоимости еще не учтенных звонков. возвращает текущий(рассчитанный) баланс абонента
+        /// </summary>
+        /// <param name="ab"></param>
+        /// <returns></returns>
         public Decimal CalcBalance(Abonent ab)
         {
             Decimal res = 0;
@@ -407,7 +412,7 @@ namespace RVGBilling
             ab.balance -= res;
             ab.last_pay_date = DateTime.Today;
             Connector.Update(ab);
-            return res;
+            return ab.balance;
         }
 
         public void CalcAllBalances()
@@ -419,12 +424,15 @@ namespace RVGBilling
 
         public void MakeReport(Abonent ab, DateTime dt)
         {
-            CalcBalance(ab);
-            string[][] Arr=new string[0][];
-            //BillsArr = new string[0][];
-            //int ctr = 0;
-            foreach (Number n in ab.Numbers)
+            Decimal bal = CalcBalance(ab);
+            string[][] Arr = new string[4][];
+            Arr[0] = new string[]{"Информация об абоненте"};
+            Arr[1] = ab.ToStringArray();//выводим инфо об абоненте
+            Arr[2] = new string[] {"Звонки"};
+            Arr[3] = new string[] { "Исходящий", "Входящий", "Начало звонка", "Длительность", "Стоимость" };
+            foreach (Number n in ab.Numbers) //выводим инфо о его звонках
             {
+
                 IList<Call> buf = n.Calls;
                 for (int i = 0; i < buf.Count; i++)
                 {
@@ -434,8 +442,13 @@ namespace RVGBilling
                         Arr[Arr.Length - 1] = buf[i].ToStringArray();
                     }
                 }
-
-                IList<Bill> billbuf = n.Bills;
+            }
+            Array.Resize(ref Arr, Arr.Length + 2);
+            Arr[Arr.Length - 2] = new string[]{"Платежи"};
+            Arr[Arr.Length - 1] = new string[]{"Номер", "Сумма", "Дата"};
+            foreach (Number n in ab.Numbers) //выводим инфо о его платежах
+            {
+                IList<Bill> billbuf = n.Bills; 
                 for (int i = 0; i < billbuf.Count; i++)
                 {
                     if (billbuf[i].creation_time.CompareTo(dt) >= 0)
@@ -445,11 +458,14 @@ namespace RVGBilling
                     }
                 }
             }
+            Array.Resize(ref Arr, Arr.Length + 1);
+            Arr[Arr.Length - 1] = new string[]{"Итоговый баланс на момент выписки счета: ", bal.ToString()};
             string str = ab.Id.ToString() + ' ';
             if (ab is PrivateAbonent)
                 str += ((PrivateAbonent)ab).surname;
             if (ab is CorporateAbonent)
                 str += ((CorporateAbonent)ab).corporate_name;
+            //добавить относительный путь
             str = "C:\\report" + ' ' + str + ' ' + dt.ToShortDateString() + ' ' + DateTime.Now.ToShortDateString() + ' ' + ".xls";
             logger.log(str);
             ExportToExcel(str, Arr);
@@ -546,7 +562,16 @@ namespace RVGBilling
         {
             ImportCallsFromDataToDB(ImportFromCSV(filename));
         }
+        public void ExportCallsExcel(string filename)
+        {
+            ExportToExcel(filename, ExportCallsFromDB());
+        }
+        public void ExportCallsCSV(string filename)
+        {
+            ExportToCSV(filename, ExportCallsFromDB());
+        }
         // на входе строки вида "Вызываемый номер, вызывающий номер, время звонка, длительность"
+        //Вадик, это обломно! переделал формат входа на: "вызывающий номер, Вызываемый номер, время звонка, длительность"
         public void ImportCallsFromDataToDB(string[][] data)
         {
             ConsolePrint(data);
@@ -554,11 +579,11 @@ namespace RVGBilling
             {
                 try
                 {
-                    Number num = Connector.GetNumber(data[i][1]);
+                    Number num = Connector.GetNumber(data[i][0]);
 
                     Call call = new Call
                     {
-                        calling_number = data[i][0],
+                        calling_number = data[i][1],
                         number = num,
                         creation_time = Convert.ToDateTime(data[i][2]),
                         duration = Convert.ToInt32(data[i][3])
@@ -578,6 +603,25 @@ namespace RVGBilling
                     Console.WriteLine("Формат записи " + i + " не распознан");
                 }
             }
+        }
+        /// <summary>
+        /// Экспорт всех тарифов и цен из базы
+        /// </summary>
+        private string[][] ExportCallsFromDB()
+        {
+            IList<Call> rates = Connector.GetAll<Call>();
+            string[][] Arr = new string[0][];
+            foreach (Call c in rates)
+            {
+                //IList<Price> buf = r.Prices;
+                //for (int i = 0; i < buf.Count; i++)
+                //{
+                    Array.Resize(ref Arr, Arr.Length + 1);
+                    Arr[Arr.Length - 1] = c.ToStringArray();
+                    //Console.WriteLine("buf length : "+buf[i].ToStringArray().Length);
+                //}
+            }
+            return Arr;
         }
         #endregion
 

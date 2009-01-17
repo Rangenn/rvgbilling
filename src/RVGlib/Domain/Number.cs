@@ -45,5 +45,10 @@ namespace RVGlib.Domain
         {
             return number;
         }
+
+        public virtual string[] ToStringArray()
+        {
+            return new string[] { number, rate.name};
+        }
     }
 }

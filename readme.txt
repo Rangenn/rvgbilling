@@ -21,6 +21,7 @@ Steps of building:
 Steps to debug:
 * fill DB with "misc/RVG fill DB UTF8.sql" script (to reproduce testing data)
 * go to "/bin" and run program
+* hint: if you get npgsqlexception, try to copy npgsql.dll into folder, which contains exe file (when opening solution and debugging in Visual Studio)
 
 Links:
 
