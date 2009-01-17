@@ -109,19 +109,26 @@ namespace RVGlib.Framework
             return res;
         }
 
+        public Rate GetRate(string name)
+        {
+            ITransaction trans = Session.BeginTransaction();
+            ICriteria crit = Session.CreateCriteria(typeof(Rate)).Add(Expression.Eq("name", name));
+            IList<Rate> res = crit.List<Rate>();
+
+            trans.Commit();
+            if (res.Count == 0 || res[0] == null) throw new EstablishConnectionException("Не найдено совпадений, тариф не зарегистрирован.");
+            if (res.Count > 1) throw new EstablishConnectionException("Найдено несколько совпадений, тариф задан некорректно.");
+            return res[0];
+        }
+
         public Number GetNumber(string Number)
         {
-            //Session = SessionFactory.GetCurrentSession();
-            //Session.CreateQuery("from Abonent").
             ITransaction trans = Session.BeginTransaction();
             ICriteria crit = Session.CreateCriteria(typeof(Number)).Add(Expression.Eq("number", Number));
-
-            //if (SortBy != null) crit.addOrder(Order.asc(SortBy));
-            //IList<T> res = crit.List<T>();
             IList<Number> res = crit.List<Number>();
 
             trans.Commit();
-            if (res.Count == 0 || res[0] == null) throw new EstablishConnectionException("Не найдено совпадений, номер незарегистрирован.");
+            if (res.Count == 0 || res[0] == null) throw new EstablishConnectionException("Не найдено совпадений, номер не зарегистрирован.");
             if (res.Count > 1) throw new EstablishConnectionException("Найдено несколько совпадений, номер задан некорректно.");
             return res[0];
         }

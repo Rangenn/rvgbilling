@@ -57,18 +57,15 @@ namespace RVGBilling.Import
                 for (int i = 0; i < data.Length; i++)
                 {
                     sb.Length = 0;
+                    //Console.WriteLine("buf len :"+data[i].Length);
                     for (int j = 0; j < data[i].Length; j++)
                     {
-                        sb.Append(data[i][j]);
+                        string str = data[i][j];
+                        if (str.IndexOf(',') > 0)
+                            str=str.Replace(',', '.');
+                        sb.Append(str);
                         sb.Append(",");
                     }
-                    /*sb.Append(data[i][0]);
-                    sb.Append(",");
-                    sb.Append(data[i][1]);
-                    sb.Append(",");
-                    sb.Append(data[i][2]);
-                    sb.Append(",");
-                    sb.Append(data[i][3]);*/
                     Console.WriteLine(sb.ToString());
                     sr.WriteLine(sb.ToString());
                 }

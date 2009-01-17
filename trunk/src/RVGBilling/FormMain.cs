@@ -162,11 +162,6 @@ namespace RVGBilling
             buttonHideSearchRes_Click(sender, e);
         }
 
-        private void tariffsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            controller.ViewRates();
-        }
-
         private void calcBalancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controller.CalcAllBalances();
@@ -176,36 +171,63 @@ namespace RVGBilling
             //Здесь генерируется отчет excel. список всех звонков за месяц либо список списанных сумм.
         }
 
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ImportCallsCsvToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            openFileDialog.Filter = "CSV files|*.csv|All files|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                controller.ImportCallsCSV(openFileDialog1.FileName);
+                controller.ImportCallsCSV(openFileDialog.FileName);
             }
         }
 
-        private void excelToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ImportCallsExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            openFileDialog.Filter = "Excel files|*.xls|All files|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                controller.ImportCallsExcel(openFileDialog1.FileName);
+                controller.ImportCallsExcel(openFileDialog.FileName);
             }
         }
 
-        private void excelToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ImportRatesExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            openFileDialog.Filter = "Excel files|*.xls|All files|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                controller.ImportRatesCSV(openFileDialog1.FileName);
+                controller.ImportRatesExcel(openFileDialog.FileName);
             }
         }
 
-        private void cSVToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ImportRatesCsvToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            openFileDialog.Filter = "CSV files|*.csv|All files|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                controller.ImportRatesExcel(openFileDialog1.FileName);
+                controller.ImportRatesCSV(openFileDialog.FileName);
             }
+        }
+
+        private void ExportRatesExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.Filter = "Excel files|*.xls|All files|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                controller.ExportRatesExcel(saveFileDialog.FileName);
+            }
+        }
+
+        private void ExportRatesCsvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.Filter = "CSV files|*.csv|All files|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                controller.ExportRatesCSV(saveFileDialog.FileName);
+            }
+        }
+
+        private void RatesViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.ViewRates();
         }
     }
 }

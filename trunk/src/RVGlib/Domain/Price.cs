@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 using FluentNHibernate.Framework;
 using System.Collections.Generic;
@@ -14,14 +15,22 @@ namespace RVGlib.Domain
         /// Тариф
         /// </summary>
         public virtual Rate     rate { get; set; }
-        /// <summary>
-        /// Стоимость минуты соединения
-        /// </summary>
-        public virtual Decimal  cost_per_minute { get; set; }
+        
         /// <summary>
         /// Маска телефонных номеров
         /// </summary>
         public virtual String   mask { get; set; }
+
+        /// <summary>
+        /// Стоимость минуты соединения
+        /// </summary>
+        public virtual Decimal cost_per_minute { get; set; }
+
+        public virtual string[] ToStringArray()
+        {
+            return new string[] { rate.name, mask, Convert.ToString(cost_per_minute,CultureInfo.InvariantCulture.NumberFormat) };
+        }
+
     }
 
     public class PriceComparer : IEqualityComparer<Price>

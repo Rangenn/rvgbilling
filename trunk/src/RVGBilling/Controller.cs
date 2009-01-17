@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 using RVGlib.Domain;
 using RVGlib.Framework;
 using System.Windows.Forms;
@@ -419,8 +420,7 @@ namespace RVGBilling
         public void MakeReport(Abonent ab, DateTime dt)
         {
             CalcBalance(ab);
-            string[][] Arr;
-            Arr = new string[0][];
+            string[][] Arr=new string[0][];
             //BillsArr = new string[0][];
             //int ctr = 0;
             foreach (Number n in ab.Numbers)
@@ -481,7 +481,11 @@ namespace RVGBilling
                 DataGridViewRow Row = dgv.Rows[i];
                 for (int j = 0; j < dgv.ColumnCount; j++)
                 {
-                    arr[j] = Row.Cells[j].Value.ToString();
+                    string str;
+                    if (Row.Cells[j].ValueType.IsValueType)
+                        str = Convert.ToString(Row.Cells[j].Value, CultureInfo.InvariantCulture.NumberFormat);
+                    else str = Row.Cells[j].Value.ToString();
+                    arr[j] = str;
                 }
                 //Array.Resize(ref data, data.Length + 1);
                 data[i] = arr;
@@ -542,6 +546,7 @@ namespace RVGBilling
         {
             ImportCallsFromDataToDB(ImportFromCSV(filename));
         }
+        // на входе строки вида "Вызываемый номер, вызывающий номер, время звонка, длительность"
         public void ImportCallsFromDataToDB(string[][] data)
         {
             ConsolePrint(data);
@@ -585,46 +590,73 @@ namespace RVGBilling
         {
             ImportRatesFromDataToDB(ImportFromCSV(filename));
         }
-        public void ImportRatesFromDataToDB(string[][] data)
+
+        public void ExportRatesExcel(string filename)
+        {
+            ExportToExcel(filename, ExportRatesFromDB());
+        }
+        public void ExportRatesCSV(string filename)
+        {
+            ExportToCSV(filename, ExportRatesFromDB());
+        }
+
+        //на входе строки вида "Название тарифа, маска, цена за минуту"
+        private void ImportRatesFromDataToDB(string[][] data)
         {
             ConsolePrint(data);
             //не реализовано.
 
-            //for (int i = 0; i < data.Length; i++)
-            //{
-            //    try
-            //    {
-            //        Number num = Connector.GetNumber(data[i][1]);
+            for (int i = 0; i < data.Length; i++)
+            {
+                try
+                {
+                    Rate rate = Connector.GetRate(data[i][0]);
 
-            //        Call call = new Call
-            //        {
-            //            calling_number = data[i][0],
-            //            number = num,
-            //            creation_time = Convert.ToDateTime(data[i][2]),
-            //            duration = Convert.ToInt32(data[i][3])
-            //        };
+                    Price price = new Price
+                    {
+                        rate = rate,
+                        mask = data[i][1],
+                        cost_per_minute = Convert.ToDecimal(data[i][2],CultureInfo.InvariantCulture.NumberFormat)
+                    };
+                    if (rate.Prices.Contains<Price>(price, new PriceComparer()))
+                    {
+                        Console.WriteLine("Маска \"" + price.mask + "\" уже существует в этом тарифе.");
+                    }
+                    else
+                    {
+                        rate.Prices.Add(price);
+                        Connector.Update(rate);
+                    }
+                }
+                catch (EstablishConnectionException ex)
+                {
+                    Console.WriteLine("Тариф не найден :" + data[i][0]);
+                }
 
-            //        num.Calls.Add(call);
-            //        Connector.Update(num);
-            //        Connector.calculate_call_cost(call.Id);
-            //    }
-            //    catch (EstablishConnectionException ex)
-            //    {
-            //        Console.WriteLine("Номер не найден :" + data[i][1]);
-            //    }
-
-            //    catch (FormatException ex)
-            //    {
-            //        Console.WriteLine("Формат записи " + i + " не распознан");
-            //    }
-            //}
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Формат записи " + i + " не распознан");
+                }
+            }
         }
         /// <summary>
         /// Экспорт всех тарифов и цен из базы
         /// </summary>
-        public void ExportRates()
+        private string[][] ExportRatesFromDB()
         {
-
+            IList<Rate> rates= Connector.GetAll<Rate>();
+            string[][] Arr = new string[0][];
+            foreach (Rate r in rates)
+            {
+                IList<Price> buf = r.Prices;
+                for (int i = 0; i < buf.Count; i++)
+                {
+                        Array.Resize(ref Arr, Arr.Length + 1);
+                        Arr[Arr.Length - 1] = buf[i].ToStringArray();
+                        //Console.WriteLine("buf length : "+buf[i].ToStringArray().Length);
+                }
+            }
+            return Arr;
         }
         #endregion
 

@@ -42,10 +42,13 @@ namespace RVGBilling
         {
             // прячем ненужные колонки DataGridView
             DataGridViewColumnCollection Columns = dgvPrices.Columns;
+            //int i = 1;
             Columns["rate"].Visible = false;
-            Columns["mask"].DisplayIndex = 0;
+            //Columns["rate"].DisplayIndex = i++;
+            //Columns["mask"].DisplayIndex = i++;
             Columns["ID"].Visible = false;
-            Columns["cost_per_minute"].DisplayIndex = 1;
+            //Columns["ID"].Tag = "no_export";
+            //Columns["cost_per_minute"].DisplayIndex = i++;
         }
 
 
@@ -130,21 +133,22 @@ namespace RVGBilling
             InitGrid();
         }
 
-        private void excelToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExportExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            saveFileDialog.Filter = "Excel files|*.xls|All files|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //controller.ExportToExcel(saveFileDialog1.FileName, controller.GridToArray(dgDetails));
+                controller.ExportToExcel(saveFileDialog.FileName, controller.GridToArray(dgvPrices));
             }
         }
 
-        private void cSVToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExportCSVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Не реализовано.");
-            //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    //controller.ExportToCSV(saveFileDialog1.FileName, controller.GridToArray(dgDetails));
-            //}
+            saveFileDialog.Filter = "CSV files|*.csv|All files|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                controller.ExportToCSV(saveFileDialog.FileName, controller.GridToArray(dgvPrices));
+            }
         }
     }
 }

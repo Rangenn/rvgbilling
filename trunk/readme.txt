@@ -14,9 +14,13 @@ Steps of building:
 * create DB schema described in script.sql (you can regenerate script using billing.dm2. TOAD Data Modeller required).
 
 
-* run build.bat to build(result placed in "/bin"), build.doc.bat to generate documentation((result placed in "/bin/doc")
+* run build.bat to build(result placed in "/bin"), build.doc.bat to generate documentation((result placed in "/bin/doc").
+"/out" will contain zip-archive with source code and binaries.
 * go to "/bin"
 
+Steps to debug:
+* fill DB with "misc/RVG fill DB UTF8.sql" script (to reproduce testing data)
+* go to "/bin" and run program
 
 Links:
 
