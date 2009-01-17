@@ -11,6 +11,7 @@ using FluentNHibernate.Framework;
 
 using ExcelWorkLib;
 using RVGBilling.Import;
+using System.IO;
 
 namespace RVGBilling
 {
@@ -465,8 +466,8 @@ namespace RVGBilling
                 str += ((PrivateAbonent)ab).surname;
             if (ab is CorporateAbonent)
                 str += ((CorporateAbonent)ab).corporate_name;
-            //добавить относительный путь
-            str = "C:\\report" + ' ' + str + ' ' + dt.ToShortDateString() + ' ' + DateTime.Now.ToShortDateString() + ' ' + ".xls";
+            string app_path  = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            str = app_path +"\\report" + ' ' + str + ' ' + dt.ToShortDateString() + ' ' + DateTime.Now.ToShortDateString() + ' ' + ".xls";
             logger.log(str);
             ExportToExcel(str, Arr);
         }
