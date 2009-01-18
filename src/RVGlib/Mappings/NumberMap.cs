@@ -7,7 +7,9 @@ namespace RVGlib.Mappings
     {
         public NumberMap()
         {
-            this.TableName = "numbers";
+            //this.TableName = "numbers";
+            WithTable("numbers");
+        //    Cache.AsReadWrite();
             Id(x => x.Id);
             Map(x => x.number);
             //Map(x => x.abonent_id);

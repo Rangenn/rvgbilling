@@ -8,7 +8,9 @@ namespace RVGlib.Mappings
         public PrivateAbonentMap()
         {
             //this.
-            this.TableName = "private_abonents";
+            //this.TableName = "private_abonents";
+            WithTable("private_abonents");
+         //   Cache.AsReadWrite();
             Id(x => x.Id);
             Map(x => x.address);
             Map(x => x.phone);
