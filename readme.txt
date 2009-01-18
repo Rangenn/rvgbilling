@@ -1,7 +1,7 @@
-To build project you need:
+To build/run project you need:
 
 1).NET Framework 3.5
-2)Nant 0.86beta, Nant Contrib (NDoc3, wiki2xhtml, htmlhelp -  for Docs generation)
+2)Nant 0.86beta, Nant Contrib (NDoc3, wiki2xhtml, htmlhelp -  for Docs generation), NUnit(for launching tests)
 3)PostgreSQL 8.3 server.
 4)JDK 1.6
 
@@ -9,7 +9,7 @@ To build project you need:
 Steps of building:
 
 * go to "/misc" folder
-* set local path to vars in _props.bat and copy it to root folder
+* set local path to vars in _props.bat and copy it to project root folder
 * set database connection params in hibernate.cfg.xml
 * create DB schema described in script.sql (you can regenerate script using billing.dm2. TOAD Data Modeller required).
 
@@ -20,10 +20,12 @@ Steps of building:
 
 Steps to debug:
 * fill DB with "misc/RVG fill DB UTF8.sql" script (to reproduce testing data)
-* go to "/bin" and run program
-* hint: if you get npgsqlexception, try to copy npgsql.dll into folder, which contains exe file (when opening solution and debugging in Visual Studio)
+* run program
+* hint: if you get NpgsqlException, try to copy npgsql.dll into folder, which contains exe file (when opening solution and debugging in Visual Studio)
+
 
 Links:
 
+http://code.google.com/p/rvgbilling/issues/list - Our BugTracker! known bugs placed here.
 http://nant.sourceforge.net/
 http://www.pgadmin.org/

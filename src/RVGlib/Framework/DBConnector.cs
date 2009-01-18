@@ -116,8 +116,8 @@ namespace RVGlib.Framework
             IList<Rate> res = crit.List<Rate>();
 
             trans.Commit();
-            if (res.Count == 0 || res[0] == null) throw new EstablishConnectionException("Не найдено совпадений, тариф не зарегистрирован.");
-            if (res.Count > 1) throw new EstablishConnectionException("Найдено несколько совпадений, тариф задан некорректно.");
+            if (res.Count == 0 || res[0] == null) throw new DBSearchException("Не найдено совпадений, тариф не зарегистрирован.");
+            if (res.Count > 1) throw new DBSearchException("Найдено несколько совпадений, тариф задан некорректно.");
             return res[0];
         }
 
@@ -128,8 +128,8 @@ namespace RVGlib.Framework
             IList<Number> res = crit.List<Number>();
 
             trans.Commit();
-            if (res.Count == 0 || res[0] == null) throw new EstablishConnectionException("Не найдено совпадений, номер не зарегистрирован.");
-            if (res.Count > 1) throw new EstablishConnectionException("Найдено несколько совпадений, номер задан некорректно.");
+            if (res.Count == 0 || res[0] == null) throw new DBSearchException("Не найдено совпадений, номер не зарегистрирован.");
+            if (res.Count > 1) throw new DBSearchException("Найдено несколько совпадений, номер задан некорректно.");
             return res[0];
         }
 
@@ -156,8 +156,8 @@ namespace RVGlib.Framework
                 }
                 i += 1;
             }
-            if (res.Count == 0 || res[0] == null) throw new EstablishConnectionException("Не найдено совпадений, номер незарегистрирован.");
-            if (res.Count > 1) throw new EstablishConnectionException("Найдено несколько совпадений, номер задан некорректно.");
+            if (res.Count == 0 || res[0] == null) throw new DBSearchException("Не найдено совпадений, номер незарегистрирован.");
+            if (res.Count > 1) throw new DBSearchException("Найдено несколько совпадений, номер задан некорректно.");
             return res[0];
         }
 
@@ -256,24 +256,24 @@ namespace RVGlib.Framework
     /// <summary>
     /// Исключение поиска абонента по номеру.
     /// </summary>
-    public class SearchByNumberException : Exception
+    public class DBSearchException : Exception
     {
         public override String Message { get { return msg; } }
-        private string msg = "Ошибка при поиске по номеру.\n";
+        private string msg = "Ошибка при запросе поиска к БД.\n";
 
-        public SearchByNumberException()
+        public DBSearchException()
             : base()
         {
 
         }
 
-        public SearchByNumberException(string message)
+        public DBSearchException(string message)
             : base(message)
         {
             this.msg += message;
         }
 
-        public SearchByNumberException(string message, Exception InnerException)
+        public DBSearchException(string message, Exception InnerException)
             : base(message, InnerException)
         {
             this.msg += message;
