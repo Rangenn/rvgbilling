@@ -248,5 +248,10 @@ namespace RVGBilling
                 controller.ExportCallsExcel(saveFileDialog.FileName);
             }
         }
+
+        private void dgvSearch_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            btnSelectBody_Click(this, new EventArgs());
+        }
     }
 }
