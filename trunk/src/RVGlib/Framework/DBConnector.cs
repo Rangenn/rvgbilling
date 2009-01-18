@@ -45,7 +45,7 @@ namespace RVGlib.Framework
                 throw new EstablishConnectionException("", ex);
             }
             Session.FlushMode = FlushMode.Always;
-            Session.CacheMode = CacheMode.Put;
+            //Session.CacheMode = CacheMode.Ignore;
             //Sess
         }
 
@@ -254,7 +254,7 @@ namespace RVGlib.Framework
     }
 
     /// <summary>
-    /// Исключение поиска абонента по номеру.
+    /// �?сключение поиска абонента по номеру.
     /// </summary>
     public class DBSearchException : Exception
     {
