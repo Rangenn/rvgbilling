@@ -90,7 +90,7 @@ namespace ExcelWorkLib
                 _app = new Excel.Application();
                 _app.Visible = isVisible;
                 _app.DisplayAlerts = true;
-                _app.SheetsInNewWorkbook = 1;
+                //_app.SheetsInNewWorkbook = 1;
                 _app.DefaultSaveFormat = Excel.XlFileFormat.xlExcel9795;
             }
             catch (Exception ex) { throw new ExcelConnectorException("Start failed.\n", ex); } 
@@ -102,6 +102,7 @@ namespace ExcelWorkLib
         {
             if (_app != null)
             {
+                //_curworkbook.Saved = true; //строчка прячет диалог о сохранении изменений, но выбираент вариант "нет"
                 _app.Workbooks.Close();
                 _app.Quit();
             }
@@ -119,14 +120,13 @@ namespace ExcelWorkLib
             {
                 _WorkbookFileName = filename;
                 //Открываем книгу(файл) и получаем на нее ссылку          
-                OpenFileDialog o = new OpenFileDialog();
-                o.FileName = filename;
                 if (CreateOrReplace)
                 {
                     _curworkbook = _app.Workbooks.Add(Type.Missing);
                     _curworkbook.SaveAs(filename, Excel.XlFileFormat.xlExcel9795, Type.Missing, Type.Missing, Type.Missing,
                        Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing,
                         Type.Missing, Type.Missing, Type.Missing);
+                    //_curworkbook.ListChangesOnNewSheet = true;
                 }
                 else
                 {
@@ -136,10 +136,9 @@ namespace ExcelWorkLib
                         Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                         Type.Missing, Type.Missing);
                 }               
-                _curworkbook.Saved = true;
                 _sheets = _curworkbook.Worksheets;
             }
-            catch (Exception ex) { Close(); throw new ExcelConnectorException("SelectExcelWorkSheet failed.\n", ex); }
+            catch (Exception ex) { Close(); throw new ExcelConnectorException("OpenExcelWorkBook failed.\n", ex); }
         }
         /// <summary>
         /// выбрать лист текущей книги для работы
