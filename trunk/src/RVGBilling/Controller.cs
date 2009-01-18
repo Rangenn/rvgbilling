@@ -105,11 +105,12 @@ namespace RVGBilling
                 err = buf.corporate_name == "" || buf.INN == "";
             }
             if (err) MessageBox.Show("Введены некорректные данные.");
-            else
-            {
-                _connector.Save(ab);
-                ViewAbonent(ab);
-            }
+            else try
+                {
+                    _connector.Save(ab);
+                    ViewAbonent(ab);
+                }
+                catch (NHibernate.Exceptions.GenericADOException ex) { Console.WriteLine(ex.Message); }
         }
 
         public void ViewAbonent(Abonent ab)
@@ -321,9 +322,9 @@ namespace RVGBilling
                         break;
                     }
                 }
-                if (num == null) throw new SearchByNumberException("Ошибка поиска номера.", new NullReferenceException());
+                if (num == null) throw new DBSearchException("Ошибка поиска номера.", new NullReferenceException());
             }
-            catch (SearchByNumberException ex) { MessageBox.Show(ex.Message); return; }
+            catch (DBSearchException ex) { MessageBox.Show(ex.Message); return; }
 
             string s = "Пополнить баланс на сумму " + summa.ToString();
             if (abonent is PrivateAbonent)
