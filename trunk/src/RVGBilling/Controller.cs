@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Text;
 using System.Globalization;
 using RVGlib.Domain;
@@ -343,10 +344,9 @@ namespace RVGBilling
                 };
 
                 num.Bills.Add(b);
-                //abonent.Numbers[0].Bills.Add(b);
                 Connector.Update(num);
-                Connector.add_bill_money(b.Id);
-                //abonent = Connector.Get<Abonent>(abonent.Id);//refreshing нет смысла обновлять абонента, который объявлен локально
+                Connector.add_bill_money(b);
+                Connector.Refresh(abonent);
             }
         }
 
@@ -376,25 +376,25 @@ namespace RVGBilling
             else MessageBox.Show("Список элементов для отображения пуст.");
         }
 
-        public void UpdateAbonentList(List<Abonent> objects)
-        {
-            for (int i = 0; i < objects.Count; i++)
-            {
-                if (objects[i] is PrivateAbonent)
-                {
-                    objects[i] = UpdateEntity((PrivateAbonent)objects[i]);
-                }
-                if (objects[i] is CorporateAbonent)
-                {
-                    objects[i] = UpdateEntity((CorporateAbonent)objects[i]);
-                }
-            }
-        }
+        //public void UpdateAbonentList(List<Abonent> objects)
+        //{
+        //    for (int i = 0; i < objects.Count; i++)
+        //    {
+        //        if (objects[i] is PrivateAbonent)
+        //        {
+        //            objects[i] = UpdateEntity((PrivateAbonent)objects[i]);
+        //        }
+        //        if (objects[i] is CorporateAbonent)
+        //        {
+        //            objects[i] = UpdateEntity((CorporateAbonent)objects[i]);
+        //        }
+        //    }
+        //}
 
-        public T UpdateEntity<T>(T obj) where T : Entity
-        {
-            return Connector.Get<T>(obj.Id);
-        }
+        //public T UpdateEntity<T>(T obj) where T : Entity
+        //{
+        //    return Connector.Get<T>(obj.Id);
+        //}
 
         /// <summary>
         /// вычет стоимости еще не учтенных звонков. возвращает текущий(рассчитанный) баланс абонента
@@ -404,6 +404,7 @@ namespace RVGBilling
         public Decimal CalcBalance(Abonent ab)
         {
             Decimal res = 0;
+            if (ab.Numbers == null) return ab.balance;
             foreach (Number n in ab.Numbers)
                 foreach (Call c in n.Calls)
                     if (c.creation_time >= ab.last_pay_date)
@@ -419,9 +420,15 @@ namespace RVGBilling
 
         public void CalcAllBalances()
         {
-            IList<Abonent> abonents = Connector.GetAll<Abonent>();
-            foreach (Abonent ab in abonents)
-                CalcBalance(ab);
+            //Thread t = new Thread(delegate()
+            //{
+                foreach (Abonent ab in Connector.GetAll<Abonent>())
+                    CalcBalance(ab);
+            //}
+            //);
+            //t.Start();
+            //MessageBox.Show("Calculating... Please wait");
+            //t.Join();
         }
 
         public void MakeReport(Abonent ab, DateTime dt)
@@ -594,7 +601,7 @@ namespace RVGBilling
 
                     num.Calls.Add(call);
                     Connector.Update(num);
-                    Connector.calculate_call_cost(call.Id);
+                    Connector.calculate_call_cost(call);
                 }
                 catch (EstablishConnectionException ex)
                 {

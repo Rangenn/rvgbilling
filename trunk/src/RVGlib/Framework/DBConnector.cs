@@ -22,8 +22,8 @@ namespace RVGlib.Framework
         public ISession Session { 
             get 
             {
-                if (session == null)
-                    session=SessionSource.CreateSession();
+                if (session == null || !session.IsOpen)
+                    session = SessionSource.CreateSession();
                 return session;
             }
             set
@@ -46,15 +46,11 @@ namespace RVGlib.Framework
             }
             Session.FlushMode = FlushMode.Always;
             //Session.CacheMode = CacheMode.Ignore;
-            //Sess
         }
 
         ~DBConnector()
         {
-            //SessionSource.
-            //Session.Flush();
             //Session.Close();
-
         }
 
         public T Get<T>(Int64 id) where T:Entity
@@ -63,6 +59,7 @@ namespace RVGlib.Framework
             T res = Session.Get<T>(id);
             trans.Commit();
             //Session.Flush();
+            //Session.Close();
             return res;
         }
 
@@ -71,7 +68,7 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.Save(en);
             trans.Commit();
-            //Session.Flush();
+            //Session.Close();
         }
 
         public void Delete(Entity en)
@@ -80,7 +77,7 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.Delete(en);
             trans.Commit();
-            //Session.Flush();
+            //Session.Close();
         }
 
         public void Update(Entity en)
@@ -89,8 +86,16 @@ namespace RVGlib.Framework
             ITransaction trans = Session.BeginTransaction();
             Session.Update(en);
             trans.Commit();
-            //Session.Flush();
-            //Session.Clear();            
+            //Session.Close();            
+        }
+
+        public void Refresh(Entity en)
+        {
+            //Session = SessionFactory.GetCurrentSession();
+            //ITransaction trans = Session.BeginTransaction();
+            Session.Refresh(en);
+            //trans.Commit();
+            //Session.Close();
         }
 
         public IList<T> GetAll<T>() where T : Entity
@@ -103,9 +108,8 @@ namespace RVGlib.Framework
             //if (SortBy != null) crit.addOrder(Order.asc(SortBy));
             //IList<T> res = crit.List<T>();
             IList<T> res = crit.List<T>();
-
-
             trans.Commit();
+            //Session.Close();
             return res;
         }
 
@@ -116,6 +120,7 @@ namespace RVGlib.Framework
             IList<Rate> res = crit.List<Rate>();
 
             trans.Commit();
+            //Session.Close();
             if (res.Count == 0 || res[0] == null) throw new DBSearchException("Не найдено совпадений, тариф не зарегистрирован.");
             if (res.Count > 1) throw new DBSearchException("Найдено несколько совпадений, тариф задан некорректно.");
             return res[0];
@@ -128,6 +133,7 @@ namespace RVGlib.Framework
             IList<Number> res = crit.List<Number>();
 
             trans.Commit();
+            //Session.Close();
             if (res.Count == 0 || res[0] == null) throw new DBSearchException("Не найдено совпадений, номер не зарегистрирован.");
             if (res.Count > 1) throw new DBSearchException("Найдено несколько совпадений, номер задан некорректно.");
             return res[0];
@@ -146,6 +152,7 @@ namespace RVGlib.Framework
                 //.Add(Example.Create(AbExample).ExcludeNulls().ExcludeZeroes());
             IList<Abonent> res = crit.List<Abonent>();
             trans.Commit();
+            //Session.Close();
             int i = 0;
             while (i < res.Count)
             {
@@ -181,6 +188,7 @@ namespace RVGlib.Framework
 
             IList<PrivateAbonent> ab = crit.List<PrivateAbonent>().Distinct<PrivateAbonent>().ToList<PrivateAbonent>();
             trans.Commit();
+            //Session.Close();
             return ab;
         }
 
@@ -198,6 +206,7 @@ namespace RVGlib.Framework
 
             IList<CorporateAbonent> ab = crit.List<CorporateAbonent>().Distinct<CorporateAbonent>().ToList<CorporateAbonent>();
             trans.Commit();
+            //Session.Close();
             return ab;
         }
 
@@ -233,28 +242,31 @@ namespace RVGlib.Framework
             crit.Add(cr);
             IList<T> res = crit.List<T>();
             trans.Commit();
+            //Session.Close();
             return res;
         }
 
-        public void calculate_call_cost(long call_id)
+        public void calculate_call_cost(Call c)
         {
             ITransaction trans = Session.BeginTransaction();
-            Session.CreateSQLQuery("SELECT calculate_call_cost_function(" + call_id.ToString() + ");").ExecuteUpdate();
+            Session.CreateSQLQuery("SELECT calculate_call_cost_function(" + c.Id.ToString() + ");").ExecuteUpdate();
             trans.Commit();
-            //Session.Flush();
+            Refresh(c);
+            //Session.Close();
         }
 
-        public void add_bill_money(long bill_id)
+        public void add_bill_money(Bill b)
         {
             ITransaction trans = Session.BeginTransaction();
-            Session.CreateSQLQuery("SELECT add_bill_money(" + bill_id.ToString() + ");").ExecuteUpdate();
+            Session.CreateSQLQuery("SELECT add_bill_money(" + b.Id.ToString() + ");").ExecuteUpdate();
             trans.Commit();
-            //Session.Flush();
+            Refresh(b);
+            //Session.Close();
         }
     }
 
     /// <summary>
-    /// �?сключение поиска абонента по номеру.
+    /// Исключение поиска абонента по номеру.
     /// </summary>
     public class DBSearchException : Exception
     {

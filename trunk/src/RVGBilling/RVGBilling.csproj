@@ -107,12 +107,6 @@
     <Compile Include="FormAddNumber.Designer.cs">
       <DependentUpon>FormAddNumber.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPayment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPayment.designer.cs">
-      <DependentUpon>FormPayment.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormPrice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,9 +161,6 @@
     <EmbeddedResource Include="FormAddNumber.resx">
       <DependentUpon>FormAddNumber.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPayment.resx">
-      <DependentUpon>FormPayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrice.resx">
       <DependentUpon>FormPrice.cs</DependentUpon>

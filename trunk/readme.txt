@@ -1,7 +1,7 @@
 To build/run project you need:
 
 1).NET Framework 3.5
-2)Nant 0.86beta, Nant Contrib (NDoc3, wiki2xhtml, htmlhelp -  for Docs generation), NUnit(for launching tests)
+2)Nant 0.86beta, Nant Contrib (NDoc3, Wiki2xhtml, Htmlhelp -  for Docs generation), NUnit(for launching tests)
 3)PostgreSQL 8.3 server.
 4)JDK 1.6
 

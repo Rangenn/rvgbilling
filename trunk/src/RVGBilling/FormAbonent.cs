@@ -124,9 +124,10 @@ namespace RVGBilling
         /// </summary>
         private void RefreshForm()
         {
+            if (abonent == null) throw new NullReferenceException("Abonent is null.");
+            ctrl.Connector.Refresh(abonent);
             if (abonent is PrivateAbonent)
             {
-                abonent = ctrl.UpdateEntity<PrivateAbonent>((PrivateAbonent)abonent);
                 PrivateAbonent person = (PrivateAbonent)abonent;               
                 labelSurname.Text = "Фамилия";
                 tbSurname.Text = person.surname;               
@@ -152,7 +153,6 @@ namespace RVGBilling
             }
             if (abonent is CorporateAbonent)
             {
-                abonent = ctrl.UpdateEntity<CorporateAbonent>((CorporateAbonent)abonent);
                 CorporateAbonent corp = (CorporateAbonent)abonent;
                 labelSurname.Text = "Название";
                 tbSurname.Text = corp.corporate_name;
@@ -206,11 +206,11 @@ namespace RVGBilling
             int index = lbNumbers.SelectedIndex;
             if (index >= 0)
             {
-                FormPayment fmp = new FormPayment(100);
-                if (fmp.ShowDialog() == DialogResult.OK)
-                {
-                    ctrl.Payment(lbNumbers.SelectedItem.ToString(), fmp.summa);
-                }
+                //FormPayment fmp = new FormPayment(100);
+                //if (fmp.ShowDialog() == DialogResult.OK)
+                //{
+                    ctrl.Payment(lbNumbers.SelectedItem.ToString(), 100);
+                //}
             }
             else MessageBox.Show("Номер не выбран");
             RefreshForm();
@@ -250,9 +250,5 @@ namespace RVGBilling
             ctrl.MakeReport(abonent, new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1));//с начала месяца
             RefreshForm();
         }
-
-
-
-
     }
 }
