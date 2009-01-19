@@ -206,11 +206,11 @@ namespace RVGBilling
             int index = lbNumbers.SelectedIndex;
             if (index >= 0)
             {
-                //FormPayment fmp = new FormPayment(100);
-                //if (fmp.ShowDialog() == DialogResult.OK)
-                //{
-                    ctrl.Payment(lbNumbers.SelectedItem.ToString(), 100);
-                //}
+                FormPayment fmp = new FormPayment(100);
+                if (fmp.ShowDialog() == DialogResult.OK)
+                {
+                    ctrl.Payment(lbNumbers.SelectedItem.ToString(), fmp.summa);
+                }
             }
             else MessageBox.Show("Номер не выбран");
             RefreshForm();

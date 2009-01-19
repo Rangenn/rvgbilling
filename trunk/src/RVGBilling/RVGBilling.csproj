@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{64A16FB5-F22A-47FB-9BAA-62701332E61F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -107,6 +107,12 @@
     <Compile Include="FormAddNumber.Designer.cs">
       <DependentUpon>FormAddNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPayment.Designer.cs">
+      <DependentUpon>FormPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPrice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +166,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddNumber.resx">
       <DependentUpon>FormAddNumber.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPayment.resx">
+      <DependentUpon>FormPayment.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrice.resx">
