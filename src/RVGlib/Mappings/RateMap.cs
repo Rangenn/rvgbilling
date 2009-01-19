@@ -8,8 +8,8 @@ namespace RVGlib.Mappings
         public RateMap()
         {
             
-            //this.TableName = "rates";
-            WithTable("rates");
+            this.TableName = "rates";
+            //WithTable("rates");
          //   Cache.AsReadWrite();
             Id(x => x.Id);
             Map(x => x.name).CanNotBeNull().WithLengthOf(100);

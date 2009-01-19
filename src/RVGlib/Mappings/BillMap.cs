@@ -7,8 +7,8 @@ namespace RVGlib.Mappings
     {
         public BillMap()
         {            
-           // this.TableName = "bills";
-            WithTable("bills");
+            this.TableName = "bills";
+            //WithTable("bills");
            // Cache.AsReadWrite();
             Id(x => x.Id);
             Map(x => x.creation_time);

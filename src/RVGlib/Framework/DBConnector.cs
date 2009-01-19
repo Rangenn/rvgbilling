@@ -89,12 +89,12 @@ namespace RVGlib.Framework
             //Session.Close();            
         }
 
-        public void Refresh(Entity en)
+        public void Refresh<T>(T en) where T:Entity
         {
             //Session = SessionFactory.GetCurrentSession();
             //ITransaction trans = Session.BeginTransaction();
             //Session.Evict(en);
-            //Session.Get<T>(en.Id);
+            //en = Session.Get<T>(en.Id);
             Session.Refresh(en, LockMode.Force);
             //trans.Commit();
             //Session.Close();

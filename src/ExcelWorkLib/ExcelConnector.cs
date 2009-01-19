@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace ExcelWorkLib
 {
@@ -58,11 +59,11 @@ namespace ExcelWorkLib
         /// </summary>
         /// <param name="isVisible"></param>
         /// <param name="filename"></param>
-        /// <param name="CreateOrReplace">создать книгу(в т.ч. поверх существующей)</param>
-        public ExcelConnector(bool isVisible, string filename, bool CreateOrReplace)
+
+        public ExcelConnector(bool isVisible, string filename)
             : this(isVisible)
         {
-            OpenExcelWorkBook(filename, CreateOrReplace);
+            OpenExcelWorkBook(filename);
             //SelectExcelWorkSheet(1);
         }
         /// <summary>
@@ -70,10 +71,9 @@ namespace ExcelWorkLib
         /// </summary>
         /// <param name="isVisible"></param>
         /// <param name="filename"></param>
-        /// <param name="CreateOrReplace">создать книгу(в т.ч. поверх существующей)</param>
         /// <param name="worksheetnum"></param>
-        public ExcelConnector(bool isVisible, string filename, bool CreateOrReplace, int worksheetnum)
-            : this(isVisible, filename, CreateOrReplace)
+        public ExcelConnector(bool isVisible, string filename, int worksheetnum)
+            : this(isVisible, filename)
         {
             SelectExcelWorkSheet(worksheetnum);
         }
@@ -103,8 +103,8 @@ namespace ExcelWorkLib
             if (_app != null)
             {
                 //_curworkbook.Saved = true; //строчка прячет диалог о сохранении изменений, но выбираент вариант "нет"
-                //_app.Workbooks.Close();
-                _app.ActiveWorkbook.Close(save, WorkbookFileName, false);
+                //if (!save) _app.Workbooks.Close();
+                _curworkbook.Close(save, WorkbookFileName, false);
                 _app.Quit();
             }
         }
@@ -115,13 +115,13 @@ namespace ExcelWorkLib
         /// <param name="filename"></param>
         /// <param name="CreateOrReplace">создать книгу(в т.ч. поверх существующей)</param>
         /// <returns></returns>
-        public void OpenExcelWorkBook(string filename, bool CreateOrReplace)
+        public void OpenExcelWorkBook(string filename)
         {
             try
             {
                 _WorkbookFileName = filename;
                 //Открываем книгу(файл) и получаем на нее ссылку          
-                if (CreateOrReplace)
+                if (!File.Exists(filename))
                 {
                     _curworkbook = _app.Workbooks.Add(Type.Missing);
                     //_curworkbook.SaveAs(filename, Excel.XlFileFormat.xlExcel9795, Type.Missing, Type.Missing, Type.Missing,

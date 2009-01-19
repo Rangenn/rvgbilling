@@ -43,7 +43,8 @@ namespace RVGBilling
                 _connector = new DBConnector();
                 formMain = new FormMain(this);
                 formMain.Show();
-                _connector.GetAll<Abonent>();//для кеширования
+                //_connector.GetAll<PrivateAbonent>();//для кеширования
+                //_connector.GetAll<CorporateAbonent>();//для кеширования
                 logger.log("Controller Created.");
         }
         
@@ -422,8 +423,10 @@ namespace RVGBilling
         {
             //Thread t = new Thread(delegate()
             //{
-                foreach (Abonent ab in Connector.GetAll<Abonent>())
-                    CalcBalance(ab);
+            foreach (Abonent ab in Connector.GetAll<PrivateAbonent>())
+                CalcBalance(ab);
+            foreach (Abonent ab in Connector.GetAll<CorporateAbonent>())
+                CalcBalance(ab);
             //}
             //);
             //t.Start();

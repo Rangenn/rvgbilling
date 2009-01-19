@@ -7,8 +7,8 @@ namespace RVGlib.Mappings
     {
         public CorporateAbonentMap()
         {
-            //this.TableName = "corporate_abonents";
-            WithTable("corporate_abonents");
+            this.TableName = "corporate_abonents";
+            //WithTable("corporate_abonents");
             //Cache.AsReadWrite();
             Id(x => x.Id);
             Map(x => x.address);
