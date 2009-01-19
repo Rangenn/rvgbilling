@@ -103,9 +103,20 @@ namespace ExcelWorkLib
             if (_app != null)
             {
                 //_curworkbook.Saved = true; //строчка прячет диалог о сохранении изменений, но выбираент вариант "нет"
-                //if (!save) _app.Workbooks.Close();
-                _curworkbook.Close(save, WorkbookFileName, false);
-                _app.Quit();
+                //_app.Workbooks.Close();
+                try
+                {
+                    _app.ActiveWorkbook.Close(save, WorkbookFileName, false);
+                }
+                catch (System.Runtime.InteropServices.COMException ex)
+                {
+                    _app.ActiveWorkbook.Saved = true;
+                    _app.Workbooks.Close();
+                }
+                finally
+                {
+                    _app.Quit();
+                }
             }
         }
 
