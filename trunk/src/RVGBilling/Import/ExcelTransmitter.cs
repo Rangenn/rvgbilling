@@ -22,7 +22,7 @@ namespace RVGBilling.Import
             finally
             {
                 System.Console.WriteLine("Закрываю Excel application...");
-                if (_ExcelClient != null) _ExcelClient.Close();
+                if (_ExcelClient != null) _ExcelClient.Close(true);
 
             }
         }
@@ -43,7 +43,7 @@ namespace RVGBilling.Import
             finally
             {
                 System.Console.WriteLine("Закрываю Excel application...");
-                if (_ExcelClient != null) _ExcelClient.Close();
+                if (_ExcelClient != null) _ExcelClient.Close(false);
 
             }
         }
@@ -64,7 +64,7 @@ namespace RVGBilling.Import
             finally
             {
                 System.Console.WriteLine("Закрываю Excel application...");
-                if (_ExcelClient != null) _ExcelClient.Close();
+                if (_ExcelClient != null) _ExcelClient.Close(false);
 
             }
         }
