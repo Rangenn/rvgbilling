@@ -113,11 +113,15 @@ namespace RVGBilling
 
         private void btnSelectBody_Click(object sender, EventArgs e)
         {
-            int index=dgvSearch.CurrentRow.Index;
-            if (index >= 0)
+            try
             {
-                controller.ViewAbonent(abonents[index]);
+                int index = dgvSearch.CurrentRow.Index;
+                if (index >= 0)
+                {
+                    controller.ViewAbonent(abonents[index]);
+                }
             }
+            catch (NullReferenceException ex) { MessageBox.Show("Не выделен абонент в таблице"); }
         }
 
         private void btnPayment_Click(object sender, EventArgs e)
@@ -137,11 +141,10 @@ namespace RVGBilling
                 return;
             }
             controller.Payment(tbNumber.Text, sum);
-            controller.UpdateAbonentList(abonents);
+            //controller.UpdateAbonentList(abonents)
             dgvSearch.Update();
             tbNumber.Text = "";
             tbSumma.Text = "";
-
             //обновляем DataGridView
             bs.ResetBindings(false);
             //сделать обработку исключения

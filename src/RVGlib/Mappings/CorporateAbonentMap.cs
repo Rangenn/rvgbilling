@@ -9,7 +9,7 @@ namespace RVGlib.Mappings
         {
             //this.TableName = "corporate_abonents";
             WithTable("corporate_abonents");
-          //  Cache.AsReadWrite();
+            //Cache.AsReadWrite();
             Id(x => x.Id);
             Map(x => x.address);
             Map(x => x.phone);
@@ -20,7 +20,6 @@ namespace RVGlib.Mappings
             Map(x => x.dissolved);
             HasMany<Number>(x => x.Numbers)
                 .WithKeyColumn("abonent_id")
-                //.AsList()
                 .Cascade.All().LazyLoad().IsInverse();
 
             Map(x => x.corporate_name);
