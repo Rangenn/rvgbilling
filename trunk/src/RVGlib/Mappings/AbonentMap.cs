@@ -8,8 +8,8 @@ namespace RVGlib.Mappings
     {
         public AbonentMap()
         {         
-            //this.TableName = "abonents";//!!!
-            WithTable("abonents");
+            this.TableName = "abonents";//!!!
+            //WithTable("abonents");
             //Cache.AsReadWrite();
             Id(x => x.Id);
             

@@ -7,8 +7,8 @@ namespace RVGlib.Mappings
     {
         public CallMap()
         {            
-            //this.TableName = "calls";
-            WithTable("calls");
+            this.TableName = "calls";
+            //WithTable("calls");
            // Cache.AsReadWrite();
             Id(x => x.Id);
             Map(x => x.calling_number);

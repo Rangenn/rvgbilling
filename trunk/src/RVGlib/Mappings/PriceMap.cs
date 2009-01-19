@@ -8,8 +8,8 @@ namespace RVGlib.Mappings
     {
         public PriceMap()
         {            
-           // this.TableName = "prices";
-            WithTable("prices");
+            this.TableName = "prices";
+            //WithTable("prices");
        //     Cache.AsReadWrite();
             Id(x => x.Id);
             References(x => x.rate);

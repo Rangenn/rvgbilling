@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using ExcelWorkLib;
+using System.IO;
 
 namespace RVGBilling.Import
 {
@@ -15,7 +16,7 @@ namespace RVGBilling.Import
             ExcelConnector _ExcelClient = null;
             try
             {
-                _ExcelClient = new ExcelConnector(false, filename, true, 1);
+                _ExcelClient = new ExcelConnector(false, filename, 1);
                 _ExcelClient.SetCellRange(1, 1, data);
             }
             catch (ExcelConnectorException ex) { System.Console.WriteLine(ex.Message); }
@@ -35,7 +36,7 @@ namespace RVGBilling.Import
             string[][] res = null;
             try
             {
-                _ExcelClient = new ExcelConnector(false, filename, false, 1);
+                _ExcelClient = new ExcelConnector(false, filename, 1);
                 res = _ExcelClient.GetCellRange(1, 1, RowCount, ColCount);
                 return res;
             }
@@ -48,7 +49,6 @@ namespace RVGBilling.Import
             }
         }
 
-        // not tested yet
         public string[][] Import(string filename)
         {
             System.Console.WriteLine("Создаю Excel application...");
@@ -56,7 +56,7 @@ namespace RVGBilling.Import
             string[][] res = null;
             try
             {
-                _ExcelClient = new ExcelConnector(false, filename, false, 1);
+                _ExcelClient = new ExcelConnector(false, filename, 1);
                 res = _ExcelClient.GetNotEmptyCellRange(1, 1);
                 return res;
             }
