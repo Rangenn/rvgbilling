@@ -86,7 +86,7 @@ namespace ExcelWorkLib
         {
             try
             {
-                Close();
+                Close(true);
                 _app = new Excel.Application();
                 _app.Visible = isVisible;
                 _app.DisplayAlerts = true;
@@ -98,12 +98,13 @@ namespace ExcelWorkLib
         /// <summary>
         /// Выйти из Excel.Application
         /// </summary>
-        public void Close()
+        public void Close(bool save)
         {
             if (_app != null)
             {
                 //_curworkbook.Saved = true; //строчка прячет диалог о сохранении изменений, но выбираент вариант "нет"
-                _app.Workbooks.Close();
+                //_app.Workbooks.Close();
+                _app.ActiveWorkbook.Close(save, WorkbookFileName, false);
                 _app.Quit();
             }
         }
@@ -123,10 +124,10 @@ namespace ExcelWorkLib
                 if (CreateOrReplace)
                 {
                     _curworkbook = _app.Workbooks.Add(Type.Missing);
-                    _curworkbook.SaveAs(filename, Excel.XlFileFormat.xlExcel9795, Type.Missing, Type.Missing, Type.Missing,
-                       Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing,
-                        Type.Missing, Type.Missing, Type.Missing);
-                    //_curworkbook.ListChangesOnNewSheet = true;
+                    //_curworkbook.SaveAs(filename, Excel.XlFileFormat.xlExcel9795, Type.Missing, Type.Missing, Type.Missing,
+                    //   Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing,
+                    //    Type.Missing, Type.Missing, Type.Missing);
+                    ////_curworkbook.ListChangesOnNewSheet = true;
                 }
                 else
                 {
@@ -138,7 +139,7 @@ namespace ExcelWorkLib
                 }               
                 _sheets = _curworkbook.Worksheets;
             }
-            catch (Exception ex) { Close(); throw new ExcelConnectorException("OpenExcelWorkBook failed.\n", ex); }
+            catch (Exception ex) { Close(false); throw new ExcelConnectorException("OpenExcelWorkBook failed.\n", ex); }
         }
         /// <summary>
         /// выбрать лист текущей книги для работы
@@ -153,7 +154,7 @@ namespace ExcelWorkLib
 
                 _CurrentWorksheet = (Excel.Worksheet)_sheets.get_Item(num);
             }
-            catch (Exception ex) { Close(); throw new ExcelConnectorException("SelectExcelWorkSheet failed.\n", ex); }
+            catch (Exception ex) { Close(false); throw new ExcelConnectorException("SelectExcelWorkSheet failed.\n", ex); }
         }
 
         /// <summary>
@@ -266,7 +267,7 @@ namespace ExcelWorkLib
                         SetCellValue(i + RowIndex, j + ColIndex, arr[i][j]);
                 }
             }
-            catch (Exception ex) { Close(); throw new ExcelConnectorException("SetCellRange failed.\n", ex); }
+            catch (Exception ex) { Close(false); throw new ExcelConnectorException("SetCellRange failed.\n", ex); }
         }
         /// <summary>
         /// Получение диапазона ячеек в виде двухмерного массива строк.
@@ -296,7 +297,7 @@ namespace ExcelWorkLib
                 }
                 return arr;
             }
-            catch (Exception ex) { Close(); throw new ExcelConnectorException("GetCellRange failed.\n", ex); }
+            catch (Exception ex) { Close(false); throw new ExcelConnectorException("GetCellRange failed.\n", ex); }
         }
         public string[][] GetNotEmptyCellRange(int RowIndex, int ColIndex)
         {
@@ -323,7 +324,7 @@ namespace ExcelWorkLib
                 }
                 return arr;
             }
-            catch (Exception ex) { Close(); throw new ExcelConnectorException("GetCellRange failed.\n", ex); }
+            catch (Exception ex) { Close(false); throw new ExcelConnectorException("GetCellRange failed.\n", ex); }
         }
         /// <summary>
         /// Очистка диапазона ячеек
@@ -360,7 +361,7 @@ namespace ExcelWorkLib
                     }
                 }
             }
-            catch (Exception ex) { Close(); throw new ExcelConnectorException("CopyRange failed.\n", ex); }
+            catch (Exception ex) { Close(false); throw new ExcelConnectorException("CopyRange failed.\n", ex); }
 
         }
         /// <summary>
