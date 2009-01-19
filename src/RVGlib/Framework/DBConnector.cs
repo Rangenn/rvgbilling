@@ -93,7 +93,9 @@ namespace RVGlib.Framework
         {
             //Session = SessionFactory.GetCurrentSession();
             //ITransaction trans = Session.BeginTransaction();
-            Session.Refresh(en);
+            //Session.Evict(en);
+            //Session.Get<T>(en.Id);
+            Session.Refresh(en, LockMode.Force);
             //trans.Commit();
             //Session.Close();
         }

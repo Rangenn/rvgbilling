@@ -53,7 +53,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(178, 43);
+            this.button1.Location = new System.Drawing.Point(112, 43);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(52, 23);
             this.button1.TabIndex = 2;
@@ -64,7 +64,7 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(112, 43);
+            this.button2.Location = new System.Drawing.Point(170, 43);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(60, 23);
             this.button2.TabIndex = 3;

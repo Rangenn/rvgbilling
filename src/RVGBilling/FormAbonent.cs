@@ -125,7 +125,7 @@ namespace RVGBilling
         private void RefreshForm()
         {
             if (abonent == null) throw new NullReferenceException("Abonent is null.");
-            ctrl.Connector.Refresh(abonent);
+            //ctrl.Connector.Refresh(abonent);
             if (abonent is PrivateAbonent)
             {
                 PrivateAbonent person = (PrivateAbonent)abonent;               
