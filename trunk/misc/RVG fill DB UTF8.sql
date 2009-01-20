@@ -42,16 +42,6 @@ SELECT pg_catalog.setval('abonents_id_seq', 6, true);
 
 SELECT pg_catalog.setval('bills_id_seq', 1, true);
 
-
---
--- TOC entry 1811 (class 0 OID 0)
--- Dependencies: 1491
--- Name: calls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('calls_id_seq', 6, true);
-
-
 --
 -- TOC entry 1812 (class 0 OID 0)
 -- Dependencies: 1495
@@ -150,23 +140,4 @@ INSERT INTO prices (id, rate_id, cost_per_minute, mask) VALUES (1, 2, 2.000000, 
 INSERT INTO prices (id, rate_id, cost_per_minute, mask) VALUES (2, 3, 5.000000, '920');
 INSERT INTO prices (id, rate_id, cost_per_minute, mask) VALUES (3, 3, 5.000000, '910');
 
-
---
--- TOC entry 1801 (class 0 OID 106612)
--- Dependencies: 1492
--- Data for Name: calls; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO calls (id, calling_number, creation_time, number_id, duration) VALUES (1, '9209209202', '2009-01-15 00:00:00', 1, 60);
-INSERT INTO calls (id, calling_number, creation_time, number_id, duration) VALUES (2, '9101112223', '2009-01-15 00:00:00', 2, 61);
-INSERT INTO calls (id, calling_number, creation_time, number_id, duration) VALUES (3, '9209209202', '2009-01-15 00:00:00', 3, 120);
-INSERT INTO calls (id, calling_number, creation_time, number_id, duration) VALUES (4, '9101112223', '2009-01-15 00:00:00', 4, 1);
-INSERT INTO calls (id, calling_number, creation_time, number_id, duration) VALUES (5, '9209209202', '2009-01-15 00:00:00', 1, 60);
-INSERT INTO calls (id, calling_number, creation_time, number_id, duration) VALUES (6, '9031112223', '2009-01-15 00:00:00', 5, 60);
-select calculate_call_cost_function(1);
-select calculate_call_cost_function(2);
-select calculate_call_cost_function(3);
-select calculate_call_cost_function(4);
-select calculate_call_cost_function(5);
-select calculate_call_cost_function(6);
 

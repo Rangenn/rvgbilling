@@ -34,18 +34,21 @@ namespace RVGBilling
         /// </summary>
         private DBConnector _connector;
 
+        private string app_path;
+
         /// <summary>
         /// Конструктор контроллера
         /// </summary>
         public Controller()
         {
-                logger.log("Creating Controller...");
+                app_path = new DirectoryInfo(".").FullName;
+                //logger.log("Creating Controller...");
                 _connector = new DBConnector();
                 formMain = new FormMain(this);
                 formMain.Show();
                 //_connector.GetAll<PrivateAbonent>();//для кеширования
                 //_connector.GetAll<CorporateAbonent>();//для кеширования
-                logger.log("Controller Created.");
+                //logger.log("Controller Created.");
         }
         
         public FormMain fmMain
@@ -485,9 +488,9 @@ namespace RVGBilling
             if (ab is CorporateAbonent)
                 str += ((CorporateAbonent)ab).corporate_name;
      
-            string app_path = new DirectoryInfo(".").FullName;
+            //string app_path = new DirectoryInfo(".").FullName;
             str = app_path +"\\report" + ' ' + str + ' ' + dt.ToShortDateString() + ' ' + DateTime.Now.ToShortDateString() + ' ' + ".xls";
-            logger.log(str);
+            //logger.log(str);
             ExportToExcel(str, Arr);
         }
 
