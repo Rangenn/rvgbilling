@@ -122,7 +122,7 @@
             this.mtbAccountNumber.Name = "mtbAccountNumber";
             this.mtbAccountNumber.ReadOnly = true;
             this.mtbAccountNumber.Size = new System.Drawing.Size(168, 20);
-            this.mtbAccountNumber.TabIndex = 71;
+            this.mtbAccountNumber.TabIndex = 1;
             // 
             // label15
             // 
@@ -148,7 +148,7 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.ReadOnly = true;
             this.tbEmail.Size = new System.Drawing.Size(168, 20);
-            this.tbEmail.TabIndex = 68;
+            this.tbEmail.TabIndex = 10;
             // 
             // label1
             // 
@@ -165,7 +165,7 @@
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.ReadOnly = true;
             this.tbAddress.Size = new System.Drawing.Size(168, 20);
-            this.tbAddress.TabIndex = 66;
+            this.tbAddress.TabIndex = 9;
             // 
             // dtpBirthDate
             // 
@@ -173,7 +173,7 @@
             this.dtpBirthDate.Location = new System.Drawing.Point(149, 201);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(168, 20);
-            this.dtpBirthDate.TabIndex = 64;
+            this.dtpBirthDate.TabIndex = 8;
             // 
             // label2
             // 
@@ -190,7 +190,7 @@
             this.dtpPassportDate.Location = new System.Drawing.Point(149, 145);
             this.dtpPassportDate.Name = "dtpPassportDate";
             this.dtpPassportDate.Size = new System.Drawing.Size(168, 20);
-            this.dtpPassportDate.TabIndex = 61;
+            this.dtpPassportDate.TabIndex = 6;
             // 
             // label11
             // 
@@ -207,7 +207,7 @@
             this.tbDepartament.Name = "tbDepartament";
             this.tbDepartament.ReadOnly = true;
             this.tbDepartament.Size = new System.Drawing.Size(168, 20);
-            this.tbDepartament.TabIndex = 59;
+            this.tbDepartament.TabIndex = 7;
             // 
             // label12
             // 
@@ -233,7 +233,7 @@
             this.tbPatronymic.Name = "tbPatronymic";
             this.tbPatronymic.ReadOnly = true;
             this.tbPatronymic.Size = new System.Drawing.Size(168, 20);
-            this.tbPatronymic.TabIndex = 57;
+            this.tbPatronymic.TabIndex = 5;
             // 
             // label14
             // 
@@ -250,7 +250,7 @@
             this.tbName.Name = "tbName";
             this.tbName.ReadOnly = true;
             this.tbName.Size = new System.Drawing.Size(168, 20);
-            this.tbName.TabIndex = 55;
+            this.tbName.TabIndex = 4;
             // 
             // labelSurname
             // 
@@ -276,7 +276,7 @@
             this.tbSurname.Name = "tbSurname";
             this.tbSurname.ReadOnly = true;
             this.tbSurname.Size = new System.Drawing.Size(168, 20);
-            this.tbSurname.TabIndex = 53;
+            this.tbSurname.TabIndex = 3;
             // 
             // tbPhone
             // 
@@ -284,7 +284,7 @@
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.ReadOnly = true;
             this.tbPhone.Size = new System.Drawing.Size(168, 20);
-            this.tbPhone.TabIndex = 49;
+            this.tbPhone.TabIndex = 11;
             // 
             // label9
             // 
@@ -301,7 +301,7 @@
             this.tbLastPay.Name = "tbLastPay";
             this.tbLastPay.ReadOnly = true;
             this.tbLastPay.Size = new System.Drawing.Size(167, 20);
-            this.tbLastPay.TabIndex = 10;
+            this.tbLastPay.TabIndex = 13;
             // 
             // tbBalance
             // 
@@ -309,7 +309,7 @@
             this.tbBalance.Name = "tbBalance";
             this.tbBalance.ReadOnly = true;
             this.tbBalance.Size = new System.Drawing.Size(168, 20);
-            this.tbBalance.TabIndex = 9;
+            this.tbBalance.TabIndex = 12;
             // 
             // label8
             // 
@@ -327,7 +327,7 @@
             this.tbIdentity.Name = "tbIdentity";
             this.tbIdentity.ReadOnly = true;
             this.tbIdentity.Size = new System.Drawing.Size(168, 20);
-            this.tbIdentity.TabIndex = 3;
+            this.tbIdentity.TabIndex = 2;
             // 
             // labelIdentity
             // 
@@ -343,7 +343,7 @@
             this.btnAddNumber.Location = new System.Drawing.Point(9, 172);
             this.btnAddNumber.Name = "btnAddNumber";
             this.btnAddNumber.Size = new System.Drawing.Size(110, 23);
-            this.btnAddNumber.TabIndex = 7;
+            this.btnAddNumber.TabIndex = 15;
             this.btnAddNumber.Text = "Добавить номер";
             this.btnAddNumber.UseVisualStyleBackColor = true;
             this.btnAddNumber.Click += new System.EventHandler(this.btnAddNumber_Click);
@@ -354,7 +354,7 @@
             this.lbNumbers.Location = new System.Drawing.Point(6, 19);
             this.lbNumbers.Name = "lbNumbers";
             this.lbNumbers.Size = new System.Drawing.Size(223, 147);
-            this.lbNumbers.TabIndex = 6;
+            this.lbNumbers.TabIndex = 14;
             this.lbNumbers.SelectedIndexChanged += new System.EventHandler(this.lbNumbers_SelectedIndexChanged);
             // 
             // groupBoxNumInfo
@@ -383,7 +383,7 @@
             this.rbBills.Location = new System.Drawing.Point(77, 149);
             this.rbBills.Name = "rbBills";
             this.rbBills.Size = new System.Drawing.Size(54, 17);
-            this.rbBills.TabIndex = 12;
+            this.rbBills.TabIndex = 24;
             this.rbBills.Text = "Счета";
             this.rbBills.UseVisualStyleBackColor = true;
             // 
@@ -394,7 +394,7 @@
             this.rbCalls.Location = new System.Drawing.Point(9, 149);
             this.rbCalls.Name = "rbCalls";
             this.rbCalls.Size = new System.Drawing.Size(62, 17);
-            this.rbCalls.TabIndex = 11;
+            this.rbCalls.TabIndex = 23;
             this.rbCalls.TabStop = true;
             this.rbCalls.Text = "Звонки";
             this.rbCalls.UseVisualStyleBackColor = true;
@@ -413,14 +413,14 @@
             this.dtEndDate.Location = new System.Drawing.Point(53, 120);
             this.dtEndDate.Name = "dtEndDate";
             this.dtEndDate.Size = new System.Drawing.Size(176, 20);
-            this.dtEndDate.TabIndex = 9;
+            this.dtEndDate.TabIndex = 22;
             // 
             // dtStartDate
             // 
             this.dtStartDate.Location = new System.Drawing.Point(53, 93);
             this.dtStartDate.Name = "dtStartDate";
             this.dtStartDate.Size = new System.Drawing.Size(176, 20);
-            this.dtStartDate.TabIndex = 8;
+            this.dtStartDate.TabIndex = 21;
             // 
             // label6
             // 
@@ -445,7 +445,7 @@
             this.btnGetCallDetails.Location = new System.Drawing.Point(138, 146);
             this.btnGetCallDetails.Name = "btnGetCallDetails";
             this.btnGetCallDetails.Size = new System.Drawing.Size(91, 23);
-            this.btnGetCallDetails.TabIndex = 3;
+            this.btnGetCallDetails.TabIndex = 25;
             this.btnGetCallDetails.Text = "Детализация";
             this.btnGetCallDetails.UseVisualStyleBackColor = true;
             this.btnGetCallDetails.Click += new System.EventHandler(this.btnGetDetails_Click);
@@ -455,7 +455,7 @@
             this.btnChangeTariff.Location = new System.Drawing.Point(138, 46);
             this.btnChangeTariff.Name = "btnChangeTariff";
             this.btnChangeTariff.Size = new System.Drawing.Size(91, 23);
-            this.btnChangeTariff.TabIndex = 2;
+            this.btnChangeTariff.TabIndex = 20;
             this.btnChangeTariff.Text = "Изменить";
             this.btnChangeTariff.UseVisualStyleBackColor = true;
             this.btnChangeTariff.Click += new System.EventHandler(this.btnChangeRate_Click);
@@ -466,7 +466,7 @@
             this.cbRate.Location = new System.Drawing.Point(99, 19);
             this.cbRate.Name = "cbRate";
             this.cbRate.Size = new System.Drawing.Size(130, 21);
-            this.cbRate.TabIndex = 1;
+            this.cbRate.TabIndex = 19;
             // 
             // label4
             // 
@@ -494,7 +494,7 @@
             this.btnCloseAccount.Location = new System.Drawing.Point(180, 20);
             this.btnCloseAccount.Name = "btnCloseAccount";
             this.btnCloseAccount.Size = new System.Drawing.Size(81, 36);
-            this.btnCloseAccount.TabIndex = 2;
+            this.btnCloseAccount.TabIndex = 18;
             this.btnCloseAccount.Text = "Расторгнуть договор";
             this.btnCloseAccount.UseVisualStyleBackColor = true;
             this.btnCloseAccount.Click += new System.EventHandler(this.btnCloseAccount_Click);
@@ -504,7 +504,7 @@
             this.btnMakeBill.Location = new System.Drawing.Point(93, 20);
             this.btnMakeBill.Name = "btnMakeBill";
             this.btnMakeBill.Size = new System.Drawing.Size(81, 36);
-            this.btnMakeBill.TabIndex = 1;
+            this.btnMakeBill.TabIndex = 17;
             this.btnMakeBill.Text = "Выписать счет";
             this.btnMakeBill.UseVisualStyleBackColor = true;
             this.btnMakeBill.Click += new System.EventHandler(this.btnMakeBill_Click);
@@ -514,7 +514,7 @@
             this.btnAddMoney.Location = new System.Drawing.Point(7, 20);
             this.btnAddMoney.Name = "btnAddMoney";
             this.btnAddMoney.Size = new System.Drawing.Size(80, 36);
-            this.btnAddMoney.TabIndex = 0;
+            this.btnAddMoney.TabIndex = 16;
             this.btnAddMoney.Text = "Пополнить баланс";
             this.btnAddMoney.UseVisualStyleBackColor = true;
             this.btnAddMoney.Click += new System.EventHandler(this.btnAddMoney_Click);

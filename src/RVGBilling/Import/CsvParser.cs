@@ -10,7 +10,7 @@ namespace RVGBilling.Import
     /// </summary>
     public class CsvParser
     {
-        private static string separator = ",";
+        public static string separator = ";";
         private static string pattern= string.Format("{0}(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))",separator);
 
         public static string[] Split(string input)

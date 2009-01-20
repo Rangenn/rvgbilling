@@ -28,7 +28,7 @@ namespace RVGlib.Domain
 
         public virtual string[] ToStringArray()
         {
-            return new string[] { rate.name, mask, Convert.ToString(cost_per_minute,CultureInfo.InvariantCulture.NumberFormat) };
+            return new string[] { rate.name, mask, cost_per_minute.ToString() };
         }
 
     }

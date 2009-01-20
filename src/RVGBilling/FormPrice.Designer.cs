@@ -59,14 +59,14 @@
             this.tbMask.Location = new System.Drawing.Point(138, 18);
             this.tbMask.Name = "tbMask";
             this.tbMask.Size = new System.Drawing.Size(100, 20);
-            this.tbMask.TabIndex = 2;
+            this.tbMask.TabIndex = 1;
             // 
             // tbCost
             // 
             this.tbCost.Location = new System.Drawing.Point(138, 52);
             this.tbCost.Name = "tbCost";
             this.tbCost.Size = new System.Drawing.Size(100, 20);
-            this.tbCost.TabIndex = 3;
+            this.tbCost.TabIndex = 2;
             // 
             // btnOK
             // 
@@ -74,7 +74,7 @@
             this.btnOK.Location = new System.Drawing.Point(28, 89);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 4;
+            this.btnOK.TabIndex = 3;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -85,7 +85,7 @@
             this.btnCancel.Location = new System.Drawing.Point(148, 89);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 

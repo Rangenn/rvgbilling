@@ -42,7 +42,7 @@
             this.btnOK.Location = new System.Drawing.Point(28, 103);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 0;
+            this.btnOK.TabIndex = 3;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -53,7 +53,7 @@
             this.btnCancel.Location = new System.Drawing.Point(141, 103);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -72,7 +72,7 @@
             this.maskedTextBox.Mask = "0000000000";
             this.maskedTextBox.Name = "maskedTextBox";
             this.maskedTextBox.Size = new System.Drawing.Size(126, 20);
-            this.maskedTextBox.TabIndex = 3;
+            this.maskedTextBox.TabIndex = 1;
             // 
             // labelRate
             // 
@@ -89,7 +89,7 @@
             this.cbRate.Location = new System.Drawing.Point(90, 70);
             this.cbRate.Name = "cbRate";
             this.cbRate.Size = new System.Drawing.Size(126, 21);
-            this.cbRate.TabIndex = 5;
+            this.cbRate.TabIndex = 2;
             // 
             // FormAddNumber
             // 

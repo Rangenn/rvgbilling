@@ -60,11 +60,8 @@ namespace RVGBilling.Import
                     //Console.WriteLine("buf len :"+data[i].Length);
                     for (int j = 0; j < data[i].Length; j++)
                     {
-                        string str = data[i][j];
-                        if (str.IndexOf(',') > 0)
-                            str=str.Replace(',', '.');
-                        sb.Append(str);
-                        sb.Append(",");
+                        sb.Append(data[i][j]);
+                        sb.Append(CsvParser.separator);
                     }
                     Console.WriteLine(sb.ToString());
                     sr.WriteLine(sb.ToString());

@@ -75,14 +75,14 @@
             this.tbSurname.Location = new System.Drawing.Point(124, 6);
             this.tbSurname.Name = "tbSurname";
             this.tbSurname.Size = new System.Drawing.Size(168, 20);
-            this.tbSurname.TabIndex = 12;
+            this.tbSurname.TabIndex = 1;
             // 
             // tbPhone
             // 
             this.tbPhone.Location = new System.Drawing.Point(124, 254);
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(168, 20);
-            this.tbPhone.TabIndex = 8;
+            this.tbPhone.TabIndex = 10;
             // 
             // label1
             // 
@@ -107,7 +107,7 @@
             this.tbName.Location = new System.Drawing.Point(124, 32);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(168, 20);
-            this.tbName.TabIndex = 14;
+            this.tbName.TabIndex = 2;
             // 
             // label4
             // 
@@ -123,7 +123,7 @@
             this.tbPatronymic.Location = new System.Drawing.Point(124, 58);
             this.tbPatronymic.Name = "tbPatronymic";
             this.tbPatronymic.Size = new System.Drawing.Size(168, 20);
-            this.tbPatronymic.TabIndex = 16;
+            this.tbPatronymic.TabIndex = 3;
             // 
             // label7
             // 
@@ -148,7 +148,7 @@
             this.tbDepartament.Location = new System.Drawing.Point(124, 176);
             this.tbDepartament.Name = "tbDepartament";
             this.tbDepartament.Size = new System.Drawing.Size(168, 20);
-            this.tbDepartament.TabIndex = 21;
+            this.tbDepartament.TabIndex = 7;
             // 
             // btnOK
             // 
@@ -156,7 +156,7 @@
             this.btnOK.Location = new System.Drawing.Point(124, 291);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 23;
+            this.btnOK.TabIndex = 11;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -167,7 +167,7 @@
             this.btnCancel.Location = new System.Drawing.Point(217, 291);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 24;
+            this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -176,7 +176,7 @@
             this.dtpPassportDate.Location = new System.Drawing.Point(124, 150);
             this.dtpPassportDate.Name = "dtpPassportDate";
             this.dtpPassportDate.Size = new System.Drawing.Size(168, 20);
-            this.dtpPassportDate.TabIndex = 25;
+            this.dtpPassportDate.TabIndex = 6;
             // 
             // mtbPassportSeries
             // 
@@ -184,14 +184,14 @@
             this.mtbPassportSeries.Mask = "0000000000";
             this.mtbPassportSeries.Name = "mtbPassportSeries";
             this.mtbPassportSeries.Size = new System.Drawing.Size(168, 20);
-            this.mtbPassportSeries.TabIndex = 26;
+            this.mtbPassportSeries.TabIndex = 5;
             // 
             // dtpBirthDate
             // 
             this.dtpBirthDate.Location = new System.Drawing.Point(124, 83);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(168, 20);
-            this.dtpBirthDate.TabIndex = 28;
+            this.dtpBirthDate.TabIndex = 4;
             // 
             // label5
             // 
@@ -216,7 +216,7 @@
             this.tbAddress.Location = new System.Drawing.Point(124, 202);
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(168, 20);
-            this.tbAddress.TabIndex = 46;
+            this.tbAddress.TabIndex = 8;
             // 
             // label10
             // 
@@ -232,7 +232,7 @@
             this.tbEmail.Location = new System.Drawing.Point(124, 228);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(168, 20);
-            this.tbEmail.TabIndex = 48;
+            this.tbEmail.TabIndex = 9;
             // 
             // AddPrivateAbonentForm
             // 
