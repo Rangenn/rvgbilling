@@ -47,7 +47,7 @@ namespace RVGBilling
         {
             DataGridViewColumnCollection Columns = dgvSearch.Columns;
             // невидимые колонки
-            if (Columns.Contains("last_pay_date")) Columns["last_pay_date"].Visible = false;
+            if (Columns.Contains("last_calc_date")) Columns["last_calc_date"].Visible = false;
             if (Columns.Contains("Numbers")) Columns["Numbers"].Visible = false;
             if (Columns.Contains("phone")) Columns["phone"].Visible = false;
             if (Columns.Contains("creation_time")) Columns["creation_time"].Visible = false;
