@@ -261,6 +261,9 @@
             this.Controls.Add(this.tbSurname);
             this.Controls.Add(this.tbPhone);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddPrivateAbonentForm";
             this.Text = "Добавить физ.лицо";
             this.ResumeLayout(false);

@@ -160,6 +160,10 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbName);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddCorporateAbonentForm";
             this.Text = "Добавить юр.лицо";
             this.ResumeLayout(false);

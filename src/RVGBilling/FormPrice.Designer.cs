@@ -101,6 +101,9 @@
             this.Controls.Add(this.tbCost);
             this.Controls.Add(this.lCost);
             this.Controls.Add(this.lMask);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormPrice";
             this.Text = "Цена";
             this.ResumeLayout(false);
