@@ -539,6 +539,9 @@
             this.Controls.Add(this.groupBoxOps);
             this.Controls.Add(this.groupBoxNumInfo);
             this.Controls.Add(this.groupBoxAbInfo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAbonent";
             this.Text = "Абонент";
             this.Load += new System.EventHandler(this.FormAbonent_Load);

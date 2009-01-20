@@ -43,8 +43,10 @@
             this.dgDetails.AllowUserToAddRows = false;
             this.dgDetails.AllowUserToDeleteRows = false;
             this.dgDetails.AllowUserToOrderColumns = true;
+            this.dgDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgDetails.Location = new System.Drawing.Point(0, 24);
             this.dgDetails.Name = "dgDetails";
             this.dgDetails.ReadOnly = true;
@@ -98,6 +100,8 @@
             this.Controls.Add(this.dgDetails);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCallDetails";
             this.Text = "Детализация";
             ((System.ComponentModel.ISupportInitialize)(this.dgDetails)).EndInit();

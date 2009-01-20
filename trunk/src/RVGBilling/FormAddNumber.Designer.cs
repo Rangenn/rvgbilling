@@ -39,7 +39,7 @@
             // btnOK
             // 
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(28, 103);
+            this.btnOK.Location = new System.Drawing.Point(28, 78);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 3;
@@ -50,7 +50,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(141, 103);
+            this.btnCancel.Location = new System.Drawing.Point(141, 78);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -60,7 +60,7 @@
             // labelText
             // 
             this.labelText.AutoSize = true;
-            this.labelText.Location = new System.Drawing.Point(25, 42);
+            this.labelText.Location = new System.Drawing.Point(25, 17);
             this.labelText.Name = "labelText";
             this.labelText.Size = new System.Drawing.Size(41, 13);
             this.labelText.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // maskedTextBox
             // 
-            this.maskedTextBox.Location = new System.Drawing.Point(90, 39);
+            this.maskedTextBox.Location = new System.Drawing.Point(90, 14);
             this.maskedTextBox.Mask = "0000000000";
             this.maskedTextBox.Name = "maskedTextBox";
             this.maskedTextBox.Size = new System.Drawing.Size(126, 20);
@@ -77,7 +77,7 @@
             // labelRate
             // 
             this.labelRate.AutoSize = true;
-            this.labelRate.Location = new System.Drawing.Point(25, 73);
+            this.labelRate.Location = new System.Drawing.Point(25, 48);
             this.labelRate.Name = "labelRate";
             this.labelRate.Size = new System.Drawing.Size(40, 13);
             this.labelRate.TabIndex = 4;
@@ -86,7 +86,7 @@
             // cbRate
             // 
             this.cbRate.FormattingEnabled = true;
-            this.cbRate.Location = new System.Drawing.Point(90, 70);
+            this.cbRate.Location = new System.Drawing.Point(90, 45);
             this.cbRate.Name = "cbRate";
             this.cbRate.Size = new System.Drawing.Size(126, 21);
             this.cbRate.TabIndex = 2;
@@ -95,13 +95,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(242, 153);
+            this.ClientSize = new System.Drawing.Size(242, 112);
             this.Controls.Add(this.cbRate);
             this.Controls.Add(this.labelRate);
             this.Controls.Add(this.maskedTextBox);
             this.Controls.Add(this.labelText);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAddNumber";
             this.Text = "Добавить номер";
             this.ResumeLayout(false);

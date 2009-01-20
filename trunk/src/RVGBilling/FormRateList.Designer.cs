@@ -55,7 +55,7 @@
             this.lbRates.FormattingEnabled = true;
             this.lbRates.Location = new System.Drawing.Point(0, 24);
             this.lbRates.Name = "lbRates";
-            this.lbRates.Size = new System.Drawing.Size(120, 238);
+            this.lbRates.Size = new System.Drawing.Size(120, 264);
             this.lbRates.TabIndex = 0;
             this.lbRates.SelectedIndexChanged += new System.EventHandler(this.lbRates_SelectedIndexChanged);
             // 
@@ -68,7 +68,7 @@
             this.gbRateDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbRateDetails.Location = new System.Drawing.Point(120, 24);
             this.gbRateDetails.Name = "gbRateDetails";
-            this.gbRateDetails.Size = new System.Drawing.Size(254, 240);
+            this.gbRateDetails.Size = new System.Drawing.Size(370, 268);
             this.gbRateDetails.TabIndex = 1;
             this.gbRateDetails.TabStop = false;
             this.gbRateDetails.Text = "Маски тарифа";
@@ -76,7 +76,8 @@
             // btnRemovePrice
             // 
             this.btnRemovePrice.AllowDrop = true;
-            this.btnRemovePrice.Location = new System.Drawing.Point(167, 205);
+            this.btnRemovePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemovePrice.Location = new System.Drawing.Point(167, 239);
             this.btnRemovePrice.Name = "btnRemovePrice";
             this.btnRemovePrice.Size = new System.Drawing.Size(75, 23);
             this.btnRemovePrice.TabIndex = 3;
@@ -86,7 +87,8 @@
             // 
             // btnEditPrice
             // 
-            this.btnEditPrice.Location = new System.Drawing.Point(87, 205);
+            this.btnEditPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEditPrice.Location = new System.Drawing.Point(87, 239);
             this.btnEditPrice.Name = "btnEditPrice";
             this.btnEditPrice.Size = new System.Drawing.Size(75, 23);
             this.btnEditPrice.TabIndex = 2;
@@ -96,7 +98,8 @@
             // 
             // btnAddPrice
             // 
-            this.btnAddPrice.Location = new System.Drawing.Point(6, 205);
+            this.btnAddPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddPrice.Location = new System.Drawing.Point(6, 239);
             this.btnAddPrice.Name = "btnAddPrice";
             this.btnAddPrice.Size = new System.Drawing.Size(75, 23);
             this.btnAddPrice.TabIndex = 1;
@@ -108,12 +111,14 @@
             // 
             this.dgvPrices.AllowUserToAddRows = false;
             this.dgvPrices.AllowUserToDeleteRows = false;
+            this.dgvPrices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPrices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrices.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvPrices.Location = new System.Drawing.Point(3, 16);
             this.dgvPrices.Name = "dgvPrices";
             this.dgvPrices.ReadOnly = true;
-            this.dgvPrices.Size = new System.Drawing.Size(248, 183);
+            this.dgvPrices.Size = new System.Drawing.Size(361, 218);
             this.dgvPrices.TabIndex = 0;
             this.dgvPrices.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvPrices_DataBindingComplete);
             // 
@@ -124,7 +129,7 @@
             this.exportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(374, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(490, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -136,34 +141,34 @@
             this.EditToolStripMenuItem,
             this.removeSelectedToolStripMenuItem});
             this.rateToolStripMenuItem.Name = "rateToolStripMenuItem";
-            this.rateToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.rateToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.rateToolStripMenuItem.Text = "Тариф";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.addToolStripMenuItem.Text = "Создать";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // сгенерироватьToolStripMenuItem
             // 
             this.сгенерироватьToolStripMenuItem.Name = "сгенерироватьToolStripMenuItem";
-            this.сгенерироватьToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.сгенерироватьToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.сгенерироватьToolStripMenuItem.Text = "Сгенерировать маски";
             this.сгенерироватьToolStripMenuItem.Click += new System.EventHandler(this.genToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.EditToolStripMenuItem.Text = "Переименовать";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // removeSelectedToolStripMenuItem
             // 
             this.removeSelectedToolStripMenuItem.Name = "removeSelectedToolStripMenuItem";
-            this.removeSelectedToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.removeSelectedToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.removeSelectedToolStripMenuItem.Text = "Удалить выделенный";
             this.removeSelectedToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedToolStripMenuItem_Click);
             // 
@@ -173,20 +178,20 @@
             this.ExportExcelToolStripMenuItem,
             this.ExportCsvToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.exportToolStripMenuItem.Text = "Экспорт";
             // 
             // ExportExcelToolStripMenuItem
             // 
             this.ExportExcelToolStripMenuItem.Name = "ExportExcelToolStripMenuItem";
-            this.ExportExcelToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.ExportExcelToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.ExportExcelToolStripMenuItem.Text = "Excel";
             this.ExportExcelToolStripMenuItem.Click += new System.EventHandler(this.ExportExcelToolStripMenuItem_Click);
             // 
             // ExportCsvToolStripMenuItem
             // 
             this.ExportCsvToolStripMenuItem.Name = "ExportCsvToolStripMenuItem";
-            this.ExportCsvToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.ExportCsvToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.ExportCsvToolStripMenuItem.Text = "CSV";
             this.ExportCsvToolStripMenuItem.Click += new System.EventHandler(this.ExportCSVToolStripMenuItem_Click);
             // 
@@ -194,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 264);
+            this.ClientSize = new System.Drawing.Size(490, 292);
             this.Controls.Add(this.gbRateDetails);
             this.Controls.Add(this.lbRates);
             this.Controls.Add(this.menuStrip1);
