@@ -30,7 +30,6 @@ namespace RVGBilling
             : this()
         {
             this.controller = ctrl;
-
             // выбираем все тарифы и заносим в listbox
             ListRates = ctrl.GetRates();
             lbBindingSource = new BindingSource();
@@ -40,15 +39,12 @@ namespace RVGBilling
 
         private void InitGrid()
         {
-            // прячем ненужные колонки DataGridView
+            // прячем ненужные колонки DataGridView, создаем названия заголовков
             DataGridViewColumnCollection Columns = dgvPrices.Columns;
-            //int i = 1;
-            Columns["rate"].Visible = false;
-            //Columns["rate"].DisplayIndex = i++;
-            //Columns["mask"].DisplayIndex = i++;
-            Columns["ID"].Visible = false;
-            //Columns["ID"].Tag = "no_export";
-            //Columns["cost_per_minute"].DisplayIndex = i++;
+            if (Columns.Contains("rate")) Columns["rate"].Visible = false;
+            if (Columns.Contains("mask")) Columns["mask"].HeaderText = "Маска номера";
+            if (Columns.Contains("cost_per_minute")) Columns["cost_per_minute"].HeaderText = "Цена за минуту";
+            if (Columns.Contains("ID")) Columns["ID"].Visible = false;
         }
 
 
@@ -83,13 +79,10 @@ namespace RVGBilling
         {
             int index = dgvPrices.CurrentRow.Index;
             if (index >= 0)
-            {
-                
+            {               
                 Rate rate=(Rate)lbRates.SelectedItem;
                 Price price = rate.Prices[index];
-
                 controller.DeletePriceFromRate(rate, price);
-
             }
             gridBindingSource.ResetBindings(false);
             //удалить из списка и обновить грид
@@ -98,7 +91,8 @@ namespace RVGBilling
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Rate r=controller.AddRate();
-            ListRates.Add(r);
+            ListRates = controller.GetRates();
+            lbBindingSource.DataSource = ListRates;
             lbBindingSource.ResetBindings(false);
             //добавить новый тариф в список и обновить лист
         }
@@ -121,8 +115,11 @@ namespace RVGBilling
             if (index >= 0)
             {
                 Rate rate = (Rate)lbRates.SelectedItem;             
-                if (controller.DeleteRate(rate))
-                    ListRates.Remove(rate);
+                //if (controller.DeleteRate(rate))
+                    //ListRates.Remove(rate);
+                controller.DeleteRate(rate);
+                ListRates = controller.GetRates();
+                lbBindingSource.DataSource = ListRates;
                 lbBindingSource.ResetBindings(false);
             }
             //удалить тариф из списка и обновить лист

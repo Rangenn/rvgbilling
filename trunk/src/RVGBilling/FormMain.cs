@@ -6,6 +6,7 @@ using System.Linq;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
 
 using RVGlib.Domain;
 
@@ -28,8 +29,9 @@ namespace RVGBilling
         public FormMain(Controller ctrl)
         {
             InitializeComponent();
-            /*foreach (DataGridViewColumn column in dgvSearch.Columns)
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;*/
+            AssemblyName asname = System.Reflection.Assembly.GetExecutingAssembly().GetName();
+            this.Text = asname.Name +" "+ asname.Version;
+
             abonents = new List<Abonent>();
             bs = new BindingSource();
             // присваиваем источник данных (и у нас автоматическая загрузка в таблицу!)
@@ -45,21 +47,30 @@ namespace RVGBilling
         private void InitGrid(bool isPrivate)
         {
             DataGridViewColumnCollection Columns = dgvSearch.Columns;
-            /*if (isPrivate)
-            {
-                DataGridViewColumnCollection Columns = dgvSearch.Columns;
-                Columns["balance"].HeaderText = "Баланс";
-                Columns["balance"].DisplayIndex = 0;
-
-                Columns["last_pay_date"].Visible = false;
-                Columns["Numbers"].Visible = false;
-                Columns["phone"].Visible = false;
-                Columns["reg_time"].Visible = false;
-            }*/
-            Columns["last_pay_date"].Visible = false;
-            Columns["Numbers"].Visible = false;
-            Columns["ID"].Visible = false;
-            Columns["creation_time"].Visible = false;
+            // невидимые колонки
+            if (Columns.Contains("last_pay_date")) Columns["last_pay_date"].Visible = false;
+            if (Columns.Contains("Numbers")) Columns["Numbers"].Visible = false;
+            if (Columns.Contains("phone")) Columns["phone"].Visible = false;
+            if (Columns.Contains("creation_time")) Columns["creation_time"].Visible = false;
+            if (Columns.Contains("ID")) Columns["ID"].Visible = false;
+            // общие колонки (класса Abonent)
+            if (Columns.Contains("balance")) Columns["balance"].HeaderText = "Баланс";
+            if (Columns.Contains("address")) Columns["address"].HeaderText = "Адрес";
+                //if (Columns.Contains("mail_address")) Columns["mail_address"].HeaderText = "E-mail";
+                if (Columns.Contains("mail_address")) Columns["mail_address"].Visible=false;
+            if (Columns.Contains("dissolved")) Columns["dissolved"].HeaderText = "Договор закрыт";
+            //колонки PrivateAbonent
+            if (Columns.Contains("surname")) Columns["surname"].HeaderText = "Фамилия";
+            if (Columns.Contains("name")) Columns["name"].HeaderText = "Имя";
+            if (Columns.Contains("patronymic")) Columns["patronymic"].HeaderText = "Отчество";
+                //if (Columns.Contains("birth_date")) Columns["birth_date"].HeaderText = "Дата рождения";
+                if (Columns.Contains("birth_date")) Columns["birth_date"].Visible = false;
+            if (Columns.Contains("passport_series")) Columns["passport_series"].HeaderText = "Номер паспорта";
+            if (Columns.Contains("passport_date")) Columns["passport_date"].Visible = false;
+            if (Columns.Contains("passport_department")) Columns["passport_department"].Visible = false;
+            //колонки CorporateAbonent
+            if (Columns.Contains("corporate_name")) Columns["corporate_name"].HeaderText = "Название компании";
+            if (Columns.Contains("INN")) Columns["INN"].HeaderText = "ИНН";
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
