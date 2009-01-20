@@ -266,5 +266,16 @@ namespace RVGBilling
         {
             btnSelectBody_Click(this, new EventArgs());
         }
+
+        private void genToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Import.DataGenerator dg = new RVGBilling.Import.DataGenerator();
+
+            IList<string> numbers = new List<string>();
+            foreach(Number n in controller.GetNumbers())
+                numbers.Add(n.number);
+            
+            controller.ImportCallsFromDataToDB(dg.generateCalls(10, numbers.ToArray<string>(), "900","950"));
+        }
     }
 }
