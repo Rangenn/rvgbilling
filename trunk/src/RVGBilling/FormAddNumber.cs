@@ -33,7 +33,6 @@ namespace RVGBilling
             num.number = maskedTextBox.Text;
             num.rate = (Rate)cbRate.SelectedItem;
         }
-
-        
+      
     }
 }

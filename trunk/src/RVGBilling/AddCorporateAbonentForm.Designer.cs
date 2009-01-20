@@ -48,7 +48,7 @@
             this.btnOK.Location = new System.Drawing.Point(112, 147);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 40;
+            this.btnOK.TabIndex = 6;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -67,7 +67,7 @@
             this.tbName.Location = new System.Drawing.Point(112, 6);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(168, 20);
-            this.tbName.TabIndex = 29;
+            this.tbName.TabIndex = 1;
             // 
             // label1
             // 
@@ -83,7 +83,7 @@
             this.tbPhone.Location = new System.Drawing.Point(112, 85);
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(168, 20);
-            this.tbPhone.TabIndex = 42;
+            this.tbPhone.TabIndex = 4;
             // 
             // label2
             // 
@@ -99,7 +99,7 @@
             this.tbAddress.Location = new System.Drawing.Point(112, 59);
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(168, 20);
-            this.tbAddress.TabIndex = 44;
+            this.tbAddress.TabIndex = 3;
             // 
             // label3
             // 
@@ -115,7 +115,7 @@
             this.tbEmail.Location = new System.Drawing.Point(112, 114);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(168, 20);
-            this.tbEmail.TabIndex = 46;
+            this.tbEmail.TabIndex = 5;
             // 
             // btnCancel
             // 
@@ -123,7 +123,7 @@
             this.btnCancel.Location = new System.Drawing.Point(205, 147);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 47;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -141,7 +141,7 @@
             this.tbINN.Location = new System.Drawing.Point(112, 32);
             this.tbINN.Name = "tbINN";
             this.tbINN.Size = new System.Drawing.Size(168, 20);
-            this.tbINN.TabIndex = 49;
+            this.tbINN.TabIndex = 2;
             // 
             // AddCorporateAbonentForm
             // 

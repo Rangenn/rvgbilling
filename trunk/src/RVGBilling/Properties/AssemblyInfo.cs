@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisibleAttribute(false)]
 [assembly: CLSCompliantAttribute(false)]
-[assembly: AssemblyVersionAttribute("1.3.2.0")]
+[assembly: AssemblyVersionAttribute("1.3.3.0")]
 [assembly: AssemblyTitleAttribute("RVGbilling")]
 [assembly: AssemblyDescriptionAttribute("Billing system (C# + NHibernate + PostgreSQL) by Kotov Vadim, Tihonov Roman and G" +
     "alina Ponomareva.")]

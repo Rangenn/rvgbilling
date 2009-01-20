@@ -39,7 +39,7 @@
             this.tbSumma.Location = new System.Drawing.Point(65, 12);
             this.tbSumma.Name = "tbSumma";
             this.tbSumma.Size = new System.Drawing.Size(165, 20);
-            this.tbSumma.TabIndex = 0;
+            this.tbSumma.TabIndex = 1;
             // 
             // label1
             // 

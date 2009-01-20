@@ -230,7 +230,7 @@ namespace RVGlib.Framework
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        private IList<T> GetDetails<T>(Number number, DateTime start, DateTime end)
+        private IList<T> GetDetails<T>(Number number, DateTime start, DateTime end) where T:Entity
         {
             //T test = new T();
             //if (!(test is Call || test is Bill)) throw new InvalidCastException();

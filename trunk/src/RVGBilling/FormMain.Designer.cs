@@ -150,15 +150,15 @@
             // 
             this.tbPersonName.Location = new System.Drawing.Point(118, 6);
             this.tbPersonName.Name = "tbPersonName";
-            this.tbPersonName.Size = new System.Drawing.Size(168, 20);
-            this.tbPersonName.TabIndex = 6;
+            this.tbPersonName.Size = new System.Drawing.Size(165, 20);
+            this.tbPersonName.TabIndex = 2;
             // 
             // tbPersonPhone
             // 
             this.tbPersonPhone.Location = new System.Drawing.Point(118, 58);
             this.tbPersonPhone.Name = "tbPersonPhone";
-            this.tbPersonPhone.Size = new System.Drawing.Size(168, 20);
-            this.tbPersonPhone.TabIndex = 2;
+            this.tbPersonPhone.Size = new System.Drawing.Size(165, 20);
+            this.tbPersonPhone.TabIndex = 4;
             // 
             // label1
             // 
@@ -173,8 +173,8 @@
             // 
             this.tbPersonPassport.Location = new System.Drawing.Point(118, 32);
             this.tbPersonPassport.Name = "tbPersonPassport";
-            this.tbPersonPassport.Size = new System.Drawing.Size(168, 20);
-            this.tbPersonPassport.TabIndex = 1;
+            this.tbPersonPassport.Size = new System.Drawing.Size(165, 20);
+            this.tbPersonPassport.TabIndex = 3;
             // 
             // tpCorporate
             // 
@@ -245,7 +245,7 @@
             this.btnAdd.Location = new System.Drawing.Point(123, 147);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(82, 22);
-            this.btnAdd.TabIndex = 1;
+            this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -255,7 +255,7 @@
             this.btnSearch.Location = new System.Drawing.Point(211, 146);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(87, 23);
-            this.btnSearch.TabIndex = 0;
+            this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Найти";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -309,7 +309,7 @@
             // ViewRatesToolStripMenuItem
             // 
             this.ViewRatesToolStripMenuItem.Name = "ViewRatesToolStripMenuItem";
-            this.ViewRatesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewRatesToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.ViewRatesToolStripMenuItem.Text = "Просмотр";
             this.ViewRatesToolStripMenuItem.Click += new System.EventHandler(this.RatesViewToolStripMenuItem_Click);
             // 
@@ -319,20 +319,20 @@
             this.ImportRatesExcelToolStripMenuItem,
             this.ImportRatesCsvToolStripMenuItem});
             this.ImportRatesToolStripMenuItem.Name = "ImportRatesToolStripMenuItem";
-            this.ImportRatesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ImportRatesToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.ImportRatesToolStripMenuItem.Text = "Импорт";
             // 
             // ImportRatesExcelToolStripMenuItem
             // 
             this.ImportRatesExcelToolStripMenuItem.Name = "ImportRatesExcelToolStripMenuItem";
-            this.ImportRatesExcelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ImportRatesExcelToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.ImportRatesExcelToolStripMenuItem.Text = "Excel";
             this.ImportRatesExcelToolStripMenuItem.Click += new System.EventHandler(this.ImportRatesExcelToolStripMenuItem_Click);
             // 
             // ImportRatesCsvToolStripMenuItem
             // 
             this.ImportRatesCsvToolStripMenuItem.Name = "ImportRatesCsvToolStripMenuItem";
-            this.ImportRatesCsvToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ImportRatesCsvToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.ImportRatesCsvToolStripMenuItem.Text = "CSV";
             this.ImportRatesCsvToolStripMenuItem.Click += new System.EventHandler(this.ImportRatesCsvToolStripMenuItem_Click);
             // 
@@ -342,20 +342,20 @@
             this.ExportRatesExcelToolStripMenuItem,
             this.ExportRatesCsvToolStripMenuItem});
             this.ExportRatesToolStripMenuItem.Name = "ExportRatesToolStripMenuItem";
-            this.ExportRatesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ExportRatesToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.ExportRatesToolStripMenuItem.Text = "Экспорт";
             // 
             // ExportRatesExcelToolStripMenuItem
             // 
             this.ExportRatesExcelToolStripMenuItem.Name = "ExportRatesExcelToolStripMenuItem";
-            this.ExportRatesExcelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ExportRatesExcelToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.ExportRatesExcelToolStripMenuItem.Text = "Excel";
             this.ExportRatesExcelToolStripMenuItem.Click += new System.EventHandler(this.ExportRatesExcelToolStripMenuItem_Click);
             // 
             // ExportRatesCsvToolStripMenuItem
             // 
             this.ExportRatesCsvToolStripMenuItem.Name = "ExportRatesCsvToolStripMenuItem";
-            this.ExportRatesCsvToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ExportRatesCsvToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.ExportRatesCsvToolStripMenuItem.Text = "CSV";
             this.ExportRatesCsvToolStripMenuItem.Click += new System.EventHandler(this.ExportRatesCsvToolStripMenuItem_Click);
             // 
@@ -374,20 +374,20 @@
             this.excelToolStripMenuItem1,
             this.cSVToolStripMenuItem1});
             this.impToolStripMenuItem.Name = "impToolStripMenuItem";
-            this.impToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.impToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.impToolStripMenuItem.Text = "Импорт";
             // 
             // excelToolStripMenuItem1
             // 
             this.excelToolStripMenuItem1.Name = "excelToolStripMenuItem1";
-            this.excelToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.excelToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
             this.excelToolStripMenuItem1.Text = "Excel";
             this.excelToolStripMenuItem1.Click += new System.EventHandler(this.ImportCallsExcelToolStripMenuItem_Click);
             // 
             // cSVToolStripMenuItem1
             // 
             this.cSVToolStripMenuItem1.Name = "cSVToolStripMenuItem1";
-            this.cSVToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cSVToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
             this.cSVToolStripMenuItem1.Text = "CSV";
             this.cSVToolStripMenuItem1.Click += new System.EventHandler(this.ImportCallsCsvToolStripMenuItem_Click);
             // 
@@ -397,20 +397,20 @@
             this.excelToolStripMenuItem,
             this.cSVToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.exportToolStripMenuItem.Text = "Экспорт";
             // 
             // excelToolStripMenuItem
             // 
             this.excelToolStripMenuItem.Name = "excelToolStripMenuItem";
-            this.excelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.excelToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.excelToolStripMenuItem.Text = "Excel";
             this.excelToolStripMenuItem.Click += new System.EventHandler(this.ExportCallsExcelToolStripMenuItem1_Click);
             // 
             // cSVToolStripMenuItem
             // 
             this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
-            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.cSVToolStripMenuItem.Text = "CSV";
             this.cSVToolStripMenuItem.Click += new System.EventHandler(this.ExportCallsCsvToolStripMenuItem_Click);
             // 
@@ -434,7 +434,7 @@
             this.btnPayment.Location = new System.Drawing.Point(216, 74);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(87, 23);
-            this.btnPayment.TabIndex = 3;
+            this.btnPayment.TabIndex = 9;
             this.btnPayment.Text = "Пополнить";
             this.btnPayment.UseVisualStyleBackColor = true;
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
@@ -444,7 +444,7 @@
             this.tbNumber.Location = new System.Drawing.Point(128, 22);
             this.tbNumber.Name = "tbNumber";
             this.tbNumber.Size = new System.Drawing.Size(175, 20);
-            this.tbNumber.TabIndex = 4;
+            this.tbNumber.TabIndex = 7;
             // 
             // label3
             // 
@@ -483,7 +483,7 @@
             this.tbSumma.Location = new System.Drawing.Point(128, 48);
             this.tbSumma.Name = "tbSumma";
             this.tbSumma.Size = new System.Drawing.Size(175, 20);
-            this.tbSumma.TabIndex = 6;
+            this.tbSumma.TabIndex = 8;
             // 
             // gbSearch
             // 
@@ -503,7 +503,7 @@
             this.buttonHideSearchRes.Location = new System.Drawing.Point(7, 263);
             this.buttonHideSearchRes.Name = "buttonHideSearchRes";
             this.buttonHideSearchRes.Size = new System.Drawing.Size(75, 23);
-            this.buttonHideSearchRes.TabIndex = 2;
+            this.buttonHideSearchRes.TabIndex = 10;
             this.buttonHideSearchRes.Text = "Очистить";
             this.buttonHideSearchRes.UseVisualStyleBackColor = true;
             this.buttonHideSearchRes.Click += new System.EventHandler(this.buttonHideSearchRes_Click);
@@ -513,7 +513,7 @@
             this.btnSelectBody.Location = new System.Drawing.Point(105, 263);
             this.btnSelectBody.Name = "btnSelectBody";
             this.btnSelectBody.Size = new System.Drawing.Size(75, 23);
-            this.btnSelectBody.TabIndex = 1;
+            this.btnSelectBody.TabIndex = 11;
             this.btnSelectBody.Text = "Выбрать";
             this.btnSelectBody.UseVisualStyleBackColor = true;
             this.btnSelectBody.Click += new System.EventHandler(this.btnSelectBody_Click);

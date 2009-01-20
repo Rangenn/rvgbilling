@@ -477,7 +477,7 @@ namespace RVGBilling
                 str += ((PrivateAbonent)ab).surname;
             if (ab is CorporateAbonent)
                 str += ((CorporateAbonent)ab).corporate_name;
-            //string app_path  = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+     
             string app_path = new DirectoryInfo(".").FullName;
             str = app_path +"\\report" + ' ' + str + ' ' + dt.ToShortDateString() + ' ' + DateTime.Now.ToShortDateString() + ' ' + ".xls";
             logger.log(str);
@@ -510,11 +510,7 @@ namespace RVGBilling
                 DataGridViewRow Row = dgv.Rows[i];
                 for (int j = 0; j < dgv.ColumnCount; j++)
                 {
-                    string str;
-                    if (Row.Cells[j].ValueType.IsValueType)
-                        str = Convert.ToString(Row.Cells[j].Value, CultureInfo.InvariantCulture.NumberFormat);
-                    else str = Row.Cells[j].Value.ToString();
-                    arr[j] = str;
+                    arr[j] = Row.Cells[j].Value.ToString();
                 }
                 //Array.Resize(ref data, data.Length + 1);
                 data[i] = arr;
@@ -583,8 +579,8 @@ namespace RVGBilling
         {
             ExportToCSV(filename, ExportCallsFromDB());
         }
-        // на входе строки вида "Вызываемый номер, вызывающий номер, время звонка, длительность"
-        //Вадик, это обломно! переделал формат входа на: "вызывающий номер, Вызываемый номер, время звонка, длительность"
+    
+        //на входе строки вида "вызывающий номер, Вызываемый номер, время звонка, длительность"
         public void ImportCallsFromDataToDB(string[][] data)
         {
             ConsolePrint(data);
@@ -606,7 +602,7 @@ namespace RVGBilling
                     Connector.Update(num);
                     Connector.calculate_call_cost(call);
                 }
-                catch (EstablishConnectionException ex)
+                catch (DBSearchException ex)
                 {
                     Console.WriteLine("Номер не найден :" + data[i][1]);
                 }
@@ -661,8 +657,6 @@ namespace RVGBilling
         private void ImportRatesFromDataToDB(string[][] data)
         {
             ConsolePrint(data);
-            //не реализовано.
-
             for (int i = 0; i < data.Length; i++)
             {
                 try
@@ -673,7 +667,7 @@ namespace RVGBilling
                     {
                         rate = rate,
                         mask = data[i][1],
-                        cost_per_minute = Convert.ToDecimal(data[i][2],CultureInfo.InvariantCulture.NumberFormat)
+                        cost_per_minute = Convert.ToDecimal(data[i][2])
                     };
                     if (rate.Prices.Contains<Price>(price, new PriceComparer()))
                     {
@@ -685,7 +679,7 @@ namespace RVGBilling
                         Connector.Update(rate);
                     }
                 }
-                catch (EstablishConnectionException ex)
+                catch (DBSearchException ex)
                 {
                     Console.WriteLine("Тариф не найден :" + data[i][0]);
                 }

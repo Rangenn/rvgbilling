@@ -29,8 +29,7 @@ namespace RVGBilling
         public FormMain(Controller ctrl)
         {
             InitializeComponent();
-            AssemblyName asname = System.Reflection.Assembly.GetExecutingAssembly().GetName();
-            this.Text = asname.Name +" "+ asname.Version;
+            this.Text = Application.ProductName + " " + Application.ProductVersion;
 
             abonents = new List<Abonent>();
             bs = new BindingSource();
@@ -259,7 +258,7 @@ namespace RVGBilling
             saveFileDialog.Filter = "CSV files|*.csv|All files|*.*";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                controller.ExportCallsExcel(saveFileDialog.FileName);
+                controller.ExportCallsCSV(saveFileDialog.FileName);
             }
         }
 
