@@ -174,7 +174,7 @@ namespace RVGBilling
             tbAddress.Text = abonent.address;
             tbPhone.Text = abonent.phone;
             tbEmail.Text = abonent.mail_address;
-            tbLastPay.Text = abonent.last_pay_date.ToString();
+            tbLastPay.Text = abonent.last_calc_date.ToString();
             tbBalance.Text = abonent.balance.ToString();
             int index = lbNumbers.SelectedIndex;
             if (index >= 0)

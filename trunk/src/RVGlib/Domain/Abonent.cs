@@ -31,7 +31,7 @@ namespace RVGlib.Domain
         /// <summary>
         /// Дата последнего платежа
         /// </summary>
-        public virtual DateTime last_pay_date { get; set; }
+        public virtual DateTime last_calc_date { get; set; }
         /// <summary>
         /// Баланс счета
         /// </summary>

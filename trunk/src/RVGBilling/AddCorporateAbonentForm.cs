@@ -31,7 +31,7 @@ namespace RVGBilling
             Abonent.INN = tbINN.Text;
             Abonent.phone = tbPhone.Text;
             Abonent.balance = 0;
-            Abonent.last_pay_date = DateTime.Today;
+            Abonent.last_calc_date = DateTime.Today;
             Abonent.creation_time = DateTime.Today;
             Abonent.mail_address = tbEmail.Text;
             Abonent.address = tbAddress.Text;

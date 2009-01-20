@@ -103,9 +103,9 @@ INSERT INTO rates (id, name) VALUES (3, 'Все включено');
 -- Data for Name: private_abonents; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO private_abonents (id, address, phone, creation_time, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (1, 'г.Воронеж', '223344', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ivanov@mail.ru', 'Иванов', 'Иван', 'Иванович', '2004222222', '2008-12-15 00:00:00', 'выдан РОВД г.Иваново', '1978-10-15 00:00:00');
-INSERT INTO private_abonents (id, address, phone, creation_time, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date, dissolved) VALUES (2, 'г.Воронеж', '556677', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'PupkinVasya@hotmail.com', 'Пупкин', 'Василий', 'Петрович', '2005222222', '2008-12-15 00:00:00', 'выдан РОВД г.Семилуки', '1980-08-15 00:00:00', true);
-INSERT INTO private_abonents (id, address, phone, creation_time, last_pay_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (3, 'г.Воронеж', '365365', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'vaa@gmail.com', 'Вассерман', 'Анатолий', 'Анатольевич', '2006123123', '2008-12-15 00:00:00', 'выдан РОВД г.Москвы', '1968-12-03 00:00:00');
+INSERT INTO private_abonents (id, address, phone, creation_time, last_calc_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (1, 'г.Воронеж', '223344', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ivanov@mail.ru', 'Иванов', 'Иван', 'Иванович', '2004222222', '2008-12-15 00:00:00', 'выдан РОВД г.Иваново', '1978-10-15 00:00:00');
+INSERT INTO private_abonents (id, address, phone, creation_time, last_calc_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date, dissolved) VALUES (2, 'г.Воронеж', '556677', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'PupkinVasya@hotmail.com', 'Пупкин', 'Василий', 'Петрович', '2005222222', '2008-12-15 00:00:00', 'выдан РОВД г.Семилуки', '1980-08-15 00:00:00', true);
+INSERT INTO private_abonents (id, address, phone, creation_time, last_calc_date, mail_address, surname, name, patronymic, passport_series, passport_date, passport_department, birth_date) VALUES (3, 'г.Воронеж', '365365', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'vaa@gmail.com', 'Вассерман', 'Анатолий', 'Анатольевич', '2006123123', '2008-12-15 00:00:00', 'выдан РОВД г.Москвы', '1968-12-03 00:00:00');
 
 --
 -- TOC entry 1805 (class 0 OID 106642)
@@ -113,9 +113,9 @@ INSERT INTO private_abonents (id, address, phone, creation_time, last_pay_date, 
 -- Data for Name: corporate_abonents; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO corporate_abonents (id, address, phone, creation_time, last_pay_date, mail_address, corporate_name, "inn") VALUES (4, 'г.Воронеж', '321321', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'umbrella@corp.net', 'Umbrella corp.','7729425477');
-INSERT INTO corporate_abonents (id, address, phone, creation_time, last_pay_date, mail_address, corporate_name, "inn") VALUES (5, 'г.Воронеж', '765765', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ibm@ibm.com', 'IBM','7756230000');
-INSERT INTO corporate_abonents (id, address, phone, creation_time, last_pay_date, mail_address, corporate_name, "inn") VALUES (6, 'г.Воронеж', '777777', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'mash@oskol.ru', 'ООО ОсколГорМаш','7782341234');
+INSERT INTO corporate_abonents (id, address, phone, creation_time, last_calc_date, mail_address, corporate_name, "inn") VALUES (4, 'г.Воронеж', '321321', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'umbrella@corp.net', 'Umbrella corp.','7729425477');
+INSERT INTO corporate_abonents (id, address, phone, creation_time, last_calc_date, mail_address, corporate_name, "inn") VALUES (5, 'г.Воронеж', '765765', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'ibm@ibm.com', 'IBM','7756230000');
+INSERT INTO corporate_abonents (id, address, phone, creation_time, last_calc_date, mail_address, corporate_name, "inn") VALUES (6, 'г.Воронеж', '777777', '2008-12-15 00:00:00', '2008-12-15 00:00:00', 'mash@oskol.ru', 'ООО ОсколГорМаш','7782341234');
 
 
 --

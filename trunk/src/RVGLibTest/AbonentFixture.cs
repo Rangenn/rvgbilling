@@ -20,7 +20,7 @@ namespace RVGLibTest
                 .CheckProperty(x => x.phone, "123")
                 .CheckProperty(x => x.mail_address, "q@mail.ru")
                 .CheckProperty(x => x.creation_time, TestDateTime)
-                .CheckProperty(x => x.last_pay_date, TestDateTime)
+                .CheckProperty(x => x.last_calc_date, TestDateTime)
                 .CheckProperty(x => x.balance, TestDecimal)
                 .CheckProperty(x => x.dissolved, TestBoolean)
                 //.CheckList<Number>(x => x.Numbers, numbers)
@@ -37,7 +37,7 @@ namespace RVGLibTest
                 phone = "p",
                 mail_address = "m",
                 creation_time = TestDateTime,
-                last_pay_date = TestDateTime,
+                last_calc_date = TestDateTime,
                 balance = TestDecimal
             };
             Session.Save(Abonent);
