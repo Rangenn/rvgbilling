@@ -16,6 +16,10 @@ namespace RVGBilling.Import
             ExcelConnector _ExcelClient = null;
             try
             {
+                //if (File.Exists(filename))
+                //{
+                    File.Delete(filename);
+                //}
                 _ExcelClient = new ExcelConnector(false, filename, 1);
                 _ExcelClient.SetCellRange(1, 1, data);
             }
