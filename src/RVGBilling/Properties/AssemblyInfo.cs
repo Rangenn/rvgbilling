@@ -15,10 +15,11 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisibleAttribute(false)]
 [assembly: CLSCompliantAttribute(false)]
-[assembly: AssemblyVersionAttribute("1.2.71.0")]
+[assembly: AssemblyVersionAttribute("1.3.2.0")]
 [assembly: AssemblyTitleAttribute("RVGbilling")]
-[assembly: AssemblyDescriptionAttribute("o_0")]
-[assembly: AssemblyCopyrightAttribute("Copyright (c) 2008, RVG, Inc.")]
+[assembly: AssemblyDescriptionAttribute("Billing system (C# + NHibernate + PostgreSQL) by Kotov Vadim, Tihonov Roman and G" +
+    "alina Ponomareva.")]
+[assembly: AssemblyCopyrightAttribute("Copyright (c) 2008-2009, RVG, Inc.")]
 [assembly: AssemblyConfigurationAttribute("")]
 [assembly: AssemblyCompanyAttribute("RVG")]
 [assembly: AssemblyTrademarkAttribute("")]
