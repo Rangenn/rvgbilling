@@ -17,8 +17,8 @@ namespace RVGBilling
         [STAThread]
         static void Main()
         {
-            logger.log("-");
-            logger.log("Application started.");
+            //logger.log("-");
+            //logger.log("Application started.");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             try
@@ -27,7 +27,7 @@ namespace RVGBilling
                 Application.Run(ctrl.fmMain);
             }
             catch (EstablishConnectionException ex) { MessageBox.Show(ex.Message); }            
-            logger.log("Application closed.");
+            //logger.log("Application closed.");
         }
     }
 }
