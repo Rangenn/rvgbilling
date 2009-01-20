@@ -17,7 +17,7 @@ namespace RVGlib.Mappings
             Map(x => x.phone);
             Map(x => x.mail_address);
             Map(x => x.creation_time);
-            Map(x => x.last_pay_date);
+            Map(x => x.last_calc_date);
             Map(x => x.balance);
             Map(x => x.dissolved);
             HasMany<Number>(x => x.Numbers)

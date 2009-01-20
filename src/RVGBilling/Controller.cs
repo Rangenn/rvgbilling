@@ -415,13 +415,13 @@ namespace RVGBilling
             if (ab.Numbers == null) return ab.balance;
             foreach (Number n in ab.Numbers)
                 foreach (Call c in n.Calls)
-                    if (c.creation_time >= ab.last_pay_date)
+                    if (c.creation_time >= ab.last_calc_date)
                     {
                         res += c.cost;
                         //ab.balance -= c.cost;
                     }
             ab.balance -= res;
-            ab.last_pay_date = DateTime.Today;
+            ab.last_calc_date = DateTime.Now;
             Connector.Update(ab);
             return ab.balance;
         }
