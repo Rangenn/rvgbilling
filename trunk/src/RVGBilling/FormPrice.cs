@@ -28,15 +28,13 @@ namespace RVGBilling
         {
             price = p;
             tbCost.Text = p.cost_per_minute.ToString();
-            tbMask.Text = p.mask;
+            mtbMask.Text = p.mask;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             price.cost_per_minute = Convert.ToDecimal(tbCost.Text);
-            price.mask = tbMask.Text;
+            price.mask = mtbMask.Text.Trim();
         }
-
-
     }
 }

@@ -507,9 +507,12 @@ namespace RVGBilling
             for (int i = 0; i < dgv.RowCount; i++)
             {
                 string[] arr = new string[dgv.ColumnCount];
+                if (dgv.Columns.Contains("Id"))
+                    Array.Resize(ref arr, arr.Length - 1);
                 DataGridViewRow Row = dgv.Rows[i];
                 for (int j = 0; j < dgv.ColumnCount; j++)
                 {
+                    if (dgv.Columns[j].Name.Equals("Id")) continue;
                     arr[j] = Row.Cells[j].Value.ToString();
                 }
                 //Array.Resize(ref data, data.Length + 1);

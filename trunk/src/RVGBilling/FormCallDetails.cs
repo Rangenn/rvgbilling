@@ -30,6 +30,10 @@ namespace RVGBilling
             if (Columns.Contains("number")) Columns["number"].HeaderText = "Номер абонента";
             if (Columns.Contains("calling_number")) Columns["calling_number"].HeaderText = "Вызываемый номер";
             if (Columns.Contains("duration")) Columns["duration"].HeaderText = "Длительность (секунды)";
+            this.Width = 20;
+            for (int i = 0; i < dgDetails.Columns.Count; i++ )
+                if (dgDetails.Columns[i].Visible)
+                    this.Width += dgDetails.Columns[i].Width;
         }
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
