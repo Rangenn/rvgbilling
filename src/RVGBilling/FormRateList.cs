@@ -147,5 +147,17 @@ namespace RVGBilling
                 controller.ExportToCSV(saveFileDialog.FileName, controller.GridToArray(dgvPrices));
             }
         }
+
+        private void genToolStripMenuItem_Click(object sender, EventArgs e)
+        {           
+            Import.DataGenerator dg = new RVGBilling.Import.DataGenerator();
+            int index = lbRates.SelectedIndex;
+            if (index >= 0)
+            {
+                Rate rate = (Rate)lbRates.SelectedItem;
+                controller.ImportRatesFromDataToDB(dg.generateRate(rate.name, 900, 950));
+                gridBindingSource.ResetBindings(false);
+            }           
+        }
     }
 }

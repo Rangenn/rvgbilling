@@ -184,6 +184,11 @@ namespace RVGBilling
             return _connector.GetAll<Rate>();
         }
 
+        public IList<Number> GetNumbers()
+        {
+            return _connector.GetAll<Number>();
+        }
+
         public void ViewRates()
         {
             FormRateList form = new FormRateList(this);
@@ -316,6 +321,7 @@ namespace RVGBilling
             {
                 //num = Connector.GetNumber(number);
                 abonent = Connector.SearchByNumber(number);
+                if (abonent.dissolved) throw new DBSearchException("Договор с этим абонентом расторгнут");
                 for (int i = 0; i < abonent.Numbers.Count; i++)
                 {
                     if (abonent.Numbers[i].number.Equals(number))
@@ -325,6 +331,7 @@ namespace RVGBilling
                     }
                 }
                 if (num == null) throw new DBSearchException("Ошибка поиска номера.", new NullReferenceException());
+
             }
             catch (DBSearchException ex) { MessageBox.Show(ex.Message); return; }
 
@@ -657,7 +664,7 @@ namespace RVGBilling
         }
 
         //на входе строки вида "Название тарифа, маска, цена за минуту"
-        private void ImportRatesFromDataToDB(string[][] data)
+        public void ImportRatesFromDataToDB(string[][] data)
         {
             ConsolePrint(data);
             for (int i = 0; i < data.Length; i++)
