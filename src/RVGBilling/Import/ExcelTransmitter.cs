@@ -24,6 +24,10 @@ namespace RVGBilling.Import
                 _ExcelClient.SetCellRange(1, 1, data);
             }
             catch (ExcelConnectorException ex) { System.Console.WriteLine(ex.Message); }
+            catch (IOException ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
             finally
             {
                 System.Console.WriteLine("Закрываю Excel application...");

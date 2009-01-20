@@ -80,6 +80,7 @@
             this.dgvSearch = new System.Windows.Forms.DataGridView();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.SearchResultPanel = new System.Windows.Forms.Panel();
             this.gbAbonent.SuspendLayout();
             this.tcAbonent.SuspendLayout();
             this.tpPerson.SuspendLayout();
@@ -88,6 +89,7 @@
             this.gbBalance.SuspendLayout();
             this.gbSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).BeginInit();
+            this.SearchResultPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbAbonent
@@ -376,7 +378,7 @@
             this.cSVToolStripMenuItem1,
             this.сгенерироватьToolStripMenuItem});
             this.impToolStripMenuItem.Name = "impToolStripMenuItem";
-            this.impToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.impToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.impToolStripMenuItem.Text = "Импорт";
             // 
             // excelToolStripMenuItem1
@@ -406,7 +408,7 @@
             this.excelToolStripMenuItem,
             this.cSVToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exportToolStripMenuItem.Text = "Экспорт";
             // 
             // excelToolStripMenuItem
@@ -497,9 +499,7 @@
             // gbSearch
             // 
             this.gbSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gbSearch.Controls.Add(this.buttonHideSearchRes);
-            this.gbSearch.Controls.Add(this.btnSelectBody);
-            this.gbSearch.Controls.Add(this.dgvSearch);
+            this.gbSearch.Controls.Add(this.SearchResultPanel);
             this.gbSearch.Location = new System.Drawing.Point(328, 28);
             this.gbSearch.Name = "gbSearch";
             this.gbSearch.Size = new System.Drawing.Size(646, 295);
@@ -509,7 +509,7 @@
             // 
             // buttonHideSearchRes
             // 
-            this.buttonHideSearchRes.Location = new System.Drawing.Point(7, 263);
+            this.buttonHideSearchRes.Location = new System.Drawing.Point(3, 252);
             this.buttonHideSearchRes.Name = "buttonHideSearchRes";
             this.buttonHideSearchRes.Size = new System.Drawing.Size(75, 23);
             this.buttonHideSearchRes.TabIndex = 10;
@@ -519,7 +519,7 @@
             // 
             // btnSelectBody
             // 
-            this.btnSelectBody.Location = new System.Drawing.Point(105, 263);
+            this.btnSelectBody.Location = new System.Drawing.Point(84, 252);
             this.btnSelectBody.Name = "btnSelectBody";
             this.btnSelectBody.Size = new System.Drawing.Size(75, 23);
             this.btnSelectBody.TabIndex = 11;
@@ -539,15 +539,14 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSearch.Location = new System.Drawing.Point(7, 20);
+            this.dgvSearch.Location = new System.Drawing.Point(3, 3);
             this.dgvSearch.MultiSelect = false;
             this.dgvSearch.Name = "dgvSearch";
             this.dgvSearch.ReadOnly = true;
             this.dgvSearch.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSearch.Size = new System.Drawing.Size(633, 237);
+            this.dgvSearch.Size = new System.Drawing.Size(621, 246);
             this.dgvSearch.TabIndex = 0;
-            this.dgvSearch.Visible = false;
             this.dgvSearch.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvSearch_CellMouseDoubleClick);
             // 
             // openFileDialog
@@ -558,6 +557,17 @@
             // saveFileDialog
             // 
             this.saveFileDialog.OverwritePrompt = false;
+            // 
+            // SearchResultPanel
+            // 
+            this.SearchResultPanel.Controls.Add(this.dgvSearch);
+            this.SearchResultPanel.Controls.Add(this.buttonHideSearchRes);
+            this.SearchResultPanel.Controls.Add(this.btnSelectBody);
+            this.SearchResultPanel.Location = new System.Drawing.Point(7, 14);
+            this.SearchResultPanel.Name = "SearchResultPanel";
+            this.SearchResultPanel.Size = new System.Drawing.Size(627, 275);
+            this.SearchResultPanel.TabIndex = 12;
+            this.SearchResultPanel.Visible = false;
             // 
             // FormMain
             // 
@@ -587,6 +597,7 @@
             this.gbBalance.PerformLayout();
             this.gbSearch.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).EndInit();
+            this.SearchResultPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -646,6 +657,7 @@
         private System.Windows.Forms.ToolStripMenuItem excelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cSVToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сгенерироватьToolStripMenuItem;
+        private System.Windows.Forms.Panel SearchResultPanel;
     }
 }
 

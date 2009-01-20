@@ -239,7 +239,7 @@ namespace ExcelWorkLib
         /// <param name="NewValue"></param>
         public Object GetCellValue(int RowIndex, int ColIndex)
         {
-            return ((Excel.Range)_CurrentWorksheet.Cells[RowIndex, ColIndex]).Value2;
+            return ((Excel.Range)_CurrentWorksheet.Cells[RowIndex, ColIndex]).get_Value(System.Reflection.Missing.Value);
         }
 
         /// <summary>

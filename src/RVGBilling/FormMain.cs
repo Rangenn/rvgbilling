@@ -118,7 +118,7 @@ namespace RVGBilling
             bs.ResetBindings(true);
             InitGrid(true);
             // обновление DataGridView
-            dgvSearch.Visible = true;
+            SearchResultPanel.Visible = true;
         }
 
         private void btnSelectBody_Click(object sender, EventArgs e)
@@ -167,7 +167,7 @@ namespace RVGBilling
 
         private void buttonHideSearchRes_Click(object sender, EventArgs e)
         {
-            dgvSearch.Visible = false;
+            SearchResultPanel.Visible = false;
         }
 
         private void tcAbonent_SelectedIndexChanged(object sender, EventArgs e)

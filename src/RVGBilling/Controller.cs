@@ -363,15 +363,13 @@ namespace RVGBilling
 
         public void DissolveAbonent(Abonent ab)
         {
-
-            bool res = MessageBox.Show("Расторгнуть договор № " + ab.Id + "?", "Расторжение договора",
+            bool res = MessageBox.Show("Текущий баланс: " + (CalcDebet(ab)+ab.balance) + "\nРасторгнуть договор № " + ab.Id + "?", "Расторжение договора",
             MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
             if (res)
             {
                 ab.dissolved = true;
-                CalcBalance(ab);
+                ab.balance = 0;
                 Connector.Update(ab);
-                MessageBox.Show("Баланс на момент расторжения договора: " + ab.balance.ToString());
             }
         }
 
@@ -407,12 +405,7 @@ namespace RVGBilling
         //    return Connector.Get<T>(obj.Id);
         //}
 
-        /// <summary>
-        /// вычет стоимости еще не учтенных звонков. возвращает текущий(рассчитанный) баланс абонента
-        /// </summary>
-        /// <param name="ab"></param>
-        /// <returns></returns>
-        public Decimal CalcBalance(Abonent ab)
+        private Decimal CalcDebet(Abonent ab)
         {
             Decimal res = 0;
             if (ab.Numbers == null) return ab.balance;
@@ -423,9 +416,21 @@ namespace RVGBilling
                         res += c.cost;
                         //ab.balance -= c.cost;
                     }
+            return res;
+        }
+
+        /// <summary>
+        /// вычет стоимости еще не учтенных звонков. возвращает текущий(рассчитанный) баланс абонента
+        /// </summary>
+        /// <param name="ab"></param>
+        /// <returns></returns>
+        public Decimal CalcBalance(Abonent ab)
+        {
+            Decimal res = CalcDebet(ab);
             ab.balance -= res;
             ab.last_calc_date = DateTime.Now;
             Connector.Update(ab);
+            Connector.Refresh(ab);
             return ab.balance;
         }
 
@@ -448,10 +453,10 @@ namespace RVGBilling
         {
             Decimal bal = CalcBalance(ab);
             string[][] Arr = new string[4][];
-            Arr[0] = new string[]{"Информация об абоненте"};
+            Arr[0] = new string[]{"�?нформация об абоненте"};
             Arr[1] = ab.ToStringArray();//выводим инфо об абоненте
             Arr[2] = new string[] {"Звонки"};
-            Arr[3] = new string[] { "Исходящий", "Входящий", "Начало звонка", "Длительность", "Стоимость" };
+            Arr[3] = new string[] { "�?сходящий", "Входящий", "Начало звонка", "Длительность", "Стоимость" };
             foreach (Number n in ab.Numbers) //выводим инфо о его звонках
             {
 
@@ -481,7 +486,7 @@ namespace RVGBilling
                 }
             }
             Array.Resize(ref Arr, Arr.Length + 1);
-            Arr[Arr.Length - 1] = new string[]{"Итоговый баланс на момент выписки счета: ", bal.ToString()};
+            Arr[Arr.Length - 1] = new string[]{"�?тоговый баланс на момент выписки счета: ", bal.ToString()};
             string str = ab.Id.ToString() + ' ';
             if (ab is PrivateAbonent)
                 str += ((PrivateAbonent)ab).surname;
@@ -506,7 +511,7 @@ namespace RVGBilling
 
 
         /// <summary>
-        /// Извлечь из datagridview двумерный массив строк
+        /// �?звлечь из datagridview двумерный массив строк
         /// </summary>
         /// <param name="dgv"></param>
         /// <returns></returns>
