@@ -130,23 +130,6 @@ namespace RVGBilling
             InitGrid();
         }
 
-        private void ExportExcelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            saveFileDialog.Filter = "Excel files|*.xls|All files|*.*";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                controller.ExportToExcel(saveFileDialog.FileName, controller.GridToArray(dgvPrices));
-            }
-        }
-
-        private void ExportCSVToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            saveFileDialog.Filter = "CSV files|*.csv|All files|*.*";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                controller.ExportToCSV(saveFileDialog.FileName, controller.GridToArray(dgvPrices));
-            }
-        }
 
         private void genToolStripMenuItem_Click(object sender, EventArgs e)
         {           
@@ -158,6 +141,24 @@ namespace RVGBilling
                 controller.ImportRatesFromDataToDB(dg.generateRate(rate.name, 900, 950));
                 gridBindingSource.ResetBindings(false);
             }           
+        }
+
+        private void excelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.Filter = "Excel files|*.xls|All files|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                controller.ExportToExcel(saveFileDialog.FileName, controller.GridToArray(dgvPrices));
+            }
+        }
+
+        private void cSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.Filter = "CSV files|*.csv|All files|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                controller.ExportToCSV(saveFileDialog.FileName, controller.GridToArray(dgvPrices));
+            }
         }
     }
 }
