@@ -453,10 +453,10 @@ namespace RVGBilling
         {
             Decimal bal = CalcBalance(ab);
             string[][] Arr = new string[4][];
-            Arr[0] = new string[]{"�?нформация об абоненте"};
+            Arr[0] = new string[]{"Информация об абоненте"};
             Arr[1] = ab.ToStringArray();//выводим инфо об абоненте
             Arr[2] = new string[] {"Звонки"};
-            Arr[3] = new string[] { "�?сходящий", "Входящий", "Начало звонка", "Длительность", "Стоимость" };
+            Arr[3] = new string[] { "Исходящий", "Входящий", "Начало звонка", "Длительность", "Стоимость" };
             foreach (Number n in ab.Numbers) //выводим инфо о его звонках
             {
 
@@ -486,7 +486,7 @@ namespace RVGBilling
                 }
             }
             Array.Resize(ref Arr, Arr.Length + 1);
-            Arr[Arr.Length - 1] = new string[]{"�?тоговый баланс на момент выписки счета: ", bal.ToString()};
+            Arr[Arr.Length - 1] = new string[]{"Итоговый баланс на момент выписки счета: ", bal.ToString()};
             string str = ab.Id.ToString() + ' ';
             if (ab is PrivateAbonent)
                 str += ((PrivateAbonent)ab).surname;
@@ -501,7 +501,7 @@ namespace RVGBilling
 
         public void MakeAllReports()
         {
-            DateTime dt = new DateTime(DateTime.Today.Year, DateTime.Today.Month - 1, 1);
+            DateTime dt = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             foreach (Abonent ab in Connector.GetAll<PrivateAbonent>())
                 MakeReport(ab, dt);
             foreach (Abonent ab in Connector.GetAll<CorporateAbonent>())
@@ -511,7 +511,7 @@ namespace RVGBilling
 
 
         /// <summary>
-        /// �?звлечь из datagridview двумерный массив строк
+        /// Извлечь из datagridview двумерный массив строк
         /// </summary>
         /// <param name="dgv"></param>
         /// <returns></returns>
@@ -601,6 +601,7 @@ namespace RVGBilling
         //на входе строки вида "вызывающий номер, Вызываемый номер, время звонка, длительность"
         public void ImportCallsFromDataToDB(string[][] data)
         {
+            int ctr = 0;
             ConsolePrint(data);
             for (int i = 0; i < data.Length; i++)
             {
@@ -615,21 +616,25 @@ namespace RVGBilling
                         creation_time = Convert.ToDateTime(data[i][2]),
                         duration = Convert.ToInt32(data[i][3])
                     };
-
+                    if (num.abonent.last_calc_date > call.creation_time || num.abonent.dissolved)
+                    {
+                        ctr++; continue;
+                    }
                     num.Calls.Add(call);
                     Connector.Update(num);
                     Connector.calculate_call_cost(call);
                 }
                 catch (DBSearchException ex)
                 {
-                    Console.WriteLine("Номер не найден :" + data[i][1]);
+                    Console.WriteLine("Номер не найден :" + data[i][1]); ctr++;
                 }
 
                 catch (FormatException ex)
                 {
-                    Console.WriteLine("Формат записи " + i + " не распознан");
+                    Console.WriteLine("Формат записи " + i + " не распознан"); ctr++;
                 }
             }
+            Console.WriteLine("Результат импорта: импортировано - " + (data.Length - ctr).ToString() + ", отброшено - " + ctr);
         }
         /// <summary>
         /// Экспорт всех тарифов и цен из базы
@@ -675,6 +680,7 @@ namespace RVGBilling
         public void ImportRatesFromDataToDB(string[][] data)
         {
             ConsolePrint(data);
+            int ctr = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 try
@@ -689,7 +695,7 @@ namespace RVGBilling
                     };
                     if (rate.Prices.Contains<Price>(price, new PriceComparer()))
                     {
-                        Console.WriteLine("Маска \"" + price.mask + "\" уже существует в этом тарифе.");
+                        Console.WriteLine("Маска \"" + price.mask + "\" уже существует в этом тарифе."); ctr++;
                     }
                     else
                     {
@@ -699,14 +705,15 @@ namespace RVGBilling
                 }
                 catch (DBSearchException ex)
                 {
-                    Console.WriteLine("Тариф не найден :" + data[i][0]);
+                    Console.WriteLine("Тариф не найден :" + data[i][0]); ctr++;
                 }
 
                 catch (FormatException ex)
                 {
-                    Console.WriteLine("Формат записи " + i + " не распознан");
+                    Console.WriteLine("Формат записи " + i + " не распознан"); ctr++;
                 }
             }
+            Console.WriteLine("Результат импорта: импортировано - " + (data.Length - ctr).ToString() + ", отброшено - " + ctr);
         }
         /// <summary>
         /// Экспорт всех тарифов и цен из базы
@@ -730,4 +737,4 @@ namespace RVGBilling
         #endregion
 
     }
-}
+}
