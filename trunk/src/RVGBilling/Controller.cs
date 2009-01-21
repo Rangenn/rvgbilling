@@ -501,7 +501,7 @@ namespace RVGBilling
 
         public void MakeAllReports()
         {
-            DateTime dt = new DateTime(DateTime.Today.Year - 1, DateTime.Today.Month, 1);
+            DateTime dt = new DateTime(DateTime.Today.Year, DateTime.Today.Month - 1, 1);
             foreach (Abonent ab in Connector.GetAll<PrivateAbonent>())
                 MakeReport(ab, dt);
             foreach (Abonent ab in Connector.GetAll<CorporateAbonent>())
