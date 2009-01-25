@@ -14,7 +14,7 @@
 
 = Схема базы данных =
 
-<center>[[Image:db.jpeg]]</center>
+<center>[[Image:export.jpg]]</center>
 
 = Карта приложения =
 <center>[[Image:karta.jpeg]]</center>
